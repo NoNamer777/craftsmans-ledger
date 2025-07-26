@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.plugin.serialization)
 }
 
-group = "org.eu.nl"
+group = "org.eu.nl.craftsmans_ledger"
 version = "0.0.1"
 
 application {
@@ -26,6 +26,8 @@ dependencies {
     implementation(libs.ktor.server.status.pages)
     implementation(libs.ktor.server.netty)
     implementation(libs.logback.classic)
+    implementation(libs.nanoid)
+
     implementation(libs.ktor.server.config.yaml)
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
