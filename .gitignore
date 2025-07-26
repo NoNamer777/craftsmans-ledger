@@ -1,1 +1,6 @@
+# Workspace configurations
 .idea/
+.nx/
+
+# Dependencies
+node_modules/

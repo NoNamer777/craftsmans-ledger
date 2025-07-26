@@ -16,5 +16,7 @@
     "libs/*"
   ],
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "nx": "~21.3.0"
+  }
 }
