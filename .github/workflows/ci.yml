@@ -29,7 +29,9 @@ jobs:
                   distribution: 'oracle'
 
             - name: Setup Gradle
-              uses: actions/setup-gradle@v4
+              uses: gradle/actions/setup-gradle@v4
+              with:
+                  gradle-version: 'wrapper'
 
             - name: Install dependencies
               run: npm ci
