@@ -38,7 +38,7 @@ jobs:
               run: git rev-parse --verify main || git remote set-branches origin main && git fetch --depth 1 origin main && git branch main origin/main
 
             - name: Check linting
-              run: npx nx affected -t lint --verbose
+              run: npx nx affected -t lint
 
             - name: Check formatting
               run: npx nx format:check
