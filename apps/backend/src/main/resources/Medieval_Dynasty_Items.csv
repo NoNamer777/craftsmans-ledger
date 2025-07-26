@@ -1,0 +1,285 @@
+Clay,0.5,0.2
+Limestone,1,12
+Log,2.5,2
+Rot,0.05,0
+Salt,0.5,8
+Stick,0.1,0.2
+Stone,1,0.2
+Straw,0.04,0.1
+Copper Ore,1,12
+Tin Ore,1,10
+Iron Ore,1,40
+Unripe Berry,0.05,0.2
+Berry,0.05,0.2
+Boardleaf Plantain,0.01,0.5
+Chicory,0.01,0.4
+Daisy,0.01,0.5
+Dandelion,0.01,0.6
+Deadly Nightshade,0.01,0.6
+Henbane,0.01,0.5
+St. John's Wort,0.01,0.3
+Thistle,0.01,0.4
+Bitter Bolete Mushroom,0.1,2
+Bolete Mushroom,0.1,3
+Fly Agaric Mushroom,0.1,2
+Morel Mushroom,0.1,2
+Parasol Mushroom,0.1,3
+Red Pine Mushroom,0.1,3
+Wolly Milkcap Mushroom,0.1,2
+Flax,0.05,10
+Flax Stalk,0.04,5
+Oat,0.05,5
+Poppy,0.05,3
+Rye,0.05,5
+Wheat,0.06,10
+Apple,0.09,3
+Beetroot,0.15,3
+Cabbage,0.2,3
+Carrot,0.1,2
+Cherry,0.05,2
+Onion,0.1,2
+Pear,0.1,3
+Plum,0.07,2
+Hop,0.02,3
+Beetroot Seed,0.01,8
+Cabbage Seed,0.01,8
+Carrot Seed,0.01,5
+Flax Seed,0.01,10
+Oat Grain,0.01,5
+Onion Seed,0.01,5
+Poppy Seed,0.01,3
+Rye Grain,0.01,5
+Wheat Grain,0.02,10
+Egg,0.05,10
+Feather,0.01,3
+Fish Meat,0.2,4
+Fur,0.25,6
+Honeycomb,0.1,10
+Leather,0.25,8
+Manure,0.25,2
+Meat,0.2,3
+Milk (Bucket of),2,180
+Sour Milk (Bucket of),2,180
+Wool,0.1,12
+Daub,0.5,1
+Fertilizer (Rot),0.5,5
+Fertilizer (Manure),0.5,5
+Flour (Oat/Rye),0.01,5
+Flour (Wheat),0.01,5
+Dried Fish,0.2,10
+Dried Meat,0.2,8
+Salted Fish,0.2,18
+Salted Meat,0.25,16
+Plank,1,4
+Firewood,0.6,2
+Simple Torch,0.5,10
+Torch,0.5,40
+Bucket,2,30
+Wooden Vial,0.1,3
+Wooden Bowl,0.2,4
+Wooden Plate,0.2,4
+Wooden Ladle,0.07,3
+Wooden Spoon,0.07,3
+Wooden Cup,0.2,4
+Wooden Wheel,4,40
+Small Wicker Basket,0.5,15
+Medium Wicker Basket,0.8,20
+Large Wicker Basket,1.2,25
+Wicker Crate,1.6,30
+Clay Vial,0.2,20
+Clay Bottle,0.5,40
+Clay Bowl,0.4,30
+Clay Cup,0.2,20
+Clay Jug,0.5,40
+Clay Mug,0.25,30
+Clay Vase,0.5,40
+Clay Vase with Chicory,0.5,60
+Clay Vase with Daisy,0.5,60
+Clay Vase with Dandelion,0.5,60
+Clay Vase with Henbane,0.5,60
+Clay Vase with St. John's Wort,0.5,60
+Clay Vase with Thistle,0.5,60
+Wine Bottle,0.5,60
+Mead Bottle,0.3,50
+Beer Bottle,0.35,50
+Wooden Hammer,1,30
+Wooden Shovel,2,25
+Wooden Hoe,2,30
+Wooden Spear,1.5,20
+Cudgel,1.5,25
+Bow,1.25,90
+Long Bow,1.25,230
+Recurve Bow,1.25,320
+Wooden Crossbow,1,150
+Wooden Bolt,0.01,7
+Stone Axe,2.5,40
+Stone Pick Axe,3,45
+Stone Knife,0.5,40
+Fishing Spear,2.5,100
+Stone Hoe,2.5,45
+Stone Sickle,0.75,45
+Stone Spear,2.5,100
+Stone Arrow,0.01,7
+Throwing Stone,0.2,0.2
+Copper Bar,1,30
+Tin Bar,1,25
+Bronze Bar,1,60
+Iron Bar,1,90
+Copper Hammer,2,110
+Copper Axe,3,180
+Copper Shovel,3,180
+Copper Knife,0.5,110
+Copper Sickle,1,140
+Copper Spear,2,170
+Copper Arrow,0.01,9
+Copper Bolt,0.01,9
+Bronze Hammer,2,220
+Bronze Axe,3.5,350
+Bronze Pickaxe,5,360
+Bronze Shovel,3,360
+Bronze Knife,0.75,220
+Bronze Sickle,1.5,290
+Bronze Scythe,4,360
+Bronze Hoe,2,220
+Bronze Shears,1,110
+Bronze Spear,2,330
+Bronze Arrow,0.01,11
+Bronze Bolt,0.01,11
+Iron Hammer,2,300
+Iron Axe,3.5,490
+Iron Pickaxe,5,500
+Iron Shovel,3,500
+Iron Knife,0.75,300
+Iron Sickle,1.5,400
+Iron Scythe,4,500
+Iron Hoe,2,300
+Iron Shears,1,140
+Iron Horseshoes,4,250
+Iron Spear,2,410
+Iron Spiked Cudgel,2,180
+Iron Arrow,0.01,13
+Iron Bolt,0.01,13
+Iron Crossbow,1.25,730
+Linen Thread,0.1,50
+Linen Fabric,0.1,60
+Wool Thread,0.2,100
+Wool Fabric,0.2,120
+Simple Bag,0.15,50
+Bag,0.5,180
+Water Skin,0.25,170
+Small Pouch,0.25,110
+Pouch,0.5,180
+Large Pouch,1,260
+Simple Small Backpack,0.5,190
+Simple Backpack,1,260
+Simple Large Backpack,1.5,380
+Saddle,2,480
+Small Saddlebag,2,280
+Saddlebag,3,370
+Large Saddlebag,4,610
+Bag Hat,0.2,600
+Cap,0.05,230
+Cap with Coif,0.1,290
+Coif,0.05,150
+Felt Hat,0.15,520
+Flat Straw Hat,0.15,130
+Hat,0.1,320
+Hat with Lapels,0.1,380
+Straw Hat,0.2,120
+Fur Capelet,0.2,240
+Fur Hood,0.35,370
+Hood,0.3,330
+Long Fur Hood,0.4,520
+Long Hood,0.4,480
+Thick Leather Gloves,0.15,180
+Felt Vest,0.7,590
+Linen Shirt,0.25,270
+Quilted Vest,0.8,740
+Short Sleeve Tunic,0.45,320
+Simple Linen Shirt,0.25,200
+Simple Tunic,0.5,380
+Tunic,0.5,470
+Hose,0.4,370
+Joined Hose,0.5,460
+Trousers,0.3,200
+Trousers with Cuffs,0.35,220
+Boots,0.25,280
+Fancy Shoes,0.15,290
+Fur Boots,0.35,250
+Fur Shoes,0.25,170
+Noble Boots,0.2,420
+Noble Shoes,0.1,340
+Shoes,0.15,140
+Simple Shoes,0.15,100
+Roasted Fish Meat,0.2,6
+Roasted Meat,0.2,5
+Meat with Gravy,0.55,40
+Scrambled Eggs,0.2,60
+Scrambled Eggs with Mushroom,0.2,70
+Gruel,0.2,30
+Porridge,0.2,30
+Porridge with Apple,0.25,60
+Porridge with Berries,0.25,50
+Cheese,0.2,100
+Quark,0.2,50
+Mushroom Soup (Meat),0.2,30
+Mushroom Soup (Salted Meat),0.2,30
+Potage (Meat),0.7,50
+Potage (Salted Meat),0.7,50
+Soup (Meat),0.75,50
+Soup (Salted Meat),0.75,50
+Stew (Meat),0.75,40
+Stew (Salted Meat),0.75,40
+Vegetable Soup,0.8,100
+Flatbread,0.05,80
+Flatbread with Onion,0.1,100
+Multigrain Bread,0.15,170
+Oat Roll,0.1,110
+Rye Bread,0.15,140
+Wheat Bread,0.15,150
+Wheat Roll,0.1,130
+White Bread,0.15,120
+Cherry Pie,0.1,240
+Fruit Pie,0.1,210
+Meat Pie,0.1,220
+Poppy Seed Pie,0.1,230
+Fish Tart (Fish Meat),0.1,180
+Fish Tart (Salted Fish Meat),0.1,180
+Fruit Tart,0.1,190
+Meat Tart (Meat),0.1,180
+Meat Tart (Salted Meat),0.1,180
+Pear Tart,0.1,190
+Plum Tart,0.1,200
+Poison,0.2,40
+Potion of Camouflage,0.2,80
+Potion of Cure,0.2,50
+Potion of Healing I,0.2,40
+Potion of Healing II,0.2,50
+Potion of Health,0.2,60
+Potion of Instant Cure,0.2,40
+Potion of Instant Healing I,0.2,40
+Potion of Instant Healing II,0.2,50
+Potion of Night Vision,0.2,50
+Potion of Possibilities,0.2,80
+Potion of Satiety,0.2,50
+Potion of Saturation,0.2,40
+Potion of Sobriety,0.2,50
+Potion of Stamina,0.2,40
+Potion of Strength,0.2,40
+Potion of Temperature,0.2,50
+Potion of Weight,0.2,60
+Apple Juice,0.6,130
+Berry Juice,0.6,110
+Cherry Juice,0.6,120
+Pear Juice,0.6,140
+Plum Juice,0.6,150
+Apple Wine,0.6,250
+Berry Wine,0.6,190
+Cherry Wine,0.6,200
+Pear Wine,0.6,260
+Plum Wine,0.6,270
+Mead,0.4,280
+Oat Ale,0.5,180
+Oat Beer,0.5,230
+Rye Beer,0.5,240
+Wheat Beer,0.5,260
