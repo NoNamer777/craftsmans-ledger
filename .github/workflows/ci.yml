@@ -4,8 +4,6 @@ on:
         branches:
             - master
     pull_request:
-env:
-    JAVA_VERSION: 23
 jobs:
     ci:
         name: CI
@@ -24,7 +22,7 @@ jobs:
             - name: Setup Java
               uses: actions/setup-java@v4
               with:
-                  java-version: ${{ env.JAVA_VERSION }}
+                  java-version-file: '.java-version'
                   distribution: 'oracle'
 
             - name: Setup Gradle
