@@ -4,6 +4,9 @@
   "version": "0.0.1",
   "license": "AGPL-3.0 license",
   "private": true,
+  "engines": {
+    "node": "22"
+  },
   "repository": {
     "url": "https://github.com/nonamer777/craftsmans-ledger.git",
     "type": "git"
