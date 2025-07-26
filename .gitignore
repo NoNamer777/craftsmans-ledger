@@ -4,3 +4,7 @@
 
 # Dependencies
 node_modules/
+
+# Build outputs
+.angular/
+dist/

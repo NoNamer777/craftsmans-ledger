@@ -1,0 +1,66 @@
+{
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "name": "@craftsmans-ledger/web-app",
+    "projectType": "application",
+    "sourceRoot": "apps/web-app/src",
+    "tags": ["scope:ui", "framework:angular"],
+    "prefix": "cml",
+    "targets": {
+        "build": {
+            "executor": "@angular/build:application",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "assets": [
+                    {
+                        "glob": "**/*",
+                        "input": "apps/web-app/public"
+                    }
+                ],
+                "browser": "apps/web-app/src/main.ts",
+                "outputPath": "dist/apps/web-app",
+                "inlineStyleLanguage": "scss",
+                "styles": ["apps/web-app/src/styles.scss"],
+                "tsConfig": "apps/web-app/tsconfig.app.json"
+            },
+            "defaultConfiguration": "prod",
+            "configurations": {
+                "prod": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "1mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "4kb",
+                            "maximumError": "8kb"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
+                "dev": {
+                    "optimization": false,
+                    "extractLicenses": false,
+                    "sourceMap": true
+                }
+            }
+        },
+        "serve": {
+            "executor": "@angular/build:dev-server",
+            "continuous": true,
+            "defaultConfiguration": "dev",
+            "configurations": {
+                "prod": {
+                    "buildTarget": "@craftsmans-ledger/web-app:build:prod"
+                },
+                "dev": {
+                    "buildTarget": "@craftsmans-ledger/web-app:build:dev"
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint"
+        }
+    }
+}

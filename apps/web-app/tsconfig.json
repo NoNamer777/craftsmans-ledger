@@ -1,0 +1,20 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "references": [{ "path": "./tsconfig.app.json" }],
+    "files": [],
+    "include": [],
+    "compilerOptions": {
+        "emitDecoratorMetadata": false,
+        "isolatedModules": true,
+        "module": "preserve",
+        "moduleResolution": "bundler",
+        "target": "ES2024"
+    },
+    "angularCompilerOptions": {
+        "enableI18nLegacyMessageIdFormat": false,
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "typeCheckHostBindings": true,
+        "strictTemplates": true
+    }
+}

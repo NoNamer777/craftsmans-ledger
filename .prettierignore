@@ -1,0 +1,27 @@
+*
+
+!*/
+
+!*.json
+!*.mjs
+!*.cjs
+!*.js
+!*.mts
+!*.cts
+!*.ts
+!*.scss
+!*.html
+
+package-lock.json
+package.json
+
+# Workspace configurations
+.idea/
+.nx/
+
+# Dependencies
+node_modules/
+
+# Build outputs
+.angular/
+dist/
