@@ -3,8 +3,12 @@
 .nx/
 
 # Dependencies
+.gradle/
 node_modules/
 
 # Build outputs
 .angular/
+build/
 dist/
+out/
+
