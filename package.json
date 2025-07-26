@@ -35,6 +35,7 @@
     "@nx/angular": "~21.3.0",
     "@nx/eslint": "~21.3.0",
     "@nx/eslint-plugin": "~21.3.0",
+    "@nx/gradle": "~21.3.0",
     "@nx/js": "~21.3.0",
     "@nx/web": "~21.3.0",
     "@schematics/angular": "~20.1.0",

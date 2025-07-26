@@ -1,28 +1,42 @@
 {
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "nxCloudId": "6884dd58c5550e0b16d2aa1e",
-  "targetDefaults": {
-    "@angular/build:application": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["default", "^default"]
+    "$schema": "./node_modules/nx/schemas/nx-schema.json",
+    "nxCloudId": "6884dd58c5550e0b16d2aa1e",
+    "namedInputs": {
+        "default": ["{projectRoot}/**/*"],
+        "production": ["default", "!{projectRoot}/src/test/**/*"]
     },
-    "@nx/eslint:lint": {
-      "cache": true,
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore",
-        "{workspaceRoot}/eslint.config.mjs"
-      ]
-    }
-  },
-  "generators": {
-    "@nx/angular:application": {
-      "e2eTestRunner": "none",
-      "linter": "eslint",
-      "style": "scss",
-      "unitTestRunner": "none"
-    }
-  }
+    "targetDefaults": {
+        "@angular/build:application": {
+            "cache": true,
+            "dependsOn": ["^build"],
+            "inputs": ["default", "^default"]
+        },
+        "@nx/eslint:lint": {
+            "cache": true,
+            "inputs": [
+                "default",
+                "{workspaceRoot}/.eslintrc.json",
+                "{workspaceRoot}/.eslintignore",
+                "{workspaceRoot}/eslint.config.mjs"
+            ]
+        }
+    },
+    "generators": {
+        "@nx/angular:application": {
+            "e2eTestRunner": "none",
+            "linter": "eslint",
+            "style": "scss",
+            "unitTestRunner": "none"
+        }
+    },
+    "plugins": [
+        {
+            "plugin": "@nx/gradle",
+            "options": {
+                "testTargetName": "test",
+                "classesTargetName": "classes",
+                "buildTargetName": "build"
+            }
+        }
+    ]
 }
