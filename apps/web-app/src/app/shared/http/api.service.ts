@@ -10,7 +10,10 @@ export class ApiService {
 
     public baseApiUrl = this.configService.config.baseApiUrl;
 
-    public get<Response>(endPoint: string, queryParams?: QueryParams) {
+    public get<Response, QueryParamName extends string = string>(
+        endPoint: string,
+        queryParams?: QueryParams<QueryParamName>
+    ) {
         return this.requestService.get<Response>(`${this.baseApiUrl}${endPoint}`, queryParams);
     }
 }

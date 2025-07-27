@@ -1,6 +1,12 @@
 import { inject, Injectable } from '@angular/core';
-import { ApiService, Item } from '../shared';
-import { ItemQueryParams } from './models';
+import { ApiService, Item, PaginatedResponse } from '../shared';
+import {
+    DEFAULT_ITEM_PAGINATION_PARAMS,
+    ItemPaginationParamName,
+    ItemPaginationParams,
+    ItemQueryParamName,
+    ItemQueryParams,
+} from './models';
 
 @Injectable({ providedIn: 'root' })
 export class ItemsService {
@@ -17,6 +23,13 @@ export class ItemsService {
     }
 
     public query(params: ItemQueryParams) {
-        return this.apiService.get<Item>(`${this.endPoint}/query`, params);
+        return this.apiService.get<Item, ItemQueryParamName>(`${this.endPoint}/query`, params);
+    }
+
+    public paginated(params: ItemPaginationParams = DEFAULT_ITEM_PAGINATION_PARAMS) {
+        return this.apiService.get<PaginatedResponse<Item>, ItemPaginationParamName>(
+            `${this.endPoint}/paginated`,
+            params
+        );
     }
 }

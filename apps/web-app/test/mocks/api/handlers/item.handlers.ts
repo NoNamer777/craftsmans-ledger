@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import { Item } from '../../../../src/app';
+import { Item, PaginatedResponse } from '../../../../src/app';
 import { mockItemDB } from '../../db';
 import { baseApiUrl } from '../api.models';
 
@@ -28,6 +28,10 @@ export const itemHandlers = [
             );
         }
         return HttpResponse.json(result);
+    }),
+    http.get<never, never, PaginatedResponse<Item>>(`${baseApiUrl}${endPoint}/paginated`, ({ request }) => {
+        const url = new URL(request.url);
+        return HttpResponse.json(mockItemDB.paginated(url.searchParams));
     }),
     // Need to have this handler at the bottom of the list, otherwise all path params after the `/items/` part will be
     // considered to be an ID of an Item.
