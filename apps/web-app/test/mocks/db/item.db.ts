@@ -13,6 +13,15 @@ export class MockItemDB {
         return this.items.find(({ id }) => id === itemId) ?? null;
     }
 
+    public query(params: URLSearchParams): Item {
+        if (params.has('name')) {
+            const nameParam = params.get('name');
+
+            return this.items.find(({ name }) => name.toLowerCase() === nameParam.toLowerCase().trim());
+        }
+        return null;
+    }
+
     public async reset() {
         const items = await new Promise<Item[]>((resolve, reject) => {
             parse<Item>('/data/items.csv', {

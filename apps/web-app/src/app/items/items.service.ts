@@ -1,5 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { ApiService, Item } from '../shared';
+import { ItemQueryParams } from './models';
 
 @Injectable({ providedIn: 'root' })
 export class ItemsService {
@@ -13,5 +14,9 @@ export class ItemsService {
 
     public getById(itemId: string) {
         return this.apiService.get<Item>(`${this.endPoint}/${itemId}`);
+    }
+
+    public query(params: ItemQueryParams) {
+        return this.apiService.get<Item>(`${this.endPoint}/query`, params);
     }
 }
