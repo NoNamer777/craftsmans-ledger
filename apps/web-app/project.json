@@ -57,6 +57,11 @@
                             "glob": "**/*",
                             "input": "apps/web-app/.msw"
                         },
+                        {
+                            "glob": "**/*",
+                            "input": "data",
+                            "output": "data"
+                        }
                     ],
                     "extractLicenses": false,
                     "namedChunks": true,
