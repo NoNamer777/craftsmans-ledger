@@ -10,12 +10,6 @@
             "executor": "@angular/build:application",
             "outputs": ["{options.outputPath}"],
             "options": {
-                "assets": [
-                    {
-                        "glob": "**/*",
-                        "input": "apps/web-app/public"
-                    }
-                ],
                 "baseHref": "./",
                 "browser": "apps/web-app/src/main.ts",
                 "outputPath": "dist/apps/web-app",
@@ -32,6 +26,12 @@
             "defaultConfiguration": "prod",
             "configurations": {
                 "prod": {
+                    "assets": [
+                        {
+                            "glob": "**/*",
+                            "input": "apps/web-app/public"
+                        }
+                    ],
                     "budgets": [
                         {
                             "type": "initial",
@@ -46,6 +46,16 @@
                     ]
                 },
                 "dev": {
+                    "assets": [
+                        {
+                            "glob": "**/*",
+                            "input": "apps/web-app/public"
+                        },
+                        {
+                            "glob": "**/*",
+                            "input": "apps/web-app/.msw"
+                        },
+                    ],
                     "extractLicenses": false,
                     "namedChunks": true,
                     "optimization": false,
