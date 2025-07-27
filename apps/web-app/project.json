@@ -29,7 +29,8 @@
                     "assets": [
                         {
                             "glob": "**/*",
-                            "input": "apps/web-app/public"
+                            "input": "apps/web-app/public",
+                            "ignore": ["*-template*"]
                         }
                     ],
                     "budgets": [
@@ -49,7 +50,8 @@
                     "assets": [
                         {
                             "glob": "**/*",
-                            "input": "apps/web-app/public"
+                            "input": "apps/web-app/public",
+                            "ignore": ["*-template*"]
                         },
                         {
                             "glob": "**/*",

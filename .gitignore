@@ -13,3 +13,5 @@ node_modules/
 build/
 dist/
 out/
+
+**/public/config.json
