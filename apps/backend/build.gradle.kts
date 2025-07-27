@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.Copy
+
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.ktor)
@@ -31,4 +33,19 @@ dependencies {
     implementation(libs.ktor.server.config.yaml)
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
+}
+
+tasks.register<Copy>("copyCsvToResources") {
+    from("${rootProject.projectDir}/data") {
+        include("*.csv")
+    }
+    into("src/main/resources")
+}
+
+tasks.processResources {
+    dependsOn(tasks.named("copyCsvToResources"))
+}
+
+tasks.clean {
+    delete("src/main/resources/*.csv")
 }

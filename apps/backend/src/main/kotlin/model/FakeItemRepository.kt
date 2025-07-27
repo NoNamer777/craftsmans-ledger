@@ -1,12 +1,11 @@
 package org.eu.nl.model
 
-import io.netty.util.internal.ResourcesUtil
-
 class FakeItemRepository : ItemRepository {
     private val items = readCsv()
 
     fun readCsv(): MutableList<Item> {
-        return this.javaClass.classLoader.getResourceAsStream("Medieval_Dynasty_Items.csv").reader().readLines()
+        return this.javaClass.classLoader.getResourceAsStream("items.csv")!!.reader().readLines()
+            .drop(1)
             .filter { it.isNotBlank() }
             .map {
                 val (name, weight, baseValue) = it.split(',', ignoreCase = false, limit = 3)
