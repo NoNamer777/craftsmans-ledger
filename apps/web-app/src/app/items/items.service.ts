@@ -10,4 +10,8 @@ export class ItemsService {
     public getAll() {
         return this.apiService.get<Item>(this.endPoint);
     }
+
+    public getById(itemId: string) {
+        return this.apiService.get<Item>(`${this.endPoint}/${itemId}`);
+    }
 }

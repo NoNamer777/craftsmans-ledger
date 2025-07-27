@@ -9,6 +9,10 @@ export class MockItemDB {
         return this.items;
     }
 
+    public getById(itemId: string) {
+        return this.items.find(({ id }) => id === itemId) ?? null;
+    }
+
     public async reset() {
         const items = await new Promise<Item[]>((resolve, reject) => {
             parse<Item>('/data/items.csv', {
