@@ -22,6 +22,7 @@
         ]
     },
     "dependencies": {
+        "@angular/cdk": "~20.1.0",
         "@angular/common": "~20.1.0",
         "@angular/compiler": "~20.1.0",
         "@angular/core": "~20.1.0",
