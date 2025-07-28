@@ -1,6 +1,7 @@
 import { ComponentPortal, PortalModule } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
-import { ResourceType, ResourceTypes } from '../models';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { BrowserStorageService } from '@craftsmans-ledger/shared-ui';
+import { BrowserStorageKeys, ResourceType, resourceTypeAttribute } from '../models';
 import { resourceTypeComponents } from './resource-types';
 import { ResourceTypeListComponent } from './type-list';
 
@@ -12,16 +13,20 @@ import { ResourceTypeListComponent } from './type-list';
     imports: [ResourceTypeListComponent, PortalModule],
 })
 export class ResourcesOverviewPage implements OnInit {
-    protected readonly resourceType = signal<ResourceType>(ResourceTypes.ITEMS);
+    private readonly browserStorage = inject(BrowserStorageService);
+
+    protected readonly resourceType = signal<ResourceType>(null);
 
     protected readonly componentPortal = signal<ComponentPortal<unknown>>(null);
 
     public ngOnInit() {
+        this.readResourceTypeFromBrowserStorage();
         this.setComponentPortal();
     }
 
     protected onResourceTypeChange(resourceType: ResourceType) {
         this.resourceType.set(resourceType);
+        this.browserStorage.setItem(BrowserStorageKeys.RESOURCE_TYPE, resourceType);
 
         this.setComponentPortal();
     }
@@ -33,5 +38,15 @@ export class ResourcesOverviewPage implements OnInit {
 
     private getResourceOverviewComponent() {
         return resourceTypeComponents[this.resourceType()];
+    }
+
+    private readResourceTypeFromBrowserStorage() {
+        const storedValue = this.browserStorage.getItem(BrowserStorageKeys.RESOURCE_TYPE);
+        const resourceType = resourceTypeAttribute(storedValue);
+
+        if (storedValue !== resourceType) {
+            this.browserStorage.setItem(BrowserStorageKeys.RESOURCE_TYPE, resourceType);
+        }
+        this.resourceType.set(resourceType);
     }
 }

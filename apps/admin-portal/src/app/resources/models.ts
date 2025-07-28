@@ -28,3 +28,7 @@ export const resourceTypeOptions: ResourceTypeOption[] = [
     { label: 'Vendor Types', value: ResourceTypes.VENDOR_TYPE },
     { label: 'Villagers', value: ResourceTypes.VILLAGERS },
 ] as const;
+
+export const BrowserStorageKeys = {
+    RESOURCE_TYPE: 'resource-type',
+} as const;

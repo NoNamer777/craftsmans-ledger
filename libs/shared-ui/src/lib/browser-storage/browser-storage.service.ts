@@ -5,7 +5,7 @@ import { BROWSER_STORAGE } from './providers';
 export class BrowserStorageService {
     private readonly storage = inject(BROWSER_STORAGE);
 
-    public getItem<T>(key: string): T {
+    public getItem(key: string) {
         return JSON.parse(this.storage.getItem(key));
     }
 
