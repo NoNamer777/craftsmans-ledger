@@ -21,7 +21,7 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "paths": {
-            "@craftsmans-ledger/web-app/test": ["apps/web-app/test/index.ts"]
+            "@craftsmans-ledger/shared-ui": ["libs/shared-ui/src/index.ts"],
         },
         "rootDir": ".",
         "skipDefaultLibCheck": true,
