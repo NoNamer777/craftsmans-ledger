@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import { Item, PaginatedResponse } from '../../../../src/app';
+import { Item, PaginatedResponse } from '../../../../src';
 import { mockItemDB } from '../../db';
 import { baseApiUrl } from '../api.models';
 
