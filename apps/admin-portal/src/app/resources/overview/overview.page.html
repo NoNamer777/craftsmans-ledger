@@ -3,4 +3,6 @@
         <h1>Resources</h1>
         <cml-resource-type-list [resourceType]="resourceType()" (resourceTypeChange)="onResourceTypeChange($event)" />
     </div>
+
+    <ng-template [cdkPortalOutlet]="componentPortal()" />
 </article>
