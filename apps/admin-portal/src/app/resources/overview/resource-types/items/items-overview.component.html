@@ -1,7 +1,7 @@
 <aside class="col-2">
     <cml-resources-list [resourceOptions]="itemOptions()" (selectedResourceChanged)="onItemSelected($event)" />
 </aside>
-<hr class="mx-3" />
+<hr class="mx-4" />
 
 @if (hasItemSelected()) {
     <cml-item-form [itemId]="selectedItem()" />
