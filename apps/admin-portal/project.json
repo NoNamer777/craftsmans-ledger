@@ -11,7 +11,6 @@
             "outputs": ["{options.outputPath}"],
             "options": {
                 "allowedCommonJsDependencies": ["papaparse"],
-                "baseHref": "./",
                 "browser": "apps/admin-portal/src/main.ts",
                 "outputPath": "dist/apps/admin-portal",
                 "inlineStyleLanguage": "scss",
