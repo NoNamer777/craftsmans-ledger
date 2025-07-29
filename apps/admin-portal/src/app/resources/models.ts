@@ -17,16 +17,17 @@ export function resourceTypeAttribute(value: unknown) {
 interface ResourceTypeOption {
     label: string;
     value: ResourceType;
+    disabled: boolean;
 }
 
 export const resourceTypeOptions: ResourceTypeOption[] = [
-    { label: 'Items', value: ResourceTypes.ITEMS },
-    { label: 'Locations', value: ResourceTypes.LOCATIONS },
-    { label: 'Realms', value: ResourceTypes.REALMS },
-    { label: 'Structures', value: ResourceTypes.STRUCTURES },
-    { label: 'Technology Trees', value: ResourceTypes.TECHNOLOGY_TREES },
-    { label: 'Vendor Types', value: ResourceTypes.VENDOR_TYPE },
-    { label: 'Villagers', value: ResourceTypes.VILLAGERS },
+    { disabled: false, label: 'Items', value: ResourceTypes.ITEMS },
+    { disabled: true, label: 'Locations', value: ResourceTypes.LOCATIONS },
+    { disabled: true, label: 'Realms', value: ResourceTypes.REALMS },
+    { disabled: true, label: 'Structures', value: ResourceTypes.STRUCTURES },
+    { disabled: true, label: 'Technology Trees', value: ResourceTypes.TECHNOLOGY_TREES },
+    { disabled: true, label: 'Vendor Types', value: ResourceTypes.VENDOR_TYPE },
+    { disabled: true, label: 'Villagers', value: ResourceTypes.VILLAGERS },
 ] as const;
 
 export const BrowserStorageKeys = {

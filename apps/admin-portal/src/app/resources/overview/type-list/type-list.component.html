@@ -1,6 +1,8 @@
 <label for="resource-type-select" class="visually-hidden">Resource Type</label>
 <select id="resource-type-select" class="form-select" #select (change)="onSelectResourceType(select.value)">
     @for (option of options; track option.value) {
-        <option [value]="option.value" [selected]="resourceType() === option.value">{{ option.label }}</option>
+        <option [disabled]="option.disabled" [value]="option.value" [selected]="resourceType() === option.value">
+            {{ option.label }}
+        </option>
     }
 </select>
