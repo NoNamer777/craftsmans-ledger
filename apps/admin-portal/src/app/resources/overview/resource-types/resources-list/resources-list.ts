@@ -16,6 +16,8 @@ export class ResourcesList {
     private readonly selectedResource = signal<string>(null);
 
     protected onResourceSelected(resourceId: string) {
+        if (this.selectedResource() === resourceId) return;
+        this.selectedResource.set(resourceId);
         this.selectedResourceChanged.emit(resourceId);
     }
 
