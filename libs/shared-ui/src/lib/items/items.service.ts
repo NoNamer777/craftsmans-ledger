@@ -16,7 +16,7 @@ export class ItemsService {
     private readonly endPoint = '/items';
 
     public getAll() {
-        return this.apiService.get<Item>(this.endPoint);
+        return this.apiService.get<Item[]>(this.endPoint);
     }
 
     public getById(itemId: string) {
