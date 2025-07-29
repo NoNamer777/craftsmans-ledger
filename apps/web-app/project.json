@@ -56,7 +56,7 @@
                         },
                         {
                             "glob": "**/*",
-                            "input": "apps/web-app/.msw"
+                            "input": ".msw"
                         },
                         {
                             "glob": "**/*",

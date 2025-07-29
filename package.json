@@ -17,8 +17,7 @@
     ],
     "msw": {
         "workerDirectory": [
-            "apps/web-app/.msw",
-            "apps/admin-portal/.msw"
+            ".msw"
         ]
     },
     "dependencies": {

@@ -57,7 +57,7 @@
                         },
                         {
                             "glob": "**/*",
-                            "input": "apps/admin-portal/.msw"
+                            "input": ".msw"
                         },
                         {
                             "glob": "**/*",
