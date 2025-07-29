@@ -1,0 +1,48 @@
+name: CI
+on:
+    push:
+        branches:
+            - master
+    pull_request:
+jobs:
+    ci:
+        name: CI
+        runs-on: ubuntu-22.04
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Setup Node.Js
+              uses: actions/setup-node@v4
+              with:
+                  node-version-file: '.nvmrc'
+                  cache: 'npm'
+                  cache-dependency-path: './package-lock.json'
+
+            - name: Setup Java
+              uses: actions/setup-java@v4
+              with:
+                  java-version-file: '.java-version'
+                  distribution: 'oracle'
+
+            - name: Setup Gradle
+              uses: gradle/actions/setup-gradle@v4
+              with:
+                  gradle-version: 'wrapper'
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Set main branch ref
+              if: github.ref != 'refs/heads/main'
+              run: git rev-parse --verify main || git remote set-branches origin main && git fetch --depth 1 origin main && git branch main origin/main
+
+            - name: Check linting
+              run: npx nx affected -t lint
+
+            - name: Check formatting
+              run: npx nx format:check
+
+            - name: Compile code
+              run: |
+                  npx nx affected -t build
