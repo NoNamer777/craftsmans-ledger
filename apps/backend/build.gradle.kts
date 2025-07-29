@@ -32,3 +32,7 @@ dependencies {
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
 }
+
+tasks.named<JavaExec>("run") {
+    systemProperties["ktor.environment"] = env.MODE.orElse("prod")
+}
