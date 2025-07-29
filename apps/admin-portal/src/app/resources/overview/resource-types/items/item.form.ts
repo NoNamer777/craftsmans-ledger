@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, input, signal } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Item, ItemsService } from '@craftsmans-ledger/shared-ui';
-import { switchMap } from 'rxjs';
+import { Item, ItemsService, sha512 } from '@craftsmans-ledger/shared-ui';
+import { from, switchMap } from 'rxjs';
 
 @Component({
     selector: 'cml-item-form',
@@ -19,6 +19,11 @@ export class ItemForm {
     public readonly itemId = input.required<string>();
 
     protected readonly item = signal<Item>(null);
+
+    protected readonly itemHash = toObservable(this.item).pipe(
+        switchMap((item) => from(sha512(item))),
+        takeUntilDestroyed(this.destroyRef)
+    );
 
     protected readonly form = this.formBuilder.group({
         name: this.formBuilder.control<string>(null, [Validators.required, Validators.minLength(2)]),
