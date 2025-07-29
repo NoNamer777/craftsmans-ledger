@@ -5,3 +5,7 @@ html,
 body {
     height: 100dvh;
 }
+
+hr {
+    border-right: var(--bs-border-width) solid;
+}
