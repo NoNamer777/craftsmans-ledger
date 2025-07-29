@@ -3,6 +3,7 @@
 !*/
 
 !*.json
+!*.yml
 !*.mjs
 !*.cjs
 !*.js
