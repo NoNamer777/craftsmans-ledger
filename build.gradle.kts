@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.nxprojectgraph)
+    alias(libs.plugins.dotenv)
 }
 
 allprojects {

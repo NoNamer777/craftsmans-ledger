@@ -1,5 +1,6 @@
 
 [versions]
+dotenv-version = "4.0.0"
 exposed-version = "0.61.0"
 h2-version = "2.3.232"
 kotlin-version = "2.1.10"
@@ -25,6 +26,7 @@ logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "lo
 nanoid = { module = "io.viascom.nanoid:nanoid", version.ref = "nanoid" }
 
 [plugins]
+dotenv = { id = "co.uzzu.dotenv.gradle", version.ref = "dotenv-version" }
 nxprojectgraph = { id = "dev.nx.gradle.project-graph", version.ref = "nx-version" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-version" }
 kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-version" }
