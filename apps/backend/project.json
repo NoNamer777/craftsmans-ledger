@@ -1,0 +1,8 @@
+{
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "name": "@craftsmans-ledger/backend",
+    "projectType": "application",
+    "sourceRoot": "apps/backend/src/main",
+    "tags": ["scope:api", "framework:ktor"],
+    "targets": {}
+}
