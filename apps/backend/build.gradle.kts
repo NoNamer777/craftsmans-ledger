@@ -34,5 +34,5 @@ dependencies {
 }
 
 tasks.named<JavaExec>("run") {
-    systemProperties["ktor.environment"] = env.MODE.orElse("prod")
+    systemProperties["ktor.environment"] = env.fetch("MODE", "prod")
 }
