@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
-import { ItemsService } from '@craftsmans-ledger/shared-ui';
+import { Item, ItemsService } from '@craftsmans-ledger/shared-ui';
+import { switchMap, tap } from 'rxjs';
+import { ActionsService } from '../../actions.service';
 import { ResourceOption, ResourcesListComponent } from '../components';
 import { ItemForm } from './item.form';
 
@@ -15,6 +17,7 @@ import { ItemForm } from './item.form';
 export class ItemsOverviewComponent implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
     private readonly itemsService = inject(ItemsService);
+    private readonly actionsService = inject(ActionsService);
 
     protected readonly itemOptions = signal<ResourceOption[]>([]);
 
@@ -27,13 +30,29 @@ export class ItemsOverviewComponent implements OnInit {
             .getAll()
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe({
-                next: (items) => {
-                    this.itemOptions.set(items.map(({ id, name }) => ({ label: name, value: id })));
-                },
+                next: (items) => this.setItemOptions(items),
             });
+
+        this.actionsService.removeResource
+            .pipe(
+                switchMap(() => this.itemsService.remove(this.selectedItem())),
+                switchMap(() => {
+                    this.selectedItem.set(null);
+                    this.actionsService.reset();
+
+                    return this.itemsService.getAll();
+                }),
+                tap((items) => this.setItemOptions(items)),
+                takeUntilDestroyed(this.destroyRef)
+            )
+            .subscribe();
     }
 
     protected onItemSelected(itemId: string) {
         this.selectedItem.set(itemId);
+    }
+
+    private setItemOptions(items: Item[]) {
+        this.itemOptions.set(items.map(({ id, name }) => ({ label: name, value: id })));
     }
 }
