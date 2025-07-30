@@ -20,7 +20,7 @@ jobs:
               uses: ./.github/actions/setup-tools
 
             - name: Check linting
-              run: npx nx affected -t lint
+              run: npx nx affected -t lint --verbose
 
             - name: Check formatting
               run: npx nx format:check
