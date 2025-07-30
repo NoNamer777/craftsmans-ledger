@@ -19,11 +19,11 @@ jobs:
             - name: Setup Tools
               uses: ./.github/actions/setup-tools
 
+            - name: Compile code
+              run: npx nx affected -t build --verbose
+
             - name: Check linting
-              run: npx nx affected -t lint --verbose
+              run: npx nx affected -t lint
 
             - name: Check formatting
               run: npx nx format:check
-
-            - name: Compile code
-              run: npx nx affected -t build
