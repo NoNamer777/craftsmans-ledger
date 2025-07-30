@@ -2,6 +2,7 @@
     <div class="d-flex gap-5 align-items-center w-100">
         <h1>Resources</h1>
         <cml-resource-type-list [resourceType]="resourceType()" (resourceTypeChange)="onResourceTypeChange($event)" />
+        <cml-action-buttons />
     </div>
 
     <ng-template [cdkPortalOutlet]="componentPortal()" />
