@@ -47,7 +47,7 @@ jobs:
               shell: bash
               run: |
                   npx nx run-many -t build
-                  gradlew build
+                  ./gradlew build
 
             - name: Perform CodeQL Analysis
               uses: github/codeql-action/analyze@v3
