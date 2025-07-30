@@ -20,7 +20,7 @@ jobs:
               uses: ./.github/actions/setup-tools
 
             - name: Compile code
-              run: npx nx affected -t build --verbose
+              run: npx nx affected -t build
 
             - name: Check linting
               run: npx nx affected -t lint
