@@ -28,6 +28,10 @@ export class RequestService {
         return encodeURI(url.substring(0, url.length - 1));
     }
 
+    public delete(url: string) {
+        return this.httpClient.delete(url);
+    }
+
     private handleQueryParam(value: string | number | boolean) {
         if (typeof value === 'boolean' || typeof value === 'number') {
             return `${value}`;

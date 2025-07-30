@@ -33,4 +33,8 @@ export class ItemsService {
             params
         );
     }
+
+    public remove(itemId: string) {
+        return this.apiService.delete(`${this.endPoint}/${itemId}`);
+    }
 }

@@ -64,6 +64,13 @@ export class MockItemDB {
         };
     }
 
+    public remove(itemId: string) {
+        const willBeRemoved = Boolean(this.getById(itemId));
+
+        this.items = this.items.filter(({ id }) => id !== itemId);
+        return willBeRemoved;
+    }
+
     public async reset() {
         const items = await new Promise<Item[]>((resolve, reject) => {
             parse<Item>('/data/items.csv', {

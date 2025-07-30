@@ -55,4 +55,22 @@ export const itemHandlers = [
         }
         return HttpResponse.json(result);
     }),
+    http.delete<{ itemId: string }>(`${baseApiUrl}${endPoint}/:itemId`, ({ params }) => {
+        const { itemId } = params;
+        const removed = mockItemDB.remove(itemId);
+
+        if (removed) return HttpResponse.json();
+        return HttpResponse.json(
+            {
+                message: `Could not remove Item with ID "${itemId}" - Reason: Item was not found.`,
+                timestamp: new Date(),
+                error: 'Not Found',
+                code: 404,
+            },
+            {
+                type: 'error',
+                status: 404,
+            }
+        );
+    }),
 ];
