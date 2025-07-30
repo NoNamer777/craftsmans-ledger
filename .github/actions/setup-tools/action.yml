@@ -25,6 +25,10 @@ runs:
           with:
               gradle-version: 'wrapper'
 
+        - name: Initialize Gradle projects
+          shell: bash
+          run: ./gradlew
+
         - name: Set main branch ref
           if: github.ref != 'refs/heads/main'
           shell: bash
