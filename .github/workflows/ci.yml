@@ -15,15 +15,15 @@ jobs:
             - name: Setup Node.Js
               uses: actions/setup-node@v4
               with:
-                  node-version-file: '.nvmrc'
+                  node-version-file: '.tool-versions'
                   cache: 'npm'
                   cache-dependency-path: './package-lock.json'
 
             - name: Setup Java
               uses: actions/setup-java@v4
               with:
-                  java-version-file: '.java-version'
-                  distribution: 'oracle'
+                  java-version-file: '.tool-versions'
+                  distribution: 'temurin'
 
             - name: Setup Gradle
               uses: gradle/actions/setup-gradle@v4
