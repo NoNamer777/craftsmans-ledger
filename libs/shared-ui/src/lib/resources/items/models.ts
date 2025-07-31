@@ -1,4 +1,5 @@
 import { QueryParams } from '@craftsmans-ledger/shared-ui';
+import { nanoid } from 'nanoid';
 import { Resource } from '../models';
 
 export class Item implements Resource {
@@ -34,8 +35,8 @@ export class ItemBuilder {
         if ('baseValue' in value && typeof value.baseValue === 'number') this.item.baseValue = value.baseValue;
     }
 
-    public withId(itemId: string) {
-        this.item.id = itemId;
+    public withId(itemId?: string) {
+        this.item.id = itemId ?? nanoid();
         return this;
     }
 
