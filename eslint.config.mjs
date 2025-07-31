@@ -31,7 +31,15 @@ export default [
                         },
                         {
                             sourceTag: 'framework:angular',
-                            allowedExternalImports: ['@angular/*', 'msw', 'msw/browser', 'nanoid', 'papaparse', 'rxjs'],
+                            allowedExternalImports: [
+                                '@angular/*',
+                                'class-transformer',
+                                'msw',
+                                'msw/browser',
+                                'nanoid',
+                                'papaparse',
+                                'rxjs',
+                            ],
                         },
                     ],
                 },
