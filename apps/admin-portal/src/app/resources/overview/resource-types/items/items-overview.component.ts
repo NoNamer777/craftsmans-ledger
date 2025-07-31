@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { CreateItemData, Item, ItemsService } from '@craftsmans-ledger/shared-ui';
 import { plainToInstance } from 'class-transformer';
 import { of, switchMap, tap } from 'rxjs';
+import { NotificationService } from '../../../../notifications';
+import { NotificationTypes } from '../../../../notifications/models';
 import { SaveActions, TEMP_RESOURCE_ID } from '../../../models';
 import { ActionsService } from '../../actions.service';
 import { ResourceService } from '../../resource.service';
@@ -22,6 +24,7 @@ export class ItemsOverviewComponent implements OnInit {
     private readonly resourceService = inject(ResourceService);
     private readonly actionsService = inject(ActionsService);
     private readonly itemsService = inject(ItemsService);
+    private readonly notificationsService = inject(NotificationService);
 
     protected readonly itemOptions = signal<ResourceOption[]>([]);
 
@@ -46,6 +49,12 @@ export class ItemsOverviewComponent implements OnInit {
                     return this.itemsService.remove(this.resourceService.resourceId());
                 }),
                 switchMap(() => {
+                    this.notificationsService.addNotification({
+                        type: NotificationTypes.SUCCESS,
+                        title: 'Item removed',
+                        message: `Item with ID "${this.resourceService.resourceId()}" was successfully removed.`,
+                    });
+
                     this.resourceService.resourceId.set(null);
                     this.actionsService.reset();
 
@@ -71,11 +80,27 @@ export class ItemsOverviewComponent implements OnInit {
             .pipe(
                 switchMap((action) => {
                     if (action === SaveActions.CREATE) {
-                        return this.itemsService.create(
-                            plainToInstance(CreateItemData, this.resourceService.updatedResource())
-                        );
+                        return this.itemsService
+                            .create(plainToInstance(CreateItemData, this.resourceService.updatedResource()))
+                            .pipe(
+                                tap(({ id }) => {
+                                    this.notificationsService.addNotification({
+                                        type: NotificationTypes.SUCCESS,
+                                        title: 'Item created',
+                                        message: `Item with ID "${id}" was successfully created.`,
+                                    });
+                                })
+                            );
                     }
-                    return this.itemsService.update(this.resourceService.updatedResource() as Item);
+                    return this.itemsService.update(this.resourceService.updatedResource() as Item).pipe(
+                        tap(({ id }) => {
+                            this.notificationsService.addNotification({
+                                type: NotificationTypes.SUCCESS,
+                                title: 'Item created',
+                                message: `Item with ID "${id}" was successfully updated.`,
+                            });
+                        })
+                    );
                 }),
                 switchMap((item) => {
                     this.actionsService.reset();
