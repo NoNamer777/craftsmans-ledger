@@ -17,6 +17,14 @@ export class ApiService {
         return this.requestService.get<Response>(`${this.baseApiUrl}${endPoint}`, queryParams);
     }
 
+    public post<RequestBody, Response>(endpoint: string, body: RequestBody) {
+        return this.requestService.post<RequestBody, Response>(`${this.baseApiUrl}${endpoint}`, body);
+    }
+
+    public put<DataType>(endpoint: string, body: DataType) {
+        return this.requestService.put<DataType>(`${this.baseApiUrl}${endpoint}`, body);
+    }
+
     public delete(endPoint: string) {
         return this.requestService.delete(`${this.baseApiUrl}${endPoint}`);
     }

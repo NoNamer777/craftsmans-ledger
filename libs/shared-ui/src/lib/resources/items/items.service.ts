@@ -1,8 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { plainToInstance } from 'class-transformer';
 import { map } from 'rxjs';
-import { ApiService, PaginatedResponse } from '../http';
+import { ApiService, PaginatedResponse } from '../../http';
 import {
+    CreateItemData,
     DEFAULT_ITEM_PAGINATION_PARAMS,
     Item,
     ItemPaginationParamName,
@@ -21,8 +22,10 @@ export class ItemsService {
         return this.apiService.get<Item[]>(this.endPoint).pipe(map((data) => plainToInstance(Item, data)));
     }
 
-    public getById(itemId: string) {
-        return this.apiService.get<Item>(`${this.endPoint}/${itemId}`).pipe(map((data) => plainToInstance(Item, data)));
+    public create(item: CreateItemData) {
+        return this.apiService
+            .post<CreateItemData, Item>(this.endPoint, item)
+            .pipe(map((response) => plainToInstance(Item, response.body)));
     }
 
     public query(params: ItemQueryParams) {
@@ -40,6 +43,16 @@ export class ItemsService {
                     return response;
                 })
             );
+    }
+
+    public getById(itemId: string) {
+        return this.apiService.get<Item>(`${this.endPoint}/${itemId}`).pipe(map((data) => plainToInstance(Item, data)));
+    }
+
+    public update(item: Item) {
+        return this.apiService
+            .put<Item>(`${this.endPoint}/${item.id}`, item)
+            .pipe(map((response) => plainToInstance(Item, response.body)));
     }
 
     public remove(itemId: string) {

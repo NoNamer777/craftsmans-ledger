@@ -12,6 +12,18 @@ export class RequestService {
         return this.httpClient.get<Response>(url);
     }
 
+    public post<RequestBody, Response>(url: string, body: RequestBody) {
+        return this.httpClient.post<Response>(url, body, { observe: 'response' });
+    }
+
+    public put<DataType>(url: string, body: DataType) {
+        return this.httpClient.put<DataType>(url, body, { observe: 'response' });
+    }
+
+    public delete(url: string) {
+        return this.httpClient.delete(url);
+    }
+
     private addQueryParams(url: string, queryParams?: QueryParams) {
         if (!queryParams) return url;
         url += '?';
@@ -26,10 +38,6 @@ export class RequestService {
 
         // Remove the last trailing `&`;
         return encodeURI(url.substring(0, url.length - 1));
-    }
-
-    public delete(url: string) {
-        return this.httpClient.delete(url);
     }
 
     private handleQueryParam(value: string | number | boolean) {

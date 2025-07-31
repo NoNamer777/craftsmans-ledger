@@ -1,7 +1,9 @@
 import { nanoid } from 'nanoid';
 import { parse, ParseRemoteConfig, ParseResult } from 'papaparse';
 import {
+    CreateItemData,
     Item,
+    ItemBuilder,
     ItemPaginationParamNames,
     ItemQueryParamNames,
     PaginatedResponse,
@@ -10,6 +12,7 @@ import {
     SortOrder,
     SortOrders,
 } from '../../../src';
+import { BadRequestException, NotFoundException } from '../api/handlers/expections';
 
 export class MockItemDB {
     private items: Item[] = [];
@@ -18,8 +21,14 @@ export class MockItemDB {
         return this.items;
     }
 
-    public getById(itemId: string) {
-        return this.items.find(({ id }) => id === itemId) ?? null;
+    public create(data: CreateItemData) {
+        if (this.isNameTaken(data.name)) {
+            throw new BadRequestException(`Could not create Item - Reason: Name "${data.name}" is not available`);
+        }
+        const item = new ItemBuilder(data).withId().build();
+
+        this.items = [...this.items, item].sort((curr, next) => this.sortItem(curr, next, SortableItemAttributes.NAME));
+        return item;
     }
 
     public query(params: URLSearchParams): Item {
@@ -64,11 +73,31 @@ export class MockItemDB {
         };
     }
 
-    public remove(itemId: string) {
-        const willBeRemoved = Boolean(this.getById(itemId));
+    public getById(itemId: string) {
+        return this.items.find(({ id }) => id === itemId) ?? null;
+    }
 
+    public update(data: Item) {
+        if (!this.getById(data.id)) {
+            throw new NotFoundException(`"Could not update Item with ID "${data.id}" - Reason: Item was not found`);
+        }
+        if (this.isNameTaken(data.name, data.id)) {
+            throw new BadRequestException(
+                `Could not update Item with ID "${data.id}" - Reason: Name "${data.name}" is not available`
+            );
+        }
+        this.items = this.items.map((item) => {
+            if (item.id === data.id) return data;
+            return item;
+        });
+        return data;
+    }
+
+    public remove(itemId: string) {
+        if (!this.getById(itemId)) {
+            throw new NotFoundException(`Could not remove Item with ID "${itemId}" - Reason: Item was not found`);
+        }
         this.items = this.items.filter(({ id }) => id !== itemId);
-        return willBeRemoved;
     }
 
     public async reset() {
@@ -112,6 +141,15 @@ export class MockItemDB {
             default:
                 return curr.name.localeCompare(next.name);
         }
+    }
+
+    private getByName(itemName: string) {
+        return this.items.find(({ name }) => name.toLowerCase() === itemName.toLowerCase());
+    }
+
+    private isNameTaken(name: string, itemId?: string) {
+        const query = this.getByName(name);
+        return query && (!itemId || query.id !== itemId);
     }
 }
 
