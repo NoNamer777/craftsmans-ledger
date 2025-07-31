@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Item, ItemBuilder, ItemsService } from '@craftsmans-ledger/shared-ui';
@@ -28,17 +28,21 @@ export class ItemForm {
         baseValue: this.formBuilder.control<number>(null, [Validators.required, Validators.min(0)]),
     });
 
+    protected readonly isLoading = signal(false);
+
     constructor() {
         toObservable(this.resourceService.resourceId)
             .pipe(
                 switchMap((itemId) => {
                     if (itemId === TEMP_RESOURCE_ID) return of(TEMP_ITEM);
+                    this.isLoading.set(true);
                     return this.itemsService.getById(itemId);
                 }),
                 takeUntilDestroyed(this.destroyRef)
             )
             .subscribe({
                 next: (item) => {
+                    this.isLoading.set(false);
                     this.resourceService.resource.set(item);
                     this.populateForm();
                 },
