@@ -3,6 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { Item, ItemsService } from '@craftsmans-ledger/shared-ui';
 import { switchMap, tap } from 'rxjs';
+import { TEMP_RESOURCE_ID } from '../../../models';
 import { ActionsService } from '../../actions.service';
 import { ResourceService } from '../../resource.service';
 import { ResourceOption, ResourcesListComponent } from '../components';
@@ -46,10 +47,21 @@ export class ItemsOverviewComponent implements OnInit {
                 takeUntilDestroyed(this.destroyRef)
             )
             .subscribe();
+
+        this.actionsService.newResource$
+            .pipe(
+                tap(() => {
+                    this.itemOptions.update((options) => [{ value: TEMP_RESOURCE_ID, label: 'New Item' }, ...options]);
+                    this.resourceService.resourceId.set(TEMP_RESOURCE_ID);
+                }),
+                takeUntilDestroyed(this.destroyRef)
+            )
+            .subscribe();
     }
 
-    protected onItemSelected(itemId: string) {
-        this.selectedItem.set(itemId);
+    protected onChangeSelectedResource() {
+        if (this.resourceService.resourceId() !== TEMP_RESOURCE_ID) return;
+        this.itemOptions.update((options) => options.filter(({ value }) => value !== TEMP_RESOURCE_ID));
     }
 
     private setItemOptions(items: Item[]) {

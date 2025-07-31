@@ -10,10 +10,16 @@ export class ActionsService {
     private readonly removeResourceSubject = new Subject<void>();
     public readonly removeResource$ = this.removeResourceSubject.asObservable();
 
+    private readonly newResourceSubject = new Subject<void>();
+    public readonly newResource$ = this.newResourceSubject.asObservable();
+
     public removeResource() {
         this.removeResourceSubject.next();
     }
 
+    public newResource() {
+        this.newResourceSubject.next();
+    }
 
     public reset() {
         this.canRemove.set(false);

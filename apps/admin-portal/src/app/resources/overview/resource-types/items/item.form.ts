@@ -2,8 +2,10 @@ import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Item, ItemsService, sha512 } from '@craftsmans-ledger/shared-ui';
-import { from, switchMap } from 'rxjs';
+import { from, of, switchMap } from 'rxjs';
+import { TEMP_RESOURCE_ID } from '../../../models';
 import { ResourceService } from '../../resource.service';
+import { TEMP_ITEM } from './models';
 
 @Component({
     selector: 'cml-item-form',
@@ -34,7 +36,10 @@ export class ItemForm {
     constructor() {
         toObservable(this.resourceService.resourceId)
             .pipe(
-                switchMap((itemId) => this.itemsService.getById(itemId)),
+                switchMap((itemId) => {
+                    if (itemId === TEMP_RESOURCE_ID) return of(TEMP_ITEM);
+                    return this.itemsService.getById(itemId);
+                }),
                 takeUntilDestroyed(this.destroyRef)
             )
             .subscribe({
