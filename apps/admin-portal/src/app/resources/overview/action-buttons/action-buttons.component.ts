@@ -10,8 +10,4 @@ import { ActionsService } from '../actions.service';
 })
 export class ActionButtonsComponent {
     protected readonly actionsService = inject(ActionsService);
-
-    protected onRemove() {
-        this.actionsService.remove.next();
-    }
 }
