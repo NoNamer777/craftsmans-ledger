@@ -5,6 +5,17 @@ export class Item {
     name: string;
     weight: number;
     baseValue: number;
+
+    public compareTo(other: unknown) {
+        if (this === other) return true;
+        if (!this.isItem(other)) return false;
+
+        return this.name === other.name && this.weight === other.weight && this.baseValue === other.baseValue;
+    }
+
+    public isItem(value: unknown): value is Item {
+        return value instanceof Item;
+    }
 }
 
 export class ItemBuilder {

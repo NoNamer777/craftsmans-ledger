@@ -11,7 +11,9 @@ export class ActionsService {
 
     public readonly canRemove = computed(() => Boolean(this.resourceService.resourceId()));
 
-    public readonly canCreateNew = computed(() => this.resourceService.resourceId() !== TEMP_RESOURCE_ID);
+    public readonly canCreateNew = computed(
+        () => this.resourceService.resourceId() !== TEMP_RESOURCE_ID && !this.canSave()
+    );
 
     private readonly removeResourceSubject = new Subject<void>();
     public readonly removeResource$ = this.removeResourceSubject.asObservable();
