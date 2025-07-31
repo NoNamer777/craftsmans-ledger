@@ -4,7 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import { ResourceType, resourceTypeAttribute } from '../models';
-import { ActionButtonsComponent } from './action-buttons/action-buttons.component';
+import { ActionButtonsComponent } from './action-buttons';
 import { resourceTypeComponents } from './resource-types';
 import { ResourceTypeListComponent } from './type-list';
 

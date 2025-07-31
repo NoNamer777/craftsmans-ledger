@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Item, ItemsService } from '@craftsmans-ledger/shared-ui';
 import { switchMap, tap } from 'rxjs';
 import { ActionsService } from '../../actions.service';
+import { ResourceService } from '../../resource.service';
 import { ResourceOption, ResourcesListComponent } from '../components';
 import { ItemForm } from './item.form';
 
@@ -16,14 +17,13 @@ import { ItemForm } from './item.form';
 })
 export class ItemsOverviewComponent implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
-    private readonly itemsService = inject(ItemsService);
+    private readonly resourceService = inject(ResourceService);
     private readonly actionsService = inject(ActionsService);
+    private readonly itemsService = inject(ItemsService);
 
     protected readonly itemOptions = signal<ResourceOption[]>([]);
 
-    protected readonly selectedItem = signal<string>(null);
-
-    protected readonly hasItemSelected = computed(() => Boolean(this.selectedItem()));
+    protected readonly hasItemSelected = computed(() => Boolean(this.resourceService.resourceId()));
 
     public ngOnInit() {
         this.itemsService
@@ -33,11 +33,11 @@ export class ItemsOverviewComponent implements OnInit {
                 next: (items) => this.setItemOptions(items),
             });
 
-        this.actionsService.removeResource
+        this.actionsService.removeResource$
             .pipe(
-                switchMap(() => this.itemsService.remove(this.selectedItem())),
+                switchMap(() => this.itemsService.remove(this.resourceService.resourceId())),
                 switchMap(() => {
-                    this.selectedItem.set(null);
+                    this.resourceService.resourceId.set(null);
                     this.actionsService.reset();
 
                     return this.itemsService.getAll();

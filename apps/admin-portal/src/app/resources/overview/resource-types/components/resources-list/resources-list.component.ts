@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { ActionsService } from '../../../actions.service';
+import { ResourceService } from '../../../resource.service';
 import { ResourceOption } from './models';
 
 @Component({
@@ -11,25 +12,22 @@ import { ResourceOption } from './models';
 })
 export class ResourcesListComponent {
     private readonly actionsService = inject(ActionsService);
+    private readonly resourceService = inject(ResourceService);
 
     public readonly resourceOptions = input.required<ResourceOption[]>();
 
-    public readonly selectedResourceChanged = output<string>();
-
-    private readonly selectedResource = signal<string>(null);
+    public readonly selectedResourceChange = output<string>();
 
     protected onResourceSelected(resourceId: string) {
-        if (this.selectedResource() === resourceId) return;
-
-        this.selectedResource.set(resourceId);
+        if (this.resourceService.resourceId() === resourceId) return;
+        this.selectedResourceChange.emit(resourceId);
+        this.resourceService.resourceId.set(resourceId);
 
         this.actionsService.canSave.set(false);
         this.actionsService.canRemove.set(true);
-
-        this.selectedResourceChanged.emit(resourceId);
     }
 
     protected isActive(resourceId: string) {
-        return resourceId === this.selectedResource();
+        return resourceId === this.resourceService.resourceId();
     }
 }
