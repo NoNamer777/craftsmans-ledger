@@ -1,4 +1,11 @@
-<button type="button" class="btn btn-primary" (click)="actionsService.newResource()">New</button>
+<button
+    type="button"
+    class="btn btn-primary"
+    [disabled]="!actionsService.canCreateNew()"
+    (click)="actionsService.newResource()"
+>
+    New
+</button>
 
 <div class="btn-group" role="group">
     <button type="button" class="btn btn-success" [disabled]="!actionsService.canSave()">Save</button>
