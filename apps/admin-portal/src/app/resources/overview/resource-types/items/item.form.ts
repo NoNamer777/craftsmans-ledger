@@ -22,8 +22,6 @@ export class ItemForm {
     private readonly resourceService = inject(ResourceService);
     private readonly actionsService = inject(ActionsService);
 
-    protected readonly item = signal<Item>(null);
-
     protected readonly form = this.formBuilder.group({
         name: this.formBuilder.control<string>(null, [Validators.required, Validators.minLength(2)]),
         weight: this.formBuilder.control<number>(null, [Validators.required, Validators.min(0)]),
@@ -41,7 +39,7 @@ export class ItemForm {
             )
             .subscribe({
                 next: (item) => {
-                    this.item.set(item);
+                    this.resourceService.resource.set(item);
                     this.populateForm();
                 },
             });
@@ -62,7 +60,7 @@ export class ItemForm {
     }
 
     private populateForm() {
-        const { name, weight, baseValue } = this.item();
+        const { name, weight, baseValue } = this.resourceService.resource() as Item;
 
         this.form.reset({
             name: name,
