@@ -9,7 +9,11 @@ export class ActionsService {
 
     public readonly canSave = signal(false);
 
+    public readonly saving = signal(false);
+
     public readonly canRemove = computed(() => Boolean(this.resourceService.resourceId()));
+
+    public readonly removing = signal(false);
 
     public readonly canCreateNew = computed(
         () => this.resourceService.resourceId() !== TEMP_RESOURCE_ID && !this.canSave()
@@ -30,6 +34,7 @@ export class ActionsService {
     public readonly saveResource$ = this.saveResourceSubject.asObservable();
 
     public removeResource() {
+        this.removing.set(true);
         this.removeResourceSubject.next();
     }
 
@@ -38,10 +43,13 @@ export class ActionsService {
     }
 
     public saveResource() {
+        this.saving.set(true);
         this.saveResourceSubject.next(this.saveAction());
     }
 
     public reset() {
         this.canSave.set(false);
+        this.saving.set(false);
+        this.removing.set(false);
     }
 }

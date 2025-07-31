@@ -1,7 +1,7 @@
 <button
     type="button"
     class="btn btn-primary"
-    [disabled]="!actionsService.canCreateNew()"
+    [disabled]="!actionsService.canCreateNew() || actionsService.saving() || actionsService.removing()"
     (click)="actionsService.newResource()"
 >
     New
@@ -11,17 +11,25 @@
     <button
         type="button"
         class="btn btn-success"
-        [disabled]="!actionsService.canSave()"
+        [disabled]="!actionsService.canSave() || actionsService.saving()"
         (click)="actionsService.saveResource()"
     >
-        Save
+        @if (actionsService.saving()) {
+            <span class="spinner-border spinner-border-sm"></span>
+        } @else {
+            Save
+        }
     </button>
     <button
         type="button"
         class="btn btn-danger"
-        [disabled]="!actionsService.canRemove()"
+        [disabled]="!actionsService.canRemove() || actionsService.removing()"
         (click)="actionsService.removeResource()"
     >
-        Remove
+        @if (actionsService.removing()) {
+            <span class="spinner-border spinner-border-sm"></span>
+        } @else {
+            Remove
+        }
     </button>
 </div>

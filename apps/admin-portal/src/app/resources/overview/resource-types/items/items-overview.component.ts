@@ -25,9 +25,13 @@ export class ItemsOverviewComponent implements OnInit {
 
     protected readonly itemOptions = signal<ResourceOption[]>([]);
 
+    protected readonly processing = signal(false);
+
     protected readonly hasItemSelected = computed(() => Boolean(this.resourceService.resourceId()));
 
     public ngOnInit() {
+        this.processing.set(true);
+
         this.itemsService
             .getAll()
             .pipe(takeUntilDestroyed(this.destroyRef))
@@ -45,6 +49,7 @@ export class ItemsOverviewComponent implements OnInit {
                     this.resourceService.resourceId.set(null);
                     this.actionsService.reset();
 
+                    this.processing.set(true);
                     return this.itemsService.getAll();
                 }),
                 tap((items) => this.setItemOptions(items)),
@@ -79,6 +84,7 @@ export class ItemsOverviewComponent implements OnInit {
                     this.resourceService.resource.set(item);
                     this.resourceService.updatedResource.set(item);
 
+                    this.processing.set(true);
                     return this.itemsService.getAll();
                 }),
                 tap((items) => this.setItemOptions(items)),
@@ -94,5 +100,6 @@ export class ItemsOverviewComponent implements OnInit {
 
     private setItemOptions(items: Item[]) {
         this.itemOptions.set(items.map(({ id, name }) => ({ label: name, value: id })));
+        this.processing.set(false);
     }
 }
