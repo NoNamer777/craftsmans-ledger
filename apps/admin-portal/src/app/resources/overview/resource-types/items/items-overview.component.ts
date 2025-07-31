@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, OnIni
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { Item, ItemsService } from '@craftsmans-ledger/shared-ui';
-import { switchMap, tap } from 'rxjs';
+import { of, switchMap, tap } from 'rxjs';
 import { TEMP_RESOURCE_ID } from '../../../models';
 import { ActionsService } from '../../actions.service';
 import { ResourceService } from '../../resource.service';
@@ -36,7 +36,10 @@ export class ItemsOverviewComponent implements OnInit {
 
         this.actionsService.removeResource$
             .pipe(
-                switchMap(() => this.itemsService.remove(this.resourceService.resourceId())),
+                switchMap(() => {
+                    if (this.resourceService.resourceId() === TEMP_RESOURCE_ID) return of(null);
+                    return this.itemsService.remove(this.resourceService.resourceId());
+                }),
                 switchMap(() => {
                     this.resourceService.resourceId.set(null);
                     this.actionsService.reset();
