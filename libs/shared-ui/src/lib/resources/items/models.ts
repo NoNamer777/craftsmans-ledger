@@ -1,10 +1,11 @@
 import { QueryParams } from '@craftsmans-ledger/shared-ui';
+import { Resource } from '../models';
 
-export class Item {
-    id: string;
-    name: string;
-    weight: number;
-    baseValue: number;
+export class Item implements Resource {
+    public id: string;
+    public name: string;
+    public weight: number;
+    public baseValue: number;
 
     public compareTo(other: unknown) {
         if (this === other) return true;
