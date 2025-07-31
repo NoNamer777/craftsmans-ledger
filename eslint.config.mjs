@@ -33,6 +33,7 @@ export default [
                             sourceTag: 'framework:angular',
                             allowedExternalImports: [
                                 '@angular/*',
+                                'bootstrap',
                                 'class-transformer',
                                 'msw',
                                 'msw/browser',
