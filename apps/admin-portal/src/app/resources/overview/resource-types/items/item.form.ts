@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Item, ItemBuilder, ItemsService } from '@craftsmans-ledger/shared-ui';
@@ -47,9 +47,10 @@ export class ItemForm {
         this.form.valueChanges
             .pipe(
                 debounceTime(1000),
-                tap((value) => {
-                    const formItem = new ItemBuilder(value).withId(TEMP_RESOURCE_ID).build();
-                    const hasChanged = !this.item().compareTo(formItem);
+                tap(() => {
+                    const formItem = this.createItemFromFormValue();
+                    this.resourceService.updatedResource.set(formItem);
+                    const hasChanged = !(this.resourceService.resource() as Item).compareTo(formItem);
 
                     if (this.actionsService.canSave() === hasChanged) return;
                     this.actionsService.canSave.set(hasChanged);
@@ -67,5 +68,9 @@ export class ItemForm {
             weight: weight,
             baseValue: baseValue,
         });
+    }
+
+    private createItemFromFormValue() {
+        return new ItemBuilder(this.form.value).withId(this.resourceService.resourceId()).build();
     }
 }

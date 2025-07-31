@@ -6,4 +6,6 @@ export class ResourceService {
     public readonly resourceId = signal<string>(null);
 
     public readonly resource = signal<Resource>(null);
+
+    public readonly updatedResource = signal<Resource>(null);
 }
