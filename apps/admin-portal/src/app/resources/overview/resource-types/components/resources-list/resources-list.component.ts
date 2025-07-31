@@ -24,7 +24,6 @@ export class ResourcesListComponent {
         this.resourceService.resourceId.set(resourceId);
 
         this.actionsService.canSave.set(false);
-        this.actionsService.canRemove.set(true);
     }
 
     protected isActive(resourceId: string) {
