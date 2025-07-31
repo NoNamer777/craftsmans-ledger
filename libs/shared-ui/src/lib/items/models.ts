@@ -1,10 +1,46 @@
 import { QueryParams } from '@craftsmans-ledger/shared-ui';
 
-export interface Item {
+export class Item {
     id: string;
     name: string;
     weight: number;
     baseValue: number;
+}
+
+export class ItemBuilder {
+    private item = new Item();
+
+    public build() {
+        return this.item;
+    }
+
+    public constructor(value?: unknown) {
+        if (typeof value !== 'object') return;
+
+        if ('name' in value && typeof value.name === 'string') this.item.name = value.name;
+        if ('weight' in value && typeof value.weight === 'number') this.item.weight = value.weight;
+        if ('baseValue' in value && typeof value.baseValue === 'number') this.item.baseValue = value.baseValue;
+    }
+
+    public withId(itemId: string) {
+        this.item.id = itemId;
+        return this;
+    }
+
+    public withName(name: string) {
+        this.item.name = name;
+        return this;
+    }
+
+    public withWeight(weight: number) {
+        this.item.weight = weight;
+        return this;
+    }
+
+    public withBaseValue(baseValue: number) {
+        this.item.baseValue = baseValue;
+        return this;
+    }
 }
 
 export const SortableItemAttributes = {
