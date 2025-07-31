@@ -20,6 +20,12 @@ export class Item implements Resource {
     }
 }
 
+export class CreateItemData {
+    public name: string;
+    public weight: number;
+    public baseValue: number;
+}
+
 export class ItemBuilder {
     private item = new Item();
 
