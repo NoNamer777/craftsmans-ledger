@@ -31,3 +31,10 @@ export const resourceTypeOptions: ResourceTypeOption[] = [
 ] as const;
 
 export const TEMP_RESOURCE_ID = 'TEMP' as const;
+
+export const SaveActions = {
+    CREATE: 'create',
+    UPDATE: 'update',
+} as const;
+
+export type SaveAction = (typeof SaveActions)[keyof typeof SaveActions];

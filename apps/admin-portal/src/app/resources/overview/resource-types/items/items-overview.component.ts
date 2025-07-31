@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
-import { Item, ItemsService } from '@craftsmans-ledger/shared-ui';
+import { CreateItemData, Item, ItemsService } from '@craftsmans-ledger/shared-ui';
+import { plainToInstance } from 'class-transformer';
 import { of, switchMap, tap } from 'rxjs';
-import { TEMP_RESOURCE_ID } from '../../../models';
+import { SaveActions, TEMP_RESOURCE_ID } from '../../../models';
 import { ActionsService } from '../../actions.service';
 import { ResourceService } from '../../resource.service';
 import { ResourceOption, ResourcesListComponent } from '../components';
@@ -57,6 +58,30 @@ export class ItemsOverviewComponent implements OnInit {
                     this.itemOptions.update((options) => [{ value: TEMP_RESOURCE_ID, label: 'New Item' }, ...options]);
                     this.resourceService.resourceId.set(TEMP_RESOURCE_ID);
                 }),
+                takeUntilDestroyed(this.destroyRef)
+            )
+            .subscribe();
+
+        this.actionsService.saveResource$
+            .pipe(
+                switchMap((action) => {
+                    if (action === SaveActions.CREATE) {
+                        return this.itemsService.create(
+                            plainToInstance(CreateItemData, this.resourceService.updatedResource())
+                        );
+                    }
+                    return this.itemsService.update(this.resourceService.updatedResource() as Item);
+                }),
+                switchMap((item) => {
+                    this.actionsService.reset();
+                    this.resourceService.resourceId.set(item.id);
+
+                    this.resourceService.resource.set(item);
+                    this.resourceService.updatedResource.set(item);
+
+                    return this.itemsService.getAll();
+                }),
+                tap((items) => this.setItemOptions(items)),
                 takeUntilDestroyed(this.destroyRef)
             )
             .subscribe();

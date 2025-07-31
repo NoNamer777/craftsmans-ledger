@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { Subject } from 'rxjs';
-import { TEMP_RESOURCE_ID } from '../models';
+import { SaveAction, SaveActions, TEMP_RESOURCE_ID } from '../models';
 import { ResourceService } from './resource.service';
 
 @Injectable({ providedIn: 'root' })
@@ -15,11 +15,19 @@ export class ActionsService {
         () => this.resourceService.resourceId() !== TEMP_RESOURCE_ID && !this.canSave()
     );
 
+    public readonly saveAction = computed(() => {
+        if (this.resourceService.resourceId() === TEMP_RESOURCE_ID) return SaveActions.CREATE;
+        return SaveActions.UPDATE;
+    });
+
     private readonly removeResourceSubject = new Subject<void>();
     public readonly removeResource$ = this.removeResourceSubject.asObservable();
 
     private readonly newResourceSubject = new Subject<void>();
     public readonly newResource$ = this.newResourceSubject.asObservable();
+
+    private readonly saveResourceSubject = new Subject<SaveAction>();
+    public readonly saveResource$ = this.saveResourceSubject.asObservable();
 
     public removeResource() {
         this.removeResourceSubject.next();
@@ -27,6 +35,10 @@ export class ActionsService {
 
     public newResource() {
         this.newResourceSubject.next();
+    }
+
+    public saveResource() {
+        this.saveResourceSubject.next(this.saveAction());
     }
 
     public reset() {
