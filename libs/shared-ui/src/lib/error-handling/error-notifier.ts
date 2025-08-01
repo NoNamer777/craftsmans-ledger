@@ -1,5 +1,5 @@
 import { ErrorHandler, inject, Injectable } from '@angular/core';
-import { NotificationService } from '@craftsmans-ledger/shared-ui';
+import { NotificationService } from '../notifications';
 import { notifyError } from './functions';
 
 @Injectable({ providedIn: 'root' })

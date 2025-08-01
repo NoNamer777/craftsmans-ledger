@@ -8,10 +8,10 @@ import {
     ItemsService,
     NotificationService,
     NotificationTypes,
+    notifyError,
 } from '@craftsmans-ledger/shared-ui';
 import { plainToInstance } from 'class-transformer';
 import { catchError, filter, map, of, switchMap, tap } from 'rxjs';
-import { notifyError } from '../../../../core/error-handling/functions';
 import { SaveActions, TEMP_RESOURCE_ID } from '../../../models';
 import { ActionsService } from '../../actions.service';
 import { ResourceService } from '../../resource.service';

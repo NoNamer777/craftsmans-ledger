@@ -1,8 +1,7 @@
 import { provideHttpClient } from '@angular/common/http';
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideBrowserStorage, provideClientConfig } from '@craftsmans-ledger/shared-ui';
-import { provideErrorHandler } from '../error-handling';
+import { provideBrowserStorage, provideClientConfig, provideErrorHandler } from '@craftsmans-ledger/shared-ui';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
