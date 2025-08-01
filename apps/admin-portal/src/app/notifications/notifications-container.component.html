@@ -1,4 +1,4 @@
-<div class="toast-container mt-5 p-3 top-0 end-0">
+<div class="toast-container d-flex flex-column gap-3 mt-5 p-3 top-0 end-0">
     @for (notificationData of notificationService.notifications(); track notificationData.id) {
         <cml-notification [notification]="notificationData" (toastHidden)="onToastHidden($event)" />
     }
