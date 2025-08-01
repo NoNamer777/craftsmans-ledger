@@ -1,9 +1,11 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { CreateItemData, Item, ItemsService } from '@craftsmans-ledger/shared-ui';
 import { plainToInstance } from 'class-transformer';
-import { of, switchMap, tap } from 'rxjs';
+import { catchError, filter, map, of, switchMap, tap } from 'rxjs';
+import { notifyError } from '../../../../core/error-handling/functions';
 import { NotificationService, NotificationTypes } from '../../../../notifications';
 import { SaveActions, TEMP_RESOURCE_ID } from '../../../models';
 import { ActionsService } from '../../actions.service';
@@ -45,8 +47,14 @@ export class ItemsOverviewComponent implements OnInit {
             .pipe(
                 switchMap(() => {
                     if (this.resourceService.resourceId() === TEMP_RESOURCE_ID) return of(null);
-                    return this.itemsService.remove(this.resourceService.resourceId());
+                    return this.itemsService.remove(this.resourceService.resourceId()).pipe(map(() => true));
                 }),
+                catchError((error) => {
+                    notifyError(error, this.notificationsService);
+                    this.actionsService.removing.set(false);
+                    return of(null);
+                }),
+                filter(Boolean),
                 switchMap(() => {
                     this.notificationsService.addNotification({
                         type: NotificationTypes.SUCCESS,
@@ -82,6 +90,12 @@ export class ItemsOverviewComponent implements OnInit {
                         return this.itemsService
                             .create(plainToInstance(CreateItemData, this.resourceService.updatedResource()))
                             .pipe(
+                                catchError((error: HttpErrorResponse) => {
+                                    notifyError(error, this.notificationsService);
+                                    this.actionsService.saving.set(false);
+                                    return of(null);
+                                }),
+                                filter(Boolean),
                                 tap(({ id }) => {
                                     this.notificationsService.addNotification({
                                         type: NotificationTypes.SUCCESS,
@@ -92,6 +106,12 @@ export class ItemsOverviewComponent implements OnInit {
                             );
                     }
                     return this.itemsService.update(this.resourceService.updatedResource() as Item).pipe(
+                        catchError((error: HttpErrorResponse) => {
+                            notifyError(error, this.notificationsService);
+                            this.actionsService.saving.set(false);
+                            return of(null);
+                        }),
+                        filter(Boolean),
                         tap(({ id }) => {
                             this.notificationsService.addNotification({
                                 type: NotificationTypes.SUCCESS,
