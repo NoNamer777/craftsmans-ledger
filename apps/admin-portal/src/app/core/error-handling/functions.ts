@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { NotificationService, NotificationTypes } from '../../notifications';
+import { NotificationService, NotificationTypes } from '@craftsmans-ledger/shared-ui';
 
 export function notifyError(error: unknown, notificationService: NotificationService) {
     if (error instanceof HttpErrorResponse) {

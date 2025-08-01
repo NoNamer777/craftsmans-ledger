@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NotificationsContainerComponent } from '../../notifications/notifications-container.component';
+import { NotificationsContainerComponent } from '@craftsmans-ledger/shared-ui';
 import { HeaderComponent } from '../header';
 
 @Component({

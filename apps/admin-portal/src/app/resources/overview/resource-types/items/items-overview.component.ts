@@ -2,11 +2,16 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
-import { CreateItemData, Item, ItemsService } from '@craftsmans-ledger/shared-ui';
+import {
+    CreateItemData,
+    Item,
+    ItemsService,
+    NotificationService,
+    NotificationTypes,
+} from '@craftsmans-ledger/shared-ui';
 import { plainToInstance } from 'class-transformer';
 import { catchError, filter, map, of, switchMap, tap } from 'rxjs';
 import { notifyError } from '../../../../core/error-handling/functions';
-import { NotificationService, NotificationTypes } from '../../../../notifications';
 import { SaveActions, TEMP_RESOURCE_ID } from '../../../models';
 import { ActionsService } from '../../actions.service';
 import { ResourceService } from '../../resource.service';
