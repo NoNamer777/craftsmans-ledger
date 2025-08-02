@@ -1,0 +1,35 @@
+name: Setup Tools
+description: Sets up Node.Js, Java, and Gradle
+runs:
+    using: Composite
+    steps:
+        - name: Setup Node.Js
+          uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+          with:
+              node-version-file: '.tool-versions'
+              cache: 'npm'
+              cache-dependency-path: './package-lock.json'
+
+        - name: Install dependencies
+          shell: bash
+          run: npm ci
+
+        - name: Setup Java
+          uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
+          with:
+              java-version-file: '.tool-versions'
+              distribution: 'temurin'
+
+        - name: Setup Gradle
+          uses: gradle/actions/setup-gradle@ac638b010cf58a27ee6c972d7336334ccaf61c96 # v4.4.1
+          with:
+              gradle-version: 'wrapper'
+
+        - name: Initialize Gradle projects
+          shell: bash
+          run: ./gradlew
+
+        - name: Set main branch ref
+          if: github.ref != 'refs/heads/main'
+          shell: bash
+          run: git rev-parse --verify main || git remote set-branches origin main && git fetch --depth 1 origin main && git branch main origin/main

@@ -12,3 +12,7 @@ build/
 dist/
 out/
 
+certificate*.pem
+**/keystore.p12
+**/.env
+**/.env.*
