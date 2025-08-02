@@ -40,5 +40,5 @@ tasks.named<JavaExec>("run") {
 }
 
 tasks.clean {
-    delete("src/main/assets/*.csv")
+    delete("src/main/resources/*.csv")
 }
