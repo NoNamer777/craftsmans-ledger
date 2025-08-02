@@ -1,1 +1,10 @@
-<p>ItemsOverviewComponent works!</p>
+<aside class="col-2">
+    <cml-resources-list [resourceOptions]="itemOptions()" (selectedResourceChanged)="onItemSelected($event)" />
+</aside>
+<hr class="mx-3" />
+
+@if (hasItemSelected()) {
+    <cml-item-form [itemId]="selectedItem()" />
+} @else {
+    <p>Please select an Item on the left.</p>
+}

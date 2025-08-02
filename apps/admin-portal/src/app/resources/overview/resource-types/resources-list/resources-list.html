@@ -1,0 +1,14 @@
+<div class="list-group overflow-y-auto">
+    @for (option of resourceOptions(); track option.value) {
+        <button
+            type="button"
+            class="list-group-item list-group-item-action"
+            [class.active]="isActive(option.value)"
+            (click)="onResourceSelected(option.value)"
+        >
+            {{ option.label }}
+        </button>
+    } @empty {
+        <button type="button" class="list-group-item" disabled>No data available</button>
+    }
+</div>

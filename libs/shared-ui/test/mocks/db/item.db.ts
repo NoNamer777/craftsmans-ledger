@@ -90,7 +90,7 @@ export class MockItemDB {
             } satisfies ParseRemoteConfig<Item>);
         });
 
-        this.items = [...items];
+        this.items = [...items].sort((curr, next) => this.sortItem(curr, next, SortableItemAttributes.NAME));
     }
 
     private sortItem(curr: Item, next: Item, sortBy: SortableItemAttribute) {
