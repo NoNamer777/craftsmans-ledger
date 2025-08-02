@@ -10,6 +10,7 @@
             "executor": "@angular/build:application",
             "outputs": ["{options.outputPath}"],
             "options": {
+                "allowedCommonJsDependencies": ["papaparse"],
                 "baseHref": "./",
                 "browser": "apps/admin-portal/src/main.ts",
                 "outputPath": "dist/apps/admin-portal",
@@ -29,14 +30,14 @@
                     "assets": [
                         {
                             "glob": "**/*",
-                            "input": "apps/web-app/public",
+                            "input": "apps/admin-portal/public",
                             "ignore": ["*-template*"]
                         }
                     ],
                     "budgets": [
                         {
                             "type": "initial",
-                            "maximumWarning": "500kb",
+                            "maximumWarning": "800kb",
                             "maximumError": "1mb"
                         },
                         {
@@ -51,12 +52,12 @@
                     "assets": [
                         {
                             "glob": "**/*",
-                            "input": "apps/web-app/public",
+                            "input": "apps/admin-portal/public",
                             "ignore": ["*-template*"]
                         },
                         {
                             "glob": "**/*",
-                            "input": "apps/web-app/.msw"
+                            "input": "apps/admin-portal/.msw"
                         },
                         {
                             "glob": "**/*",
@@ -74,14 +75,13 @@
         "serve": {
             "executor": "@angular/build:dev-server",
             "continuous": true,
-            "defaultConfiguration": "dev",
-            "configurations": {
-                "prod": {
-                    "buildTarget": "@craftsmans-ledger/admin-portal:build:prod"
-                },
-                "dev": {
-                    "buildTarget": "@craftsmans-ledger/admin-portal:build:dev"
-                }
+            "options": {
+                "buildTarget": "@craftsmans-ledger/web-app:build:dev",
+                "host": "localhost.admin.craftsmans-ledger.net",
+                "port": 7100,
+                "ssl": true,
+                "sslKey": "certificate-key.pem",
+                "sslCert": "certificate.pem"
             }
         },
         "lint": {
