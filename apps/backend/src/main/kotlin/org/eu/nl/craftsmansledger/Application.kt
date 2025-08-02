@@ -9,7 +9,6 @@ import io.ktor.server.engine.embeddedServer
 import io.ktor.server.engine.sslConnector
 import io.ktor.server.netty.Netty
 import org.eu.nl.craftsmansledger.core.appRoutes
-import org.eu.nl.craftsmansledger.model.FakeItemRepository
 import org.slf4j.LoggerFactory
 import java.io.File
 import java.io.FileInputStream
@@ -68,7 +67,5 @@ fun main() {
 }
 
 fun Application.module() {
-    val itemRepository = FakeItemRepository()
-
-    appRoutes(itemRepository)
+    appRoutes()
 }
