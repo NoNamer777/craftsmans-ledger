@@ -1,4 +1,11 @@
-import { QueryParams } from '../shared';
+import { QueryParams } from '@craftsmans-ledger/shared-ui';
+
+export interface Item {
+    id: string;
+    name: string;
+    weight: number;
+    baseValue: number;
+}
 
 export const SortableItemAttributes = {
     NAME: 'name',

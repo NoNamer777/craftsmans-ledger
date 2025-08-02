@@ -1,23 +1,11 @@
-import { isDevMode } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { initializeWorker, resetDatabases } from '@craftsmans-ledger/web-app/test';
-import { appConfig, RootComponent, tryCatch } from './app';
+import { tryCatch } from '@craftsmans-ledger/shared-ui';
+import { initializeMockEnvironment } from '@craftsmans-ledger/shared-ui/test';
+import { appConfig, RootComponent } from './app';
 
 async function bootstrap() {
-    if (isDevMode()) {
-        const { error: resetDatabaseError } = await tryCatch(resetDatabases());
+    if (!(await initializeMockEnvironment())) return;
 
-        if (resetDatabaseError) {
-            console.error(resetDatabaseError);
-            return;
-        }
-        const { error: initializeWorkerError } = await tryCatch(initializeWorker());
-
-        if (initializeWorkerError) {
-            console.error(initializeWorkerError);
-            return;
-        }
-    }
     const { error: bootstrapError } = await tryCatch(bootstrapApplication(RootComponent, appConfig));
 
     if (bootstrapError) {

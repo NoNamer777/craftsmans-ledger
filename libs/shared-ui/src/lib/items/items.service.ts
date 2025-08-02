@@ -1,7 +1,8 @@
 import { inject, Injectable } from '@angular/core';
-import { ApiService, Item, PaginatedResponse } from '../shared';
+import { ApiService, PaginatedResponse } from '../http';
 import {
     DEFAULT_ITEM_PAGINATION_PARAMS,
+    Item,
     ItemPaginationParamName,
     ItemPaginationParams,
     ItemQueryParamName,

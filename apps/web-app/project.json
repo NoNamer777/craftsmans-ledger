@@ -10,6 +10,7 @@
             "executor": "@angular/build:application",
             "outputs": ["{options.outputPath}"],
             "options": {
+                "allowedCommonJsDependencies": ["papaparse"],
                 "baseHref": "./",
                 "browser": "apps/web-app/src/main.ts",
                 "outputPath": "dist/apps/web-app",
@@ -36,7 +37,7 @@
                     "budgets": [
                         {
                             "type": "initial",
-                            "maximumWarning": "500kb",
+                            "maximumWarning": "800kb",
                             "maximumError": "1mb"
                         },
                         {

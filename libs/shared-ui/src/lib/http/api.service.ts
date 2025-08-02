@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { ConfigService } from '../../core';
+import { ConfigService } from '../config';
 import { QueryParams } from './models';
 import { RequestService } from './request.service';
 

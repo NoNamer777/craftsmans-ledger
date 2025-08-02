@@ -18,8 +18,20 @@ export default [
                     allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?[jt]s$'],
                     depConstraints: [
                         {
-                            sourceTag: '*',
-                            onlyDependOnLibsWithTags: ['*'],
+                            sourceTag: 'scope:ui',
+                            onlyDependOnLibsWithTags: ['scope:ui', 'scope:shared'],
+                        },
+                        {
+                            sourceTag: 'scope:admin',
+                            onlyDependOnLibsWithTags: ['scope:admin', 'scope:shared'],
+                        },
+                        {
+                            sourceTag: 'scope:shared',
+                            onlyDependOnLibsWithTags: ['scope:shared'],
+                        },
+                        {
+                            sourceTag: 'framework:angular',
+                            allowedExternalImports: ['@angular/*', 'msw', 'msw/browser', 'nanoid', 'papaparse', 'rxjs'],
                         },
                     ],
                 },

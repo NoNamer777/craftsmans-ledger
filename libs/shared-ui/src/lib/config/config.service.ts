@@ -1,6 +1,6 @@
 import { inject, Injectable, provideAppInitializer } from '@angular/core';
 import { tap } from 'rxjs';
-import { RequestService } from '../../shared';
+import { RequestService } from '../http';
 import { ClientConfig } from './models';
 
 export function provideClientConfig() {

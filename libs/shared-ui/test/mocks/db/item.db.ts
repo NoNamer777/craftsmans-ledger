@@ -9,7 +9,7 @@ import {
     SortableItemAttributes,
     SortOrder,
     SortOrders,
-} from '../../../src/app';
+} from '../../../src';
 
 export class MockItemDB {
     private items: Item[] = [];
