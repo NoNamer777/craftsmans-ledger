@@ -29,3 +29,5 @@ export const resourceTypeOptions: ResourceTypeOption[] = [
     { disabled: true, label: 'Vendor Types', value: ResourceTypes.VENDOR_TYPE },
     { disabled: true, label: 'Villagers', value: ResourceTypes.VILLAGERS },
 ] as const;
+
+export const TEMP_RESOURCE_ID = 'TEMP' as const;

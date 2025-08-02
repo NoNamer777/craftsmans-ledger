@@ -16,4 +16,8 @@ export class ApiService {
     ) {
         return this.requestService.get<Response>(`${this.baseApiUrl}${endPoint}`, queryParams);
     }
+
+    public delete(endPoint: string) {
+        return this.requestService.delete(`${this.baseApiUrl}${endPoint}`);
+    }
 }

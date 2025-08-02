@@ -1,11 +1,11 @@
 <aside class="col-2">
-    <cml-resources-list [resourceOptions]="itemOptions()" (selectedResourceChanged)="onItemSelected($event)" />
+    <cml-resources-list [resourceOptions]="itemOptions()" (selectedResourceChange)="onChangeSelectedResource()" />
 </aside>
 <hr class="mx-4" />
 
 <div class="col-8">
     @if (hasItemSelected()) {
-        <cml-item-form [itemId]="selectedItem()" />
+        <cml-item-form />
     } @else {
         <p>Please select an Item on the left.</p>
     }
