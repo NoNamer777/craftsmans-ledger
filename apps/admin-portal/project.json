@@ -76,7 +76,7 @@
             "executor": "@angular/build:dev-server",
             "continuous": true,
             "options": {
-                "buildTarget": "@craftsmans-ledger/web-app:build:dev",
+                "buildTarget": "@craftsmans-ledger/admin-portal:build:dev",
                 "host": "localhost.admin.craftsmans-ledger.net",
                 "port": 7100,
                 "ssl": true,
