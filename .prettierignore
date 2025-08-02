@@ -15,6 +15,7 @@
 
 package-lock.json
 package.json
+**/.msw/
 
 # Workspace configurations
 .idea/

@@ -20,7 +20,9 @@
         "noUncheckedIndexedAccess": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "paths": {},
+        "paths": {
+            "@craftsmans-ledger/web-app/test": ["apps/web-app/test/index.ts"]
+        },
         "rootDir": ".",
         "skipDefaultLibCheck": true,
         "skipLibCheck": true,

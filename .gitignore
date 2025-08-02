@@ -7,10 +7,14 @@
 node_modules/
 
 # Build outputs
+.kotlin/
+**/resources/*.csv
 .angular/
 build/
 dist/
 out/
+
+**/public/config.json
 
 certificate*.pem
 **/keystore.p12
