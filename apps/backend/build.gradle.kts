@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.plugin.serialization)
 }
 
-group = "org.eu.nl.craftsmans_ledger"
+group = "org.eu.nl.craftsmansledger"
 version = "0.0.1"
 
 application {
