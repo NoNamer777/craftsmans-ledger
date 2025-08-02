@@ -1,4 +1,4 @@
-package org.eu.nl.model
+package org.eu.nl.craftsmansledger.model
 
 interface ItemRepository {
     fun allItems(): List<Item>

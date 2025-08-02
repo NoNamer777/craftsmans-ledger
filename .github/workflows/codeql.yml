@@ -1,0 +1,55 @@
+name: 'CodeQL Advanced'
+on:
+    push:
+        branches:
+            - 'main'
+    pull_request:
+        branches:
+            - 'main'
+permissions:
+    security-events: write
+    packages: read
+    actions: read
+    contents: read
+env:
+    MODE: ${{ vars.MODE }}
+jobs:
+    analyze:
+        name: Analyze (${{ matrix.language }})
+        runs-on: ubuntu-22.04
+        strategy:
+            fail-fast: false
+            matrix:
+                include:
+                    - language: actions
+                      build-mode: none
+                    - language: java-kotlin
+                      build-mode: manual
+                    - language: javascript-typescript
+                      build-mode: none
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+            - name: Setup Tools
+              uses: ./.github/actions/setup-tools
+
+            - name: Initialize CodeQL
+              uses: github/codeql-action/init@v3
+              with:
+                  languages: ${{ matrix.language }}
+                  build-mode: ${{ matrix.build-mode }}
+                  # For more details on CodeQL's query packs, refer to: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
+                  queries: security-extended,security-and-quality
+
+            - name: Manually build
+              if: matrix.build-mode == 'manual'
+              shell: bash
+              run: |
+                  npx nx run-many -t build
+                  ./gradlew build
+
+            - name: Perform CodeQL Analysis
+              uses: github/codeql-action/analyze@v3
+              with:
+                  category: '/language:${{matrix.language}}'
