@@ -1,19 +1,23 @@
 
 [versions]
+bouncy-castle-version = "1.81"
 dotenv-version = "4.0.0"
 exposed-version = "0.61.0"
 h2-version = "2.3.232"
 kotlin-version = "2.1.10"
 ktor-version = "3.2.2"
 logback-version = "1.5.18"
-nanoid = "1.0.1"
+nanoid-version = "1.0.1"
 nx-version = "0.1.0"
 
 [libraries]
+bcprov-jdk18on = { module = "org.bouncycastle:bcprov-jdk18on", version.ref = "bouncy-castle-version" }
+bcpkix-jdk18on = { module = "org.bouncycastle:bcpkix-jdk18on", version.ref = "bouncy-castle-version" }
 exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed-version" }
 exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed-version" }
 h2 = { module = "com.h2database:h2", version.ref = "h2-version" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin-version" }
+ktor-network-tls-certicates = { module = "io.ktor:ktor-network-tls-certificates", version.ref = "ktor-version" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor-version" }
 ktor-server-config-yaml = { module = "io.ktor:ktor-server-config-yaml", version.ref = "ktor-version" }
 ktor-server-content-negotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor-version" }
@@ -23,7 +27,7 @@ ktor-server-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor-
 ktor-server-status-pages = { module = "io.ktor:ktor-server-status-pages", version.ref = "ktor-version" }
 ktor-server-test-host = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor-version" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-version" }
-nanoid = { module = "io.viascom.nanoid:nanoid", version.ref = "nanoid" }
+nanoid = { module = "io.viascom.nanoid:nanoid", version.ref = "nanoid-version" }
 
 [plugins]
 dotenv = { id = "co.uzzu.dotenv.gradle", version.ref = "dotenv-version" }
