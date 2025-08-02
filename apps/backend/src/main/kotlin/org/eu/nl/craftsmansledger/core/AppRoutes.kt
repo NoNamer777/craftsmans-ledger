@@ -13,7 +13,7 @@ import io.ktor.server.routing.*
 import kotlinx.serialization.json.Json
 import org.eu.nl.craftsmansledger.items.itemRoutes
 
-fun Application.appRoutes(repository: ItemRepository) {
+fun Application.appRoutes() {
     install(ContentNegotiation) {
         json(Json {
             isLenient = false
