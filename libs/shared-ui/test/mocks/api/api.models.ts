@@ -1,1 +1,1 @@
-export const baseApiUrl = 'http://localhost:8080';
+export const baseApiUrl = 'https://localhost.api.craftsmans-ledger.net:7200';

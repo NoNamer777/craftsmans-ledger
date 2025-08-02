@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Item, ItemsService, sha512 } from '@craftsmans-ledger/shared-ui';
-import { from, of, switchMap } from 'rxjs';
+import { Item, ItemBuilder, ItemsService } from '@craftsmans-ledger/shared-ui';
+import { debounceTime, of, switchMap, tap } from 'rxjs';
 import { TEMP_RESOURCE_ID } from '../../../models';
+import { ActionsService } from '../../actions.service';
 import { ResourceService } from '../../resource.service';
 import { TEMP_ITEM } from './models';
 
@@ -19,13 +20,7 @@ export class ItemForm {
     protected readonly itemsService = inject(ItemsService);
     private readonly destroyRef = inject(DestroyRef);
     private readonly resourceService = inject(ResourceService);
-
-    protected readonly item = signal<Item>(null);
-
-    protected readonly itemHash = toObservable(this.item).pipe(
-        switchMap((item) => from(sha512(item))),
-        takeUntilDestroyed(this.destroyRef)
-    );
+    private readonly actionsService = inject(ActionsService);
 
     protected readonly form = this.formBuilder.group({
         name: this.formBuilder.control<string>(null, [Validators.required, Validators.minLength(2)]),
@@ -44,19 +39,38 @@ export class ItemForm {
             )
             .subscribe({
                 next: (item) => {
-                    this.item.set(item);
+                    this.resourceService.resource.set(item);
                     this.populateForm();
                 },
             });
+
+        this.form.valueChanges
+            .pipe(
+                debounceTime(1000),
+                tap(() => {
+                    const formItem = this.createItemFromFormValue();
+                    this.resourceService.updatedResource.set(formItem);
+                    const hasChanged = !(this.resourceService.resource() as Item).compareTo(formItem);
+
+                    if (this.actionsService.canSave() === hasChanged) return;
+                    this.actionsService.canSave.set(hasChanged);
+                }),
+                takeUntilDestroyed(this.destroyRef)
+            )
+            .subscribe();
     }
 
     private populateForm() {
-        const { name, weight, baseValue } = this.item();
+        const { name, weight, baseValue } = this.resourceService.resource() as Item;
 
         this.form.reset({
             name: name,
             weight: weight,
             baseValue: baseValue,
         });
+    }
+
+    private createItemFromFormValue() {
+        return new ItemBuilder(this.form.value).withId(this.resourceService.resourceId()).build();
     }
 }

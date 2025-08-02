@@ -1,7 +1,9 @@
+import { plainToInstance } from 'class-transformer';
 import { http, HttpResponse } from 'msw';
-import { Item, PaginatedResponse } from '../../../../src';
+import { CreateItemData, Item, PaginatedResponse, tryCatch } from '../../../../src';
 import { mockItemDB } from '../../db';
 import { baseApiUrl } from '../api.models';
+import { sendBadRequestExceptionResponse, sendExceptionResponse, sendNotFoundExceptionResponse } from './expections';
 
 const endPoint = '/items';
 
@@ -9,24 +11,20 @@ export const itemHandlers = [
     http.get<never, never, Item[]>(`${baseApiUrl}${endPoint}`, () => {
         return HttpResponse.json(mockItemDB.getAll());
     }),
+    http.post<never, CreateItemData>(`${baseApiUrl}${endPoint}`, async ({ request }) => {
+        const data = plainToInstance(CreateItemData, await request.json());
+        const url = request.url;
+
+        const { data: result, error } = await tryCatch(() => mockItemDB.create(data));
+
+        if (error) return sendExceptionResponse(error);
+        return HttpResponse.json(result, { headers: { Location: `${url}/${result.id}` } });
+    }),
     http.get<never, never>(`${baseApiUrl}${endPoint}/query`, ({ request }) => {
         const url = new URL(request.url);
         const result = mockItemDB.query(url.searchParams);
 
-        if (!result) {
-            return HttpResponse.json(
-                {
-                    message: 'The query resulted in no results.',
-                    timestamp: new Date(),
-                    error: 'Not Found',
-                    code: 404,
-                },
-                {
-                    type: 'error',
-                    status: 404,
-                }
-            );
-        }
+        if (!result) return sendNotFoundExceptionResponse('The query resulted in no results.');
         return HttpResponse.json(result);
     }),
     http.get<never, never, PaginatedResponse<Item>>(`${baseApiUrl}${endPoint}/paginated`, ({ request }) => {
@@ -39,38 +37,28 @@ export const itemHandlers = [
         const { itemId } = params;
         const result = mockItemDB.getById(itemId);
 
-        if (!result) {
-            return HttpResponse.json(
-                {
-                    message: `Item with ID "${itemId}" was not found.`,
-                    timestamp: new Date(),
-                    error: 'Not Found',
-                    code: 404,
-                },
-                {
-                    type: 'error',
-                    status: 404,
-                }
-            );
-        }
+        if (!result) return sendNotFoundExceptionResponse(`Item with ID "${itemId}" was not found.`);
         return HttpResponse.json(result);
     }),
-    http.delete<{ itemId: string }>(`${baseApiUrl}${endPoint}/:itemId`, ({ params }) => {
+    http.put<{ itemId: string }, Item>(`${baseApiUrl}${endPoint}/:itemId`, async ({ params, request }) => {
         const { itemId } = params;
-        const removed = mockItemDB.remove(itemId);
+        const data = plainToInstance(Item, await request.json());
 
-        if (removed) return HttpResponse.json();
-        return HttpResponse.json(
-            {
-                message: `Could not remove Item with ID "${itemId}" - Reason: Item was not found.`,
-                timestamp: new Date(),
-                error: 'Not Found',
-                code: 404,
-            },
-            {
-                type: 'error',
-                status: 404,
-            }
-        );
+        if (itemId !== data.id) {
+            return sendBadRequestExceptionResponse(
+                `Could not update Item with ID "${data.id}" - Reason: It's forbidden to update Item on path "${itemId}" with data from Item with ID "${data.id}".`
+            );
+        }
+        const { data: result, error } = await tryCatch(() => mockItemDB.update(data));
+
+        if (error) return sendExceptionResponse(error);
+        return HttpResponse.json(result);
+    }),
+    http.delete<{ itemId: string }>(`${baseApiUrl}${endPoint}/:itemId`, async ({ params }) => {
+        const { itemId } = params;
+        const { error } = await tryCatch(() => mockItemDB.remove(itemId));
+
+        if (error) return sendExceptionResponse(error);
+        return HttpResponse.json();
     }),
 ];
