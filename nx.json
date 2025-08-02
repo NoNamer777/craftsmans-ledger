@@ -34,7 +34,8 @@
         },
         "@nx/angular:component": {
             "style": "scss",
-            "changeDetection": "OnPush"
+            "changeDetection": "OnPush",
+            "skipTests": true
         }
     },
     "plugins": [

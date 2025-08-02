@@ -1,0 +1,91 @@
+{
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "name": "@craftsmans-ledger/admin-portal",
+    "projectType": "application",
+    "sourceRoot": "apps/admin-portal/src",
+    "prefix": "cml",
+    "tags": ["scope:ui", "scope:admin", "framework:angular"],
+    "targets": {
+        "build": {
+            "executor": "@angular/build:application",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "allowedCommonJsDependencies": ["papaparse"],
+                "baseHref": "./",
+                "browser": "apps/admin-portal/src/main.ts",
+                "outputPath": "dist/apps/admin-portal",
+                "inlineStyleLanguage": "scss",
+                "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
+                "stylePreprocessorOptions": {
+                    "sass": {
+                        "silenceDeprecations": ["import", "color-functions", "global-builtin"]
+                    }
+                },
+                "styles": ["apps/admin-portal/src/styles.scss"],
+                "tsConfig": "apps/admin-portal/tsconfig.app.json"
+            },
+            "defaultConfiguration": "prod",
+            "configurations": {
+                "prod": {
+                    "assets": [
+                        {
+                            "glob": "**/*",
+                            "input": "apps/admin-portal/public",
+                            "ignore": ["*-template*"]
+                        }
+                    ],
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "800kb",
+                            "maximumError": "1mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "4kb",
+                            "maximumError": "8kb"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
+                "dev": {
+                    "assets": [
+                        {
+                            "glob": "**/*",
+                            "input": "apps/admin-portal/public",
+                            "ignore": ["*-template*"]
+                        },
+                        {
+                            "glob": "**/*",
+                            "input": "apps/admin-portal/.msw"
+                        },
+                        {
+                            "glob": "**/*",
+                            "input": "data",
+                            "output": "data"
+                        }
+                    ],
+                    "extractLicenses": false,
+                    "namedChunks": true,
+                    "optimization": false,
+                    "sourceMap": true
+                }
+            }
+        },
+        "serve": {
+            "executor": "@angular/build:dev-server",
+            "continuous": true,
+            "options": {
+                "buildTarget": "@craftsmans-ledger/admin-portal:build:dev",
+                "host": "localhost.admin.craftsmans-ledger.net",
+                "port": 7100,
+                "ssl": true,
+                "sslKey": "certificate-key.pem",
+                "sslCert": "certificate.pem"
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint"
+        }
+    }
+}

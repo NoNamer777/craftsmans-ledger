@@ -16,9 +16,13 @@
         "libs/*"
     ],
     "msw": {
-        "workerDirectory": ["apps/web-app/.msw"]
+        "workerDirectory": [
+            "apps/web-app/.msw",
+            "apps/admin-portal/.msw"
+        ]
     },
     "dependencies": {
+        "@angular/cdk": "~20.1.0",
         "@angular/common": "~20.1.0",
         "@angular/compiler": "~20.1.0",
         "@angular/core": "~20.1.0",
