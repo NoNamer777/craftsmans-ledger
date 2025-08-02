@@ -3,6 +3,7 @@ package org.eu.nl
 import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.server.testing.*
+import org.eu.nl.craftsmansledger.module
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

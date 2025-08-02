@@ -1,5 +1,6 @@
 plugins {
-    id("dev.nx.gradle.project-graph") version("0.1.0")
+    alias(libs.plugins.nxprojectgraph)
+    alias(libs.plugins.dotenv)
 }
 
 allprojects {

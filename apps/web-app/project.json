@@ -73,14 +73,13 @@
         "serve": {
             "executor": "@angular/build:dev-server",
             "continuous": true,
-            "defaultConfiguration": "dev",
-            "configurations": {
-                "prod": {
-                    "buildTarget": "@craftsmans-ledger/web-app:build:prod"
-                },
-                "dev": {
-                    "buildTarget": "@craftsmans-ledger/web-app:build:dev"
-                }
+            "options": {
+                "buildTarget": "@craftsmans-ledger/web-app:build:dev",
+                "host": "localhost.www.craftsmans-ledger.net",
+                "port": 7000,
+                "ssl": true,
+                "sslKey": "certificate-key.pem",
+                "sslCert": "certificate.pem"
             }
         },
         "lint": {
