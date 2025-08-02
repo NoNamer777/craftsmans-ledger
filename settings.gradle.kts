@@ -1,6 +1,6 @@
 import java.io.File
 
-rootProject.name = "craftsmans_ledger"
+rootProject.name = "craftsmans-ledger-source"
 
 val appsRoot = file("apps")
 val libsRoot = file("libs")
@@ -33,5 +33,3 @@ findProjects(libsRoot).forEach { projectPath ->
     println("Including lib project: :$projectPath")
     include(":$projectPath")
 }
-
-
