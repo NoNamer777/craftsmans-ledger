@@ -12,6 +12,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.serialization.json.Json
 import org.eu.nl.craftsmansledger.items.itemRoutes
+import org.eu.nl.craftsmansledger.technologyTrees.technologyTreeRoutes
 
 fun Application.appRoutes() {
     install(ContentNegotiation) {
@@ -42,6 +43,7 @@ fun Application.appRoutes() {
             call.respondText("Hello World!")
         }
 
+        technologyTreeRoutes()
         itemRoutes()
     }
 }
