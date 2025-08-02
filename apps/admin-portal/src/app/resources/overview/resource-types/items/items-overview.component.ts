@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { FormsModule } from '@angular/forms';
 import { ItemsService } from '@craftsmans-ledger/shared-ui';
 import { ResourcesList } from '../resources-list';
 import { ResourceOption } from '../resources-list/models';
@@ -10,7 +11,7 @@ import { ItemForm } from './item.form';
     templateUrl: './items-overview.component.html',
     styleUrl: './items-overview.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [ResourcesList, ItemForm],
+    imports: [ResourcesList, ItemForm, FormsModule],
 })
 export class ItemsOverviewComponent implements OnInit {
     private readonly destroyRef = inject(DestroyRef);

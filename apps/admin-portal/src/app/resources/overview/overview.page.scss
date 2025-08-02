@@ -4,5 +4,9 @@
 
     article {
         height: 100%;
+
+        & > div {
+            margin-left: 7.3rem;
+        }
     }
 }
