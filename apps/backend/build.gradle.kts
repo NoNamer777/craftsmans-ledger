@@ -8,7 +8,7 @@ group = "org.eu.nl.craftsmansledger"
 version = "0.0.1"
 
 application {
-    mainClass = "io.ktor.server.netty.EngineMain"
+    mainClass = "org.eu.nl.craftsmansledger.ApplicationKt"
 }
 
 repositories {
@@ -31,7 +31,6 @@ dependencies {
     implementation(libs.logback.classic)
     implementation(libs.nanoid)
 
-    implementation(libs.ktor.server.config.yaml)
     testImplementation(libs.kotlin.test.junit)
     testImplementation(libs.ktor.server.test.host)
 }
