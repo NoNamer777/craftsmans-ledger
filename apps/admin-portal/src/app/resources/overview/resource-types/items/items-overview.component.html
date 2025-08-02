@@ -1,5 +1,9 @@
 <aside class="col-2">
-    <cml-resources-list [resourceOptions]="itemOptions()" (selectedResourceChange)="onChangeSelectedResource()" />
+    <cml-resources-list
+        [resourceOptions]="itemOptions()"
+        [processing]="processing()"
+        (selectedResourceChange)="onChangeSelectedResource()"
+    />
 </aside>
 <hr class="mx-4" />
 

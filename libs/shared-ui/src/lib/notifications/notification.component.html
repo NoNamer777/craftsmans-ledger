@@ -1,0 +1,16 @@
+<div
+    class="toast"
+    [ngClass]="notificationType()"
+    role="alert"
+    [id]="notification().id"
+    [attr.data-bs-autohide]="!notification().requiresAction"
+>
+    <div class="toast-header">
+        <strong class="me-auto">{{ notification().title }}</strong>
+        <small>{{ timestamp$ | async }}</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast">
+            <!--NOTE: Left empty on purpose-->
+        </button>
+    </div>
+    <div class="toast-body">{{ notification().message }}</div>
+</div>

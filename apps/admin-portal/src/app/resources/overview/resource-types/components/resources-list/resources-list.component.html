@@ -9,6 +9,12 @@
             {{ option.label }}
         </button>
     } @empty {
-        <button type="button" class="list-group-item" disabled>No data available</button>
+        @if (processing()) {
+            <button type="button" class="list-group-item" disabled>
+                <span class="spinner-border"></span>
+            </button>
+        } @else {
+            <button type="button" class="list-group-item" disabled>No data available</button>
+        }
     }
 </div>

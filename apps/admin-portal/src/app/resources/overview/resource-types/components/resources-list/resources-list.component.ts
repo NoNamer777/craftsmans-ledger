@@ -16,6 +16,8 @@ export class ResourcesListComponent {
 
     public readonly resourceOptions = input.required<ResourceOption[]>();
 
+    public readonly processing = input.required<boolean>();
+
     public readonly selectedResourceChange = output<string>();
 
     protected onResourceSelected(resourceId: string) {

@@ -1,5 +1,5 @@
 import { plainToInstance } from 'class-transformer';
-import { http, HttpResponse } from 'msw';
+import { delay, http, HttpResponse } from 'msw';
 import { CreateItemData, Item, PaginatedResponse, tryCatch } from '../../../../src';
 import { mockItemDB } from '../../db';
 import { baseApiUrl } from '../api.models';
@@ -8,10 +8,13 @@ import { sendBadRequestExceptionResponse, sendExceptionResponse, sendNotFoundExc
 const endPoint = '/items';
 
 export const itemHandlers = [
-    http.get<never, never, Item[]>(`${baseApiUrl}${endPoint}`, () => {
+    http.get<never, never, Item[]>(`${baseApiUrl}${endPoint}`, async () => {
+        await delay();
         return HttpResponse.json(mockItemDB.getAll());
     }),
     http.post<never, CreateItemData>(`${baseApiUrl}${endPoint}`, async ({ request }) => {
+        await delay();
+
         const data = plainToInstance(CreateItemData, await request.json());
         const url = request.url;
 
@@ -20,7 +23,9 @@ export const itemHandlers = [
         if (error) return sendExceptionResponse(error);
         return HttpResponse.json(result, { headers: { Location: `${url}/${result.id}` } });
     }),
-    http.get<never, never>(`${baseApiUrl}${endPoint}/query`, ({ request }) => {
+    http.get<never, never>(`${baseApiUrl}${endPoint}/query`, async ({ request }) => {
+        await delay();
+
         const url = new URL(request.url);
         const result = mockItemDB.query(url.searchParams);
 
@@ -33,7 +38,9 @@ export const itemHandlers = [
     }),
     // Need to have this handler at the bottom of the list, otherwise all path params after the `/items/` part will be
     // considered to be an ID of an Item.
-    http.get<{ itemId: string }, never>(`${baseApiUrl}${endPoint}/:itemId`, ({ params }) => {
+    http.get<{ itemId: string }, never>(`${baseApiUrl}${endPoint}/:itemId`, async ({ params }) => {
+        await delay();
+
         const { itemId } = params;
         const result = mockItemDB.getById(itemId);
 
@@ -41,6 +48,8 @@ export const itemHandlers = [
         return HttpResponse.json(result);
     }),
     http.put<{ itemId: string }, Item>(`${baseApiUrl}${endPoint}/:itemId`, async ({ params, request }) => {
+        await delay();
+
         const { itemId } = params;
         const data = plainToInstance(Item, await request.json());
 
@@ -55,6 +64,8 @@ export const itemHandlers = [
         return HttpResponse.json(result);
     }),
     http.delete<{ itemId: string }>(`${baseApiUrl}${endPoint}/:itemId`, async ({ params }) => {
+        await delay();
+
         const { itemId } = params;
         const { error } = await tryCatch(() => mockItemDB.remove(itemId));
 
