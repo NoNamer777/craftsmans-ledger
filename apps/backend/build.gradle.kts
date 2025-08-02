@@ -37,5 +37,9 @@ dependencies {
 }
 
 tasks.named<JavaExec>("run") {
-    systemProperties["ktor.environment"] = env.fetch("MODE", "prod")
+    systemProperties["ktor.environment"] = env.fetch("KTO_ENV", "production")
+}
+
+tasks.clean {
+    delete("src/main/assets/*.csv")
 }
