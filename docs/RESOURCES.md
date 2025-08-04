@@ -9,11 +9,6 @@ title: ERD
 ---
 
 erDiagram
-    "Item"
-    "Recipe"
-    "Structure"
-    "Technology_Tree"
-    
     "Item" {
         string id           PK
         string name
@@ -27,67 +22,29 @@ erDiagram
         int max_points
     }
     
-    "Structure" {
-        string id       PK
-        string name
-    }
-    
     "Recipe" {
         string id               PK
-        string quantity
         double crafting_time
         int technology_points
 
-        string technology_tree  FK
+        string technology_tree_id  FK
     }
     
-    "Recipe_Structure" {
-        string recipe_id        PK
-        string structure_id     PK
+    "Recipe_Resource" {
+        string item_id      PK,FK
+        string recipe_id    PK,FK
+        int quantity
     }
     
-    "Recipe_Item" {
-        string item_id      PK
-        string recipe_id    PK
-        string quantity
+    "Recipe_Output" {
+        string item_id      PK,FK
+        string recipe_id    PK,FK
+        int quantity
     }
     
-    "Realm" {
-        string id           PK
-        string name
-        string location_id  FK
-    }
-    
-    "Location" {
-        string id   PK
-        string name
-    }
-    
-    "Villager" {
-        string id               PK
-        string name
-        string vendor_type_id   FK
-        string location_id      FK
-    }
-    
-    "Vendor_Type" {
-        string id   PK
-        string name
-    }
-    
-    "Vendor_Item" {
-        string vendor_type_id   PK
-        string item_id          PK
-    }
-
-    "Recipe_Item" o{--|| "Item" : "Required by"
-    "Recipe_Item" |{--|| "Recipe" : Requires
-    "Recipe_Structure" o{--|| "Structure" : "Creates"
-    "Recipe_Structure" o{--|| "Recipe" : "Created at"
-    "Recipe" ||--|{ "Technology_Tree" : Requires
-    "Location" |{--|| "Realm" : "Resides in"
-    "Villager" |{--o| "Location" : "Lives at"
-    "Villager" o|--|| "Vendor_Type" : "Is type of Vendor"
-    "Vendor_Type" |{--|{ "Vendor_Item" : "Sells"
-    "Vendor_Item" ||--o{ "Item" : "Sold by"
+    "Recipe_Resource" o{--|| "Item" : "Required by"
+    "Recipe_Resource" |{--|| "Recipe" : "Requires"
+    "Recipe_Output" o{--|| "Item" : "Required by"
+    "Recipe_Output" |{--|| "Recipe" : "Requires"
+    "Recipe" ||--|{ "Technology_Tree" : "Requires"
 ```
