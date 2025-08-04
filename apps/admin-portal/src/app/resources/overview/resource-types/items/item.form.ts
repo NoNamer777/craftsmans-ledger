@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Item, ItemBuilder, ItemsService, Resource } from '@craftsmans-ledger/shared-ui';
-import { debounceTime, Observable, of, tap } from 'rxjs';
+import { Item, ItemBuilder, ItemsService } from '@craftsmans-ledger/shared-ui';
+import { debounceTime, of, tap } from 'rxjs';
 import { TEMP_RESOURCE_ID } from '../../../models';
 import { ActionsService } from '../../actions.service';
 import { BaseResourceFormComponent } from '../base-resource-form.component';
@@ -16,9 +16,9 @@ import { TEMP_ITEM } from './models';
     imports: [ReactiveFormsModule],
 })
 export class ItemForm extends BaseResourceFormComponent {
-    protected readonly formBuilder = inject(FormBuilder);
-    protected readonly itemsService = inject(ItemsService);
+    private readonly formBuilder = inject(FormBuilder);
     private readonly actionsService = inject(ActionsService);
+    protected readonly itemsService = inject(ItemsService);
 
     protected override readonly form = this.formBuilder.group({
         name: this.formBuilder.control<string>(null, [Validators.required, Validators.minLength(2)]),
@@ -38,7 +38,7 @@ export class ItemForm extends BaseResourceFormComponent {
             .subscribe();
     }
 
-    protected override getResource(resourceId: string): Observable<Resource> {
+    protected override getResource(resourceId: string) {
         if (resourceId === TEMP_RESOURCE_ID) return of(TEMP_ITEM);
         this.isLoading.set(true);
         return this.itemsService.getById(resourceId);
@@ -57,6 +57,7 @@ export class ItemForm extends BaseResourceFormComponent {
     protected override onFormChange() {
         const formItem = this.createItemFromFormValue();
         this.resourceService.updatedResource.set(formItem);
+
         const hasChanged = !(this.resourceService.resource() as Item).compareTo(formItem);
 
         if (this.actionsService.canSave() === hasChanged) return;
