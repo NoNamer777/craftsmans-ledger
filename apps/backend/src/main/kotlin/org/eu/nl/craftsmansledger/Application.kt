@@ -50,14 +50,11 @@ fun ApplicationEngine.Configuration.envConfig() {
 }
 
 fun main() {
+    System.setProperty("io.ktor.development", (ktorEnv == "development").toString())
     embeddedServer(
         factory = Netty,
         environment = applicationEnvironment {
             log = LoggerFactory.getLogger("ktor.application")
-
-            config = MapApplicationConfig(
-                "ktor.development" to (ktorEnv == "development").toString()
-            )
         },
         configure = {
             envConfig()
