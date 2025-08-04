@@ -1,30 +1,68 @@
 package org.eu.nl.craftsmansledger.technologyTrees
 
 import io.viascom.nanoid.NanoId
+import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.sql.deleteWhere
+import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.statements.InsertStatement
+import org.jetbrains.exposed.sql.transactions.transaction
+import org.jetbrains.exposed.sql.update
+
+fun ResultRow.toTechnologyTree() = TechnologyTree(
+    this[TechnologyTreeTable.id],
+    this[TechnologyTreeTable.name],
+    this[TechnologyTreeTable.maxPoints],
+)
+
+fun InsertStatement<Number>.toTechnologyTree() = TechnologyTree(
+    this[TechnologyTreeTable.id],
+    this[TechnologyTreeTable.name],
+    this[TechnologyTreeTable.maxPoints],
+)
 
 class TechnologyTreesRepository {
-    private var technologyTrees = mutableListOf<TechnologyTree>()
+    fun findAll() = transaction {
+        TechnologyTreeTable.selectAll().map { it.toTechnologyTree() }.toList().sortedBy { it.name }
+    }
 
-    fun findAll() = this.technologyTrees.toList()
+    fun findOneById(technologyTreeId: String) = transaction {
+        TechnologyTreeTable.selectAll()
+            .where { TechnologyTreeTable.id eq technologyTreeId }
+            .map { it.toTechnologyTree() }
+            .singleOrNull()
+    }
 
-    fun findOneById(technologyTreeId: String) = this.technologyTrees.find { it.id == technologyTreeId }
+    fun findOneByName(name: String) = transaction {
+        TechnologyTreeTable.selectAll()
+            .where { TechnologyTreeTable.name eq name }
+            .map { it.toTechnologyTree() }
+            .singleOrNull()
+    }
 
-    fun findOneByName(name: String) = this.technologyTrees.find { it.name == name }
-
-    fun create(data: CreateTechnologyTreeData): TechnologyTree {
-        val technologyTree = TechnologyTree(NanoId.generate(), name = data.name, maxPoints = data.maxPoints)
-
-        this.technologyTrees.add(technologyTree)
-        return technologyTree
+    fun create(data: CreateTechnologyTreeData) = transaction {
+        TechnologyTreeTable
+            .insert {
+                it[id] = NanoId.generate()
+                it[name] = data.name
+                it[maxPoints] = data.maxPoints
+            }
+            .toTechnologyTree()
     }
 
     fun update(data: TechnologyTree): TechnologyTree {
-        this.technologyTrees = this.technologyTrees.map { it -> if (it.id == data.id) data else it }.toMutableList()
-        return data
+        transaction {
+            TechnologyTreeTable.update({ TechnologyTreeTable.id eq data.id }) {
+                it[name] = data.name
+                it[maxPoints] = data.maxPoints
+            }
+        }
+        return this.findOneById(data.id)!!
     }
 
     fun remove(technologyTreeId: String) {
-        this.technologyTrees = this.technologyTrees.filter { it.id == technologyTreeId }.toMutableList()
+        transaction { TechnologyTreeTable.deleteWhere { TechnologyTreeTable.id eq technologyTreeId } }
     }
 }
 
