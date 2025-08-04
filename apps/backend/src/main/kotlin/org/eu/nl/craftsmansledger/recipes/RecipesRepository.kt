@@ -5,6 +5,7 @@ import org.eu.nl.craftsmansledger.technologyTrees.TechnologyTree
 import org.eu.nl.craftsmansledger.technologyTrees.technologyTreesRepository
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.sql.deleteWhere
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.statements.InsertStatement
@@ -74,6 +75,10 @@ class RecipesRepository {
             }
         }
         return this.findOneById(data.id)!!
+    }
+
+    fun remove(recipeId: String) {
+        transaction { RecipeTable.deleteWhere { RecipeTable.id eq recipeId } }
     }
 }
 

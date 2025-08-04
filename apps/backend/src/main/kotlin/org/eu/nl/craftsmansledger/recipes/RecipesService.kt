@@ -89,6 +89,18 @@ class RecipesService {
         return recipesRepository.update(data)
     }
 
+    fun remove(recipeId: String) {
+        val byID = this.getById(recipeId)
+
+        if (byID == null) {
+            throw HttpException(
+                "Could not remove Recipe with ID \"$recipeId\". - Reason: Recipe was not found",
+                HttpStatusCode.NotFound
+            )
+        }
+        recipesRepository.remove(recipeId)
+    }
+
     private fun isOutputQuantityValid(outputQuantity: Int) = outputQuantity > 0
 
     private fun isCraftingTimeValid(craftingTime: Double) = craftingTime > 0.0
