@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, OnIni
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NotificationService, notifyError, Resource } from '@craftsmans-ledger/shared-ui';
 import { catchError, filter, Observable, of, switchMap, tap } from 'rxjs';
-import { SaveAction } from '../../models';
+import { SaveAction, TEMP_RESOURCE_ID } from '../../models';
 import { ActionsService } from '../actions.service';
 import { ResourceService } from '../resource.service';
 import { ResourceOption } from './components';
@@ -71,6 +71,16 @@ export abstract class BaseResourceOverviewComponent implements OnInit {
                 takeUntilDestroyed(this.destroyRef)
             )
             .subscribe();
+    }
+
+    protected onChangeSelectedResource() {
+        if (this.resourceService.resourceId() !== TEMP_RESOURCE_ID) return;
+        this.resourceOptions.update((options) => options.filter(({ value }) => value !== TEMP_RESOURCE_ID));
+    }
+
+    protected setResourceOptions(resources: Resource[]) {
+        this.resourceOptions.set(resources.map(({ id, name }) => ({ label: name, value: id })));
+        this.processing.set(false);
     }
 
     protected abstract getAllResources(): Observable<Resource[]>;

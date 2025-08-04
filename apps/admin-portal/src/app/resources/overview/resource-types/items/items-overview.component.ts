@@ -7,7 +7,6 @@ import {
     ItemsService,
     NotificationTypes,
     notifyError,
-    Resource,
     transform,
 } from '@craftsmans-ledger/shared-ui';
 import { catchError, filter, map, of, tap } from 'rxjs';
@@ -26,20 +25,9 @@ import { ItemForm } from './item.form';
 export class ItemsOverviewComponent extends BaseResourceOverviewComponent {
     private readonly itemsService = inject(ItemsService);
 
-    protected onChangeSelectedResource() {
-        if (this.resourceService.resourceId() !== TEMP_RESOURCE_ID) return;
-        this.resourceOptions.update((options) => options.filter(({ value }) => value !== TEMP_RESOURCE_ID));
-    }
-
     protected override getAllResources() {
         this.processing.set(true);
-
         return this.itemsService.getAll().pipe(tap((items) => this.setResourceOptions(items)));
-    }
-
-    private setResourceOptions(items: Resource[]) {
-        this.resourceOptions.set(items.map(({ id, name }) => ({ label: name, value: id })));
-        this.processing.set(false);
     }
 
     protected override onNewResource() {

@@ -2,6 +2,7 @@ export const ResourceTypes = {
     ITEMS: 'items',
     LOCATIONS: 'locations',
     REALMS: 'realms',
+    RECIPES: 'recipes',
     STRUCTURES: 'structures',
     TECHNOLOGY_TREES: 'technology-trees',
     VENDOR_TYPE: 'vendor-types',
@@ -24,8 +25,9 @@ export const resourceTypeOptions: ResourceTypeOption[] = [
     { disabled: false, label: 'Items', value: ResourceTypes.ITEMS },
     { disabled: true, label: 'Locations', value: ResourceTypes.LOCATIONS },
     { disabled: true, label: 'Realms', value: ResourceTypes.REALMS },
+    { disabled: false, label: 'Recipes', value: ResourceTypes.RECIPES },
     { disabled: true, label: 'Structures', value: ResourceTypes.STRUCTURES },
-    { disabled: true, label: 'Technology Trees', value: ResourceTypes.TECHNOLOGY_TREES },
+    { disabled: false, label: 'Technology Trees', value: ResourceTypes.TECHNOLOGY_TREES },
     { disabled: true, label: 'Vendor Types', value: ResourceTypes.VENDOR_TYPE },
     { disabled: true, label: 'Villagers', value: ResourceTypes.VILLAGERS },
 ] as const;
