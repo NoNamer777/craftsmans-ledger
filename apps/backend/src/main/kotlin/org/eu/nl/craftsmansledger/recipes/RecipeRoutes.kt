@@ -9,6 +9,7 @@ import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import io.ktor.server.routing.post
 import io.ktor.server.routing.route
+import org.eu.nl.craftsmansledger.core.HttpException
 
 fun Route.recipeRoutes() {
     route("/recipes") {
@@ -24,6 +25,21 @@ fun Route.recipeRoutes() {
 
             call.response.headers.append(HttpHeaders.Location, "$url/${recipe.id}")
             call.respond(HttpStatusCode.Created, recipe)
+        }
+
+        route("/{recipeId}") {
+            get {
+                val recipeIdParam = call.parameters["recipeId"]
+                val byId = recipesService.getById(recipeIdParam!!)
+
+                if (byId == null) {
+                    throw HttpException(
+                        "Recipe with ID \"$recipeIdParam\" was not found",
+                        HttpStatusCode.NotFound
+                    )
+                }
+                call.respond(byId)
+            }
         }
     }
 }

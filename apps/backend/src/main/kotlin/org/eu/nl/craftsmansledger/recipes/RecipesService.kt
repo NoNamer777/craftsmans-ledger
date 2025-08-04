@@ -10,6 +10,13 @@ class RecipesService {
         return recipes.toList()
     }
 
+    fun getById(recipeId: String): Recipe? {
+        val byId = recipesRepository.findOneById(recipeId)
+
+        if (byId == null) return null
+        return byId
+    }
+
     fun create(dto: CreateRecipeDto): Recipe {
         val technologyTree = technologyTreesService.getById(dto.technologyTreeId)
 

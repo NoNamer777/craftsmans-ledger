@@ -4,6 +4,7 @@ import io.viascom.nanoid.NanoId
 import org.eu.nl.craftsmansledger.technologyTrees.TechnologyTree
 import org.eu.nl.craftsmansledger.technologyTrees.technologyTreesRepository
 import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.statements.InsertStatement
@@ -44,6 +45,10 @@ fun InsertStatement<Number>.toRecipe(): Recipe {
 class RecipesRepository {
     fun findAll() = transaction {
         RecipeTable.selectAll().map { it.toRecipe() }.toList()
+    }
+
+    fun findOneById(recipeId: String) = transaction {
+        RecipeTable.selectAll().where { RecipeTable.id eq recipeId }.map { it.toRecipe() }.singleOrNull()
     }
 
     fun create(data: CreateRecipeData) = transaction {
