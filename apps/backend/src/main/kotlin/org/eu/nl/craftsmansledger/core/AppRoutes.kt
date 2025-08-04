@@ -30,13 +30,16 @@ fun Application.appRoutes() {
         })
     }
     install(CORS) {
+        allowMethod(HttpMethod.Options)
         allowMethod(HttpMethod.Get)
         allowMethod(HttpMethod.Post)
         allowMethod(HttpMethod.Put)
         allowMethod(HttpMethod.Delete)
-        allowOrigins { it -> if (allowedOrigins == "*") true else allowedOrigins.split(",").contains(it)  }
 
+        allowOrigins { origin -> if (allowedOrigins == "*") true else allowedOrigins.split(",").contains(origin)  }
 
+        allowHeader(HttpHeaders.Authorization)
+        allowHeader(HttpHeaders.ContentType)
     }
     install(StatusPages) {
         exception<Throwable> { call, cause ->
