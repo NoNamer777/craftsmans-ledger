@@ -9,8 +9,8 @@ import {
     NotificationService,
     NotificationTypes,
     notifyError,
+    transform,
 } from '@craftsmans-ledger/shared-ui';
-import { plainToInstance } from 'class-transformer';
 import { catchError, filter, map, of, switchMap, tap } from 'rxjs';
 import { SaveActions, TEMP_RESOURCE_ID } from '../../../models';
 import { ActionsService } from '../../actions.service';
@@ -93,7 +93,7 @@ export class ItemsOverviewComponent implements OnInit {
                 switchMap((action) => {
                     if (action === SaveActions.CREATE) {
                         return this.itemsService
-                            .create(plainToInstance(CreateItemData, this.resourceService.updatedResource()))
+                            .create(transform(CreateItemData, this.resourceService.updatedResource()))
                             .pipe(
                                 catchError((error: HttpErrorResponse) => {
                                     notifyError(error, this.notificationsService);
@@ -120,7 +120,7 @@ export class ItemsOverviewComponent implements OnInit {
                         tap(({ id }) => {
                             this.notificationsService.addNotification({
                                 type: NotificationTypes.SUCCESS,
-                                title: 'Item created',
+                                title: 'Item updated',
                                 message: `Item with ID "${id}" was successfully updated.`,
                             });
                         })

@@ -39,6 +39,7 @@ export default [
                                 'msw/browser',
                                 'nanoid',
                                 'papaparse',
+                                'reflect-metadata',
                                 'rxjs',
                             ],
                         },

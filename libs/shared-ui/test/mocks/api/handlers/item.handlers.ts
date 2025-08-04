@@ -1,13 +1,12 @@
-import { plainToInstance } from 'class-transformer';
-import { delay, http, HttpResponse } from 'msw';
-import { CreateItemData, Item, PaginatedResponse, tryCatch } from '../../../../src';
+import { delay, http, HttpHandler, HttpResponse } from 'msw';
+import { CreateItemData, Item, PaginatedResponse, serialize, tryCatch } from '../../../../src';
 import { mockItemDB } from '../../db';
 import { baseApiUrl } from '../api.models';
 import { sendBadRequestExceptionResponse, sendExceptionResponse, sendNotFoundExceptionResponse } from './expections';
 
 const endPoint = '/items';
 
-export const itemHandlers = [
+export const itemHandlers: HttpHandler[] = [
     http.get<never, never, Item[]>(`${baseApiUrl}${endPoint}`, async () => {
         await delay();
         return HttpResponse.json(mockItemDB.getAll());
@@ -15,7 +14,7 @@ export const itemHandlers = [
     http.post<never, CreateItemData>(`${baseApiUrl}${endPoint}`, async ({ request }) => {
         await delay();
 
-        const data = plainToInstance(CreateItemData, await request.json());
+        const data = serialize(CreateItemData, await request.json());
         const url = request.url;
 
         const { data: result, error } = await tryCatch(() => mockItemDB.create(data));
@@ -51,7 +50,7 @@ export const itemHandlers = [
         await delay();
 
         const { itemId } = params;
-        const data = plainToInstance(Item, await request.json());
+        const data = serialize(Item, await request.json());
 
         if (itemId !== data.id) {
             return sendBadRequestExceptionResponse(
