@@ -10,9 +10,6 @@ import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.serialization.json.Json
-import org.eu.nl.craftsmansledger.core.exceptions.BadRequestException
-import org.eu.nl.craftsmansledger.core.exceptions.InternalServerErrorException
-import org.eu.nl.craftsmansledger.core.exceptions.NotFoundException
 import org.eu.nl.craftsmansledger.items.itemRoutes
 import org.eu.nl.craftsmansledger.technologyTrees.technologyTreeRoutes
 
@@ -44,13 +41,12 @@ fun Application.appRoutes() {
     install(StatusPages) {
         exception<Throwable> { call, cause ->
             when (cause) {
-                is NotFoundException,
-                is BadRequestException -> {
-                    call.respond(HttpStatusCode.fromValue((cause as NotFoundException).status), cause)
+                is HttpException -> {
+                    call.respond(cause.httpStatusCode, cause)
                 }
                 else -> {
-                    val exception = InternalServerErrorException(cause.message ?: "An unexpected error occurred")
-                    call.respond(HttpStatusCode.fromValue(exception.status), exception)
+                    val exception = HttpException(cause.message ?: "An unexpected error occurred")
+                    call.respond(exception.httpStatusCode, exception)
                 }
             }
         }

@@ -11,8 +11,7 @@ import io.ktor.server.routing.get
 import io.ktor.server.routing.post
 import io.ktor.server.routing.put
 import io.ktor.server.routing.route
-import org.eu.nl.craftsmansledger.core.exceptions.BadRequestException
-import org.eu.nl.craftsmansledger.core.exceptions.NotFoundException
+import org.eu.nl.craftsmansledger.core.HttpException
 
 fun Route.technologyTreeRoutes() {
     route("/technology-trees") {
@@ -27,8 +26,7 @@ fun Route.technologyTreeRoutes() {
             val technologyTree = technologyTreesService.create(data)
 
             call.response.headers.append(HttpHeaders.Location, "$url/${technologyTree.id}")
-            call.response.status(HttpStatusCode.Created)
-            call.respond(technologyTree)
+            call.respond(HttpStatusCode.Created, technologyTree)
         }
 
         route("/{technologyTreeId}") {
@@ -37,7 +35,10 @@ fun Route.technologyTreeRoutes() {
                 val byId = technologyTreesService.getById(technologyTreeIdPathParam!!)
 
                 if (byId == null) {
-                    throw NotFoundException("Technology tree with ID \"$technologyTreeIdPathParam\" was not found")
+                    throw HttpException(
+                        "Technology tree with ID \"$technologyTreeIdPathParam\" was not found",
+                        HttpStatusCode.NotFound
+                    )
                 }
                 call.respond(byId)
             }
@@ -48,7 +49,10 @@ fun Route.technologyTreeRoutes() {
                 val data = call.receive<TechnologyTree>()
 
                 if (data.id != technologyTreeIdPathParam) {
-                    throw BadRequestException("It's not allowed to modify data of Technology Tree on path \"$url\" with data from Technology Tree with ID \"${data.id}\"")
+                    throw HttpException(
+                        "It's not allowed to modify data of Technology Tree on path \"$url\" with data from Technology Tree with ID \"${data.id}\"",
+                        HttpStatusCode.BadRequest
+                    )
                 }
                 call.respond(technologyTreesService.update(data))
             }
