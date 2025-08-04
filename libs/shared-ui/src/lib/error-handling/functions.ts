@@ -4,8 +4,8 @@ import { NotificationService, NotificationTypes } from '../notifications';
 export function notifyError(error: unknown, notificationService: NotificationService) {
     if (error instanceof HttpErrorResponse) {
         notificationService.addNotification({
-            title: `${error.error.error} (${error.error.status})`,
-            message: error.error.message,
+            title: `${error.error.error ?? error.statusText} (${error.status})`,
+            message: error.error.message ?? error.message,
             type: NotificationTypes.ERROR,
         });
     }
