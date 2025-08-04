@@ -126,8 +126,8 @@ To be able to work in this repository you'll need the following:
 
 To serve an application find the command to run below in the table along with the address on which the applications will be served:
 
-| Project      | Command                 | Address                                            |
-|--------------|-------------------------|----------------------------------------------------|
-| web-app      | npx nx run web-app      | https://localhost.www.craftsmans-ledger.net:7000   |
-| admin-portal | npx nx run admin-portal | https://localhost.admin.craftsmans-ledger.net:7100 |
-| backend      | npx nx run backend      | https://localhost.api.craftsmans-ledger.net:7200   |
+| Project      | Command                   | Address                                            |
+|--------------|---------------------------|----------------------------------------------------|
+| web-app      | npx nx serve web-app      | https://localhost.www.craftsmans-ledger.net:7000   |
+| admin-portal | npx nx serve admin-portal | https://localhost.admin.craftsmans-ledger.net:7100 |
+| backend      | npx nx run backend:run    | https://localhost.api.craftsmans-ledger.net:7200   |
