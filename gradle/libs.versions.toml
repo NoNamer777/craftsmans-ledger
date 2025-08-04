@@ -4,6 +4,8 @@ bouncy-castle-version = "1.81"
 dotenv-version = "4.0.0"
 exposed-version = "0.61.0"
 h2-version = "2.3.232"
+mysql-version = "9.4.0"
+mariadb-version = "3.3.1"
 kotlin-version = "2.2.0"
 ktor-version = "3.2.3"
 logback-version = "1.5.18"
@@ -27,6 +29,8 @@ ktor-server-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor-
 ktor-server-status-pages = { module = "io.ktor:ktor-server-status-pages", version.ref = "ktor-version" }
 ktor-server-test-host = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor-version" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-version" }
+mariadb-java-client = { module = "org.mariadb.jdbc:mariadb-java-client", version.ref = "mariadb-version" }
+mysql-connector-java = { module = "com.mysql:mysql-connector-j", version.ref = "mysql-version" }
 nanoid = { module = "io.viascom.nanoid:nanoid", version.ref = "nanoid-version" }
 
 [plugins]
