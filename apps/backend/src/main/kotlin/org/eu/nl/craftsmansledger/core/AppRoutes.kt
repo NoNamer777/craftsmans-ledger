@@ -11,6 +11,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.serialization.json.Json
 import org.eu.nl.craftsmansledger.items.itemRoutes
+import org.eu.nl.craftsmansledger.recipes.recipeRoutes
 import org.eu.nl.craftsmansledger.technologyTrees.technologyTreeRoutes
 
 fun Application.appRoutes() {
@@ -61,5 +62,6 @@ fun Application.appRoutes() {
 
         technologyTreeRoutes()
         itemRoutes()
+        recipeRoutes()
     }
 }
