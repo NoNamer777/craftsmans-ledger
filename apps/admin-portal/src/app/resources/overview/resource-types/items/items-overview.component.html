@@ -1,6 +1,6 @@
 <aside class="col-2">
     <cml-resources-list
-        [resourceOptions]="itemOptions()"
+        [resourceOptions]="resourceOptions()"
         [processing]="processing()"
         (selectedResourceChange)="onChangeSelectedResource()"
     />
@@ -8,7 +8,7 @@
 <hr class="mx-4" />
 
 <div class="col-8">
-    @if (hasItemSelected()) {
+    @if (hasResourceSelected()) {
         <cml-item-form />
     } @else {
         <p>Please select an Item on the left.</p>

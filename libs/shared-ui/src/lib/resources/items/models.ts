@@ -1,4 +1,4 @@
-import { QueryParams } from '@craftsmans-ledger/shared-ui';
+import { DEFAULT_SORT_ORDER, QueryParams, SortOrder } from '@craftsmans-ledger/shared-ui';
 import { Expose } from 'class-transformer';
 import { nanoid } from 'nanoid';
 import { Resource } from '../models';
@@ -82,15 +82,6 @@ export const SortableItemAttributes = {
 } as const;
 
 export type SortableItemAttribute = (typeof SortableItemAttributes)[keyof typeof SortableItemAttributes];
-
-export const SortOrders = {
-    ASCENDING: 'ASC',
-    DESCENDING: 'DESC',
-} as const;
-
-export type SortOrder = (typeof SortOrders)[keyof typeof SortOrders];
-
-export const DEFAULT_SORT_ORDER = SortOrders.ASCENDING;
 
 export const DEFAULT_ITEM_SORTING_ATTRIBUTE = SortableItemAttributes.NAME;
 

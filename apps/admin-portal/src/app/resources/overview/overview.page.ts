@@ -6,6 +6,7 @@ import { from } from 'rxjs';
 import { ResourceType, resourceTypeAttribute } from '../models';
 import { ActionButtonsComponent } from './action-buttons';
 import { resourceTypeComponents } from './resource-types';
+import { ResourceService } from './resource.service';
 import { ResourceTypeListComponent } from './type-list';
 
 @Component({
@@ -18,6 +19,7 @@ import { ResourceTypeListComponent } from './type-list';
 export class ResourcesOverviewPage implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
     private readonly router = inject(Router);
+    private readonly resourceService = inject(ResourceService);
 
     protected readonly resourceType = signal<ResourceType>(null);
 
@@ -30,6 +32,8 @@ export class ResourcesOverviewPage implements OnInit {
 
     protected onResourceTypeChange(resourceType: ResourceType) {
         this.resourceType.set(resourceType);
+        this.resourceService.resource.set(null);
+        this.resourceService.resourceId.set(null);
 
         from(this.router.navigateByUrl(`/resources/${resourceType}`))
             .pipe(takeUntilDestroyed(this.destroyRef))

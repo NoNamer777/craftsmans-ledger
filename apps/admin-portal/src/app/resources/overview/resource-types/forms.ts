@@ -2,6 +2,7 @@ import { ResourceTypes } from '../../models';
 import { ItemsOverviewComponent } from './items';
 import { LocationsOverviewComponent } from './locations';
 import { RealmsOverviewComponent } from './realms';
+import { RecipesOverviewComponent } from './recipes';
 import { StructuresOverviewComponent } from './structures';
 import { TechnologyTreeOverviewComponent } from './technology-trees';
 import { VendorTypesOverviewComponent } from './vendor-types';
@@ -11,6 +12,7 @@ export const resourceTypeComponents = {
     [ResourceTypes.ITEMS]: ItemsOverviewComponent,
     [ResourceTypes.LOCATIONS]: LocationsOverviewComponent,
     [ResourceTypes.REALMS]: RealmsOverviewComponent,
+    [ResourceTypes.RECIPES]: RecipesOverviewComponent,
     [ResourceTypes.STRUCTURES]: StructuresOverviewComponent,
     [ResourceTypes.TECHNOLOGY_TREES]: TechnologyTreeOverviewComponent,
     [ResourceTypes.VENDOR_TYPE]: VendorTypesOverviewComponent,

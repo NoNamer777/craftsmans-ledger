@@ -1,29 +1,28 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Item, ItemBuilder, ItemsService } from '@craftsmans-ledger/shared-ui';
+import { TechnologyTree, TechnologyTreeBuilder, TechnologyTreesService } from '@craftsmans-ledger/shared-ui';
 import { debounceTime, of, tap } from 'rxjs';
 import { TEMP_RESOURCE_ID } from '../../../models';
 import { ActionsService } from '../../actions.service';
 import { BaseResourceFormComponent } from '../base-resource-form.component';
-import { TEMP_ITEM } from './models';
+import { TEMP_ITEM } from '../items/models';
 
 @Component({
-    selector: 'cml-item-form',
-    templateUrl: './item.form.html',
-    styleUrl: './item.form.scss',
+    selector: 'cml-technology-tree-form',
+    templateUrl: './technology-tree.form.html',
+    styleUrl: './technology-tree.form.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [ReactiveFormsModule],
 })
-export class ItemForm extends BaseResourceFormComponent {
+export class TechnologyTreeForm extends BaseResourceFormComponent {
     private readonly formBuilder = inject(FormBuilder);
     private readonly actionsService = inject(ActionsService);
-    protected readonly itemsService = inject(ItemsService);
+    protected readonly technologyTreesService = inject(TechnologyTreesService);
 
     protected override readonly form = this.formBuilder.group({
-        name: this.formBuilder.control<string>(null, [Validators.required, Validators.minLength(2)]),
-        weight: this.formBuilder.control<number>(null, [Validators.required, Validators.min(0)]),
-        baseValue: this.formBuilder.control<number>(null, [Validators.required, Validators.min(0)]),
+        name: this.formBuilder.control<string>('', [Validators.required, Validators.minLength(2)]),
+        maxPoints: this.formBuilder.control<number>(0, [Validators.required, Validators.min(0)]),
     });
 
     constructor() {
@@ -41,30 +40,29 @@ export class ItemForm extends BaseResourceFormComponent {
     protected override getResource(resourceId: string) {
         if (resourceId === TEMP_RESOURCE_ID) return of(TEMP_ITEM);
         this.isLoading.set(true);
-        return this.itemsService.getById(resourceId);
+        return this.technologyTreesService.getById(resourceId);
     }
 
     protected override populateForm() {
-        const { name, weight, baseValue } = this.resourceService.resource() as Item;
+        const { name, maxPoints } = this.resourceService.resource() as TechnologyTree;
 
         this.form.reset({
             name: name,
-            weight: weight,
-            baseValue: baseValue,
+            maxPoints: maxPoints,
         });
     }
 
     protected override onFormChange() {
-        const formItem = this.createItemFromFormValue();
-        this.resourceService.updatedResource.set(formItem);
+        const formTechnologyTree = this.createTechnologyTreeFromFormValue();
+        this.resourceService.updatedResource.set(formTechnologyTree);
 
-        const hasChanged = !(this.resourceService.resource() as Item).compareTo(formItem);
+        const hasChanged = !(this.resourceService.resource() as TechnologyTree).compareTo(formTechnologyTree);
 
         if (this.actionsService.canSave() === hasChanged) return;
         this.actionsService.canSave.set(hasChanged);
     }
 
-    private createItemFromFormValue() {
-        return new ItemBuilder(this.form.value).withId(this.resourceService.resourceId()).build();
+    private createTechnologyTreeFromFormValue() {
+        return new TechnologyTreeBuilder(this.form.value).withId(this.resourceService.resourceId()).build();
     }
 }

@@ -1,0 +1,16 @@
+<form [formGroup]="form" class="col-8">
+    @if (isLoading()) {
+        <div class="d-flex align-items-center justify-content-center">
+            <span class="d-block spinner-border"></span>
+        </div>
+    } @else {
+        <div class="mb-3">
+            <label for="name-input">Name</label>
+            <input type="text" class="form-control" id="name-input" formControlName="name" />
+        </div>
+        <div class="mb-3">
+            <label for="max-points-input">Max points</label>
+            <input type="number" class="form-control" id="max-points-input" formControlName="maxPoints" />
+        </div>
+    }
+</form>
