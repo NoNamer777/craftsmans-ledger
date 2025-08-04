@@ -11,8 +11,8 @@ import io.ktor.server.routing.get
 import io.ktor.server.routing.post
 import io.ktor.server.routing.put
 import io.ktor.server.routing.route
-import org.eu.nl.craftsmansledger.core.BadRequestException
-import org.eu.nl.craftsmansledger.core.NotFoundException
+import org.eu.nl.craftsmansledger.core.exceptions.BadRequestException
+import org.eu.nl.craftsmansledger.core.exceptions.NotFoundException
 
 fun Route.itemRoutes() {
     route("/items") {

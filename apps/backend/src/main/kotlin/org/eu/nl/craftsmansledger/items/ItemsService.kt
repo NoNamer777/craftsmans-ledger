@@ -1,7 +1,7 @@
 package org.eu.nl.craftsmansledger.items
 
-import org.eu.nl.craftsmansledger.core.BadRequestException
-import org.eu.nl.craftsmansledger.core.NotFoundException
+import org.eu.nl.craftsmansledger.core.exceptions.BadRequestException
+import org.eu.nl.craftsmansledger.core.exceptions.NotFoundException
 
 class ItemsService {
     fun getAll() = itemsRepository.findAll()
