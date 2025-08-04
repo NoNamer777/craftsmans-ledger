@@ -3,6 +3,5 @@
     "name": "@craftsmans-ledger/backend",
     "projectType": "application",
     "sourceRoot": "apps/backend/src/main",
-    "tags": ["scope:api", "framework:ktor"],
-    "targets": {}
+    "tags": ["scope:api", "framework:ktor"]
 }
