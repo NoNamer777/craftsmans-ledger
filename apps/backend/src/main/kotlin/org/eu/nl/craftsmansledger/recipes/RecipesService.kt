@@ -26,14 +26,8 @@ class RecipesService {
                 HttpStatusCode.NotFound
             )
         }
-        val data = CreateRecipeData(dto.outputQuantity, dto.craftingTime, technologyTree, dto.technologyPoints)
+        val data = CreateRecipeData(dto.craftingTime, technologyTree, dto.technologyPoints)
 
-        if (!this.isOutputQuantityValid(data.outputQuantity)) {
-            throw HttpException(
-                "Could not create Recipe. - Reason: Output quantity should be a valid whole number higher than zero",
-                HttpStatusCode.BadRequest
-            )
-        }
         if (!this.isCraftingTimeValid(data.craftingTime)) {
             throw HttpException(
                 "Could not create Recipe. - Reason: Crafting time should be a valid number higher than zero",
@@ -66,14 +60,8 @@ class RecipesService {
                 HttpStatusCode.NotFound
             )
         }
-        val data = Recipe(dto.id, dto.outputQuantity, dto.craftingTime, technologyTree, dto.technologyPoints)
+        val data = Recipe(dto.id, dto.craftingTime, technologyTree, dto.technologyPoints)
 
-        if (!this.isOutputQuantityValid(data.outputQuantity)) {
-            throw HttpException(
-                "Could not update Recipe with ID \"${dto.id}\". - Reason: Output quantity should be a valid whole number higher than zero",
-                HttpStatusCode.BadRequest
-            )
-        }
         if (!this.isCraftingTimeValid(data.craftingTime)) {
             throw HttpException(
                 "Could not update Recipe with ID \"${dto.id}\". - Reason: Crafting time should be a valid number higher than zero",
@@ -100,8 +88,6 @@ class RecipesService {
         }
         recipesRepository.remove(recipeId)
     }
-
-    private fun isOutputQuantityValid(outputQuantity: Int) = outputQuantity > 0
 
     private fun isCraftingTimeValid(craftingTime: Double) = craftingTime > 0.0
 
