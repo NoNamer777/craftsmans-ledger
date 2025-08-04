@@ -9,6 +9,7 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.statements.InsertStatement
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.jetbrains.exposed.sql.update
 
 fun ResultRow.toRecipe(): Recipe {
     val technologyTreeId = this[RecipeTable.technologyTreeId]
@@ -61,6 +62,18 @@ class RecipesRepository {
                 it[technologyPoints] = data.technologyPoints
             }
             .toRecipe()
+    }
+
+    fun update(data: Recipe): Recipe {
+        transaction {
+            RecipeTable.update({ RecipeTable.id eq data.id }) {
+                it[outputQuantity] = data.outputQuantity
+                it[craftingTime] = data.craftingTime
+                it[technologyTreeId] = data.technologyTree.id
+                it[technologyPoints] = data.technologyPoints
+            }
+        }
+        return this.findOneById(data.id)!!
     }
 }
 
