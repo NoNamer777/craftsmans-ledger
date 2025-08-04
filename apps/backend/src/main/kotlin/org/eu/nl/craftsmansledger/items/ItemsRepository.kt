@@ -25,7 +25,7 @@ fun InsertStatement<Number>.toItem() = Item(
 )
 
 class ItemsRepository {
-    fun findAll() = transaction { ItemTable.selectAll().map { it.toItem() }.toList() }
+    fun findAll() = transaction { ItemTable.selectAll().map { it.toItem() }.toList().sortedBy { it.name } }
 
     fun findAllByName(name: String) = transaction {
         ItemTable.selectAll().where { ItemTable.name like name }.map { it.toItem() }.toList()
@@ -46,7 +46,8 @@ class ItemsRepository {
                 it[name] = data.name
                 it[weight] = data.weight
                 it[baseValue] = data.baseValue
-            }.toItem()
+            }
+            .toItem()
     }
 
     fun update(data: Item): Item {
