@@ -1,7 +1,7 @@
 package org.eu.nl.craftsmansledger.items
 
-import org.eu.nl.craftsmansledger.core.BadRequestException
-import org.eu.nl.craftsmansledger.core.NotFoundException
+import org.eu.nl.craftsmansledger.core.exceptions.BadRequestException
+import org.eu.nl.craftsmansledger.core.exceptions.NotFoundException
 
 class ItemsService {
     fun getAll() = itemsRepository.findAll()
@@ -14,10 +14,10 @@ class ItemsService {
         if (this.isNameTaken(data.name)) {
             throw BadRequestException("Could not create Item. - Reason: Name \"${data.name}\" is not available")
         }
-        if (this.isWeightValid(data.weight)) {
+        if (!this.isWeightValid(data.weight)) {
             throw BadRequestException("Could not create Item. - Reason: Weight must be higher than or equal to zero")
         }
-        if (this.isBaseValueValid(data.baseValue)) {
+        if (!this.isBaseValueValid(data.baseValue)) {
             throw BadRequestException("Could not create Item. - Reason: BaseValue must be higher than or equal to zero")
 
         }
@@ -33,10 +33,10 @@ class ItemsService {
         if (this.isNameTaken(data.name, data.id)) {
             throw BadRequestException("Could not Update Item with ID \"${data.id}\". - Reason: Name \"${data.name}\" is not available")
         }
-        if (this.isWeightValid(data.weight)) {
+        if (!this.isWeightValid(data.weight)) {
             throw BadRequestException("Could not Update Item with ID \"${data.id}\". - Reason: Weight must be higher than or equal to zero")
         }
-        if (this.isBaseValueValid(data.baseValue)) {
+        if (!this.isBaseValueValid(data.baseValue)) {
             throw BadRequestException("Could not Update Item with ID \"${data.id}\". - Reason: BaseValue must be higher than or equal to zero")
         }
         return itemsRepository.update(data)

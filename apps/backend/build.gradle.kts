@@ -32,6 +32,8 @@ dependencies {
     implementation(libs.ktor.server.netty)
     implementation(libs.ktor.server.status.pages)
     implementation(libs.logback.classic)
+    implementation(libs.mariadb.java.client)
+    implementation(libs.mysql.connector.java)
     implementation(libs.nanoid)
 
     testImplementation(libs.kotlin.test.junit)
@@ -47,10 +49,6 @@ tasks.register<Copy>("copyCsvToResources") {
 
 tasks.processResources {
     dependsOn(tasks.named("copyCsvToResources"))
-}
-
-tasks.named<JavaExec>("run") {
-    systemProperties["ktor.environment"] = env.fetch("KTO_ENV", "production")
 }
 
 tasks.clean {

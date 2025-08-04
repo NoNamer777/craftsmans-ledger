@@ -10,6 +10,9 @@ import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.serialization.json.Json
+import org.eu.nl.craftsmansledger.core.exceptions.BadRequestException
+import org.eu.nl.craftsmansledger.core.exceptions.InternalServerErrorException
+import org.eu.nl.craftsmansledger.core.exceptions.NotFoundException
 import org.eu.nl.craftsmansledger.items.itemRoutes
 import org.eu.nl.craftsmansledger.technologyTrees.technologyTreeRoutes
 
@@ -27,28 +30,34 @@ fun Application.appRoutes() {
         })
     }
     install(CORS) {
+        allowMethod(HttpMethod.Options)
         allowMethod(HttpMethod.Get)
         allowMethod(HttpMethod.Post)
         allowMethod(HttpMethod.Put)
         allowMethod(HttpMethod.Delete)
-        allowOrigins { it -> if (allowedOrigins == "*") true else allowedOrigins.split(",").contains(it)  }
+
+        allowOrigins { origin -> if (allowedOrigins == "*") true else allowedOrigins.split(",").contains(origin)  }
+
+        allowHeader(HttpHeaders.Authorization)
+        allowHeader(HttpHeaders.ContentType)
+    }
+    install(StatusPages) {
+        exception<Throwable> { call, cause ->
+            when (cause) {
+                is NotFoundException,
+                is BadRequestException -> {
+                    call.respond(HttpStatusCode.fromValue((cause as NotFoundException).status), cause)
+                }
+                else -> {
+                    val exception = InternalServerErrorException(cause.message ?: "An unexpected error occurred")
+                    call.respond(HttpStatusCode.fromValue(exception.status), exception)
+                }
+            }
+        }
     }
 
     routing {
         staticResources("/assets", "assets")
-
-        install(StatusPages) {
-            exception<Throwable> { call, cause ->
-                val exception = InternalServerErrorException(cause.message ?: "An unexpected error occurred")
-
-                call.response.status(HttpStatusCode.fromValue(exception.status))
-                call.respond(exception)
-            }
-            exception<HttpException> { call, cause ->
-                call.response.status(HttpStatusCode.fromValue(cause.status))
-                call.respond(cause)
-            }
-        }
 
         get("/") {
             call.respondText("Hello World!")
