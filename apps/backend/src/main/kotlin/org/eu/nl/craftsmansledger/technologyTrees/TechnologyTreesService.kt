@@ -1,7 +1,7 @@
 package org.eu.nl.craftsmansledger.technologyTrees
 
-import org.eu.nl.craftsmansledger.core.exceptions.BadRequestException
-import org.eu.nl.craftsmansledger.core.exceptions.NotFoundException
+import io.ktor.http.HttpStatusCode
+import org.eu.nl.craftsmansledger.core.HttpException
 
 class TechnologyTreesService {
     fun getAll() = technologyTreesRepository.findAll()
@@ -10,10 +10,16 @@ class TechnologyTreesService {
 
     fun create(data: CreateTechnologyTreeData): TechnologyTree {
         if (this.isNameTaken(data.name)) {
-            throw BadRequestException("Could not create Technology Tree. - Reason: Name \"${data.name}\" is not available")
+            throw HttpException(
+                "Could not create Technology Tree. - Reason: Name \"${data.name}\" is not available",
+                HttpStatusCode.BadRequest
+            )
         }
         if (this.isMaxPointsValid(data.maxPoints)) {
-            throw BadRequestException("Could not create Technology Tree. - Reason: Maximum points must be higher than zero")
+            throw HttpException(
+                "Could not create Technology Tree. - Reason: Maximum points must be higher than zero",
+                HttpStatusCode.BadRequest
+            )
         }
         return technologyTreesRepository.create(data)
     }
@@ -22,13 +28,22 @@ class TechnologyTreesService {
         val byId = this.getById(data.id)
 
         if (byId == null) {
-            throw NotFoundException("Could not update Technology Tree with ID \"${data.id}\". - Reason: Technology tree was not found")
+            throw HttpException(
+                "Could not update Technology Tree with ID \"${data.id}\". - Reason: Technology tree was not found",
+                HttpStatusCode.NotFound
+            )
         }
         if (this.isNameTaken(data.name)) {
-            throw BadRequestException("Could not update Technology Tree with ID \"${data.id}\". - Reason: Name \"${data.name}\" is not available")
+            throw HttpException(
+                "Could not update Technology Tree with ID \"${data.id}\". - Reason: Name \"${data.name}\" is not available",
+                HttpStatusCode.BadRequest
+            )
         }
         if (this.isMaxPointsValid(data.maxPoints)) {
-            throw BadRequestException("Could not update Technology Tree with ID \"${data.id}\". - Reason: Maximum points must be higher than zero")
+            throw HttpException(
+                "Could not update Technology Tree with ID \"${data.id}\". - Reason: Maximum points must be higher than zero",
+                HttpStatusCode.BadRequest
+            )
         }
         return technologyTreesRepository.update(data)
     }
@@ -37,7 +52,10 @@ class TechnologyTreesService {
         val byId = this.getById(technologyTreeId)
 
         if (byId == null) {
-            throw NotFoundException("Could not remove Technology Tree with ID \"$technologyTreeId\". - Reason: Technology tree was not found")
+            throw HttpException(
+                "Could not remove Technology Tree with ID \"$technologyTreeId\". - Reason: Technology tree was not found",
+                HttpStatusCode.NotFound
+            )
         }
         technologyTreesRepository.remove(technologyTreeId)
     }

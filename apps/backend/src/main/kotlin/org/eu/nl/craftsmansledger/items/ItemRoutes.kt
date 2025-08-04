@@ -11,8 +11,7 @@ import io.ktor.server.routing.get
 import io.ktor.server.routing.post
 import io.ktor.server.routing.put
 import io.ktor.server.routing.route
-import org.eu.nl.craftsmansledger.core.exceptions.BadRequestException
-import org.eu.nl.craftsmansledger.core.exceptions.NotFoundException
+import org.eu.nl.craftsmansledger.core.HttpException
 
 fun Route.itemRoutes() {
     route("/items") {
@@ -24,7 +23,7 @@ fun Route.itemRoutes() {
             val nameQuery = call.request.queryParameters["nameQuery"]
 
             if (nameQuery == null) {
-                throw BadRequestException("Query parameter \"nameQuery\" is required")
+                throw HttpException("Query parameter \"nameQuery\" is required", HttpStatusCode.BadRequest)
             }
             call.respond(itemsService.query(nameQuery))
         }
@@ -36,8 +35,7 @@ fun Route.itemRoutes() {
             val item = itemsService.create(data)
 
             call.response.headers.append(HttpHeaders.Location, "$url/${item.id}")
-            call.response.status(HttpStatusCode.Created)
-            call.respond(item)
+            call.respond(HttpStatusCode.Created, item)
         }
 
         route("/{itemId}") {
@@ -46,7 +44,10 @@ fun Route.itemRoutes() {
                 val byId = itemsService.getById(itemId = itemIdPathParam!!)
 
                 if (byId == null) {
-                    throw NotFoundException("Item with ID \"$itemIdPathParam\" was not found")
+                    throw HttpException(
+                        "Item with ID \"$itemIdPathParam\" was not found",
+                        HttpStatusCode.NotFound
+                    )
                 }
                 call.respond(byId)
             }
@@ -57,7 +58,10 @@ fun Route.itemRoutes() {
                 val data = call.receive<Item>()
 
                 if (data.id != itemIdPathParam!!) {
-                    throw BadRequestException("It's not allowed to modify data of Item on path \"$url\" with data from Item with ID \"${data.id}\"")
+                    throw HttpException(
+                        "It's not allowed to modify data of Item on path \"$url\" with data from Item with ID \"${data.id}\"",
+                        HttpStatusCode.BadRequest
+                    )
                 }
                 call.respond(itemsService.update(data))
             }

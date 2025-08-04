@@ -1,7 +1,7 @@
 package org.eu.nl.craftsmansledger.items
 
-import org.eu.nl.craftsmansledger.core.exceptions.BadRequestException
-import org.eu.nl.craftsmansledger.core.exceptions.NotFoundException
+import io.ktor.http.HttpStatusCode
+import org.eu.nl.craftsmansledger.core.HttpException
 
 class ItemsService {
     fun getAll() = itemsRepository.findAll()
@@ -12,13 +12,22 @@ class ItemsService {
 
     fun create(data: CreateItemData): Item {
         if (this.isNameTaken(data.name)) {
-            throw BadRequestException("Could not create Item. - Reason: Name \"${data.name}\" is not available")
+            throw HttpException(
+                "Could not create Item. - Reason: Name \"${data.name}\" is not available",
+                HttpStatusCode.BadRequest
+            )
         }
         if (!this.isWeightValid(data.weight)) {
-            throw BadRequestException("Could not create Item. - Reason: Weight must be higher than or equal to zero")
+            throw HttpException(
+                "Could not create Item. - Reason: Weight must be higher than or equal to zero",
+                HttpStatusCode.BadRequest
+            )
         }
         if (!this.isBaseValueValid(data.baseValue)) {
-            throw BadRequestException("Could not create Item. - Reason: BaseValue must be higher than or equal to zero")
+            throw HttpException(
+                "Could not create Item. - Reason: BaseValue must be higher than or equal to zero",
+                HttpStatusCode.BadRequest
+            )
 
         }
         return itemsRepository.create(data)
@@ -28,16 +37,28 @@ class ItemsService {
         val byId = this.getById(data.id)
 
         if (byId == null) {
-            throw NotFoundException("Could not Update Item with ID \"${data.id}\". - Reason: Item was not found")
+            throw HttpException(
+                "Could not Update Item with ID \"${data.id}\". - Reason: Item was not found",
+                HttpStatusCode.NotFound
+            )
         }
         if (this.isNameTaken(data.name, data.id)) {
-            throw BadRequestException("Could not Update Item with ID \"${data.id}\". - Reason: Name \"${data.name}\" is not available")
+            throw HttpException(
+                "Could not Update Item with ID \"${data.id}\". - Reason: Name \"${data.name}\" is not available",
+                HttpStatusCode.BadRequest
+            )
         }
         if (!this.isWeightValid(data.weight)) {
-            throw BadRequestException("Could not Update Item with ID \"${data.id}\". - Reason: Weight must be higher than or equal to zero")
+            throw HttpException(
+                "Could not Update Item with ID \"${data.id}\". - Reason: Weight must be higher than or equal to zero",
+                HttpStatusCode.BadRequest
+            )
         }
         if (!this.isBaseValueValid(data.baseValue)) {
-            throw BadRequestException("Could not Update Item with ID \"${data.id}\". - Reason: BaseValue must be higher than or equal to zero")
+            throw HttpException(
+                "Could not Update Item with ID \"${data.id}\". - Reason: BaseValue must be higher than or equal to zero",
+                HttpStatusCode.BadRequest
+            )
         }
         return itemsRepository.update(data)
     }
@@ -46,7 +67,10 @@ class ItemsService {
         val byId = this.getById(itemId)
 
         if (byId == null) {
-            throw NotFoundException("Could not Remove Item with ID \"$itemId\". - Reason: Item was not found")
+            throw HttpException(
+                "Could not Remove Item with ID \"$itemId\". - Reason: Item was not found",
+                HttpStatusCode.NotFound
+            )
         }
         itemsRepository.remove(itemId)
     }
