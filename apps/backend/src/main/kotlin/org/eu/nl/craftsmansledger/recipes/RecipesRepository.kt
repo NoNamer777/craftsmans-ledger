@@ -21,7 +21,6 @@ fun ResultRow.toRecipe(): Recipe {
     }
     return Recipe(
         this[RecipeTable.id],
-        this[RecipeTable.outputQuantity],
         this[RecipeTable.craftingTime],
         technologyTree!!,
         this[RecipeTable.technologyPoints]
@@ -37,7 +36,6 @@ fun InsertStatement<Number>.toRecipe(): Recipe {
     }
     return Recipe(
         this[RecipeTable.id],
-        this[RecipeTable.outputQuantity],
         this[RecipeTable.craftingTime],
         technologyTree!!,
         this[RecipeTable.technologyPoints]
@@ -57,7 +55,6 @@ class RecipesRepository {
         RecipeTable
             .insert {
                 it[id] = NanoId.generate()
-                it[outputQuantity] = data.outputQuantity
                 it[craftingTime] = data.craftingTime
                 it[technologyTreeId] = data.technologyTree.id
                 it[technologyPoints] = data.technologyPoints
@@ -68,7 +65,6 @@ class RecipesRepository {
     fun update(data: Recipe): Recipe {
         transaction {
             RecipeTable.update({ RecipeTable.id eq data.id }) {
-                it[outputQuantity] = data.outputQuantity
                 it[craftingTime] = data.craftingTime
                 it[technologyTreeId] = data.technologyTree.id
                 it[technologyPoints] = data.technologyPoints
