@@ -28,14 +28,16 @@ class TechnologyTreesRepository {
     }
 
     fun findOneById(technologyTreeId: String) = transaction {
-        TechnologyTreeTable.selectAll()
+        TechnologyTreeTable
+            .selectAll()
             .where { TechnologyTreeTable.id eq technologyTreeId }
             .map { it.toTechnologyTree() }
             .singleOrNull()
     }
 
     fun findOneByName(name: String) = transaction {
-        TechnologyTreeTable.selectAll()
+        TechnologyTreeTable
+            .selectAll()
             .where { TechnologyTreeTable.name eq name }
             .map { it.toTechnologyTree() }
             .singleOrNull()
