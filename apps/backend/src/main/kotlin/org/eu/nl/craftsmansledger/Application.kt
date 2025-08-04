@@ -1,7 +1,6 @@
 package org.eu.nl.craftsmansledger
 
 import io.ktor.server.application.*
-import io.ktor.server.config.MapApplicationConfig
 import io.ktor.server.engine.ApplicationEngine
 import io.ktor.server.engine.applicationEnvironment
 import io.ktor.server.engine.connector
@@ -9,6 +8,7 @@ import io.ktor.server.engine.embeddedServer
 import io.ktor.server.engine.sslConnector
 import io.ktor.server.netty.Netty
 import org.eu.nl.craftsmansledger.core.appRoutes
+import org.eu.nl.craftsmansledger.core.databaseService
 import org.slf4j.LoggerFactory
 import java.io.File
 import java.io.FileInputStream
@@ -64,5 +64,8 @@ fun main() {
 }
 
 fun Application.module() {
+    databaseService.initializeConnection()
+    databaseService.generateTables()
+
     appRoutes()
 }
