@@ -1,11 +1,19 @@
 import { QueryParams } from '@craftsmans-ledger/shared-ui';
+import { Expose } from 'class-transformer';
 import { nanoid } from 'nanoid';
 import { Resource } from '../models';
 
 export class Item implements Resource {
+    @Expose()
     public id: string;
+
+    @Expose()
     public name: string;
+
+    @Expose()
     public weight: number;
+
+    @Expose()
     public baseValue: number;
 
     public compareTo(other: unknown) {
@@ -21,8 +29,13 @@ export class Item implements Resource {
 }
 
 export class CreateItemData {
+    @Expose()
     public name: string;
+
+    @Expose()
     public weight: number;
+
+    @Expose()
     public baseValue: number;
 }
 
