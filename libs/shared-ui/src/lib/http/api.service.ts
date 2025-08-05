@@ -21,7 +21,7 @@ export class ApiService {
         return this.requestService.post<RequestBody, Response>(`${this.baseApiUrl}${endpoint}`, body);
     }
 
-    public put<RequestBody, Response>(endpoint: string, body: RequestBody) {
+    public put<RequestBody, Response = RequestBody>(endpoint: string, body: RequestBody) {
         return this.requestService.put<RequestBody, Response>(`${this.baseApiUrl}${endpoint}`, body);
     }
 
