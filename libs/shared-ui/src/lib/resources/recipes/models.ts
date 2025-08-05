@@ -25,8 +25,9 @@ export class Recipe implements Resource {
 
         return (
             this.craftingTime === other.craftingTime &&
-            this.technologyTree.compareTo(other.technologyTree) &&
-            this.technologyPoints === other.technologyPoints
+            this.technologyPoints === other.technologyPoints &&
+            ((this.technologyTree === null && other.technologyTree === null) ||
+                this.technologyTree.compareTo(other.technologyTree))
         );
     }
 
@@ -37,6 +38,16 @@ export class Recipe implements Resource {
     public toCreateRecipeData() {
         const data = new CreateRecipeData();
 
+        data.craftingTime = this.craftingTime;
+        data.technologyTreeId = this.technologyTree.id;
+        data.technologyPoints = this.technologyPoints;
+        return data;
+    }
+
+    public toUpdateRecipeData() {
+        const data = new UpdateRecipeData();
+
+        data.id = this.id;
         data.craftingTime = this.craftingTime;
         data.technologyTreeId = this.technologyTree.id;
         data.technologyPoints = this.technologyPoints;
@@ -53,6 +64,11 @@ export class CreateRecipeData {
 
     @Expose()
     public technologyPoints: number;
+}
+
+export class UpdateRecipeData extends CreateRecipeData {
+    @Expose()
+    public id: string;
 }
 
 export class RecipeBuilder {
