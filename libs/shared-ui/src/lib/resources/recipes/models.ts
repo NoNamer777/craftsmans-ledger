@@ -1,8 +1,8 @@
-import { TechnologyTree } from '@craftsmans-ledger/shared-ui';
+import { Resource, TechnologyTree, TechnologyTreeBuilder } from '@craftsmans-ledger/shared-ui';
 import { Expose } from 'class-transformer';
 import { nanoid } from 'nanoid';
 
-export class Recipe {
+export class Recipe implements Resource {
     @Expose()
     public id: string;
 
@@ -14,6 +14,10 @@ export class Recipe {
 
     @Expose()
     public technologyPoints: number;
+
+    public label() {
+        return this.id;
+    }
 
     public compareTo(other: unknown) {
         if (this === other) return true;
@@ -63,6 +67,10 @@ export class RecipeBuilder {
 
         if ('craftingTime' in value && typeof value.craftingTime === 'number')
             this.recipe.craftingTime = value.craftingTime;
+        if ('technologyPoints' in value && typeof value.technologyPoints === 'number')
+            this.recipe.technologyPoints = value.technologyPoints;
+        if ('technologyTreeId' in value && typeof value.technologyTreeId === 'string')
+            this.recipe.technologyTree = new TechnologyTreeBuilder().withId(value.technologyTreeId).build();
     }
 
     public withId(recipeId?: string) {

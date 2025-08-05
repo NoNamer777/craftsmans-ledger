@@ -12,6 +12,10 @@ export class TechnologyTree implements Resource {
     @Expose()
     public maxPoints: number;
 
+    public label() {
+        return this.name;
+    }
+
     public compareTo(other: unknown) {
         if (this === other) return true;
         if (!this.isTechnologyTree(other)) return false;

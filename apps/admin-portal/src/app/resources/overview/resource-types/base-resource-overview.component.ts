@@ -79,7 +79,7 @@ export abstract class BaseResourceOverviewComponent implements OnInit {
     }
 
     protected setResourceOptions(resources: Resource[]) {
-        this.resourceOptions.set(resources.map(({ id, name }) => ({ label: name, value: id })));
+        this.resourceOptions.set(resources.map((resource) => ({ label: resource.label(), value: resource.id })));
         this.processing.set(false);
     }
 
