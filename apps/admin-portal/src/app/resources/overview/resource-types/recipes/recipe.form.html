@@ -1,0 +1,26 @@
+<form [formGroup]="form" class="col-8">
+    @if (isLoading()) {
+        <div class="d-flex align-items-center justify-content-center">
+            <span class="d-block spinner-border"></span>
+        </div>
+    } @else {
+        <div class="mb-3">
+            <label for="crafting-time-input">Crafting time</label>
+            <input type="number" class="form-control" id="crafting-time-input" formControlName="craftingTime" />
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="technology-tree-select">Technology Tree</label>
+                <select class="form-select" id="technology-tree-select" formControlName="technologyTreeId">
+                    @for (option of technologyTreeOptions | async; track option.value) {
+                        <option [value]="option.value">{{ option.label }}</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <label for="technology-points-select">Technology Points</label>
+                <input class="form-control" id="technology-points-select" formControlName="technologyPoints" />
+            </div>
+        </div>
+    }
+</form>

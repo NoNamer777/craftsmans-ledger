@@ -21,8 +21,8 @@ export class ApiService {
         return this.requestService.post<RequestBody, Response>(`${this.baseApiUrl}${endpoint}`, body);
     }
 
-    public put<DataType>(endpoint: string, body: DataType) {
-        return this.requestService.put<DataType>(`${this.baseApiUrl}${endpoint}`, body);
+    public put<RequestBody, Response = RequestBody>(endpoint: string, body: RequestBody) {
+        return this.requestService.put<RequestBody, Response>(`${this.baseApiUrl}${endpoint}`, body);
     }
 
     public delete(endPoint: string) {

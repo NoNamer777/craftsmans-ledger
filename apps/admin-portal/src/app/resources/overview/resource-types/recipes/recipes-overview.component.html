@@ -1,1 +1,16 @@
-<p>RecipesOverviewComponent works!</p>
+<aside class="col-2">
+    <cml-resources-list
+        [resourceOptions]="resourceOptions()"
+        [processing]="processing()"
+        (selectedResourceChange)="onChangeSelectedResource()"
+    />
+</aside>
+<hr class="mx-4" />
+
+<div class="col-8">
+    @if (hasResourceSelected()) {
+        <cml-recipe-form />
+    } @else {
+        <p>Please select a Recipe on the left.</p>
+    }
+</div>

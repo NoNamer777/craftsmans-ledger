@@ -16,6 +16,10 @@ export class Item implements Resource {
     @Expose()
     public baseValue: number;
 
+    public label() {
+        return this.name;
+    }
+
     public compareTo(other: unknown) {
         if (this === other) return true;
         if (!this.isItem(other)) return false;

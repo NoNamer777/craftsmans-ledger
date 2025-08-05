@@ -16,8 +16,8 @@ export class RequestService {
         return this.httpClient.post<Response>(url, body, { observe: 'response' });
     }
 
-    public put<DataType>(url: string, body: DataType) {
-        return this.httpClient.put<DataType>(url, body, { observe: 'response' });
+    public put<RequestBody, Response = RequestBody>(url: string, body: RequestBody) {
+        return this.httpClient.put<Response>(url, body, { observe: 'response' });
     }
 
     public delete(url: string) {
