@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { ApiService } from '../../http';
 import { serialize, serializeAll } from '../../utils';
-import { CreateRecipeData, Recipe } from './models';
+import { CreateRecipeData, Recipe, UpdateRecipeData } from './models';
 
 @Injectable({ providedIn: 'root' })
 export class RecipesService {
@@ -24,9 +24,9 @@ export class RecipesService {
         return this.apiService.get<Recipe>(`${this.endPoint}/${recipeId}`).pipe(map((data) => serialize(Recipe, data)));
     }
 
-    public update(recipe: Recipe) {
+    public update(recipe: UpdateRecipeData) {
         return this.apiService
-            .put<Recipe>(`${this.endPoint}/${recipe.id}`, recipe)
+            .put<UpdateRecipeData, Recipe>(`${this.endPoint}/${recipe.id}`, recipe)
             .pipe(map((response) => serialize(Recipe, response.body)));
     }
 

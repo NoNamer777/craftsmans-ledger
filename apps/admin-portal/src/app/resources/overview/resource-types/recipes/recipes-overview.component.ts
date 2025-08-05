@@ -1,13 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import {
-    CreateRecipeData,
-    NotificationTypes,
-    notifyError,
-    Recipe,
-    RecipesService,
-    transform,
-} from '@craftsmans-ledger/shared-ui';
+import { NotificationTypes, notifyError, Recipe, RecipesService } from '@craftsmans-ledger/shared-ui';
 import { catchError, filter, map, of, tap } from 'rxjs';
 import { SaveAction, SaveActions, TEMP_RESOURCE_ID } from '../../../models';
 import { BaseResourceOverviewComponent } from '../base-resource-overview.component';
@@ -36,23 +29,25 @@ export class RecipesOverviewComponent extends BaseResourceOverviewComponent {
 
     protected override onSaveResource(action: SaveAction) {
         if (action === SaveActions.CREATE) {
-            return this.recipesService.create(transform(CreateRecipeData, this.resourceService.updatedResource())).pipe(
-                catchError((error: HttpErrorResponse) => {
-                    notifyError(error, this.notificationsService);
-                    this.actionsService.saving.set(false);
-                    return of(null);
-                }),
-                filter(Boolean),
-                tap(({ id }) => {
-                    this.notificationsService.addNotification({
-                        type: NotificationTypes.SUCCESS,
-                        title: 'Recipe created',
-                        message: `Recipe with ID "${id}" was successfully created.`,
-                    });
-                })
-            );
+            return this.recipesService
+                .create((this.resourceService.updatedResource() as Recipe).toCreateRecipeData())
+                .pipe(
+                    catchError((error: HttpErrorResponse) => {
+                        notifyError(error, this.notificationsService);
+                        this.actionsService.saving.set(false);
+                        return of(null);
+                    }),
+                    filter(Boolean),
+                    tap(({ id }) => {
+                        this.notificationsService.addNotification({
+                            type: NotificationTypes.SUCCESS,
+                            title: 'Recipe created',
+                            message: `Recipe with ID "${id}" was successfully created.`,
+                        });
+                    })
+                );
         }
-        return this.recipesService.update(this.resourceService.updatedResource() as Recipe).pipe(
+        return this.recipesService.update((this.resourceService.updatedResource() as Recipe).toUpdateRecipeData()).pipe(
             catchError((error: HttpErrorResponse) => {
                 notifyError(error, this.notificationsService);
                 this.actionsService.saving.set(false);
