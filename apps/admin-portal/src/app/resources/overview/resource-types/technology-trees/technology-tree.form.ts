@@ -6,7 +6,7 @@ import { debounceTime, of, tap } from 'rxjs';
 import { TEMP_RESOURCE_ID } from '../../../models';
 import { ActionsService } from '../../actions.service';
 import { BaseResourceFormComponent } from '../base-resource-form.component';
-import { TEMP_ITEM } from '../items/models';
+import { TEMP_TECHNOLOGY_TREE } from './models';
 
 @Component({
     selector: 'cml-technology-tree-form',
@@ -38,7 +38,7 @@ export class TechnologyTreeForm extends BaseResourceFormComponent {
     }
 
     protected override getResource(resourceId: string) {
-        if (resourceId === TEMP_RESOURCE_ID) return of(TEMP_ITEM);
+        if (resourceId === TEMP_RESOURCE_ID) return of(TEMP_TECHNOLOGY_TREE);
         this.isLoading.set(true);
         return this.technologyTreesService.getById(resourceId);
     }
