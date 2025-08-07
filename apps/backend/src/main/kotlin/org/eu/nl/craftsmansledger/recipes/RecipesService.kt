@@ -10,11 +10,24 @@ class RecipesService {
         return recipes.toList()
     }
 
-    fun getById(recipeId: String): Recipe? {
-        val byId = recipesRepository.findOneById(recipeId)
+    fun getAllInputsOfRecipe(recipeId: String) = recipeInputsRepository.findAllByRecipe(recipeId)
 
-        if (byId == null) return null
-        return byId
+    fun getById(recipeId: String) = recipesRepository.findOneById(recipeId)
+
+    fun getInputOfRecipe(recipeId: String, itemId: String): RecipeItem? {
+        if (recipesRepository.findOneById(recipeId) == null) {
+            throw HttpException(
+                "Could not get input of Recipe with ID \"$recipeId\" - Reason: Recipe was not found",
+                HttpStatusCode.NotFound
+            )
+        }
+        if (itemsService.getById(itemId) == null) {
+            throw HttpException(
+                "Could not get input of Recipe with ID \"$recipeId\" - Reason: Item with ID \"$itemId\" was not found",
+                HttpStatusCode.NotFound
+            )
+        }
+        return recipeInputsRepository.findOneByRecipeAndItem(recipeId, itemId)
     }
 
     fun create(dto: CreateRecipeDto): Recipe {
