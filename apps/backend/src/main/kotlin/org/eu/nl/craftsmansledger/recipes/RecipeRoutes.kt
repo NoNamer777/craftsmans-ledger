@@ -87,6 +87,13 @@ fun Route.recipeRoutes() {
                         )
                         call.respond(input)
                     }
+
+                    delete {
+                        val recipeIdParam = call.parameters["recipeId"]!!
+                        val itemIdParam = call.parameters["itemId"]!!
+
+                        recipesService.removeInputFromRecipe(recipeIdParam, itemIdParam)
+                    }
                 }
             }
         }

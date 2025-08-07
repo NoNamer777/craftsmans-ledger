@@ -129,9 +129,27 @@ class RecipesService {
         recipesRepository.remove(recipeId)
     }
 
+    fun removeInputFromRecipe(recipeId: String, itemId: String) {
+        if (recipesRepository.findOneById(recipeId) == null) {
+            throw HttpException(
+                "Could not remove input from Recipe with ID \"$recipeId\" - Reason: Recipe was not found",
+                HttpStatusCode.NotFound
+            )
+        }
+        if (itemsService.getById(itemId) == null) {
+            throw HttpException(
+                "Could not remove input from Recipe with ID \"$recipeId\" - Reason: Item with ID \"$itemId\" was not found",
+                HttpStatusCode.NotFound
+            )
+        }
+        recipeInputsRepository.remove(recipeId, itemId)
+    }
+
     private fun isCraftingTimeValid(craftingTime: Double) = craftingTime > 0.0
 
-    private fun isTechnologyPoints(points: Int, max: Int) = points >= 0 && points <= max
+    private fun isTechnologyPoints(points: Int, max: Int) = points in 0..max
+
+    private fun isRecipeItemQuantityValid(quantity: Int) = quantity >= 1
 }
 
 val recipesService = RecipesService()
