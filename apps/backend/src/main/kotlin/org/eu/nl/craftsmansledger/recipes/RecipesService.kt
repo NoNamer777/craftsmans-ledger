@@ -56,6 +56,33 @@ class RecipesService {
         return recipesRepository.create(data)
     }
 
+    fun addRecipeInput(recipeId: String, dto: RecipeItemDto): RecipeItem {
+        val recipe = this.getById(recipeId) ?: throw HttpException(
+            "Could not add input to Recipe with ID \"${recipeId}\" - Reason: Recipe was not found",
+            HttpStatusCode.NotFound
+        )
+        val item = itemsService.getById(dto.itemId) ?: throw HttpException(
+            "Could not add input to Recipe with ID \"${recipeId}\" - Reason: Item with ID \"${dto.itemId}\" was not found",
+            HttpStatusCode.NotFound
+        )
+
+        val input = RecipeItem(item, dto.quantity)
+
+        if (recipe.hasInputWithItem(dto.itemId)) {
+            throw HttpException(
+                "Could not add input to Recipe with ID \"${recipeId}\" - Reason: Another input already has Item with ID \"${dto.itemId}\"",
+                HttpStatusCode.BadRequest
+            )
+        }
+        if (!isRecipeItemQuantityValid(input.quantity)) {
+            throw HttpException(
+                "Could not add input to Recipe with ID \"${recipeId}\" - Reason: Quantity must be a valid positive whole number.",
+                HttpStatusCode.BadRequest
+            )
+        }
+        return recipeInputsRepository.create(recipeId, input)
+    }
+
     fun update(dto: UpdateRecipeDto): Recipe {
         val byId = this.getById(dto.id)
 

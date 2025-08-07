@@ -65,6 +65,17 @@ fun Route.recipeRoutes() {
                     call.respond(recipesService.getAllInputsOfRecipe(recipeIdParam))
                 }
 
+                post {
+                    val recipeIdParam = call.parameters["recipeId"]!!
+                    val dto = call.receive<RecipeItemDto>()
+                    val url = call.request.uri
+
+                    val input = recipesService.addRecipeInput(recipeIdParam, dto)
+
+                    call.response.headers.append(HttpHeaders.Location, "$url/${input.item.id}")
+                    call.respond(HttpStatusCode.Created, input)
+                }
+
                 route("/{itemId}") {
                     get {
                         val recipeIdParam = call.parameters["recipeId"]!!
