@@ -88,6 +88,21 @@ fun Route.recipeRoutes() {
                         call.respond(input)
                     }
 
+                    put {
+                        val recipeIdParam = call.parameters["recipeId"]!!
+                        val itemIdParam = call.parameters["itemId"]!!
+                        val url = call.request.uri
+                        val dto = call.receive<RecipeItemDto>()
+
+                        if (itemIdParam != dto.itemId) {
+                            throw HttpException(
+                                "It is not allowed to update input with itemId \"${dto.itemId}\" of Recipe with ID \"$recipeIdParam\" on path \"$url\"",
+                                HttpStatusCode.BadRequest
+                            )
+                        }
+                        call.respond(recipesService.updateInput(recipeIdParam, dto))
+                    }
+
                     delete {
                         val recipeIdParam = call.parameters["recipeId"]!!
                         val itemIdParam = call.parameters["itemId"]!!

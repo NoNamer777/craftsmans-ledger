@@ -2,6 +2,7 @@ package org.eu.nl.craftsmansledger.recipes
 
 import io.ktor.http.HttpStatusCode
 import org.eu.nl.craftsmansledger.core.HttpException
+import org.eu.nl.craftsmansledger.items.itemsService
 import org.eu.nl.craftsmansledger.technologyTrees.technologyTreesService
 
 class RecipesService {
@@ -115,6 +116,34 @@ class RecipesService {
             )
         }
         return recipesRepository.update(data)
+    }
+
+    fun updateInput(recipeId: String, dto: RecipeItemDto): RecipeItem {
+        val recipe = this.getById(recipeId) ?: throw HttpException(
+            "Could not update input with itemID \"${dto.itemId}\" of Recipe with ID \"$recipeId\" - Reason: Recipe was not found",
+            HttpStatusCode.NotFound
+        )
+
+        val item = itemsService.getById(dto.itemId) ?: throw HttpException(
+            "Could not update input with itemID \"${dto.itemId}\" of Recipe with ID \"$recipeId\" - Reason: Item with ID \"${dto.itemId}\" was not found",
+            HttpStatusCode.NotFound
+        )
+
+        val input = RecipeItem(item, dto.quantity)
+
+        if (!recipe.hasInputWithItem(dto.itemId)) {
+            throw HttpException(
+                "Could not update input with itemID \"${dto.itemId}\" of Recipe with ID \"$recipeId\" - Reason: Recipe does not have any inputs with the same Item.",
+                HttpStatusCode.BadRequest
+            )
+        }
+        if (!isRecipeItemQuantityValid(input.quantity)) {
+            throw HttpException(
+                "Could not update input with itemID \"${dto.itemId}\" of Recipe with ID \"$recipeId\" - Reason: Quantity must be a valid positive whole number",
+                HttpStatusCode.BadRequest
+            )
+        }
+        return recipeInputsRepository.update(recipeId, input)
     }
 
     fun remove(recipeId: String) {
