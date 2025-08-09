@@ -5,4 +5,5 @@ export * from './error-handling';
 export * from './http';
 export * from './notifications';
 export * from './resources';
+export * from './rxjs';
 export * from './utils';
