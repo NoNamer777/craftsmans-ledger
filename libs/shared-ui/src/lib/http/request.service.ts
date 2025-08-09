@@ -9,7 +9,7 @@ export class RequestService {
     public get<Response>(url: string, queryParams?: QueryParams) {
         url = this.addQueryParams(url, queryParams);
 
-        return this.httpClient.get<Response>(url);
+        return this.httpClient.get<Response>(url, { observe: 'response' });
     }
 
     public post<RequestBody, Response>(url: string, body: RequestBody) {
@@ -21,7 +21,7 @@ export class RequestService {
     }
 
     public delete(url: string) {
-        return this.httpClient.delete(url);
+        return this.httpClient.delete<void>(url, { observe: 'response' });
     }
 
     private addQueryParams(url: string, queryParams?: QueryParams) {

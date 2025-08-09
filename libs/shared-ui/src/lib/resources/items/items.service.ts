@@ -19,7 +19,7 @@ export class ItemsService {
     private readonly endPoint = '/items';
 
     public getAll() {
-        return this.apiService.get<Item[]>(this.endPoint).pipe(map((data) => serializeAll(Item, data)));
+        return this.apiService.get<Item[]>(this.endPoint).pipe(map((response) => serializeAll(Item, response.body)));
     }
 
     public create(item: CreateItemData) {
@@ -39,14 +39,17 @@ export class ItemsService {
             .get<PaginatedResponse<Item>, ItemPaginationParamName>(`${this.endPoint}/paginated`, params)
             .pipe(
                 map((response) => {
-                    response.data = serializeAll(Item, response.data);
-                    return response;
+                    const data = response.body;
+                    data.data = serializeAll(Item, data.data);
+                    return data;
                 })
             );
     }
 
     public getById(itemId: string) {
-        return this.apiService.get<Item>(`${this.endPoint}/${itemId}`).pipe(map((data) => serialize(Item, data)));
+        return this.apiService
+            .get<Item>(`${this.endPoint}/${itemId}`)
+            .pipe(map((response) => serialize(Item, response.body)));
     }
 
     public update(item: Item) {
