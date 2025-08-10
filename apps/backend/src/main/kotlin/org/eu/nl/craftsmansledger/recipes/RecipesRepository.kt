@@ -17,12 +17,14 @@ fun ResultRow.toRecipe(): Recipe {
     val recipeId = this[RecipeTable.id]
     var technologyTree: TechnologyTree? = null
     var inputs = mutableListOf<RecipeItem>()
+    var outputs = mutableListOf<RecipeItem>()
 
     transaction {
         technologyTree = technologyTreesRepository.findOneById(technologyTreeId)
     }
     transaction {
         inputs = recipeInputsRepository.findAllByRecipe(recipeId)
+        outputs = recipeOutputsRepository.findAllByRecipe(recipeId)
     }
     return Recipe(
         id = this[RecipeTable.id],
@@ -30,6 +32,7 @@ fun ResultRow.toRecipe(): Recipe {
         technologyTree = technologyTree!!,
         technologyPoints = this[RecipeTable.technologyPoints],
         inputs = inputs,
+        outputs = outputs,
     )
 }
 
