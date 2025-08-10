@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component, EnvironmentInjector, inject } from 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
-    Recipe,
     RecipeDto,
     RecipeItemDto,
     RecipesService,
@@ -109,7 +108,7 @@ export class RecipeForm extends BaseResourceFormComponent {
     private updateAndCompare(recipe: RecipeDto) {
         this.resourceService.updatedResource.set(recipe);
 
-        const hasChanged = !(this.resourceService.resource() as Recipe).compareTo(recipe);
+        const hasChanged = !(this.resourceService.resource() as RecipeDto).compareTo(recipe);
 
         if (this.actionsService.canSave() === hasChanged) return;
         this.actionsService.canSave.set(hasChanged);
