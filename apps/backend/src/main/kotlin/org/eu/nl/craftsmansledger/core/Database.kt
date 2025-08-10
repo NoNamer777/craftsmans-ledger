@@ -2,6 +2,7 @@ package org.eu.nl.craftsmansledger.core
 
 import org.eu.nl.craftsmansledger.items.ItemTable
 import org.eu.nl.craftsmansledger.recipes.RecipeInputTable
+import org.eu.nl.craftsmansledger.recipes.RecipeOutputTable
 import org.eu.nl.craftsmansledger.recipes.RecipeTable
 import org.eu.nl.craftsmansledger.technologyTrees.TechnologyTreeTable
 import org.jetbrains.exposed.sql.Database
@@ -37,7 +38,13 @@ class DatabaseService {
 
     fun generateTables() {
         transaction {
-            SchemaUtils.create(*arrayOf(ItemTable, TechnologyTreeTable, RecipeTable, RecipeInputTable))
+            SchemaUtils.create(
+                ItemTable,
+                TechnologyTreeTable,
+                RecipeTable,
+                RecipeInputTable,
+                RecipeOutputTable
+            )
         }
     }
 

@@ -23,8 +23,11 @@ data class Recipe(
     var technologyTree: TechnologyTree,
     var technologyPoints: Int,
     var inputs: List<RecipeItem> = mutableListOf(),
+    var outputs: List<RecipeItem> = mutableListOf(),
 ) {
     fun hasInputWithItem(itemId: String) = inputs.find { it.item.id == itemId } != null
+
+    fun hasOutputWithItem(itemId: String) = outputs.find { it.item.id == itemId } != null
 }
 
 @Serializable

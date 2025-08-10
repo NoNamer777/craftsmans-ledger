@@ -108,6 +108,61 @@ fun Route.recipeRoutes() {
                         val itemIdParam = call.parameters["itemId"]!!
 
                         recipesService.removeInputFromRecipe(recipeIdParam, itemIdParam)
+                        call.respond(HttpStatusCode.OK)
+                    }
+                }
+            }
+
+            route("/outputs") {
+                get {
+                    val recipeIdParam = call.parameters["recipeId"]!!
+                    call.respond(recipesService.getAllOutputsOfRecipe(recipeIdParam))
+                }
+
+                post {
+                    val recipeIdParam = call.parameters["recipeId"]!!
+                    val dto = call.receive<RecipeItemDto>()
+                    val url = call.request.uri
+
+                    val output = recipesService.addRecipeOutput(recipeIdParam, dto)
+
+                    call.response.headers.append(HttpHeaders.Location, "$url/${output.item.id}")
+                    call.respond(HttpStatusCode.Created, output)
+                }
+
+                route("/{itemId}") {
+                    get {
+                        val recipeIdParam = call.parameters["recipeId"]!!
+                        val itemIdParam = call.parameters["itemId"]!!
+
+                        val output = recipesService.getOutputOfRecipe(recipeIdParam, itemIdParam) ?: throw HttpException(
+                            "Recipe with ID \"$recipeIdParam\" does not have an output with Item with ID \"${itemIdParam}\"",
+                            HttpStatusCode.NotFound
+                        )
+                        call.respond(output)
+                    }
+
+                    put {
+                        val recipeIdParam = call.parameters["recipeId"]!!
+                        val itemIdParam = call.parameters["itemId"]!!
+                        val url = call.request.uri
+                        val dto = call.receive<RecipeItemDto>()
+
+                        if (itemIdParam != dto.itemId) {
+                            throw HttpException(
+                                "It is not allowed to update output with itemId \"${dto.itemId}\" of Recipe with ID \"$recipeIdParam\" on path \"$url\"",
+                                HttpStatusCode.BadRequest
+                            )
+                        }
+                        call.respond(recipesService.updateOutput(recipeIdParam, dto))
+                    }
+
+                    delete {
+                        val recipeIdParam = call.parameters["recipeId"]!!
+                        val itemIdParam = call.parameters["itemId"]!!
+
+                        recipesService.removeOutputFromRecipe(recipeIdParam, itemIdParam)
+                        call.respond(HttpStatusCode.OK)
                     }
                 }
             }

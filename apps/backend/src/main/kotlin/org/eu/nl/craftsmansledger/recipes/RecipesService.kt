@@ -13,6 +13,8 @@ class RecipesService {
 
     fun getAllInputsOfRecipe(recipeId: String) = recipeInputsRepository.findAllByRecipe(recipeId)
 
+    fun getAllOutputsOfRecipe(recipeId: String) = recipeOutputsRepository.findAllByRecipe(recipeId)
+
     fun getById(recipeId: String) = recipesRepository.findOneById(recipeId)
 
     fun getInputOfRecipe(recipeId: String, itemId: String): RecipeItem? {
@@ -29,6 +31,22 @@ class RecipesService {
             )
         }
         return recipeInputsRepository.findOneByRecipeAndItem(recipeId, itemId)
+    }
+
+    fun getOutputOfRecipe(recipeId: String, itemId: String): RecipeItem? {
+        if (recipesRepository.findOneById(recipeId) == null) {
+            throw HttpException(
+                "Could not get output of Recipe with ID \"$recipeId\" - Reason: Recipe was not found",
+                HttpStatusCode.NotFound
+            )
+        }
+        if (itemsService.getById(itemId) == null) {
+            throw HttpException(
+                "Could not get output of Recipe with ID \"$recipeId\" - Reason: Item with ID \"$itemId\" was not found",
+                HttpStatusCode.NotFound
+            )
+        }
+        return recipeOutputsRepository.findOneByRecipeAndItem(recipeId, itemId)
     }
 
     fun create(dto: CreateRecipeDto): Recipe {
@@ -82,6 +100,32 @@ class RecipesService {
             )
         }
         return recipeInputsRepository.create(recipeId, input)
+    }
+
+    fun addRecipeOutput(recipeId: String, dto: RecipeItemDto): RecipeItem {
+        val recipe = this.getById(recipeId) ?: throw HttpException(
+            "Could not add output to Recipe with ID \"${recipeId}\" - Reason: Recipe was not found",
+            HttpStatusCode.NotFound
+        )
+        val item = itemsService.getById(dto.itemId) ?: throw HttpException(
+            "Could not add output to Recipe with ID \"${recipeId}\" - Reason: Item with ID \"${dto.itemId}\" was not found",
+            HttpStatusCode.NotFound
+        )
+        val output = RecipeItem(item, dto.quantity)
+
+        if (recipe.hasOutputWithItem(dto.itemId)) {
+            throw HttpException(
+                "Could not add output to Recipe with ID \"${recipeId}\" - Reason: Another output already has Item with ID \"${dto.itemId}\"",
+                HttpStatusCode.BadRequest
+            )
+        }
+        if (!isRecipeItemQuantityValid(output.quantity)) {
+            throw HttpException(
+                "Could not add output to Recipe with ID \"${recipeId}\" - Reason: Quantity must be a valid positive whole number.",
+                HttpStatusCode.BadRequest
+            )
+        }
+        return recipeOutputsRepository.create(recipeId, output)
     }
 
     fun update(dto: UpdateRecipeDto): Recipe {
@@ -146,6 +190,33 @@ class RecipesService {
         return recipeInputsRepository.update(recipeId, input)
     }
 
+    fun updateOutput(recipeId: String, dto: RecipeItemDto): RecipeItem {
+        val recipe = this.getById(recipeId) ?: throw HttpException(
+            "Could not update output with itemID \"${dto.itemId}\" of Recipe with ID \"$recipeId\" - Reason: Recipe was not found",
+            HttpStatusCode.NotFound
+        )
+
+        val item = itemsService.getById(dto.itemId) ?: throw HttpException(
+            "Could not update output with itemID \"${dto.itemId}\" of Recipe with ID \"$recipeId\" - Reason: Item with ID \"${dto.itemId}\" was not found",
+            HttpStatusCode.NotFound
+        )
+        val output = RecipeItem(item, dto.quantity)
+
+        if (!recipe.hasOutputWithItem(dto.itemId)) {
+            throw HttpException(
+                "Could not update output with itemID \"${dto.itemId}\" of Recipe with ID \"$recipeId\" - Reason: Recipe does not have any outputs with the same Item.",
+                HttpStatusCode.BadRequest
+            )
+        }
+        if (!isRecipeItemQuantityValid(output.quantity)) {
+            throw HttpException(
+                "Could not update output with itemID \"${dto.itemId}\" of Recipe with ID \"$recipeId\" - Reason: Quantity must be a valid positive whole number",
+                HttpStatusCode.BadRequest
+            )
+        }
+        return recipeOutputsRepository.update(recipeId, output)
+    }
+
     fun remove(recipeId: String) {
         val byID = this.getById(recipeId)
 
@@ -172,6 +243,22 @@ class RecipesService {
             )
         }
         recipeInputsRepository.remove(recipeId, itemId)
+    }
+
+    fun removeOutputFromRecipe(recipeId: String, itemId: String) {
+        if (recipesRepository.findOneById(recipeId) == null) {
+            throw HttpException(
+                "Could not remove output from Recipe with ID \"$recipeId\" - Reason: Recipe was not found",
+                HttpStatusCode.NotFound
+            )
+        }
+        if (itemsService.getById(itemId) == null) {
+            throw HttpException(
+                "Could not remove output from Recipe with ID \"$recipeId\" - Reason: Item with ID \"$itemId\" was not found",
+                HttpStatusCode.NotFound
+            )
+        }
+        recipeOutputsRepository.remove(recipeId, itemId)
     }
 
     private fun isCraftingTimeValid(craftingTime: Double) = craftingTime > 0.0
