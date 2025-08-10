@@ -2,13 +2,17 @@ import { inject, Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { ApiService } from '../../http';
 import { serialize, serializeAll } from '../../utils';
-import { CreateRecipeData, Recipe, UpdateRecipeData } from './models';
+import { CreateRecipeData, Recipe, RecipeItem, RecipeItemDto, UpdateRecipeData } from './models';
 
 @Injectable({ providedIn: 'root' })
 export class RecipesService {
     private readonly apiService = inject(ApiService);
 
     private readonly baseEndPoint = '/recipes';
+
+    private readonly inputsEndPoint = `${this.baseEndPoint}/:recipeId/inputs`;
+
+    private readonly outputsEndPoint = `${this.baseEndPoint}/:recipeId/outputs`;
 
     public getAll() {
         return this.apiService
@@ -36,5 +40,61 @@ export class RecipesService {
 
     public remove(recipeId: string) {
         return this.apiService.delete(`${this.baseEndPoint}/${recipeId}`);
+    }
+
+    public getAllInputsOfRecipe(recipeId: string) {
+        return this.apiService
+            .get<RecipeItem[]>(this.inputsEndPoint.replace(':recipeId', recipeId))
+            .pipe(map((response) => serializeAll(RecipeItem, response.body)));
+    }
+
+    public getInputOfRecipe(recipeId: string, itemId: string) {
+        return this.apiService
+            .get<RecipeItem>(`${this.inputsEndPoint.replace(':recipeId', recipeId)}/${itemId}`)
+            .pipe(map((response) => serialize(RecipeItem, response.body)));
+    }
+
+    public addInputToRecipe(recipeId: string, dto: RecipeItemDto) {
+        return this.apiService
+            .post<RecipeItemDto, RecipeItem>(this.inputsEndPoint.replace(':recipeId', recipeId), dto)
+            .pipe(map((response) => serialize(RecipeItem, response.body)));
+    }
+
+    public updateRecipeInput(recipeId: string, dto: RecipeItemDto) {
+        return this.apiService
+            .put<RecipeItemDto, RecipeItem>(`${this.inputsEndPoint.replace(':recipeId', recipeId)}/${dto.itemId}`, dto)
+            .pipe(map((response) => serialize(RecipeItem, response.body)));
+    }
+
+    public removeInputFromRecipe(recipeId: string, itemId: string) {
+        return this.apiService.delete(`${this.inputsEndPoint.replace(':recipeId', recipeId)}/${itemId}`);
+    }
+
+    public getAllOutputsOfRecipe(recipeId: string) {
+        return this.apiService
+            .get<RecipeItem[]>(this.outputsEndPoint.replace(':recipeId', recipeId))
+            .pipe(map((response) => serializeAll(RecipeItem, response.body)));
+    }
+
+    public getOutputOfRecipe(recipeId: string, itemId: string) {
+        return this.apiService
+            .get<RecipeItem>(`${this.outputsEndPoint.replace(':recipeId', recipeId)}/${itemId}`)
+            .pipe(map((response) => serialize(RecipeItem, response.body)));
+    }
+
+    public addOutputToRecipe(recipeId: string, dto: RecipeItemDto) {
+        return this.apiService
+            .post<RecipeItemDto, RecipeItem>(this.outputsEndPoint.replace(':recipeId', recipeId), dto)
+            .pipe(map((response) => serialize(RecipeItem, response.body)));
+    }
+
+    public updateRecipeOutput(recipeId: string, dto: RecipeItemDto) {
+        return this.apiService
+            .put<RecipeItemDto, RecipeItem>(`${this.outputsEndPoint.replace(':recipeId', recipeId)}/${dto.itemId}`, dto)
+            .pipe(map((response) => serialize(RecipeItem, response.body)));
+    }
+
+    public removeOutputFromRecipe(recipeId: string, itemId: string) {
+        return this.apiService.delete(`${this.outputsEndPoint.replace(':recipeId', recipeId)}/${itemId}`);
     }
 }
