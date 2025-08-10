@@ -14,7 +14,10 @@
                 "browser": "apps/admin-portal/src/main.ts",
                 "outputPath": "dist/apps/admin-portal",
                 "inlineStyleLanguage": "scss",
-                "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
+                "scripts": [
+                    "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+                    "node_modules/reflect-metadata/Reflect.js"
+                ],
                 "stylePreprocessorOptions": {
                     "sass": {
                         "silenceDeprecations": ["import", "color-functions", "global-builtin"]

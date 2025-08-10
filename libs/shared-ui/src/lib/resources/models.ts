@@ -4,6 +4,10 @@ export interface Resource {
     label(): string;
 }
 
+export interface Comparable {
+    compareTo(other: unknown): boolean;
+}
+
 export const SortOrders = {
     ASCENDING: 'ASC',
     DESCENDING: 'DESC',

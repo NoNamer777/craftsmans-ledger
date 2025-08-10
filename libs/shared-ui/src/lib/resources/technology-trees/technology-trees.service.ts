@@ -13,7 +13,7 @@ export class TechnologyTreesService {
     public getAll() {
         return this.apiService
             .get<TechnologyTree[]>(this.endPoint)
-            .pipe(map((data) => serializeAll(TechnologyTree, data)));
+            .pipe(map((response) => serializeAll(TechnologyTree, response.body)));
     }
 
     public create(technologyTree: CreateTechnologyTreeData) {
@@ -25,7 +25,7 @@ export class TechnologyTreesService {
     public getById(technologyTreeId: string) {
         return this.apiService
             .get<TechnologyTree>(`${this.endPoint}/${technologyTreeId}`)
-            .pipe(map((data) => serialize(TechnologyTree, data)));
+            .pipe(map((response) => serialize(TechnologyTree, response.body)));
     }
 
     public update(technologyTree: TechnologyTree) {

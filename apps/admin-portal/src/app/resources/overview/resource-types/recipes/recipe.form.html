@@ -19,8 +19,17 @@
             </div>
             <div class="col">
                 <label for="technology-points-select">Technology Points</label>
-                <input class="form-control" id="technology-points-select" formControlName="technologyPoints" />
+                <input
+                    type="number"
+                    class="form-control"
+                    id="technology-points-select"
+                    formControlName="technologyPoints"
+                />
             </div>
         </div>
+        <hr />
+        <cml-recipe-item-form type="input" />
+        <hr />
+        <cml-recipe-item-form type="output" />
     }
 </form>

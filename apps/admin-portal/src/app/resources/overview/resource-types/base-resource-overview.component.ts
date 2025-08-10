@@ -58,16 +58,7 @@ export abstract class BaseResourceOverviewComponent implements OnInit {
         this.actionsService.saveResource$
             .pipe(
                 switchMap((action) => this.onSaveResource(action)),
-                switchMap((resource) => {
-                    this.actionsService.reset();
-                    this.resourceService.resourceId.set(resource.id);
-
-                    this.resourceService.resource.set(resource);
-                    this.resourceService.updatedResource.set(resource);
-
-                    this.processing.set(true);
-                    return this.getAllResources();
-                }),
+                switchMap((resource) => this.onResourceSaved(resource)),
                 takeUntilDestroyed(this.destroyRef)
             )
             .subscribe();
@@ -81,6 +72,17 @@ export abstract class BaseResourceOverviewComponent implements OnInit {
     protected setResourceOptions(resources: Resource[]) {
         this.resourceOptions.set(resources.map((resource) => ({ label: resource.label(), value: resource.id })));
         this.processing.set(false);
+    }
+
+    protected onResourceSaved(resource: Resource) {
+        this.actionsService.reset();
+        this.resourceService.resourceId.set(resource.id);
+
+        this.resourceService.resource.set(resource);
+        this.resourceService.updatedResource.set(resource);
+
+        this.processing.set(true);
+        return this.getAllResources();
     }
 
     protected abstract getAllResources(): Observable<Resource[]>;

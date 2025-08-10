@@ -1,5 +1,5 @@
 import { inject, Injectable, provideAppInitializer } from '@angular/core';
-import { tap } from 'rxjs';
+import { map, tap } from 'rxjs';
 import { RequestService } from '../http';
 import { ClientConfig } from './models';
 
@@ -20,6 +20,9 @@ export class ConfigService {
     private _config: ClientConfig;
 
     public initialize() {
-        return this.requestService.get<ClientConfig>('/config.json').pipe(tap((config) => (this._config = config)));
+        return this.requestService.get<ClientConfig>('/config.json').pipe(
+            map((response) => response.body),
+            tap((config) => (this._config = config))
+        );
     }
 }

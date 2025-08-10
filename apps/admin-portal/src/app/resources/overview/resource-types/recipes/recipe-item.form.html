@@ -1,0 +1,43 @@
+<form>
+    <div class="d-flex justify-content-between align-content-center">
+        <h3>{{ type() | titlecase }}s</h3>
+        <button type="button" class="btn btn-outline-primary" (click)="onNewRecipeItem()">New {{ type() }}</button>
+    </div>
+
+    <div>
+        @for (control of recipeItemsFormArray.controls; track control.value; let i = $index) {
+            <div class="row" [formGroup]="control">
+                <div class="col">
+                    <label [for]="$index | elementId: 'item-select' : type()" class="form-label invisible">Item</label>
+                    <select
+                        [id]="$index | elementId: 'item-select' : type()"
+                        class="form-select"
+                        formControlName="itemId"
+                    >
+                        @for (option of itemOptions$ | async; track option.value) {
+                            <option [value]="option.value" [disabled]="shouldDisable(option.value, i)">
+                                {{ option.label }}
+                            </option>
+                        }
+                    </select>
+                </div>
+                <div class="col">
+                    <label [for]="$index | elementId: 'quantity-input' : type()" class="form-label invisible">
+                        Quantity
+                    </label>
+                    <div class="d-flex align-items-center gap-3">
+                        <input
+                            type="number"
+                            [id]="$index | elementId: 'quantity-input' : type()"
+                            class="form-control"
+                            formControlName="quantity"
+                        />
+                        <button type="button" class="btn btn-outline-danger" (click)="onRemoveRecipeItem($index)">
+                            X
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</form>

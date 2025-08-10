@@ -14,16 +14,25 @@ import org.jetbrains.exposed.sql.update
 
 fun ResultRow.toRecipe(): Recipe {
     val technologyTreeId = this[RecipeTable.technologyTreeId]
+    val recipeId = this[RecipeTable.id]
     var technologyTree: TechnologyTree? = null
+    var inputs = mutableListOf<RecipeItem>()
+    var outputs = mutableListOf<RecipeItem>()
 
     transaction {
         technologyTree = technologyTreesRepository.findOneById(technologyTreeId)
     }
+    transaction {
+        inputs = recipeInputsRepository.findAllByRecipe(recipeId)
+        outputs = recipeOutputsRepository.findAllByRecipe(recipeId)
+    }
     return Recipe(
-        this[RecipeTable.id],
-        this[RecipeTable.craftingTime],
-        technologyTree!!,
-        this[RecipeTable.technologyPoints]
+        id = this[RecipeTable.id],
+        craftingTime = this[RecipeTable.craftingTime],
+        technologyTree = technologyTree!!,
+        technologyPoints = this[RecipeTable.technologyPoints],
+        inputs = inputs,
+        outputs = outputs,
     )
 }
 

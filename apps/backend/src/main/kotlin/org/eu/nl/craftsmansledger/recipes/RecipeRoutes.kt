@@ -31,24 +31,21 @@ fun Route.recipeRoutes() {
 
         route("/{recipeId}") {
             get {
-                val recipeIdParam = call.parameters["recipeId"]
-                val byId = recipesService.getById(recipeIdParam!!)
+                val recipeIdParam = call.parameters["recipeId"]!!
 
-                if (byId == null) {
-                    throw HttpException(
-                        "Recipe with ID \"$recipeIdParam\" was not found",
-                        HttpStatusCode.NotFound
-                    )
-                }
+                val byId = recipesService.getById(recipeIdParam) ?: throw HttpException(
+                    "Recipe with ID \"$recipeIdParam\" was not found",
+                    HttpStatusCode.NotFound
+                )
                 call.respond(byId)
             }
 
             put {
-                val recipeIdParam = call.parameters["recipeId"]
+                val recipeIdParam = call.parameters["recipeId"]!!
                 val url = call.request.uri
                 val dto = call.receive<UpdateRecipeDto>()
 
-                if (dto.id != recipeIdParam!!) {
+                if (dto.id != recipeIdParam) {
                     throw HttpException(
                         "It's not allowed to modify data of Recipe on path \"$url\" with data from Recipe with ID \"${dto.id}\"",
                         HttpStatusCode.BadRequest
@@ -60,6 +57,114 @@ fun Route.recipeRoutes() {
             delete {
                 val recipeIdParam = call.parameters["recipeId"]
                 call.respond(recipesService.remove(recipeIdParam!!))
+            }
+
+            route("/inputs") {
+                get {
+                    val recipeIdParam = call.parameters["recipeId"]!!
+                    call.respond(recipesService.getAllInputsOfRecipe(recipeIdParam))
+                }
+
+                post {
+                    val recipeIdParam = call.parameters["recipeId"]!!
+                    val dto = call.receive<RecipeItemDto>()
+                    val url = call.request.uri
+
+                    val input = recipesService.addRecipeInput(recipeIdParam, dto)
+
+                    call.response.headers.append(HttpHeaders.Location, "$url/${input.item.id}")
+                    call.respond(HttpStatusCode.Created, input)
+                }
+
+                route("/{itemId}") {
+                    get {
+                        val recipeIdParam = call.parameters["recipeId"]!!
+                        val itemIdParam = call.parameters["itemId"]!!
+
+                        val input = recipesService.getInputOfRecipe(recipeIdParam, itemIdParam) ?: throw HttpException(
+                            "Recipe with ID \"$recipeIdParam\" does not have an input with Item with ID \"${itemIdParam}\"",
+                            HttpStatusCode.NotFound
+                        )
+                        call.respond(input)
+                    }
+
+                    put {
+                        val recipeIdParam = call.parameters["recipeId"]!!
+                        val itemIdParam = call.parameters["itemId"]!!
+                        val url = call.request.uri
+                        val dto = call.receive<RecipeItemDto>()
+
+                        if (itemIdParam != dto.itemId) {
+                            throw HttpException(
+                                "It is not allowed to update input with itemId \"${dto.itemId}\" of Recipe with ID \"$recipeIdParam\" on path \"$url\"",
+                                HttpStatusCode.BadRequest
+                            )
+                        }
+                        call.respond(recipesService.updateInput(recipeIdParam, dto))
+                    }
+
+                    delete {
+                        val recipeIdParam = call.parameters["recipeId"]!!
+                        val itemIdParam = call.parameters["itemId"]!!
+
+                        recipesService.removeInputFromRecipe(recipeIdParam, itemIdParam)
+                        call.respond(HttpStatusCode.OK)
+                    }
+                }
+            }
+
+            route("/outputs") {
+                get {
+                    val recipeIdParam = call.parameters["recipeId"]!!
+                    call.respond(recipesService.getAllOutputsOfRecipe(recipeIdParam))
+                }
+
+                post {
+                    val recipeIdParam = call.parameters["recipeId"]!!
+                    val dto = call.receive<RecipeItemDto>()
+                    val url = call.request.uri
+
+                    val output = recipesService.addRecipeOutput(recipeIdParam, dto)
+
+                    call.response.headers.append(HttpHeaders.Location, "$url/${output.item.id}")
+                    call.respond(HttpStatusCode.Created, output)
+                }
+
+                route("/{itemId}") {
+                    get {
+                        val recipeIdParam = call.parameters["recipeId"]!!
+                        val itemIdParam = call.parameters["itemId"]!!
+
+                        val output = recipesService.getOutputOfRecipe(recipeIdParam, itemIdParam) ?: throw HttpException(
+                            "Recipe with ID \"$recipeIdParam\" does not have an output with Item with ID \"${itemIdParam}\"",
+                            HttpStatusCode.NotFound
+                        )
+                        call.respond(output)
+                    }
+
+                    put {
+                        val recipeIdParam = call.parameters["recipeId"]!!
+                        val itemIdParam = call.parameters["itemId"]!!
+                        val url = call.request.uri
+                        val dto = call.receive<RecipeItemDto>()
+
+                        if (itemIdParam != dto.itemId) {
+                            throw HttpException(
+                                "It is not allowed to update output with itemId \"${dto.itemId}\" of Recipe with ID \"$recipeIdParam\" on path \"$url\"",
+                                HttpStatusCode.BadRequest
+                            )
+                        }
+                        call.respond(recipesService.updateOutput(recipeIdParam, dto))
+                    }
+
+                    delete {
+                        val recipeIdParam = call.parameters["recipeId"]!!
+                        val itemIdParam = call.parameters["itemId"]!!
+
+                        recipesService.removeOutputFromRecipe(recipeIdParam, itemIdParam)
+                        call.respond(HttpStatusCode.OK)
+                    }
+                }
             }
         }
     }
