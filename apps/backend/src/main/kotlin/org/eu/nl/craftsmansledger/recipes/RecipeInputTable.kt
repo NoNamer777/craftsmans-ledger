@@ -10,14 +10,16 @@ object RecipeInputTable: CompositeIdTable("recipe_inputs") {
         refColumn = RecipeTable.id,
         fkName = "fk_recipe_input",
         onDelete = ReferenceOption.CASCADE
-    ).entityId()
+    )
+
     val itemId = reference(
         name = "item_id",
         refColumn = ItemTable.id,
         fkName = "fk_item_input",
         onDelete = ReferenceOption.CASCADE
-    ).entityId()
-    val quantity = integer("quantity").check { it.greaterEq(1) }
+    )
+
+    val quantity = integer("quantity").check("ck_valid_input_quantity") { it.greaterEq(1) }
 
     override val primaryKey = PrimaryKey(recipeId, itemId, name = "pk_recipe_input")
 }

@@ -13,7 +13,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.update
 
 fun ResultRow.toRecipeItem(): RecipeItem {
-    val itemId = this[RecipeInputTable.itemId].value
+    val itemId = this[RecipeInputTable.itemId]
 
     var item: Item? = null
 
@@ -27,7 +27,7 @@ fun ResultRow.toRecipeItem(): RecipeItem {
 }
 
 fun InsertStatement<Number>.toRecipeItem(): RecipeItem {
-    val itemId = this[RecipeInputTable.itemId].value
+    val itemId = this[RecipeInputTable.itemId]
 
     var item: Item? = null
 
