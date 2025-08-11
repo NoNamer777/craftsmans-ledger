@@ -102,7 +102,7 @@ export class MockItemDB {
 
     public async reset() {
         const items = await new Promise<Item[]>((resolve, reject) => {
-            parse<Item>('/data/items.csv', {
+            parse<Item>('/data/csv/items.csv', {
                 download: true,
                 delimiter: ',',
                 header: true,
