@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NotificationsContainerComponent } from '@craftsmans-ledger/shared-ui';
+import { NotificationsContainerComponent, WebSocketService } from '@craftsmans-ledger/shared-ui';
 import { HeaderComponent } from '../header';
 
 @Component({
@@ -10,4 +10,14 @@ import { HeaderComponent } from '../header';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [RouterOutlet, HeaderComponent, NotificationsContainerComponent],
 })
-export class RootComponent {}
+export class RootComponent implements OnInit, OnDestroy {
+    private readonly webSocketService = inject(WebSocketService);
+
+    public ngOnInit() {
+        this.webSocketService.connect();
+    }
+
+    public ngOnDestroy() {
+        this.webSocketService.closeConnection();
+    }
+}

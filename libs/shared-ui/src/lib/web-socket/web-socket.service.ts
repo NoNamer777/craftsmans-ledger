@@ -1,16 +1,16 @@
 import { inject, Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
 import { ConfigService } from '../config';
-import { WebSocketMessage } from './models';
+import { ItemsService, RecipesService, TechnologyTreesService } from '../resources';
+import { InvalidateCacheMessage, ResourceType, ResourceTypes, WebSocketMessage, WebSocketMessageTypes } from './models';
 
 @Injectable({ providedIn: 'root' })
 export class WebSocketService {
     private configService = inject(ConfigService);
+    private itemsService = inject(ItemsService);
+    private recipesService = inject(RecipesService);
+    private technologyTreesService = inject(TechnologyTreesService);
 
     private webSocket: WebSocket;
-
-    private messagesSubject = new Subject<WebSocketMessage>();
-    public readonly messages$ = this.messagesSubject.asObservable();
 
     public connect() {
         this.webSocket = new WebSocket(`${this.configService.config.baseApiUrl}/ws`);
@@ -41,10 +41,40 @@ export class WebSocketService {
     }
 
     private onMessage(message: MessageEvent) {
-        this.messagesSubject.next(JSON.parse(message.data));
+        this.handleMessage(JSON.parse(message.data));
     }
 
     private onError(event: Event) {
         console.error('WebSocket error', event);
+    }
+
+    private handleMessage(message: WebSocketMessage) {
+        switch (message.type) {
+            case WebSocketMessageTypes.INVALIDATE_CACHE:
+                this.onInvalidateResourceCache((message as InvalidateCacheMessage).data.resourceType);
+                return;
+
+            default:
+                console.error(`Invalid WebSocketMessageType "${message.type}"`);
+        }
+    }
+
+    private onInvalidateResourceCache(resourceType: ResourceType) {
+        switch (resourceType) {
+            case ResourceTypes.TECHNOLOGY_TREES:
+                this.technologyTreesService.clearCache();
+                return;
+
+            case ResourceTypes.ITEMS:
+                this.itemsService.clearCache();
+                return;
+
+            case ResourceTypes.RECIPES:
+                this.recipesService.clearCache();
+                return;
+
+            default:
+                console.error(`Invalid resource type "${resourceType}"`);
+        }
     }
 }
