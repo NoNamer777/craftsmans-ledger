@@ -29,6 +29,7 @@ dependencies {
     implementation(libs.ktor.server.host.common)
     implementation(libs.ktor.server.netty)
     implementation(libs.ktor.server.status.pages)
+    implementation(libs.ktor.server.websockets)
     implementation(libs.logback.classic)
     implementation(libs.mariadb.java.client)
     implementation(libs.mysql.connector.java)
