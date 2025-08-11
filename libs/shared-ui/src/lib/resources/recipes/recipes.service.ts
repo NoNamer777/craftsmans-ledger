@@ -1,5 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { from, map, of, tap } from 'rxjs';
+import { StorageKeys } from '../../browser-storage/models';
+import { CacheService } from '../../cache';
 import { ApiService } from '../../http';
 import { serialize, serializeAll } from '../../utils';
 import { CreateRecipeData, Recipe, RecipeItem, RecipeItemDto, UpdateRecipeData } from './models';
@@ -7,6 +9,7 @@ import { CreateRecipeData, Recipe, RecipeItem, RecipeItemDto, UpdateRecipeData }
 @Injectable({ providedIn: 'root' })
 export class RecipesService {
     private readonly apiService = inject(ApiService);
+    private readonly cacheService = new CacheService(StorageKeys.CACHE_RECIPES, Recipe);
 
     private readonly baseEndPoint = '/recipes';
 
@@ -14,10 +17,20 @@ export class RecipesService {
 
     private readonly outputsEndPoint = `${this.baseEndPoint}/:recipeId/outputs`;
 
+    public initialize() {
+        return from(this.cacheService.loadCacheFromStorage());
+    }
+
+    public clearCache() {
+        this.cacheService.clear();
+    }
+
     public getAll() {
-        return this.apiService
-            .get<Recipe[]>(this.baseEndPoint)
-            .pipe(map((response) => serializeAll(Recipe, response.body)));
+        if (this.cacheService.hasCache) return of(this.cacheService.cache);
+        return this.apiService.get<Recipe[]>(this.baseEndPoint).pipe(
+            map((response) => serializeAll(Recipe, response.body)),
+            tap((recipes) => (this.cacheService.cache = recipes))
+        );
     }
 
     public create(recipe: CreateRecipeData) {
