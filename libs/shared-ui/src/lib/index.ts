@@ -1,4 +1,5 @@
 export * from './browser-storage';
+export * from './cache';
 export * from './config';
 export * from './crypto';
 export * from './error-handling';
