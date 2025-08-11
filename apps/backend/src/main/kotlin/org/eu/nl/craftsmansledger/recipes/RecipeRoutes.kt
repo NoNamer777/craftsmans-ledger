@@ -12,6 +12,8 @@ import io.ktor.server.routing.post
 import io.ktor.server.routing.put
 import io.ktor.server.routing.route
 import org.eu.nl.craftsmansledger.core.HttpException
+import org.eu.nl.craftsmansledger.core.caching.ResourceType
+import org.eu.nl.craftsmansledger.core.caching.cacheEvents
 
 fun Route.recipeRoutes() {
     route("/recipes") {
@@ -24,6 +26,7 @@ fun Route.recipeRoutes() {
             val url = call.request.uri
 
             val recipe = recipesService.create(dto)
+            cacheEvents.invalidateCacheForResource(ResourceType.RECIPES)
 
             call.response.headers.append(HttpHeaders.Location, "$url/${recipe.id}")
             call.respond(HttpStatusCode.Created, recipe)
@@ -51,12 +54,19 @@ fun Route.recipeRoutes() {
                         HttpStatusCode.BadRequest
                     )
                 }
-                call.respond(recipesService.update(dto))
+                val updatedRecipe = recipesService.update(dto)
+                cacheEvents.invalidateCacheForResource(ResourceType.RECIPES)
+
+                call.respond(updatedRecipe)
             }
 
             delete {
-                val recipeIdParam = call.parameters["recipeId"]
-                call.respond(recipesService.remove(recipeIdParam!!))
+                val recipeIdParam = call.parameters["recipeId"]!!
+
+                recipesService.remove(recipeIdParam)
+                cacheEvents.invalidateCacheForResource(ResourceType.RECIPES)
+
+                call.respond(HttpStatusCode.NoContent)
             }
 
             route("/inputs") {
@@ -71,6 +81,7 @@ fun Route.recipeRoutes() {
                     val url = call.request.uri
 
                     val input = recipesService.addRecipeInput(recipeIdParam, dto)
+                    cacheEvents.invalidateCacheForResource(ResourceType.RECIPES)
 
                     call.response.headers.append(HttpHeaders.Location, "$url/${input.item.id}")
                     call.respond(HttpStatusCode.Created, input)
@@ -100,7 +111,10 @@ fun Route.recipeRoutes() {
                                 HttpStatusCode.BadRequest
                             )
                         }
-                        call.respond(recipesService.updateInput(recipeIdParam, dto))
+                        val updatedInput = recipesService.updateInput(recipeIdParam, dto)
+                        cacheEvents.invalidateCacheForResource(ResourceType.RECIPES)
+
+                        call.respond(updatedInput)
                     }
 
                     delete {
@@ -108,7 +122,9 @@ fun Route.recipeRoutes() {
                         val itemIdParam = call.parameters["itemId"]!!
 
                         recipesService.removeInputFromRecipe(recipeIdParam, itemIdParam)
-                        call.respond(HttpStatusCode.OK)
+                        cacheEvents.invalidateCacheForResource(ResourceType.RECIPES)
+
+                        call.respond(HttpStatusCode.NoContent)
                     }
                 }
             }
@@ -125,6 +141,7 @@ fun Route.recipeRoutes() {
                     val url = call.request.uri
 
                     val output = recipesService.addRecipeOutput(recipeIdParam, dto)
+                    cacheEvents.invalidateCacheForResource(ResourceType.RECIPES)
 
                     call.response.headers.append(HttpHeaders.Location, "$url/${output.item.id}")
                     call.respond(HttpStatusCode.Created, output)
@@ -154,7 +171,10 @@ fun Route.recipeRoutes() {
                                 HttpStatusCode.BadRequest
                             )
                         }
-                        call.respond(recipesService.updateOutput(recipeIdParam, dto))
+                        val updateOutput = recipesService.updateOutput(recipeIdParam, dto)
+                        cacheEvents.invalidateCacheForResource(ResourceType.RECIPES)
+
+                        call.respond(updateOutput)
                     }
 
                     delete {
@@ -162,7 +182,9 @@ fun Route.recipeRoutes() {
                         val itemIdParam = call.parameters["itemId"]!!
 
                         recipesService.removeOutputFromRecipe(recipeIdParam, itemIdParam)
-                        call.respond(HttpStatusCode.OK)
+                        cacheEvents.invalidateCacheForResource(ResourceType.RECIPES)
+
+                        call.respond(HttpStatusCode.NoContent)
                     }
                 }
             }

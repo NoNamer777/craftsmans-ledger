@@ -7,3 +7,4 @@ export * from './notifications';
 export * from './resources';
 export * from './rxjs';
 export * from './utils';
+export * from './web-socket';

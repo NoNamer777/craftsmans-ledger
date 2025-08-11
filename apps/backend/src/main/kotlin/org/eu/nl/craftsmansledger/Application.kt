@@ -1,12 +1,8 @@
 package org.eu.nl.craftsmansledger
 
 import io.ktor.server.application.*
-import io.ktor.server.engine.ApplicationEngine
-import io.ktor.server.engine.applicationEnvironment
-import io.ktor.server.engine.connector
-import io.ktor.server.engine.embeddedServer
-import io.ktor.server.engine.sslConnector
-import io.ktor.server.netty.Netty
+import io.ktor.server.engine.*
+import io.ktor.server.netty.*
 import org.eu.nl.craftsmansledger.core.appRoutes
 import org.eu.nl.craftsmansledger.core.databaseService
 import org.slf4j.LoggerFactory
