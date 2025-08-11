@@ -15,7 +15,7 @@ class TechnologyTreesService {
                 HttpStatusCode.BadRequest
             )
         }
-        if (this.isMaxPointsValid(data.maxPoints)) {
+        if (!this.isMaxPointsValid(data.maxPoints)) {
             throw HttpException(
                 "Could not create Technology Tree. - Reason: Maximum points must be higher than zero",
                 HttpStatusCode.BadRequest
@@ -25,21 +25,17 @@ class TechnologyTreesService {
     }
 
     fun update(data: TechnologyTree): TechnologyTree {
-        val byId = this.getById(data.id)
-
-        if (byId == null) {
-            throw HttpException(
-                "Could not update Technology Tree with ID \"${data.id}\". - Reason: Technology tree was not found",
-                HttpStatusCode.NotFound
-            )
-        }
-        if (this.isNameTaken(data.name)) {
+        this.getById(data.id) ?: throw HttpException(
+            "Could not update Technology Tree with ID \"${data.id}\". - Reason: Technology tree was not found",
+            HttpStatusCode.NotFound
+        )
+        if (this.isNameTaken(data.name, data.id)) {
             throw HttpException(
                 "Could not update Technology Tree with ID \"${data.id}\". - Reason: Name \"${data.name}\" is not available",
                 HttpStatusCode.BadRequest
             )
         }
-        if (this.isMaxPointsValid(data.maxPoints)) {
+        if (!this.isMaxPointsValid(data.maxPoints)) {
             throw HttpException(
                 "Could not update Technology Tree with ID \"${data.id}\". - Reason: Maximum points must be higher than zero",
                 HttpStatusCode.BadRequest
@@ -49,14 +45,10 @@ class TechnologyTreesService {
     }
 
     fun remove(technologyTreeId: String) {
-        val byId = this.getById(technologyTreeId)
-
-        if (byId == null) {
-            throw HttpException(
-                "Could not remove Technology Tree with ID \"$technologyTreeId\". - Reason: Technology tree was not found",
-                HttpStatusCode.NotFound
-            )
-        }
+        this.getById(technologyTreeId) ?: throw HttpException(
+            "Could not remove Technology Tree with ID \"$technologyTreeId\". - Reason: Technology tree was not found",
+            HttpStatusCode.NotFound
+        )
         technologyTreesRepository.remove(technologyTreeId)
     }
 
