@@ -1,6 +1,7 @@
 package org.eu.nl.craftsmansledger.core
 
 import io.ktor.http.*
+import io.ktor.serialization.kotlinx.KotlinxWebsocketSerializationConverter
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.http.content.*
@@ -9,10 +10,20 @@ import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import io.ktor.server.websocket.WebSockets
+import io.ktor.server.websocket.pingPeriod
+import io.ktor.server.websocket.timeout
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.modules.SerializersModule
+import kotlinx.serialization.modules.polymorphic
+import kotlinx.serialization.modules.subclass
+import org.eu.nl.craftsmansledger.core.websocket.InvalidateCacheMessage
+import org.eu.nl.craftsmansledger.core.websocket.WebSocketMessage
+import org.eu.nl.craftsmansledger.core.websocket.webSocketRoutes
 import org.eu.nl.craftsmansledger.items.itemRoutes
 import org.eu.nl.craftsmansledger.recipes.recipeRoutes
 import org.eu.nl.craftsmansledger.technologyTrees.technologyTreeRoutes
+import kotlin.time.Duration.Companion.seconds
 
 fun Application.appRoutes() {
     val allowedDevOrigins = "https://localhost.admin.craftsmans-ledger.net:7100,https://localhost.www.craftsmans-ledger.net:7000,https://admin-dev.craftsmans-ledger.nl.eu.org,https://www-dev.craftsmans-ledger.nl.eu.org"
@@ -52,6 +63,15 @@ fun Application.appRoutes() {
             }
         }
     }
+    install(WebSockets) {
+        pingPeriod = 15.seconds
+        timeout = 15.seconds
+        maxFrameSize = Long.MAX_VALUE
+        masking = false
+        contentConverter = KotlinxWebsocketSerializationConverter(Json {
+            encodeDefaults = true
+        })
+    }
 
     routing {
         staticResources("/assets", "assets")
@@ -60,6 +80,7 @@ fun Application.appRoutes() {
             call.respondText("Hello World!")
         }
 
+        webSocketRoutes()
         technologyTreeRoutes()
         itemRoutes()
         recipeRoutes()
