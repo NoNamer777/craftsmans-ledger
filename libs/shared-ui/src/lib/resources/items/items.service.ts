@@ -1,5 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { from, map, of, tap } from 'rxjs';
+import { StorageKeys } from '../../browser-storage/models';
+import { CacheService } from '../../cache';
 import { ApiService, PaginatedResponse } from '../../http';
 import { serialize, serializeAll } from '../../utils';
 import {
@@ -15,11 +17,24 @@ import {
 @Injectable({ providedIn: 'root' })
 export class ItemsService {
     private readonly apiService = inject(ApiService);
+    private readonly cacheService = new CacheService(StorageKeys.CACHE_ITEMS, Item);
 
     private readonly endPoint = '/items';
 
+    public initialize() {
+        return from(this.cacheService.loadCacheFromStorage());
+    }
+
+    public clearCache() {
+        this.cacheService.clear();
+    }
+
     public getAll() {
-        return this.apiService.get<Item[]>(this.endPoint).pipe(map((response) => serializeAll(Item, response.body)));
+        if (this.cacheService.hasCache) return of(this.cacheService.cache);
+        return this.apiService.get<Item[]>(this.endPoint).pipe(
+            map((response) => serializeAll(Item, response.body)),
+            tap((items) => (this.cacheService.cache = items))
+        );
     }
 
     public create(item: CreateItemData) {

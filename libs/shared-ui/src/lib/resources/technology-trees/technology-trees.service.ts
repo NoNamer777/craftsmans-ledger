@@ -1,5 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { from, map, of, tap } from 'rxjs';
+import { StorageKeys } from '../../browser-storage/models';
+import { CacheService } from '../../cache';
 import { ApiService } from '../../http';
 import { serialize, serializeAll } from '../../utils';
 import { CreateTechnologyTreeData, TechnologyTree } from './models';
@@ -7,13 +9,24 @@ import { CreateTechnologyTreeData, TechnologyTree } from './models';
 @Injectable({ providedIn: 'root' })
 export class TechnologyTreesService {
     private readonly apiService = inject(ApiService);
+    private readonly cacheService = new CacheService(StorageKeys.CACHE_TECHNOLOGY_TREES, TechnologyTree);
 
     private readonly endPoint = '/technology-trees';
 
+    public initialize() {
+        return from(this.cacheService.loadCacheFromStorage());
+    }
+
+    public clearCache() {
+        this.cacheService.clear();
+    }
+
     public getAll() {
-        return this.apiService
-            .get<TechnologyTree[]>(this.endPoint)
-            .pipe(map((response) => serializeAll(TechnologyTree, response.body)));
+        if (this.cacheService.hasCache) return of(this.cacheService.cache);
+        return this.apiService.get<TechnologyTree[]>(this.endPoint).pipe(
+            map((response) => serializeAll(TechnologyTree, response.body)),
+            tap((technologyTrees) => (this.cacheService.cache = technologyTrees))
+        );
     }
 
     public create(technologyTree: CreateTechnologyTreeData) {
