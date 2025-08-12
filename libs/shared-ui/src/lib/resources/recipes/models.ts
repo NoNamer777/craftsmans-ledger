@@ -150,7 +150,7 @@ export class Recipe implements Resource {
     public inputValue(recipes: Recipe[]) {
         let inputValue = 0;
 
-        for (const input of this.inputs) {
+        for (const input of this.inputs ?? []) {
             if (input.item.hasRecipe(recipes)) {
                 const inputRecipe = recipes.find((recipe) => recipe.requiresItemForOutput(input.item.id));
                 inputValue += (input.item.baseValue + inputRecipe.inputValue(recipes)) * input.quantity;
