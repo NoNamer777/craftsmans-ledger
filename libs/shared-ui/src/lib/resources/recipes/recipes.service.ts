@@ -40,9 +40,15 @@ export class RecipesService {
     }
 
     public getById(recipeId: string) {
-        return this.apiService
+        const fetchFromApi = this.apiService
             .get<Recipe>(`${this.baseEndPoint}/${recipeId}`)
             .pipe(map((response) => serialize(Recipe, response.body)));
+
+        if (this.cacheService.hasCache) {
+            const cachedResource = this.cacheService.getResourceById(recipeId);
+            return cachedResource ? of(cachedResource) : fetchFromApi;
+        }
+        return fetchFromApi;
     }
 
     public update(recipe: UpdateRecipeData) {

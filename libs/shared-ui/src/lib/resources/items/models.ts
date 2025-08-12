@@ -1,4 +1,4 @@
-import { DEFAULT_SORT_ORDER, QueryParams, SortOrder } from '@craftsmans-ledger/shared-ui';
+import { DEFAULT_SORT_ORDER, QueryParams, Recipe, SortOrder } from '@craftsmans-ledger/shared-ui';
 import { Expose } from 'class-transformer';
 import { nanoid } from 'nanoid';
 import { Resource } from '../models';
@@ -18,6 +18,10 @@ export class Item implements Resource {
 
     public label() {
         return this.name;
+    }
+
+    public hasRecipe(recipes: Recipe[]) {
+        return recipes.some((recipe) => recipe.outputs.some((output) => output.item.id === this.id));
     }
 
     public compareTo(other: unknown) {

@@ -9,4 +9,12 @@ export const appRoutes: Route[] = [
         path: 'resources',
         loadChildren: async () => (await import('../../resources')).resourcesRoutes,
     },
+    {
+        path: 'not-found',
+        loadComponent: async () => (await import('../not-found')).NotFoundPage,
+    },
+    {
+        path: '**',
+        redirectTo: 'not-found',
+    },
 ];

@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { OverviewComponent } from '../../recipes';
 
 @Component({
     selector: 'cml-home',
     templateUrl: './home.page.html',
     styleUrl: './home.page.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [],
+    imports: [OverviewComponent],
 })
 export class HomePage {}
