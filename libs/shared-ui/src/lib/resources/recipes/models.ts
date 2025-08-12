@@ -131,6 +131,22 @@ export class Recipe implements Resource {
         return this.outputs?.map(({ item }) => item.name)?.join(', ') ?? this.id;
     }
 
+    public get multipleOutputsLabel() {
+        return this.outputs.map(({ item, quantity }) => `${quantity} x ${item.name}`).join(', ');
+    }
+
+    public get hasOneOutput() {
+        return this.outputs.length === 1;
+    }
+
+    public get outputQuantity() {
+        return this.outputs[0].quantity;
+    }
+
+    public get outputWeight() {
+        return this.outputs?.reduce((weight, output) => weight + output.quantity * output.item.weight, 0) ?? 0;
+    }
+
     public inputValue(recipes: Recipe[]) {
         let inputValue = 0;
 

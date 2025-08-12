@@ -1,0 +1,6 @@
+<h1>Recipes</h1>
+<div class="d-flex flex-column gap-3 mt-3">
+    @for (recipe of recipesService.getAll() | async; track recipe.id) {
+        <cml-recipe-card [recipe]="recipe" [index]="$index" />
+    }
+</div>
