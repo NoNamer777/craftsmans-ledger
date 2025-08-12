@@ -131,6 +131,29 @@ export class Recipe implements Resource {
         return this.outputs?.map(({ item }) => item.name)?.join(', ') ?? this.id;
     }
 
+    public inputValue(recipes: Recipe[]) {
+        let inputValue = 0;
+
+        for (const input of this.inputs) {
+            if (input.item.hasRecipe(recipes)) {
+                const inputRecipe = recipes.find((recipe) => recipe.requiresItemForOutput(input.item.id));
+                inputValue += (input.item.baseValue + inputRecipe.inputValue(recipes)) * input.quantity;
+            } else {
+                inputValue += input.quantity * input.item.baseValue;
+            }
+        }
+        return inputValue;
+    }
+
+    public get outputValue() {
+        return this.outputs?.reduce((value, output) => value + output.quantity * output.item.baseValue, 0) ?? 0;
+    }
+
+    // TODO: Memoize this function to reduce computation load.
+    public profit(recipes: Recipe[]) {
+        return this.outputValue - this.inputValue(recipes);
+    }
+
     public toDto() {
         const dto = new RecipeDto();
 
@@ -141,6 +164,10 @@ export class Recipe implements Resource {
         dto.inputs = (this.inputs ?? []).map((input) => input.toDto());
         dto.outputs = (this.outputs ?? []).map((output) => output.toDto());
         return dto;
+    }
+
+    private requiresItemForOutput(itemId: string) {
+        return this.outputs.some((output) => output.item.id === itemId);
     }
 }
 
