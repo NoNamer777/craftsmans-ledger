@@ -36,9 +36,15 @@ export class TechnologyTreesService {
     }
 
     public getById(technologyTreeId: string) {
-        return this.apiService
+        const fetchFromApi = this.apiService
             .get<TechnologyTree>(`${this.endPoint}/${technologyTreeId}`)
             .pipe(map((response) => serialize(TechnologyTree, response.body)));
+
+        if (this.cacheService.hasCache) {
+            const cachedResource = this.cacheService.getResourceById(technologyTreeId);
+            return cachedResource ? of(cachedResource) : fetchFromApi;
+        }
+        return fetchFromApi;
     }
 
     public update(technologyTree: TechnologyTree) {

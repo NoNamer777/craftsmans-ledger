@@ -62,9 +62,15 @@ export class ItemsService {
     }
 
     public getById(itemId: string) {
-        return this.apiService
+        const fetchResourceFromApi = this.apiService
             .get<Item>(`${this.endPoint}/${itemId}`)
             .pipe(map((response) => serialize(Item, response.body)));
+
+        if (this.cacheService.hasCache) {
+            const cachedResource = this.cacheService.getResourceById(itemId);
+            return cachedResource ? of(cachedResource) : fetchResourceFromApi;
+        }
+        return fetchResourceFromApi;
     }
 
     public update(item: Item) {

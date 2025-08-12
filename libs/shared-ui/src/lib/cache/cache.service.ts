@@ -23,6 +23,10 @@ export class CacheService<T extends Resource> {
         this.cache = cache;
     }
 
+    public getResourceById(resourceId: string): T {
+        return this._cache.find(({ id }) => id === resourceId);
+    }
+
     public get cache() {
         return this._cache;
     }
