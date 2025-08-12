@@ -9,17 +9,17 @@
         </p>
         <div class="card-text d-flex align-items-center gap-3">
             <p class="mb-0 d-flex align-items-center gap-2 font-monospace">
-                <span class="text-end">{{ recipe().profit(recipesService.getAll() | async) }}</span>
+                <span class="text-end">{{ recipe().profit(recipesService.getAll() | async) | number: '1.2-2' }}</span>
                 <cml-icon cml-coins-icon />
-                <span>{{ recipe().outputValue }}</span>
+                <span>{{ recipe().outputValue | number: '1.2-2' }}</span>
             </p>
             <p class="mb-0 d-flex align-items-center gap-2 font-monospace">
                 <cml-icon cml-weight-hanging-icon />
-                <span>{{ recipe().outputWeight }}</span>
+                <span>{{ recipe().outputWeight | number: '1.2-2' }}</span>
             </p>
             <p class="mb-0 d-flex align-items-center gap-2 font-monospace">
                 <cml-icon cml-stopwatch-icon />
-                <span>{{ recipe().craftingTime }}</span>
+                <span>{{ recipe().craftingTime | number: '1.2-2' }}</span>
             </p>
             <button type="button" class="btn btn-dark" (click)="onToggle()">
                 @if (toggled()) {

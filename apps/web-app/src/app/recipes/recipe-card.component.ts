@@ -1,4 +1,4 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DecimalPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
 import {
     ChevronDownIconComponent,
@@ -22,6 +22,7 @@ import {
         StopwatchIconComponent,
         WeightHangingIconComponent,
         AsyncPipe,
+        DecimalPipe,
     ],
 })
 export class RecipeCardComponent {
