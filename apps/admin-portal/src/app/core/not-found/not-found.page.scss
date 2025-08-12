@@ -1,0 +1,25 @@
+:host {
+    display: block;
+
+    article {
+        display: flex;
+        justify-content: center;
+        padding-top: 4rem;
+
+        cml-icon,
+        div {
+            flex: 0 0 auto;
+        }
+
+        cml-icon {
+            height: 20rem;
+            width: 20rem;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+}
