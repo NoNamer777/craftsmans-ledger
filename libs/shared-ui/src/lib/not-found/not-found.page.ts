@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
-import { NotFoundIconComponent } from '../../shared';
+import { NotFoundIconComponent } from '../icons';
 
 @Component({
     selector: 'cml-not-found',

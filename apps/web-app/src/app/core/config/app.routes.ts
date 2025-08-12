@@ -7,7 +7,7 @@ export const appRoutes: Route[] = [
     },
     {
         path: 'not-found',
-        loadComponent: async () => (await import('../not-found')).NotFoundPage,
+        loadComponent: async () => (await import('@craftsmans-ledger/shared-ui')).NotFoundPage,
     },
     {
         path: '**',
