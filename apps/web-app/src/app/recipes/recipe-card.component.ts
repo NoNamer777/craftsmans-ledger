@@ -1,11 +1,14 @@
+import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
-import { Recipe, RecipesService,
+import {
     ChevronDownIconComponent,
     ChevronUpIconComponent,
     CoinsIconComponent,
+    Recipe,
+    RecipesService,
     StopwatchIconComponent,
-    WeightHangingIconComponent, } from '@craftsmans-ledger/shared-ui';
-import { AsyncPipe } from '@angular/common';
+    WeightHangingIconComponent,
+} from '@craftsmans-ledger/shared-ui';
 
 @Component({
     selector: 'cml-recipe-card',
