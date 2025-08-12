@@ -5,7 +5,6 @@ export * from './crypto';
 export * from './error-handling';
 export * from './http';
 export * from './icons';
-export * from './not-found';
 export * from './notifications';
 export * from './resources';
 export * from './rxjs';
