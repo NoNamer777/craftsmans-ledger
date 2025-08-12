@@ -12,6 +12,7 @@
 !*.ts
 !*.scss
 !*.html
+!*.svg
 
 package-lock.json
 package.json
