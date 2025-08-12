@@ -12,6 +12,7 @@ import { nanoid } from 'nanoid';
 
 export class RecipeItem {
     @Expose()
+    @Type(() => Item)
     public item: Item;
 
     @Expose()
