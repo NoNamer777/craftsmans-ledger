@@ -1,3 +1,5 @@
+DELETE FROM cml_dev_db.items;
+
 INSERT INTO cml_dev_db.items (id,name,weight,base_value) VALUES
 	 ('__QJHvPqa0UQTLzTTgqBc','Fancy Shoes',0.15,290.0),
 	 ('_esmQubVj2gOEh6y-55cw','Iron Kite Shield',0.5,740.0),
@@ -30,7 +32,7 @@ INSERT INTO cml_dev_db.items (id,name,weight,base_value) VALUES
 	 ('2G6jRJv_P2ZifJ4fSy_iI','Throwing Stone',0.2,0.2),
 	 ('2NCidgaUeKFDpg2C7CQH0','Poppy Seed Pie',1.0,120.0),
 	 ('2rCyMCXyQzEJrgqBHV5L0','Tunic',0.5,470.0),
-	 ('2tyJ8nWA8h9hApuIa5pSR','Boardleaf Plantain',0.01,0.7);
+	 ('2tyJ8nWA8h9hApuIa5pSR','Broardleaf Plantain',0.01,0.7);
 INSERT INTO cml_dev_db.items (id,name,weight,base_value) VALUES
 	 ('2zfEsnzIHVM1fMKrN3dGy','Morel Mushroom',0.1,0.6),
 	 ('3A1zGFJ_5fVS7FtJ19TlT','Kaptorga',0.4,1000.0),
@@ -144,7 +146,7 @@ INSERT INTO cml_dev_db.items (id,name,weight,base_value) VALUES
 INSERT INTO cml_dev_db.items (id,name,weight,base_value) VALUES
 	 ('dL7w_D5pDso6v3ZJsEZod','Potion of Night Vision',0.2,25.0),
 	 ('DM6wvmZWn6ak8XN1c-om4','Leather',0.25,8.0),
-	 ('dNXj2G-GWn8Tyj6YZD50X','Wolly Milkcap Mushroom',0.1,0.6),
+	 ('dNXj2G-GWn8Tyj6YZD50X','Woolly Milkcap Mushroom',0.1,0.6),
 	 ('Do2YjnTNBI9gRGs0r4Z6e','Bronze Round Shield',0.5,450.0),
 	 ('DseBuffB75OsK8vgkMRST','Wheat Bread',0.15,150.0),
 	 ('duR1LAScDFk1Rga1Z99M0','Poisoned Wooden Bolt',0.02,7.0),
@@ -266,9 +268,9 @@ INSERT INTO cml_dev_db.items (id,name,weight,base_value) VALUES
 	 ('jzxiOFNOFdZjdLhpCIfo0','Fine Hood',0.4,630.0),
 	 ('K0Ui4zWZkRrJdbl0ciMle','White Bread',0.4,18.0),
 	 ('k4A3FvdhIXLDdtEOKoxfJ','Bolete Mushroom',0.1,0.6),
-	 ('kCgnHIqKWn286BgAFRkbh','Long Bow',1.5,370.0),
+	 ('kCgnHIqKWn286BgAFRkbh','Longbow',1.5,370.0),
 	 ('KgiB-JKHod5hhQVOg54dl','Bucket of Milk',4.0,68.0),
-	 ('Kjsv2GTvJNWfOn7suDuDP','Fertilizer',0.5,4.0),
+	 ('Kjsv2GTvJNWfOn7suDuDP','Fertiliser',0.5,4.0),
 	 ('Kkk3t9Iy5STnAUrrrEN9w','Excellent Coif',1.0,1440.0),
 	 ('kmPR0mof-ARnyAULbvHH9','Basic Hat',0.2,160.0),
 	 ('kMToUQxBTcqvtq-01KDrc','Bronze Hammer',2.0,290.0),
@@ -507,4 +509,4 @@ INSERT INTO cml_dev_db.items (id,name,weight,base_value) VALUES
 INSERT INTO cml_dev_db.items (id,name,weight,base_value) VALUES
 	 ('zw0WFXSExYBMKeljsoSZE','Potion of Instant Cure',0.2,10.0),
 	 ('zwGTInDGhGwhbnJJKf3Hv','Rich Trousers',0.4,1440.0),
-	 ('ZWwniL7roteJLIEQR4MVm','Bucket with Water',4.0,9.0);
+	 ('ZWwniL7roteJLIEQR4MVm','Bucket of Water',4.0,9.0);
