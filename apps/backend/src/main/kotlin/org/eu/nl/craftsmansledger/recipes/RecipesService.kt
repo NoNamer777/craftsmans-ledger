@@ -1,14 +1,69 @@
 package org.eu.nl.craftsmansledger.recipes
 
 import io.ktor.http.HttpStatusCode
+import io.ktor.http.Parameters
+import org.eu.nl.craftsmansledger.common.Paginated
+import org.eu.nl.craftsmansledger.common.SortOrder
 import org.eu.nl.craftsmansledger.core.HttpException
 import org.eu.nl.craftsmansledger.items.itemsService
 import org.eu.nl.craftsmansledger.technologyTrees.technologyTreesService
+import kotlin.math.ceil
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.roundToInt
 
 class RecipesService {
     fun getAll(): List<Recipe> {
         val recipes = recipesRepository.findAll()
         return recipes.toList()
+    }
+
+    fun query(queryParams: Parameters): Paginated<Recipe> {
+        var recipes = recipesRepository.findAll()
+
+        val maxTechPointsParam = queryParams["maxTechPoints"]
+        val technologyTreeIdsParam = queryParams["technologyTreeIds"]
+
+        if (maxTechPointsParam != null && technologyTreeIdsParam != null) {
+            val maxTechPoints = maxTechPointsParam.split(",").map { it.toDouble() }
+            val technologyTreeIds = technologyTreeIdsParam.split(",")
+
+            if (maxTechPoints.size != technologyTreeIds.size) {
+                throw HttpException("", HttpStatusCode.BadRequest)
+            }
+            for (idx in technologyTreeIds.indices) {
+                val technologyTreeId = technologyTreeIds[idx]
+                val maxTechnologyPoints = maxTechPoints[idx]
+
+                recipes = recipes.filter {
+                    it.technologyTree.id != technologyTreeId || (it.technologyTree.id == technologyTreeId && it.technologyPoints <= maxTechnologyPoints)
+                }
+            }
+        }
+        recipes = recipes.sortedBy { it.outputs[0].item.name }
+
+        val order = queryParams["order"]
+
+        if (order != null && order == SortOrder.DESC.value) {
+            recipes = recipes.reversed()
+        }
+        val limit = queryParams["limit"]?.toDouble() ?: -1.0
+        val offset = queryParams["offset"]?.toDouble() ?: 0.0
+
+        val totalCount = recipes.size.toDouble()
+        val lastPage = max(1.0, totalCount / limit)
+        var page = 1.0
+
+        if (limit > 0.0) {
+            page = lastPage * ((limit + offset) / totalCount)
+            recipes = recipes.subList(offset.toInt(), min(recipes.size, offset.toInt() + limit.toInt()))
+        }
+        return Paginated(
+            count = totalCount.toInt(),
+            data = recipes,
+            page = page.roundToInt(),
+            lastPage = ceil(lastPage).toInt()
+        )
     }
 
     fun getAllInputsOfRecipe(recipeId: String) = recipeInputsRepository.findAllByRecipe(recipeId)

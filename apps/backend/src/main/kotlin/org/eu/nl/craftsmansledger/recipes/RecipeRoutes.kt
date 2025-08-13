@@ -21,6 +21,10 @@ fun Route.recipeRoutes() {
             call.respond(recipesService.getAll())
         }
 
+        get("/query") {
+            call.respond(recipesService.query(call.queryParameters))
+        }
+
         post {
             val dto = call.receive<CreateRecipeDto>()
             val url = call.request.uri
