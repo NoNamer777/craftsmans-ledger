@@ -3,5 +3,45 @@
     "name": "@craftsmans-ledger/backend",
     "projectType": "application",
     "sourceRoot": "apps/backend/src/main",
-    "tags": ["scope:api", "framework:ktor"]
+    "tags": ["scope:api", "framework:ktor"],
+    "targets": {
+        "dev": {
+            "executor": "nx:run-commands",
+            "continuous": true,
+            "options": {
+                "parallel": true,
+                "commands": [
+                    {
+                        "command": "gradlew -t build -x test",
+                        "prefix": "backend:build"
+                    },
+                    {
+                        "command": "gradlew run",
+                        "prefix": "backend:run"
+                    }
+                ]
+            }
+        },
+        "serve": {
+            "executor": "nx:run-commands",
+            "continuous": true,
+            "options": {
+                "parallel": true,
+                "commands": [
+                    {
+                        "command": "npx nx dev backend",
+                        "prefix": "backend"
+                    },
+                    {
+                        "command": "npx nx serve admin-portal",
+                        "prefix": "admin-portal"
+                    },
+                    {
+                        "command": "npx nx serve web-app",
+                        "prefix": "web-app"
+                    }
+                ]
+            }
+        }
+    }
 }
