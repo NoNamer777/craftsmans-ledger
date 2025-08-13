@@ -5,8 +5,8 @@ export type QueryParams<Key extends string = string> = {
 };
 
 export interface PaginatedResponse<T> {
-    data: T[];
-    maxPages: number;
+    count: number;
+    lastPage: number;
     page: number;
-    totalNumberOfResults: number;
+    data: T[];
 }
