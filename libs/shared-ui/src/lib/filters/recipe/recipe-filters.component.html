@@ -1,1 +1,43 @@
-<p>recipe-filters works!</p>
+<form class="h-100 d-flex flex-column" [formGroup]="form" (ngSubmit)="onApplyFilters()">
+    <div class="mb-3">
+        <div class="mb-1">
+            <label for="technology-tree-select" class="form-label">Technology Tree</label>
+            <select id="technology-tree-select" class="form-select" formControlName="technologyTreeId">
+                @for (option of technologyTreeOptions | async; track option.value) {
+                    <option [value]="option.value" [disabled]="technologyTreeFilterAdded(option.value)">
+                        {{ option.label }}
+                    </option>
+                }
+            </select>
+        </div>
+        <div class="mb-2">
+            <label for="max-technology-points" class="form-label">Max Points</label>
+            <div class="d-flex align-items-center gap-2">
+                <input id="max-technology-points" type="number" class="form-control" formControlName="maxPoints" />
+                <button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    [disabled]="!canAddTechnologyFilter()"
+                    (click)="onAddTechnologyFilter()"
+                >
+                    Add
+                </button>
+            </div>
+        </div>
+        <div class="d-flex flex-wrap align-items-center gap-2">
+            @for (filter of technologyTreeFilters; track filter.technologyTree.id) {
+                <div class="d-flex gap-2 align-items-center badge rounded-pill text-bg-secondary">
+                    <span>{{ filter.label }}</span>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        (click)="onRemoveTechnologyFilter(filter.technologyTree.id)"
+                    >
+                        <!--Leave empty on purpose-->
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-auto" data-bs-dismiss="offcanvas">Apply filters</button>
+</form>

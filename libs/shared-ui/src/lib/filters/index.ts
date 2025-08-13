@@ -1,2 +1,3 @@
 export * from './filter-button/filter-button.component';
-export * from './recipe/recipe-filters.component';
+export * from './models';
+export * from './recipe';
