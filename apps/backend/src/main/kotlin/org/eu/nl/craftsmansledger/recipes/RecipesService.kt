@@ -15,7 +15,7 @@ import kotlin.math.roundToInt
 class RecipesService {
     fun getAll(): List<Recipe> {
         val recipes = recipesRepository.findAll()
-        return recipes.toList()
+        return recipes.sortedBy { it.outputs[0].item.name }
     }
 
     fun query(queryParams: Parameters): Paginated<Recipe> {
