@@ -13,11 +13,11 @@
                 "commands": [
                     {
                         "command": "gradlew -t build -x test",
-                        "prefix": "backend:build"
+                        "prefix": "build"
                     },
                     {
                         "command": "gradlew run",
-                        "prefix": "backend:run"
+                        "prefix": "run"
                     }
                 ]
             }
