@@ -20,10 +20,18 @@ import { RecipeCardComponent } from './recipe-card.component';
 })
 export class OverviewComponent implements OnInit {
     protected readonly recipesService = inject(RecipesService);
+    private readonly destroyRef = inject(DestroyRef);
     private readonly sidebarService = inject(SidebarService);
 
     public ngOnInit() {
         this.sidebarService.title.set('Recipe Filters');
         this.sidebarService.component.set(RecipeFiltersComponent);
+
+        this.sidebarService.close$
+            .pipe(
+                log((result) => ({ result })),
+                takeUntilDestroyed(this.destroyRef)
+            )
+            .subscribe();
     }
 }
