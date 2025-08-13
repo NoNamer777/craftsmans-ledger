@@ -167,6 +167,7 @@ export class Recipe implements Resource {
 
     // TODO: Memoize this function to reduce computation load.
     public profit(recipes: Recipe[]) {
+        if (!recipes) return 0;
         return this.outputValue - this.inputValue(recipes);
     }
 
