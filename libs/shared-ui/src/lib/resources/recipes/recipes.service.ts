@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { from, map, of, tap } from 'rxjs';
-import { StorageKeys } from '../../browser-storage/models';
+import { StorageKeys } from '../../browser-storage';
 import { CacheService } from '../../cache';
 import { RecipeFilters } from '../../filters';
 import { ApiService, PaginatedResponse, QueryParams } from '../../http';
