@@ -46,16 +46,19 @@ fun ApplicationEngine.Configuration.envConfig() {
 }
 
 fun main() {
-    System.setProperty("io.ktor.development", (ktorEnv == "development").toString())
+    val environment = applicationEnvironment {
+        log = LoggerFactory.getLogger("ktor.application")
+    }
+    val properties = serverConfig(environment) {
+        watchPaths = listOf("classes", "resources")
+        developmentMode = ktorEnv == "development"
+
+        module(body = Application::module)
+    }
     embeddedServer(
         factory = Netty,
-        environment = applicationEnvironment {
-            log = LoggerFactory.getLogger("ktor.application")
-        },
-        configure = {
-            envConfig()
-        },
-        module = Application::module
+        rootConfig = properties,
+        configure = { envConfig() },
     ).start(wait = true)
 }
 

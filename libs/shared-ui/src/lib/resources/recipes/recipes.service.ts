@@ -1,8 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { from, map, of, tap } from 'rxjs';
-import { StorageKeys } from '../../browser-storage/models';
+import { StorageKeys } from '../../browser-storage';
 import { CacheService } from '../../cache';
-import { ApiService } from '../../http';
+import { RecipeFilters } from '../../filters';
+import { ApiService, PaginatedResponse, QueryParams } from '../../http';
 import { serialize, serializeAll } from '../../utils';
 import { CreateRecipeData, Recipe, RecipeItem, RecipeItemDto, UpdateRecipeData } from './models';
 
@@ -30,6 +31,25 @@ export class RecipesService {
         return this.apiService.get<Recipe[]>(this.baseEndPoint).pipe(
             map((response) => serializeAll(Recipe, response.body)),
             tap((recipes) => (this.cacheService.cache = recipes))
+        );
+    }
+
+    public query(filters?: RecipeFilters) {
+        const queryParams: QueryParams = {};
+
+        if (filters?.technologyFilters.length > 0) {
+            queryParams['technologyTreeIds'] = filters.technologyFilters
+                .map((filter) => filter.technologyTree.id)
+                .join(',');
+            queryParams['maxTechPoints'] = filters.technologyFilters.map((filter) => filter.maxPoints).join(',');
+        }
+        return this.apiService.get<PaginatedResponse<Recipe>>(`${this.baseEndPoint}/query`, queryParams).pipe(
+            map((response) => {
+                const data = response.body;
+
+                data.data = serializeAll(Recipe, data.data);
+                return data;
+            })
         );
     }
 

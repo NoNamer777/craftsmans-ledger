@@ -1,6 +1,7 @@
 export * from './chevron-down/chevron-down-icon.component';
 export * from './chevron-up/chevron-up-icon.component';
 export * from './coins/coins-icon.component';
+export * from './filter/filter-icon.component';
 export * from './floppy-disk/floppy-disk-icon.component';
 export * from './not-found/not-found-icon.component';
 export * from './stopwatch/stopwatch-icon.component';
