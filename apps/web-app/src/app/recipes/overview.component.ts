@@ -1,6 +1,14 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { RecipesService } from '@craftsmans-ledger/shared-ui';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {
+    FilterButtonComponent,
+    log,
+    RecipeFiltersComponent,
+    RecipesService,
+    SidebarComponent,
+    SidebarService,
+} from '@craftsmans-ledger/shared-ui';
 import { RecipeCardComponent } from './recipe-card.component';
 
 @Component({
@@ -8,8 +16,14 @@ import { RecipeCardComponent } from './recipe-card.component';
     templateUrl: './overview.component.html',
     styleUrl: './overview.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [AsyncPipe, RecipeCardComponent],
+    imports: [AsyncPipe, RecipeCardComponent, FilterButtonComponent, SidebarComponent],
 })
-export class OverviewComponent {
+export class OverviewComponent implements OnInit {
     protected readonly recipesService = inject(RecipesService);
+    private readonly sidebarService = inject(SidebarService);
+
+    public ngOnInit() {
+        this.sidebarService.title.set('Recipe Filters');
+        this.sidebarService.component.set(RecipeFiltersComponent);
+    }
 }
