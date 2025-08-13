@@ -3,7 +3,7 @@
     <cml-filter-button />
 </div>
 <div class="d-flex flex-column gap-3 mt-3">
-    @for (recipe of recipesService.getAll() | async; track recipe.id) {
+    @for (recipe of (recipes$ | async).data; track recipe.id) {
         <cml-recipe-card [recipe]="recipe" [index]="$index" />
     }
 </div>

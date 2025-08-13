@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
     FilterButtonComponent,
-    log,
+    RecipeFilters,
     RecipeFiltersComponent,
     RecipesService,
     SidebarComponent,
@@ -19,19 +19,20 @@ import { RecipeCardComponent } from './recipe-card.component';
     imports: [AsyncPipe, RecipeCardComponent, FilterButtonComponent, SidebarComponent],
 })
 export class OverviewComponent implements OnInit {
-    protected readonly recipesService = inject(RecipesService);
     private readonly destroyRef = inject(DestroyRef);
-    private readonly sidebarService = inject(SidebarService);
+    private readonly recipesService = inject(RecipesService);
+    private readonly sidebarService = inject(SidebarService<RecipeFilters>);
+
+    protected recipes$ = this.recipesService.query();
 
     public ngOnInit() {
         this.sidebarService.title.set('Recipe Filters');
         this.sidebarService.component.set(RecipeFiltersComponent);
 
-        this.sidebarService.close$
-            .pipe(
-                log((result) => ({ result })),
-                takeUntilDestroyed(this.destroyRef)
-            )
-            .subscribe();
+        this.sidebarService.close$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+            next: (filters) => {
+                this.recipes$ = this.recipesService.query(filters);
+            },
+        });
     }
 }
