@@ -3,6 +3,7 @@ export * from './cache';
 export * from './config';
 export * from './crypto';
 export * from './error-handling';
+export * from './filters';
 export * from './http';
 export * from './icons';
 export * from './notifications';
