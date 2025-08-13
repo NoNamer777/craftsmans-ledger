@@ -9,8 +9,8 @@ export interface Comparable {
 }
 
 export const SortOrders = {
-    ASCENDING: 'ASC',
-    DESCENDING: 'DESC',
+    ASCENDING: 'asc',
+    DESCENDING: 'desc',
 } as const;
 
 export type SortOrder = (typeof SortOrders)[keyof typeof SortOrders];
