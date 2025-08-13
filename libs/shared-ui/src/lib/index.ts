@@ -8,5 +8,6 @@ export * from './icons';
 export * from './notifications';
 export * from './resources';
 export * from './rxjs';
+export * from './sidebar';
 export * from './utils';
 export * from './web-socket';

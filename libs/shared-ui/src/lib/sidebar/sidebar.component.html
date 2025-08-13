@@ -1,0 +1,13 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">{{ sidebarService.title() }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" (click)="onCloseSidebar()">
+            <!--Leave empty on purpose-->
+        </button>
+    </div>
+    <div class="offcanvas-body">
+        @if (sidebarService.component()) {
+            <ng-template [cdkPortalOutlet]="componentPortal()" />
+        }
+    </div>
+</div>
