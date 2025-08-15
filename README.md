@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains the code for the Craftman's Ledger app. This app is tailored for the game Medieval Dynasty and allows players to calculate the profit per Item that can be crafted in the game.
+This repository contains the code for the Craftsman's Ledger app. This app is tailored for the game Medieval Dynasty and allows players to calculate the profit per Item that can be crafted in the game.
 
 The Items shown can be sorted based on:
 
@@ -19,8 +19,8 @@ The Items shown can be sorted based on:
 To be able to work in this repository you'll need the following:
 
 - Have [Git](https://git-scm.com/downloads) installed.
-- Have Node.Js v22 and have a Java JDK v23 installed
-  - We recommend having [mise](https://mise.jdx.dev/) installed and set up to automatically install the required version of Node and Java.
+- Have Node.Js v22 installed
+  - We recommend having [mise](https://mise.jdx.dev/) installed and set up to automatically install the required version of Node.
 - Have [mkcert](https://github.com/FiloSottile/mkcert) installed and configured.
 
 ### Installation
@@ -47,12 +47,6 @@ To be able to work in this repository you'll need the following:
    npm ci
    ```
 
-   If you've opened the repository in an editor like IntelliJ, the Gradle project will automatically be imported. Otherwise, you might need to run the following command to build the modules:
-
-   ```bash
-   gradlew
-   ```
-
 5. Generate a local certificate and key  
    In order to enable developing with SSL enabled you need to generate a self-signed certificate and key and update the hosts file on your machine to let your browsers know the custom URLs.
 
@@ -67,19 +61,8 @@ To be able to work in this repository you'll need the following:
       ```bash
       mkcert --cert-file certificate.pem -key-file certificate-key.pem localhost.www.craftsmans-ledger.net localhost.api.craftsmans-ledger.net localhost.admin.craftsmans-ledger.net localhost
       ```
-   
-   3. Generate a keystore from the certificate and key.
-      This needs to be done because Ktor doesn't accept the certificate and key in PEM format, which is the format that mkcert outputs these files. Run the following command to generate the keystore:
-      ```bash
-      openssl pkcs12 -export -in certificate.pem -inkey certificate-key.pem -out apps/backend/keystore.p12 -name craftsmans-ledger-key -passout pass:<keystore-password>
-      ```
-      
-      Replace the `<keystore-password>` placeholder with a strong password and keep hold of that for later.
-   
-   4. Copy the `apps/backend/.env-template` file and rename the copy to `.env`.
-      Also make sure to replace the `<keystore-password>` placeholder in this file with your previously generate keystore password.
 
-   5. Add the URLs to the hosts file on your machine.
+   3. Add the URLs to the hosts file on your machine.
 
       1. Open the hosts file in a program with elevated permissions (administrator/sudo). You can find the hosts file at the following paths for your OS:
 
@@ -99,7 +82,7 @@ To be able to work in this repository you'll need the following:
 
       3. Save and close the file.
       
-   6. Make sure the self-signed certificate is trusted by your OS
+   4. Make sure the self-signed certificate is trusted by your OS
       
       <details open>
          <summary>For Windows</summary>
@@ -130,4 +113,4 @@ To serve an application find the command to run below in the table along with th
 |--------------|---------------------------|----------------------------------------------------|
 | web-app      | npx nx serve web-app      | https://localhost.www.craftsmans-ledger.net:7000   |
 | admin-portal | npx nx serve admin-portal | https://localhost.admin.craftsmans-ledger.net:7100 |
-| backend      | npx nx run backend:run    | https://localhost.api.craftsmans-ledger.net:7200   |
+| api          | npx nx serve api          | https://localhost.api.craftsmans-ledger.net:7200   |
