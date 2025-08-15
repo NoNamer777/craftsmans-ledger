@@ -2,7 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { forkJoin, from, map, switchMap, tap } from 'rxjs';
+import { forkJoin, from, map, of, switchMap, tap } from 'rxjs';
 import { BrowserStorageService, StorageKeys } from '../../browser-storage';
 import { TechnologyTreesService } from '../../resources';
 import { SidebarService } from '../../sidebar';
@@ -50,13 +50,15 @@ export class RecipeFiltersComponent implements OnInit {
     public ngOnInit() {
         from(this.browserStorageService.getItem(StorageKeys.RECIPE_FILTERS))
             .pipe(
-                switchMap((filters: RecipeFilters) =>
-                    forkJoin([
-                        ...filters.technologyFilters.map((filter) =>
+                switchMap((filters: RecipeFilters) => {
+                    const technologyFilters =
+                        filters?.technologyFilters.map((filter) =>
                             this.addTechnologyFilter(filter.technologyTree.id, filter.maxPoints)
-                        ),
-                    ])
-                ),
+                        ) ?? [];
+
+                    if (technologyFilters.length > 0) return forkJoin([...technologyFilters]);
+                    return of(null);
+                }),
                 takeUntilDestroyed(this.destroyRef)
             )
             .subscribe();
