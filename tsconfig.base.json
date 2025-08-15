@@ -21,6 +21,7 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "paths": {
+            "@craftsmans-ledger/shared": ["libs/shared/src/index.ts"],
             "@craftsmans-ledger/shared-ui": ["libs/shared-ui/src/index.ts"],
             "@craftsmans-ledger/shared-ui/test": ["libs/shared-ui/test/index.ts"]
         },
