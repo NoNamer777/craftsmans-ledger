@@ -1,3 +1,5 @@
+export * from './arrow-down-wide-short/arrow-down-wide-short-icon.component';
+export * from './arrow-up-wide-short/arrow-up-wide-short-icon.component';
 export * from './chevron-down/chevron-down-icon.component';
 export * from './chevron-up/chevron-up-icon.component';
 export * from './coins/coins-icon.component';
