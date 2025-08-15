@@ -1,0 +1,9 @@
+<button
+    type="button"
+    class="btn btn-outline-primary w-100 d-flex justify-content-center"
+    data-bs-toggle="button"
+    [class.active]="isActive()"
+    (click)="onSelectSortOrder()"
+>
+    <ng-content />
+</button>

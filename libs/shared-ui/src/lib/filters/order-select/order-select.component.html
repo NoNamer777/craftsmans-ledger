@@ -1,0 +1,17 @@
+<label for="order-select">Sort order</label>
+<div class="d-flex gap-2" id="order-select">
+    <cml-order-button
+        [sortOrder]="SortOrders.ASCENDING"
+        [isActive]="selectedOrder() === SortOrders.ASCENDING"
+        (selected)="onSortOrderSelected($event)"
+    >
+        <cml-icon cml-arrow-down-wide-short-icon />
+    </cml-order-button>
+    <cml-order-button
+        [sortOrder]="SortOrders.DESCENDING"
+        [isActive]="selectedOrder() === SortOrders.DESCENDING"
+        (selected)="onSortOrderSelected($event)"
+    >
+        <cml-icon cml-arrow-up-wide-short-icon />
+    </cml-order-button>
+</div>

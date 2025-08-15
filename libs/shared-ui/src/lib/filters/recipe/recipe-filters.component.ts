@@ -7,6 +7,7 @@ import { BrowserStorageService, StorageKeys } from '../../browser-storage';
 import { TechnologyTreesService } from '../../resources';
 import { SidebarService } from '../../sidebar';
 import { serialize } from '../../utils';
+import { OrderSelectComponent } from '../order-select';
 import { RecipeFilters, TechnologyTreeFilter } from './models';
 
 @Component({
@@ -14,7 +15,7 @@ import { RecipeFilters, TechnologyTreeFilter } from './models';
     templateUrl: './recipe-filters.component.html',
     styleUrl: './recipe-filters.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [AsyncPipe, ReactiveFormsModule],
+    imports: [AsyncPipe, ReactiveFormsModule, OrderSelectComponent],
 })
 export class RecipeFiltersComponent implements OnInit {
     private readonly formBuilder = inject(FormBuilder);
