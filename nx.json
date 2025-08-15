@@ -40,11 +40,19 @@
     },
     "plugins": [
         {
-            "plugin": "@nx/gradle",
+            "plugin": "@nx/webpack/plugin",
             "options": {
-                "testTargetName": "test",
-                "classesTargetName": "classes",
-                "buildTargetName": "build"
+                "buildTargetName": "build",
+                "serveTargetName": "serve",
+                "previewTargetName": "preview",
+                "buildDepsTargetName": "build-deps",
+                "watchDepsTargetName": "watch-deps"
+            }
+        },
+        {
+            "plugin": "@nx/eslint/plugin",
+            "options": {
+                "targetName": "eslint:lint"
             }
         }
     ]

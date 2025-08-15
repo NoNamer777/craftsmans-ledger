@@ -23,8 +23,6 @@ jobs:
                 include:
                     - language: actions
                       build-mode: none
-                    - language: java-kotlin
-                      build-mode: manual
                     - language: javascript-typescript
                       build-mode: none
         steps:
@@ -41,13 +39,6 @@ jobs:
                   build-mode: ${{ matrix.build-mode }}
                   # For more details on CodeQL's query packs, refer to: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
                   queries: security-extended,security-and-quality
-
-            - name: Manually build
-              if: matrix.build-mode == 'manual'
-              shell: bash
-              run: |
-                  npx nx run-many -t build
-                  ./gradlew build
 
             - name: Perform CodeQL Analysis
               uses: github/codeql-action/analyze@v3
