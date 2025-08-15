@@ -1,5 +1,5 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { tryCatch } from '@craftsmans-ledger/shared-ui';
+import { tryCatch } from '@craftsmans-ledger/shared';
 import { appConfig, RootComponent } from './app';
 
 async function bootstrap() {

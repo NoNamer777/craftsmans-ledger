@@ -1,10 +1,10 @@
 import { inject, Injectable } from '@angular/core';
+import { serialize, serializeAll } from '@craftsmans-ledger/shared';
 import { from, map, of, tap } from 'rxjs';
 import { StorageKeys } from '../../browser-storage';
 import { CacheService } from '../../cache';
 import { RecipeFilters } from '../../filters';
 import { ApiService, PaginatedResponse, QueryParams } from '../../http';
-import { serialize, serializeAll } from '../../utils';
 import { CreateRecipeData, Recipe, RecipeItem, RecipeItemDto, UpdateRecipeData } from './models';
 
 @Injectable({ providedIn: 'root' })

@@ -1,7 +1,8 @@
 import { DestroyRef, EnvironmentInjector, FactoryProvider, inject, runInInjectionContext } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ControlContainer, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { RecipeBuilder, RecipeDto, RecipeItemDto, RecipesService, serialize } from '@craftsmans-ledger/shared-ui';
+import { serialize } from '@craftsmans-ledger/shared';
+import { RecipeBuilder, RecipeDto, RecipeItemDto, RecipesService } from '@craftsmans-ledger/shared-ui';
 import { filter, iif, merge, of, pairwise, startWith, switchMap, tap } from 'rxjs';
 import { TEMP_RESOURCE_ID } from '../../../models';
 import { ResourceService } from '../../resource.service';

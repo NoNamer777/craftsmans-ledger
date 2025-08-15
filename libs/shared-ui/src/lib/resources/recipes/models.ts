@@ -1,14 +1,9 @@
-import {
-    Comparable,
-    Item,
-    ItemBuilder,
-    Resource,
-    TechnologyTree,
-    TechnologyTreeBuilder,
-    transform,
-} from '@craftsmans-ledger/shared-ui';
 import { Expose, Type } from 'class-transformer';
 import { nanoid } from 'nanoid';
+import { Item, ItemBuilder } from '../items';
+import { Comparable, Resource } from '../models';
+import { transform } from '@craftsmans-ledger/shared';
+import { TechnologyTree, TechnologyTreeBuilder } from '../technology-trees';
 
 export class RecipeItem {
     @Expose()
