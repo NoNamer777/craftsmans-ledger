@@ -12,11 +12,11 @@
                 "parallel": true,
                 "commands": [
                     {
-                        "command": "gradlew -t build -x test",
+                        "command": "./gradlew -t build -x test",
                         "prefix": "build"
                     },
                     {
-                        "command": "gradlew run",
+                        "command": "./gradlew run",
                         "prefix": "run"
                     }
                 ]
