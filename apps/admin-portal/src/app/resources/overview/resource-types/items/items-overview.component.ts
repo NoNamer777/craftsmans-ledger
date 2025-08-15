@@ -1,14 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {
-    CreateItemData,
-    Item,
-    ItemsService,
-    NotificationTypes,
-    notifyError,
-    transform,
-} from '@craftsmans-ledger/shared-ui';
+import { transform } from '@craftsmans-ledger/shared';
+import { CreateItemData, Item, ItemsService, NotificationTypes, notifyError } from '@craftsmans-ledger/shared-ui';
 import { catchError, filter, map, of, tap } from 'rxjs';
 import { SaveAction, SaveActions, TEMP_RESOURCE_ID } from '../../../models';
 import { BaseResourceOverviewComponent } from '../base-resource-overview.component';
