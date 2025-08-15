@@ -2,13 +2,8 @@ import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EnvironmentInjector, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import {
-    RecipeDto,
-    RecipeItemDto,
-    RecipesService,
-    serialize,
-    TechnologyTreesService,
-} from '@craftsmans-ledger/shared-ui';
+import { serialize } from '@craftsmans-ledger/shared';
+import { RecipeDto, RecipeItemDto, RecipesService, TechnologyTreesService } from '@craftsmans-ledger/shared-ui';
 import { debounceTime, map, of, tap } from 'rxjs';
 import { TEMP_RESOURCE_ID } from '../../../models';
 import { ActionsService } from '../../actions.service';

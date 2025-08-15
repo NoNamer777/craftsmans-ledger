@@ -26,6 +26,10 @@ export default [
                             onlyDependOnLibsWithTags: ['scope:admin', 'scope:shared'],
                         },
                         {
+                            sourceTag: 'scope:api',
+                            onlyDependOnLibsWithTags: ['scope:shared'],
+                        },
+                        {
                             sourceTag: 'scope:shared',
                             onlyDependOnLibsWithTags: ['scope:shared'],
                         },
@@ -42,6 +46,10 @@ export default [
                                 'reflect-metadata',
                                 'rxjs',
                             ],
+                        },
+                        {
+                            sourceTag: 'framework:nest',
+                            allowedExternalImports: ['@nestjs/*', 'class-transformer', 'class-validator'],
                         },
                     ],
                 },

@@ -1,7 +1,8 @@
-import { DEFAULT_SORT_ORDER, QueryParams, Recipe, SortOrder } from '@craftsmans-ledger/shared-ui';
 import { Expose } from 'class-transformer';
 import { nanoid } from 'nanoid';
-import { Resource } from '../models';
+import { QueryParams } from '../../http';
+import { DEFAULT_SORT_ORDER, Resource, SortOrder } from '../models';
+import { Recipe } from '../recipes';
 
 export class Item implements Resource {
     @Expose()

@@ -1,6 +1,7 @@
 import { inject, Type } from '@angular/core';
-import { BrowserStorageService, Resource, serializeAll } from '@craftsmans-ledger/shared-ui';
-import { StorageKey } from '../browser-storage/models';
+import { serializeAll } from '@craftsmans-ledger/shared';
+import { BrowserStorageService, StorageKey } from '../browser-storage';
+import { Resource } from '../resources';
 
 export class CacheService<T extends Resource> {
     private readonly browserStorageService = inject(BrowserStorageService);

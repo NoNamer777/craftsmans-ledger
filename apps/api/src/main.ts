@@ -1,4 +1,6 @@
+import { tryCatch } from '@craftsmans-ledger/shared';
 import { Logger } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter } from '@nestjs/platform-fastify';
 import { AppModule } from './app';
@@ -6,10 +8,18 @@ import { AppModule } from './app';
 async function bootstrap() {
     const app = await NestFactory.create(AppModule, new FastifyAdapter());
 
-    const port = process.env['PORT'] || 3000;
-    await app.listen(port);
+    const configService = app.get(ConfigService);
 
-    Logger.log(`API is running on: http://localhost:${port}`);
+    const host = configService.get<string>('host');
+    const port = configService.get<number>('port');
+
+    await app.listen(port, host);
+
+    Logger.log(`API is running on: http://${host}:${port}`);
 }
 
-(async () => await bootstrap())();
+(async () => {
+    const { error } = await tryCatch(bootstrap());
+
+    if (error) console.error(error);
+})();

@@ -1,12 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { transform } from '@craftsmans-ledger/shared';
 import {
     CreateTechnologyTreeData,
     NotificationTypes,
     notifyError,
     TechnologyTree,
     TechnologyTreesService,
-    transform,
 } from '@craftsmans-ledger/shared-ui';
 import { catchError, filter, map, of, tap } from 'rxjs';
 import { SaveAction, SaveActions, TEMP_RESOURCE_ID } from '../../../models';

@@ -28,6 +28,7 @@ module.exports = {
             main: './src/main.ts',
             optimization: runsInProductionMode,
             outputHashing: 'none',
+            sourceMap: false,
             target: 'node',
             tsConfig: './tsconfig.app.json',
         }),

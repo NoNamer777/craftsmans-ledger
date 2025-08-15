@@ -2,9 +2,8 @@
     "extends": "./tsconfig.json",
     "include": ["src/**/*.ts"],
     "compilerOptions": {
-        "module": "CommonJS",
+        "declaration": true,
         "outDir": "../../dist/out-tsc",
-        "target": "ES2024",
         "types": ["node"]
     }
 }

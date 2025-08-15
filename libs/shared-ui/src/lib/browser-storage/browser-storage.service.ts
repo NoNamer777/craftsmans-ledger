@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { tryCatch } from '../utils';
+import { tryCatch } from '@craftsmans-ledger/shared';
 import { BROWSER_STORAGE } from './providers';
 
 @Injectable({ providedIn: 'root' })

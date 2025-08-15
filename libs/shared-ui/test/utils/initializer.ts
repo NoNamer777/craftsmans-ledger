@@ -1,5 +1,5 @@
 import { isDevMode } from '@angular/core';
-import { tryCatch } from '../../src';
+import { tryCatch } from '@craftsmans-ledger/shared';
 import { initializeWorker, resetDatabases } from '../mocks';
 
 export async function initializeMockEnvironment() {

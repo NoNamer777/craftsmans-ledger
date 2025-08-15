@@ -2,11 +2,11 @@ import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { serialize } from '@craftsmans-ledger/shared';
 import { forkJoin, from, map, switchMap, tap } from 'rxjs';
 import { BrowserStorageService, StorageKeys } from '../../browser-storage';
 import { TechnologyTreesService } from '../../resources';
 import { SidebarService } from '../../sidebar';
-import { serialize } from '../../utils';
 import { RecipeFilters, TechnologyTreeFilter } from './models';
 
 @Component({

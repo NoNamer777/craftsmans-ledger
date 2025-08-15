@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+    provider = "prisma-client-js"
+    output   = "../prisma/client"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DB_URL")
+}
+
+model Item {
+    id     String  @id @default(nanoid()) @db.VarChar(32)
+    name   String  @unique(map: "uq_item_name") @db.VarChar(96)
+    cost   Decimal @db.Decimal(7, 2)
+    weight Decimal @db.Decimal(7, 2)
+
+    recipeInputs  RecipeInput[]
+    recipeOutputs RecipeOutput[]
+
+    @@map(name: "items")
+}
+
+model TechTree {
+    id        String @id @default(nanoid()) @db.VarChar(32)
+    name      String @unique(map: "uq_tech_tree_name") @db.VarChar(96)
+    maxPoints Int    @map(name: "max_points") @db.SmallInt
+
+    recipes Recipe[]
+
+    @@map(name: "technology_trees")
+}
+
+model Recipe {
+    id           String  @id @default(nanoid()) @db.VarChar(32)
+    craftingTime Decimal @map(name: "crafting_time") @db.Decimal(5, 2)
+    techPoints   Int     @map(name: "tech_points") @db.SmallInt
+    techTreeId   String  @map(name: "tech_tree_id") @db.VarChar(32)
+
+    technologyTree TechTree       @relation(map: "fk_recipe_tech_tree", fields: [techTreeId], references: [id], onDelete: Restrict)
+    inputs         RecipeInput[]
+    outputs        RecipeOutput[]
+
+    @@map(name: "recipes")
+}
+
+model RecipeInput {
+    recipeId String  @map(name: "recipe_id") @db.VarChar(32)
+    itemId   String  @map(name: "item_id") @db.VarChar(32)
+    quantity Decimal @db.Decimal(5, 2)
+
+    recipe Recipe @relation(fields: [recipeId], references: [id], map: "fk_input_recipe", onDelete: Cascade)
+    item   Item   @relation(fields: [itemId], references: [id], map: "fk_input_item", onDelete: Cascade)
+
+    @@id(fields: [itemId, recipeId])
+    @@map(name: "recipe_inputs")
+}
+
+model RecipeOutput {
+    recipeId String  @map(name: "recipe_id") @db.VarChar(32)
+    itemId   String  @map(name: "item_id") @db.VarChar(32)
+    quantity Decimal @db.Decimal(5, 2)
+
+    recipe Recipe @relation(fields: [recipeId], references: [id], map: "fk_output_recipe", onDelete: Cascade)
+    item   Item   @relation(fields: [itemId], references: [id], map: "fk_output_item", onDelete: Cascade)
+
+    @@id(fields: [itemId, recipeId])
+    @@map(name: "recipe_outputs")
+}

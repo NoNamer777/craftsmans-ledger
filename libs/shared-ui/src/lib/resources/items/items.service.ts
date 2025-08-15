@@ -1,9 +1,9 @@
 import { inject, Injectable } from '@angular/core';
+import { serialize, serializeAll } from '@craftsmans-ledger/shared';
 import { from, map, of, tap } from 'rxjs';
 import { StorageKeys } from '../../browser-storage';
 import { CacheService } from '../../cache';
 import { ApiService, PaginatedResponse } from '../../http';
-import { serialize, serializeAll } from '../../utils';
 import {
     CreateItemData,
     DEFAULT_ITEM_PAGINATION_PARAMS,

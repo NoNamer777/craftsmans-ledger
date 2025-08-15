@@ -23,7 +23,6 @@
         "serve": {
             "continuous": true,
             "executor": "@nx/js:node",
-            "dependsOn": ["build"],
             "options": {
                 "buildTarget": "@craftsmans-ledger/api:build:dev",
                 "inspect": false,
