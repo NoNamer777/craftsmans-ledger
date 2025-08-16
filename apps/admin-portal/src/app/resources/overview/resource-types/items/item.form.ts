@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Item, ItemBuilder, ItemsService } from '@craftsmans-ledger/shared-ui';
+import { ItemsService } from '@craftsmans-ledger/shared-ui';
 import { debounceTime, of, tap } from 'rxjs';
 import { TEMP_RESOURCE_ID } from '../../../models';
 import { ActionsService } from '../../actions.service';
 import { BaseResourceFormComponent } from '../base-resource-form.component';
 import { TEMP_ITEM } from './models';
+import { Item, ItemBuilder } from '@craftsmans-ledger/shared';
 
 @Component({
     selector: 'cml-item-form',
@@ -45,12 +46,12 @@ export class ItemForm extends BaseResourceFormComponent {
     }
 
     protected override populateForm() {
-        const { name, weight, baseValue } = this.resourceService.resource() as Item;
+        const { name, weight, cost } = this.resourceService.resource() as Item;
 
         this.form.reset({
             name: name,
             weight: weight,
-            baseValue: baseValue,
+            baseValue: cost,
         });
     }
 

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { FormGroup } from '@angular/forms';
-import { Resource } from '@craftsmans-ledger/shared-ui';
+import { Resource } from '@craftsmans-ledger/shared';
 import { Observable, switchMap } from 'rxjs';
 import { ResourceService } from '../resource.service';
 

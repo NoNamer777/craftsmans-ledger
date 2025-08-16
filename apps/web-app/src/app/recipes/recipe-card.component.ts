@@ -1,10 +1,10 @@
 import { AsyncPipe, DecimalPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
+import { Recipe } from '@craftsmans-ledger/shared';
 import {
     ChevronDownIconComponent,
     ChevronUpIconComponent,
     CoinsIconComponent,
-    Recipe,
     RecipesService,
     StopwatchIconComponent,
     WeightHangingIconComponent,

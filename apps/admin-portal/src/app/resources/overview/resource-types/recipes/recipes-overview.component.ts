@@ -3,16 +3,14 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
     NotificationTypes,
     notifyError,
-    Recipe,
-    RecipeDto,
     RecipesService,
-    Resource,
 } from '@craftsmans-ledger/shared-ui';
 import { catchError, filter, forkJoin, iif, map, of, switchMap, tap } from 'rxjs';
 import { SaveAction, SaveActions, TEMP_RESOURCE_ID } from '../../../models';
 import { BaseResourceOverviewComponent } from '../base-resource-overview.component';
 import { ResourcesListComponent } from '../components';
 import { RecipeForm } from './recipe.form';
+import { Recipe, RecipeDto, Resource } from '@craftsmans-ledger/shared';
 
 @Component({
     selector: 'cml-recipes-overview',

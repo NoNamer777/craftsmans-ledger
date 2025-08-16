@@ -1,9 +1,4 @@
 import { inject, Injectable } from '@angular/core';
-import { serialize, serializeAll } from '@craftsmans-ledger/shared';
-import { from, map, of, tap } from 'rxjs';
-import { StorageKeys } from '../../browser-storage';
-import { CacheService } from '../../cache';
-import { ApiService, PaginatedResponse } from '../../http';
 import {
     CreateItemData,
     DEFAULT_ITEM_PAGINATION_PARAMS,
@@ -12,7 +7,14 @@ import {
     ItemPaginationParams,
     ItemQueryParamName,
     ItemQueryParams,
-} from './models';
+    PaginatedResponse,
+    serialize,
+    serializeAll,
+} from '@craftsmans-ledger/shared';
+import { from, map, of, tap } from 'rxjs';
+import { StorageKeys } from '../../browser-storage';
+import { CacheService } from '../../cache';
+import { ApiService } from '../../http';
 
 @Injectable({ providedIn: 'root' })
 export class ItemsService {
