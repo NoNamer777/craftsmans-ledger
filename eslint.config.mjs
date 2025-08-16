@@ -53,6 +53,7 @@ export default [
                                 '@nestjs/*',
                                 'class-transformer',
                                 'class-validator',
+                                'fastify',
                                 'reflect-metadata/*',
                             ],
                         },
