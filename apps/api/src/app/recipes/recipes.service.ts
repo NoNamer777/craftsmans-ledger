@@ -10,6 +10,10 @@ export class RecipesService {
         return await this.recipesRepository.findAll();
     }
 
+    public async getById(recipeId: string) {
+        return await this.recipesRepository.findOneById(recipeId);
+    }
+
     public async create(data: CreateRecipeData) {
         return await this.recipesRepository.create(data);
     }

@@ -1,5 +1,5 @@
 import { CreateRecipeData } from '@craftsmans-ledger/shared';
-import { Body, Controller, Get, HttpStatus, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, NotFoundException, Param, Post, Res } from '@nestjs/common';
 import { FastifyReply } from 'fastify';
 import { RecipesService } from './recipes.service';
 
@@ -20,5 +20,15 @@ export class RecipesController {
 
         response.code(HttpStatus.CREATED).headers({ Location: `${url}/${created.id}` });
         return created;
+    }
+
+    @Get('/:recipeId')
+    public async getById(@Param() recipeId: string) {
+        const byId = await this.recipesService.getById(recipeId);
+
+        if (!byId) {
+            throw new NotFoundException(`Recipe with ID "${recipeId}" was not found`);
+        }
+        return byId;
     }
 }

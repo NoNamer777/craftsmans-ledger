@@ -11,6 +11,13 @@ export class RecipesRepository {
         return serializeAll(Recipe, results);
     }
 
+    public async findOneById(recipeId: string) {
+        const result = await this.databaseService.recipe.findUnique({
+            where: { id: recipeId },
+        });
+        return serialize(Recipe, result);
+    }
+
     public async create(data: CreateRecipeData) {
         const result = await this.databaseService.recipe.create({
             data: {
