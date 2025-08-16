@@ -11,8 +11,15 @@ export class ItemsRepository {
         return serializeAll(Item, results);
     }
 
+    public async findOneById(itemId: string) {
+        const result = await this.databaseService.item.findUnique({
+            where: { id: itemId },
+        });
+        return serialize(Item, result);
+    }
+
     public async findOneByName(name: string) {
-        const result = await this.databaseService.item.findFirst({
+        const result = await this.databaseService.item.findUnique({
             where: { name: name },
         });
         return serialize(Item, result);

@@ -10,6 +10,10 @@ export class ItemsService {
         return await this.itemsRepository.findAll();
     }
 
+    public async getById(itemId: string) {
+        return await this.itemsRepository.findOneById(itemId);
+    }
+
     public async create(data: CreateItemData) {
         if (await this.isNameTaken(data.name)) {
             throw new BadRequestException(`Could not create Item. - Reason: "${data.name}" is already in use`);
