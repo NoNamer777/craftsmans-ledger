@@ -70,7 +70,8 @@
                     "extractLicenses": false,
                     "namedChunks": true,
                     "optimization": false,
-                    "sourceMap": true
+                    "sourceMap": true,
+                    "watch": true
                 }
             }
         },
