@@ -28,4 +28,8 @@ export class RecipesRepository {
         });
         return serialize(Recipe, result);
     }
+
+    public async remove(recipeId: string) {
+        await this.databaseService.recipe.delete({ where: { id: recipeId } });
+    }
 }

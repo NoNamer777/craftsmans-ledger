@@ -1,5 +1,5 @@
 import { CreateRecipeData } from '@craftsmans-ledger/shared';
-import { Body, Controller, Get, HttpStatus, NotFoundException, Param, Post, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, NotFoundException, Param, Post, Res } from '@nestjs/common';
 import { FastifyReply } from 'fastify';
 import { RecipesService } from './recipes.service';
 
@@ -30,5 +30,10 @@ export class RecipesController {
             throw new NotFoundException(`Recipe with ID "${recipeId}" was not found`);
         }
         return byId;
+    }
+
+    @Delete('/:recipeId')
+    public async remove(@Param() recipeId: string) {
+        await this.recipesService.remove(recipeId);
     }
 }
