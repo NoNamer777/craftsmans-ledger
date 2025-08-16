@@ -1,3 +1,4 @@
+import { CreateRecipeData } from '@craftsmans-ledger/shared';
 import { Injectable } from '@nestjs/common';
 import { RecipesRepository } from './recipes.repository';
 
@@ -7,5 +8,9 @@ export class RecipesService {
 
     public async getAll() {
         return await this.recipesRepository.findAll();
+    }
+
+    public async create(data: CreateRecipeData) {
+        return await this.recipesRepository.create(data);
     }
 }

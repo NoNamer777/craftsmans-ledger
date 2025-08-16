@@ -1,4 +1,4 @@
-import { Recipe, serializeAll } from '@craftsmans-ledger/shared';
+import { CreateRecipeData, Recipe, serialize, serializeAll } from '@craftsmans-ledger/shared';
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from '../core';
 
@@ -9,5 +9,16 @@ export class RecipesRepository {
     public async findAll() {
         const results = await this.databaseService.recipe.findMany();
         return serializeAll(Recipe, results);
+    }
+
+    public async create(data: CreateRecipeData) {
+        const result = await this.databaseService.recipe.create({
+            data: {
+                craftingTime: data.craftingTime,
+                techTreeId: data.technologyTreeId,
+                techPoints: data.technologyPoints,
+            },
+        });
+        return serialize(Recipe, result);
     }
 }
