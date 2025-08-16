@@ -1,10 +1,14 @@
-import { CreateRecipeData } from '@craftsmans-ledger/shared';
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { CreateRecipeData, UpdateRecipeData } from '@craftsmans-ledger/shared';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { TechnologyTreesService } from '../technology-trees';
 import { RecipesRepository } from './recipes.repository';
 
 @Injectable()
 export class RecipesService {
-    constructor(private readonly recipesRepository: RecipesRepository) {}
+    constructor(
+        private readonly technologyService: TechnologyTreesService,
+        private readonly recipesRepository: RecipesRepository
+    ) {}
 
     public async getAll() {
         return await this.recipesRepository.findAll();
@@ -15,6 +19,18 @@ export class RecipesService {
     }
 
     public async create(data: CreateRecipeData) {
+        const technologyTree = await this.technologyService.getById(data.technologyTreeId);
+
+        if (!technologyTree) {
+            throw new NotFoundException(
+                `Could not create Recipe. - Reason: Technology Tree with ID "${data.technologyTreeId}" was not found`
+            );
+        }
+        if (technologyTree.maxPoints > data.technologyPoints) {
+            throw new BadRequestException(
+                `Could not create Recipe. - Reason: Max points "${data.technologyPoints}" is not allowed to be more than "${technologyTree.maxPoints}"`
+            );
+        }
         return await this.recipesRepository.create(data);
     }
 
