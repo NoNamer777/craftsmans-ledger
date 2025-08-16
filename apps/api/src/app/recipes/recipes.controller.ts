@@ -1,6 +1,19 @@
-import { CreateRecipeData } from '@craftsmans-ledger/shared';
-import { Body, Controller, Delete, Get, HttpStatus, NotFoundException, Param, Post, Res } from '@nestjs/common';
-import { FastifyReply } from 'fastify';
+import { CreateRecipeData, UpdateRecipeData } from '@craftsmans-ledger/shared';
+import {
+    BadRequestException,
+    Body,
+    Controller,
+    Delete,
+    Get,
+    HttpStatus,
+    NotFoundException,
+    Param,
+    Post,
+    Put,
+    Req,
+    Res,
+} from '@nestjs/common';
+import { FastifyReply, FastifyRequest } from 'fastify';
 import { RecipesService } from './recipes.service';
 
 @Controller('/recipes')
@@ -30,6 +43,22 @@ export class RecipesController {
             throw new NotFoundException(`Recipe with ID "${recipeId}" was not found`);
         }
         return byId;
+    }
+
+    @Put('/:recipeId')
+    public async update(
+        @Param('recipeId') recipeId: string,
+        @Body() data: UpdateRecipeData,
+        @Req() request: FastifyRequest
+    ) {
+        const url = request.url;
+
+        if (recipeId !== data.id) {
+            throw new BadRequestException(
+                `It's not allowed to update Recipe on path "${url}" with data from Recipe with ID "${data.id}"`
+            );
+        }
+        return await this.recipesService.update(data);
     }
 
     @Delete('/:recipeId')

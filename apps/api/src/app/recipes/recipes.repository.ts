@@ -1,4 +1,4 @@
-import { CreateRecipeData, Recipe, serialize, serializeAll } from '@craftsmans-ledger/shared';
+import { CreateRecipeData, Recipe, serialize, serializeAll, UpdateRecipeData } from '@craftsmans-ledger/shared';
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from '../core';
 
@@ -20,6 +20,18 @@ export class RecipesRepository {
 
     public async create(data: CreateRecipeData) {
         const result = await this.databaseService.recipe.create({
+            data: {
+                craftingTime: data.craftingTime,
+                techTreeId: data.technologyTreeId,
+                techPoints: data.technologyPoints,
+            },
+        });
+        return serialize(Recipe, result);
+    }
+
+    public async update(data: UpdateRecipeData) {
+        const result = await this.databaseService.recipe.update({
+            where: { id: data.id },
             data: {
                 craftingTime: data.craftingTime,
                 techTreeId: data.technologyTreeId,

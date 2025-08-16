@@ -34,6 +34,27 @@ export class RecipesService {
         return await this.recipesRepository.create(data);
     }
 
+    public async update(data: UpdateRecipeData) {
+        const byId = await this.getById(data.id);
+
+        if (!byId) {
+            throw new NotFoundException(`Could not update Recipe with ID "${data.id}". - Reason: Recipe was not found`);
+        }
+        const technologyTree = await this.technologyService.getById(data.technologyTreeId);
+
+        if (!technologyTree) {
+            throw new NotFoundException(
+                `Could not update Recipe with ID "${data.id}". - Reason: Technology Tree with ID "${data.technologyTreeId}" was not found`
+            );
+        }
+        if (technologyTree.maxPoints > data.technologyPoints) {
+            throw new BadRequestException(
+                `Could not update Recipe with ID "${data.id}". - Reason: Max points "${data.technologyPoints}" is not allowed to be more than "${technologyTree.maxPoints}"`
+            );
+        }
+        return await this.recipesRepository.update(data);
+    }
+
     public async remove(recipeId: string) {
         const byId = await this.getById(recipeId);
 
