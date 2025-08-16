@@ -1,0 +1,68 @@
+import { CreateRecipeData, UpdateRecipeData } from '@craftsmans-ledger/shared';
+import {
+    BadRequestException,
+    Body,
+    Controller,
+    Delete,
+    Get,
+    HttpStatus,
+    NotFoundException,
+    Param,
+    Post,
+    Put,
+    Req,
+    Res,
+} from '@nestjs/common';
+import { FastifyReply, FastifyRequest } from 'fastify';
+import { RecipesService } from './recipes.service';
+
+@Controller('/recipes')
+export class RecipesController {
+    constructor(private readonly recipesService: RecipesService) {}
+
+    @Get()
+    public async getAll() {
+        return await this.recipesService.getAll();
+    }
+
+    @Post()
+    public async create(@Body() data: CreateRecipeData, @Res({ passthrough: true }) response: FastifyReply) {
+        const created = await this.recipesService.create(data);
+
+        const url = response.request.url;
+
+        response.code(HttpStatus.CREATED).headers({ Location: `${url}/${created.id}` });
+        return created;
+    }
+
+    @Get('/:recipeId')
+    public async getById(@Param() recipeId: string) {
+        const byId = await this.recipesService.getById(recipeId);
+
+        if (!byId) {
+            throw new NotFoundException(`Recipe with ID "${recipeId}" was not found`);
+        }
+        return byId;
+    }
+
+    @Put('/:recipeId')
+    public async update(
+        @Param('recipeId') recipeId: string,
+        @Body() data: UpdateRecipeData,
+        @Req() request: FastifyRequest
+    ) {
+        const url = request.url;
+
+        if (recipeId !== data.id) {
+            throw new BadRequestException(
+                `It's not allowed to update Recipe on path "${url}" with data from Recipe with ID "${data.id}"`
+            );
+        }
+        return await this.recipesService.update(data);
+    }
+
+    @Delete('/:recipeId')
+    public async remove(@Param() recipeId: string) {
+        await this.recipesService.remove(recipeId);
+    }
+}
