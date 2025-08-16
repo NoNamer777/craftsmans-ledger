@@ -1,6 +1,19 @@
-import { CreateTechnologyTreeData } from '@craftsmans-ledger/shared';
-import { Body, Controller, Delete, Get, HttpStatus, NotFoundException, Param, Post, Res } from '@nestjs/common';
-import { FastifyReply } from 'fastify';
+import { CreateTechnologyTreeData, TechnologyTree } from '@craftsmans-ledger/shared';
+import {
+    BadRequestException,
+    Body,
+    Controller,
+    Delete,
+    Get,
+    HttpStatus,
+    NotFoundException,
+    Param,
+    Post,
+    Put,
+    Req,
+    Res,
+} from '@nestjs/common';
+import { FastifyReply, FastifyRequest } from 'fastify';
 import { TechnologyTreesService } from './technology-trees.service';
 
 @Controller('/technology-trees')
@@ -29,6 +42,22 @@ export class TechnologyTreesController {
             throw new NotFoundException(`Technology Tree with ID "${technologyTreeId}" was not found`);
         }
         return byId;
+    }
+
+    @Put('/:technologyTreeId')
+    public async update(
+        @Param('technologyTreeId') technologyTreeId: string,
+        @Body() data: TechnologyTree,
+        @Req() request: FastifyRequest
+    ) {
+        const url = request.url;
+
+        if (technologyTreeId !== data.id) {
+            throw new BadRequestException(
+                `It's not allowed to update Technology Tree on path "${url}" with data from Technology Tree with ID "${data.id}"`
+            );
+        }
+        return await this.technologyTreesService.update(data);
     }
 
     @Delete('/:technologyTreeId')

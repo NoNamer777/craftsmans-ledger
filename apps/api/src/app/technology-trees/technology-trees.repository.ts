@@ -35,6 +35,17 @@ export class TechnologyTreesRepository {
         return serialize(TechnologyTree, created);
     }
 
+    public async update(data: TechnologyTree) {
+        const updated = await this.databaseService.techTree.update({
+            where: { id: data.id },
+            data: {
+                name: data.name,
+                maxPoints: data.maxPoints,
+            },
+        });
+        return serialize(TechnologyTree, updated);
+    }
+
     public async remove(technologyTreeId: string) {
         await this.databaseService.techTree.delete({ where: { id: technologyTreeId } });
     }
