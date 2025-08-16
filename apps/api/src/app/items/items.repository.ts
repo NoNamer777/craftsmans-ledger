@@ -37,4 +37,8 @@ export class ItemsRepository {
         });
         return serialize(Item, created);
     }
+
+    public async remove(itemId: string) {
+        await this.databaseService.item.delete({ where: { id: itemId } });
+    }
 }

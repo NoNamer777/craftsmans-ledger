@@ -1,5 +1,5 @@
 import { CreateItemData } from '@craftsmans-ledger/shared';
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { ItemsRepository } from './items.repository';
 
 @Injectable()
@@ -19,6 +19,15 @@ export class ItemsService {
             throw new BadRequestException(`Could not create Item. - Reason: "${data.name}" is already in use`);
         }
         return await this.itemsRepository.create(data);
+    }
+
+    public async remove(itemId: string) {
+        const byId = await this.getById(itemId);
+
+        if (!byId) {
+            throw new NotFoundException(`Could not remove Item with ID "${itemId}" - Reason: Item was not found`);
+        }
+        await this.itemsRepository.remove(itemId);
     }
 
     private async getByName(name: string) {
