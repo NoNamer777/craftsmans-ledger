@@ -10,7 +10,7 @@
             "executor": "@angular/build:application",
             "outputs": ["{options.outputPath}"],
             "options": {
-                "allowedCommonJsDependencies": ["papaparse"],
+                "allowedCommonJsDependencies": ["class-validator", "papaparse"],
                 "baseHref": "./",
                 "browser": "apps/web-app/src/main.ts",
                 "outputPath": "dist/apps/web-app",
