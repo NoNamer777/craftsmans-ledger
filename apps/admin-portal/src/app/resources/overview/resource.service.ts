@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { Resource } from '@craftsmans-ledger/shared-ui';
+import { Resource } from '@craftsmans-ledger/shared';
 
 @Injectable({ providedIn: 'root' })
 export class ResourceService {

@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TechnologyTree, TechnologyTreeBuilder, TechnologyTreesService } from '@craftsmans-ledger/shared-ui';
+import { TechnologyTree, TechnologyTreeBuilder } from '@craftsmans-ledger/shared';
+import { TechnologyTreesService } from '@craftsmans-ledger/shared-ui';
 import { debounceTime, of, tap } from 'rxjs';
 import { TEMP_RESOURCE_ID } from '../../../models';
 import { ActionsService } from '../../actions.service';

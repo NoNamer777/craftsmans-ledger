@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
+import { QueryParams } from '@craftsmans-ledger/shared';
 import { ConfigService } from '../config';
-import { QueryParams } from './models';
 import { RequestService } from './request.service';
 
 @Injectable({ providedIn: 'root' })

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { NotificationService, notifyError, Resource } from '@craftsmans-ledger/shared-ui';
+import { Resource } from '@craftsmans-ledger/shared';
+import { NotificationService, notifyError } from '@craftsmans-ledger/shared-ui';
 import { catchError, filter, Observable, of, switchMap, tap } from 'rxjs';
 import { SaveAction, TEMP_RESOURCE_ID } from '../../models';
 import { ActionsService } from '../actions.service';

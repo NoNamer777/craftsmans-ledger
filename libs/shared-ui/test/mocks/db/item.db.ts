@@ -132,10 +132,10 @@ export class MockItemDB {
     private sortItem(curr: Item, next: Item, sortBy: SortableItemAttribute) {
         switch (sortBy) {
             case SortableItemAttributes.BASE_VALUE:
-                return curr.baseValue - next.baseValue;
+                return curr.cost - next.cost;
 
             case SortableItemAttributes.WEIGHT:
-                return curr.baseValue - next.weight;
+                return curr.cost - next.weight;
 
             // Defaults to sorting Items by name.
             default:

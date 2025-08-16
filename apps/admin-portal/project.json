@@ -10,7 +10,7 @@
             "executor": "@angular/build:application",
             "outputs": ["{options.outputPath}"],
             "options": {
-                "allowedCommonJsDependencies": ["papaparse"],
+                "allowedCommonJsDependencies": ["class-validator", "papaparse"],
                 "browser": "apps/admin-portal/src/main.ts",
                 "outputPath": "dist/apps/admin-portal",
                 "inlineStyleLanguage": "scss",
@@ -70,7 +70,8 @@
                     "extractLicenses": false,
                     "namedChunks": true,
                     "optimization": false,
-                    "sourceMap": true
+                    "sourceMap": true,
+                    "watch": true
                 }
             }
         },

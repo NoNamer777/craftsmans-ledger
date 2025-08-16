@@ -1,8 +1,8 @@
 import { inject, provideAppInitializer } from '@angular/core';
 import { forkJoin } from 'rxjs';
-import { ItemsService } from './items';
-import { RecipesService } from './recipes';
-import { TechnologyTreesService } from './technology-trees';
+import { ItemsService } from './items/items.service';
+import { RecipesService } from './recipes/recipes.service';
+import { TechnologyTreesService } from './technology-trees/technology-trees.service';
 
 export function initializeResourceServices() {
     return provideAppInitializer(() => {

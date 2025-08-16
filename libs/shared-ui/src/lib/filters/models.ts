@@ -1,5 +1,5 @@
+import { SortOrder } from '@craftsmans-ledger/shared';
 import { Expose } from 'class-transformer';
-import { SortOrder } from '../resources';
 
 export class Filters {
     @Expose()

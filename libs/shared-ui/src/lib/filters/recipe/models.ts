@@ -1,5 +1,5 @@
+import { TechnologyTree } from '@craftsmans-ledger/shared';
 import { Expose, Type } from 'class-transformer';
-import { TechnologyTree } from '../../resources';
 import { Filters } from '../models';
 
 export class TechnologyTreeFilter {

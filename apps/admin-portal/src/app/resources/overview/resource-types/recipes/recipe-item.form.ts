@@ -10,7 +10,8 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ControlContainer, FormArray, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
-import { ItemsService, RecipeDto, RecipesService } from '@craftsmans-ledger/shared-ui';
+import { RecipeDto } from '@craftsmans-ledger/shared';
+import { ItemsService, RecipesService } from '@craftsmans-ledger/shared-ui';
 import { map, tap } from 'rxjs';
 import { TEMP_RESOURCE_ID } from '../../../models';
 import { ResourceService } from '../../resource.service';

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { QueryParams } from './models';
+import { QueryParams } from '@craftsmans-ledger/shared';
 
 @Injectable({ providedIn: 'root' })
 export class RequestService {
