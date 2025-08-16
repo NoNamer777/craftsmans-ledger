@@ -11,6 +11,13 @@ export class TechnologyTreesRepository {
         return serializeAll(TechnologyTree, results);
     }
 
+    public async findOneById(technologyTreeId: string) {
+        const result = await this.databaseService.techTree.findUnique({
+            where: { id: technologyTreeId },
+        });
+        return serialize(TechnologyTree, result);
+    }
+
     public async findOneByName(name: string) {
         const result = await this.databaseService.techTree.findUnique({
             where: { name: name },

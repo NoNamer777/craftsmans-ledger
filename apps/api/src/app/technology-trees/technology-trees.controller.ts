@@ -1,5 +1,5 @@
 import { CreateTechnologyTreeData } from '@craftsmans-ledger/shared';
-import { Body, Controller, Get, HttpStatus, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, NotFoundException, Param, Post, Res } from '@nestjs/common';
 import { FastifyReply } from 'fastify';
 import { TechnologyTreesService } from './technology-trees.service';
 
@@ -19,5 +19,15 @@ export class TechnologyTreesController {
 
         response.code(HttpStatus.CREATED).headers({ location: `${url}/${created.id}` });
         return created;
+    }
+
+    @Get('/:technologyTreeId')
+    public async getById(@Param('technologyTreeId') technologyTreeId: string) {
+        const byId = await this.technologyTreesService.getById(technologyTreeId);
+
+        if (!byId) {
+            throw new NotFoundException(`Technology Tree with ID "${technologyTreeId}" was not found`);
+        }
+        return byId;
     }
 }

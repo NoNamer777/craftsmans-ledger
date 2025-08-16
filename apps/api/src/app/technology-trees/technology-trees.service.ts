@@ -10,6 +10,10 @@ export class TechnologyTreesService {
         return await this.technologyTreesRepository.findAll();
     }
 
+    public async getById(technologyTreeId: string) {
+        return await this.technologyTreesRepository.findOneById(technologyTreeId);
+    }
+
     public async create(data: CreateTechnologyTreeData) {
         if (await this.isNameTaken(data.name)) {
             throw new BadRequestException(
