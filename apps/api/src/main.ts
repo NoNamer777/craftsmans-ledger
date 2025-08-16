@@ -1,3 +1,5 @@
+import 'reflect-metadata/Reflect.js';
+
 import { tryCatch } from '@craftsmans-ledger/shared';
 import { Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';

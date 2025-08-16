@@ -49,7 +49,12 @@ export default [
                         },
                         {
                             sourceTag: 'framework:nest',
-                            allowedExternalImports: ['@nestjs/*', 'class-transformer', 'class-validator'],
+                            allowedExternalImports: [
+                                '@nestjs/*',
+                                'class-transformer',
+                                'class-validator',
+                                'reflect-metadata/*',
+                            ],
                         },
                     ],
                 },
