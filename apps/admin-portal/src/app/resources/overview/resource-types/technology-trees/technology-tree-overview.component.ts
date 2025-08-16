@@ -1,11 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CreateTechnologyTreeData, TechnologyTree, transform } from '@craftsmans-ledger/shared';
-import {
-    NotificationTypes,
-    notifyError,
-    TechnologyTreesService,
-} from '@craftsmans-ledger/shared-ui';
+import { NotificationTypes, notifyError, TechnologyTreesService } from '@craftsmans-ledger/shared-ui';
 import { catchError, filter, map, of, tap } from 'rxjs';
 import { SaveAction, SaveActions, TEMP_RESOURCE_ID } from '../../../models';
 import { BaseResourceOverviewComponent } from '../base-resource-overview.component';

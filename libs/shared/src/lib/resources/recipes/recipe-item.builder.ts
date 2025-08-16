@@ -1,5 +1,5 @@
-import { RecipeItem } from './recipe-item.model';
 import { Item, ItemBuilder } from '../items';
+import { RecipeItem } from './recipe-item.model';
 
 export class RecipeItemBuilder {
     private readonly recipeItem = new RecipeItem();

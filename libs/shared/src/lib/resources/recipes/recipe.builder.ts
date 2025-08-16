@@ -1,7 +1,7 @@
-import { Recipe } from './recipe.model';
+import { nanoid } from 'nanoid';
 import { TechnologyTree, TechnologyTreeBuilder } from '../technology-trees';
 import { RecipeItemBuilder } from './recipe-item.builder';
-import { nanoid } from 'nanoid';
+import { Recipe } from './recipe.model';
 
 export class RecipeBuilder {
     private recipe = new Recipe();
