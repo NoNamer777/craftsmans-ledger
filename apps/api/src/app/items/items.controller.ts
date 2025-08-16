@@ -37,7 +37,7 @@ export class ItemsController {
 
     @Get('/:itemId')
     public async getById(@Param('itemId') itemId: string) {
-        const byId = this.itemsService.getById(itemId);
+        const byId = await this.itemsService.getById(itemId);
 
         if (!byId) throw new NotFoundException(`Item with ID "${itemId}" was not found`);
         return byId;
