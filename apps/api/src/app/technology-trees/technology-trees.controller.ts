@@ -1,5 +1,5 @@
 import { CreateTechnologyTreeData } from '@craftsmans-ledger/shared';
-import { Body, Controller, Get, HttpStatus, NotFoundException, Param, Post, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, NotFoundException, Param, Post, Res } from '@nestjs/common';
 import { FastifyReply } from 'fastify';
 import { TechnologyTreesService } from './technology-trees.service';
 
@@ -29,5 +29,10 @@ export class TechnologyTreesController {
             throw new NotFoundException(`Technology Tree with ID "${technologyTreeId}" was not found`);
         }
         return byId;
+    }
+
+    @Delete('/:technologyTreeId')
+    public async remove(@Param('technologyTreeId') technologyTreeId: string) {
+        await this.technologyTreesService.remove(technologyTreeId);
     }
 }

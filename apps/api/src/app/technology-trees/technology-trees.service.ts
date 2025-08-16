@@ -1,5 +1,5 @@
 import { CreateTechnologyTreeData } from '@craftsmans-ledger/shared';
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { TechnologyTreesRepository } from './technology-trees.repository';
 
 @Injectable()
@@ -21,6 +21,17 @@ export class TechnologyTreesService {
             );
         }
         return await this.technologyTreesRepository.create(data);
+    }
+
+    public async remove(technologyTreeId: string) {
+        const byId = await this.getById(technologyTreeId);
+
+        if (!byId) {
+            throw new NotFoundException(
+                `Could not remove Technology Tree with ID "${technologyTreeId}". - Reason: Could not find Technology Tree`
+            );
+        }
+        await this.technologyTreesRepository.remove(technologyTreeId);
     }
 
     private async getByName(name: string) {

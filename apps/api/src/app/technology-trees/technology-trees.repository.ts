@@ -34,4 +34,8 @@ export class TechnologyTreesRepository {
         });
         return serialize(TechnologyTree, created);
     }
+
+    public async remove(technologyTreeId: string) {
+        await this.databaseService.techTree.delete({ where: { id: technologyTreeId } });
+    }
 }
