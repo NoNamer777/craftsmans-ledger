@@ -1,13 +1,21 @@
 import { Expose } from 'class-transformer';
+import { IsInt, IsNotEmpty, IsString, Min, MinLength } from 'class-validator';
 import { Resource } from '../resource.model';
 
 export class TechnologyTree implements Resource {
+    @IsNotEmpty()
+    @IsString()
     @Expose()
     public id: string;
 
+    @MinLength(2)
+    @IsNotEmpty()
+    @IsString()
     @Expose()
     public name: string;
 
+    @Min(0)
+    @IsInt()
     @Expose()
     public maxPoints: number;
 
