@@ -38,6 +38,18 @@ export class ItemsRepository {
         return serialize(Item, created);
     }
 
+    public async update(data: Item) {
+        const updated = await this.databaseService.item.update({
+            where: { id: data.id },
+            data: {
+                name: data.name,
+                cost: data.cost,
+                weight: data.weight,
+            },
+        });
+        return serialize(Item, updated);
+    }
+
     public async remove(itemId: string) {
         await this.databaseService.item.delete({ where: { id: itemId } });
     }

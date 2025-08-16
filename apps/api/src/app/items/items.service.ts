@@ -1,4 +1,4 @@
-import { CreateItemData } from '@craftsmans-ledger/shared';
+import { CreateItemData, Item } from '@craftsmans-ledger/shared';
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { ItemsRepository } from './items.repository';
 
@@ -21,6 +21,20 @@ export class ItemsService {
         return await this.itemsRepository.create(data);
     }
 
+    public async update(data: Item) {
+        const byId = await this.getById(data.id);
+
+        if (!byId) {
+            throw new NotFoundException(`Could not update Item with ID "${data.id}". - Reason: Item was not found`);
+        }
+        if (await this.isNameTaken(data.name, data.id)) {
+            throw new BadRequestException(
+                `Could not update Item with ID "${data.id}". - Reason: Name "${data.name}" is already in use`
+            );
+        }
+        return await this.itemsRepository.update(data);
+    }
+
     public async remove(itemId: string) {
         const byId = await this.getById(itemId);
 
@@ -34,8 +48,8 @@ export class ItemsService {
         return await this.itemsRepository.findOneByName(name);
     }
 
-    private async isNameTaken(name: string) {
+    private async isNameTaken(name: string, itemId?: string) {
         const result = await this.getByName(name);
-        return Boolean(result);
+        return Boolean(result) && (!itemId || itemId !== result.id);
     }
 }

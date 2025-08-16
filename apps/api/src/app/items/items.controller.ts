@@ -1,6 +1,19 @@
-import { CreateItemData } from '@craftsmans-ledger/shared';
-import { Body, Controller, Delete, Get, HttpStatus, NotFoundException, Param, Post, Res } from '@nestjs/common';
-import { FastifyReply } from 'fastify';
+import { CreateItemData, Item } from '@craftsmans-ledger/shared';
+import {
+    BadRequestException,
+    Body,
+    Controller,
+    Delete,
+    Get,
+    HttpStatus,
+    NotFoundException,
+    Param,
+    Post,
+    Put,
+    Req,
+    Res,
+} from '@nestjs/common';
+import { FastifyReply, FastifyRequest } from 'fastify';
 import { ItemsService } from './items.service';
 
 @Controller('/items')
@@ -28,6 +41,18 @@ export class ItemsController {
 
         if (!byId) throw new NotFoundException(`Item with ID "${itemId}" was not found`);
         return byId;
+    }
+
+    @Put('/:itemId')
+    public async update(@Param('itemId') itemId: string, @Body() data: Item, @Req() request: FastifyRequest) {
+        const url = request.url;
+
+        if (itemId !== data.id) {
+            throw new BadRequestException(
+                `It's not allowed to update Item on path "${url}" with data from Item with ID "${data.id}"`
+            );
+        }
+        return await this.itemsService.update(data);
     }
 
     @Delete('/:itemId')
