@@ -14,11 +14,15 @@ import {
     Res,
 } from '@nestjs/common';
 import { FastifyReply, FastifyRequest } from 'fastify';
+import { RecipeInputsService } from './recipe-inputs.service';
 import { RecipesService } from './recipes.service';
 
 @Controller('/recipes')
 export class RecipesController {
-    constructor(private readonly recipesService: RecipesService) {}
+    constructor(
+        private readonly recipesService: RecipesService,
+        private readonly recipeInputsService: RecipeInputsService
+    ) {}
 
     @Get()
     public async getAll() {
@@ -64,5 +68,10 @@ export class RecipesController {
     @Delete('/:recipeId')
     public async remove(@Param() recipeId: string) {
         await this.recipesService.remove(recipeId);
+    }
+
+    @Get('/:recipeId/inputs')
+    public async getAllInputsOfRecipe(@Param('recipeId') recipeId: string) {
+        return await this.recipeInputsService.getAllOfRecipe(recipeId);
     }
 }
