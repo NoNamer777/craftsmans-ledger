@@ -1,4 +1,6 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { RecipeItemDto } from '@craftsmans-ledger/shared';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { ItemsService } from '../items';
 import { RecipeInputsRepository } from './recipe-inputs.repository';
 import { RecipesService } from './recipes.service';
 
@@ -6,6 +8,7 @@ import { RecipesService } from './recipes.service';
 export class RecipeInputsService {
     constructor(
         private readonly recipesService: RecipesService,
+        private readonly itemsService: ItemsService,
         private readonly recipeInputsRepository: RecipeInputsRepository
     ) {}
 
@@ -18,5 +21,28 @@ export class RecipeInputsService {
             );
         }
         return await this.recipeInputsRepository.findAllByRecipe(recipeId);
+    }
+
+    public async addInputToRecipe(recipeId: string, dto: RecipeItemDto) {
+        const recipe = await this.recipesService.getById(recipeId);
+
+        if (!recipe) {
+            throw new NotFoundException(
+                `Could not add input to Recipe with ID "${recipeId}". - Reason: Recipe was not found`
+            );
+        }
+        const item = await this.itemsService.getById(dto.itemId);
+
+        if (!item) {
+            throw new NotFoundException(
+                `Could not add input to Recipe with ID "${recipeId}". - Reason: Item with ID "${dto.itemId}" was not found`
+            );
+        }
+        if (recipe.requiresInput(dto.itemId)) {
+            throw new BadRequestException(
+                `Could not add input to Recipe with ID "${recipeId}". - Reason: Recipe already has input with Item with ID "${dto.itemId}"`
+            );
+        }
+        return await this.recipeInputsRepository.create(recipeId, dto);
     }
 }

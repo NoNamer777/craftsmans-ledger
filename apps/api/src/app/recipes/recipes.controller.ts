@@ -1,4 +1,4 @@
-import { CreateRecipeData, UpdateRecipeData } from '@craftsmans-ledger/shared';
+import { CreateRecipeData, RecipeItemDto, UpdateRecipeData } from '@craftsmans-ledger/shared';
 import {
     BadRequestException,
     Body,
@@ -73,5 +73,19 @@ export class RecipesController {
     @Get('/:recipeId/inputs')
     public async getAllInputsOfRecipe(@Param('recipeId') recipeId: string) {
         return await this.recipeInputsService.getAllOfRecipe(recipeId);
+    }
+
+    @Post('/:recipeId/inputs')
+    public async addInputToRecipe(
+        @Param('recipeId') recipeId: string,
+        @Body() data: RecipeItemDto,
+        @Res() response: FastifyReply
+    ) {
+        const result = await this.recipeInputsService.addInputToRecipe(recipeId, data);
+        const url = response.request.url;
+
+        response.code(HttpStatus.CREATED).headers({
+            location: `${url}/${result.item.id}`,
+        });
     }
 }

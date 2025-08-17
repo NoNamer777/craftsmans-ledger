@@ -1,4 +1,4 @@
-import { RecipeItem, serializeAll } from '@craftsmans-ledger/shared';
+import { RecipeItem, RecipeItemDto, serialize, serializeAll } from '@craftsmans-ledger/shared';
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from '../core';
 import { selectedRecipeItemAttributes } from './models';
@@ -13,5 +13,17 @@ export class RecipeInputsRepository {
             ...selectedRecipeItemAttributes,
         });
         return serializeAll(RecipeItem, results);
+    }
+
+    public async create(recipeId: string, dto: RecipeItemDto) {
+        const result = await this.databaseService.recipeInput.create({
+            data: {
+                recipeId: recipeId,
+                itemId: dto.itemId,
+                quantity: dto.quantity,
+            },
+            ...selectedRecipeItemAttributes,
+        });
+        return serialize(RecipeItem, result);
     }
 }
