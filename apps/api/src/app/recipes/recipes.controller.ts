@@ -79,7 +79,7 @@ export class RecipesController {
     public async addInputToRecipe(
         @Param('recipeId') recipeId: string,
         @Body() data: RecipeItemDto,
-        @Res() response: FastifyReply
+        @Res({ passthrough: true }) response: FastifyReply
     ) {
         const result = await this.recipeInputsService.addInputToRecipe(recipeId, data);
         const url = response.request.url;
@@ -87,6 +87,7 @@ export class RecipesController {
         response.code(HttpStatus.CREATED).headers({
             location: `${url}/${result.item.id}`,
         });
+        return result;
     }
 
     @Get('/:recipeId/inputs/:itemId')
