@@ -1,27 +1,37 @@
 import { Expose, Type } from 'class-transformer';
+import { IsNotEmpty, IsNumber, IsString, Min, ValidateNested } from 'class-validator';
 import { Resource } from '../resource.model';
 import { TechnologyTree } from '../technology-trees';
 import { RecipeItem } from './recipe-item.model';
 import { RecipeDto } from './recipe.dto';
 
 export class Recipe implements Resource {
+    @IsNotEmpty()
+    @IsString()
     @Expose()
     public id: string;
 
+    @Min(0)
+    @IsNumber({ allowInfinity: false, allowNaN: false, maxDecimalPlaces: 2 })
     @Expose()
     public craftingTime: number;
 
+    @ValidateNested()
     @Expose()
     @Type(() => TechnologyTree)
     public technologyTree: TechnologyTree;
 
+    @Min(0)
+    @IsNumber({ allowInfinity: false, allowNaN: false, maxDecimalPlaces: 0 })
     @Expose()
     public technologyPoints: number;
 
+    @ValidateNested({ each: true })
     @Expose()
     @Type(() => RecipeItem)
     public inputs: RecipeItem[] = [];
 
+    @ValidateNested({ each: true })
     @Expose()
     @Type(() => RecipeItem)
     public outputs: RecipeItem[] = [];
@@ -30,8 +40,16 @@ export class Recipe implements Resource {
         return this.inputs.some((input) => input.item.id === itemId);
     }
 
+    public requiresOutput(itemId: string) {
+        return this.outputs.some((output) => output.item.id === itemId);
+    }
+
     public getInput(itemId: string) {
         return this.inputs.find((input) => input.item.id === itemId);
+    }
+
+    public getOutput(itemId: string) {
+        return this.outputs.find((output) => output.item.id === itemId);
     }
 
     public label() {

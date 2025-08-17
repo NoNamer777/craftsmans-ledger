@@ -27,5 +27,8 @@ export const selectedRecipeAttributes = {
         inputs: {
             ...selectedRecipeItemAttributes,
         },
+        outputs: {
+            ...selectedRecipeItemAttributes,
+        },
     },
 } as const;
