@@ -1,5 +1,5 @@
 import { Expose } from 'class-transformer';
-import { IsDecimal, IsNotEmpty, IsString, MinLength } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, Min, MinLength } from 'class-validator';
 
 export class CreateItemData {
     @MinLength(2)
@@ -8,11 +8,13 @@ export class CreateItemData {
     @Expose()
     public name: string;
 
-    @IsDecimal({ force_decimal: false, decimal_digits: '0,2' })
+    @Min(0)
+    @IsNumber()
     @Expose()
     public weight: number;
 
-    @IsDecimal({ force_decimal: false, decimal_digits: '0,2' })
+    @Min(0)
+    @IsNumber()
     @Expose()
     public cost: number;
 }
