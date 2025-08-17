@@ -88,4 +88,16 @@ export class RecipesController {
             location: `${url}/${result.item.id}`,
         });
     }
+
+    @Get('/:recipeId/inputs/:itemId')
+    public async getInputOfRecipe(@Param('recipeId') recipeId: string, @Param('itemId') itemId: string) {
+        const result = await this.recipeInputsService.getInputOfRecipe(recipeId, itemId);
+
+        if (!result) {
+            throw new NotFoundException(
+                `Recipe with ID "${recipeId}" does not have input with Item with ID "${itemId}"`
+            );
+        }
+        return result;
+    }
 }

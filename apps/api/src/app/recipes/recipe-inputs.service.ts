@@ -23,26 +23,47 @@ export class RecipeInputsService {
         return await this.recipeInputsRepository.findAllByRecipe(recipeId);
     }
 
+    public async getInputOfRecipe(recipeId: string, itemId: string) {
+        const recipe = await this.verifyRecipeExists(
+            recipeId,
+            `Could not get input from Recipe with ID "${recipeId}". - Reason: Recipe was not found`
+        );
+        await this.verifyItemExists(
+            itemId,
+            `Could not get input from Recipe with ID "${recipeId}". - Reason: Item with ID "${itemId}" was not found`
+        );
+        return recipe.getInput(itemId);
+    }
+
     public async addInputToRecipe(recipeId: string, dto: RecipeItemDto) {
-        const recipe = await this.recipesService.getById(recipeId);
+        const recipe = await this.verifyRecipeExists(
+            recipeId,
+            `Could not add input to Recipe with ID "${recipeId}". - Reason: Recipe was not found`
+        );
+        await this.verifyItemExists(
+            dto.itemId,
+            `Could not add input to Recipe with ID "${recipeId}". - Reason: Item with ID "${dto.itemId}" was not found`
+        );
 
-        if (!recipe) {
-            throw new NotFoundException(
-                `Could not add input to Recipe with ID "${recipeId}". - Reason: Recipe was not found`
-            );
-        }
-        const item = await this.itemsService.getById(dto.itemId);
-
-        if (!item) {
-            throw new NotFoundException(
-                `Could not add input to Recipe with ID "${recipeId}". - Reason: Item with ID "${dto.itemId}" was not found`
-            );
-        }
         if (recipe.requiresInput(dto.itemId)) {
             throw new BadRequestException(
                 `Could not add input to Recipe with ID "${recipeId}". - Reason: Recipe already has input with Item with ID "${dto.itemId}"`
             );
         }
         return await this.recipeInputsRepository.create(recipeId, dto);
+    }
+
+    private async verifyRecipeExists(recipeId: string, errorMessage: string) {
+        const recipe = await this.recipesService.getById(recipeId);
+
+        if (!recipe) throw new NotFoundException(errorMessage);
+        return recipe;
+    }
+
+    private async verifyItemExists(itemId: string, errorMessage: string) {
+        const item = await this.itemsService.getById(itemId);
+
+        if (!item) throw new NotFoundException(errorMessage);
+        return item;
     }
 }
