@@ -40,8 +40,16 @@ export class Recipe implements Resource {
         return this.inputs.some((input) => input.item.id === itemId);
     }
 
+    public requiresOutput(itemId: string) {
+        return this.outputs.some((output) => output.item.id === itemId);
+    }
+
     public getInput(itemId: string) {
         return this.inputs.find((input) => input.item.id === itemId);
+    }
+
+    public getOutput(itemId: string) {
+        return this.outputs.find((output) => output.item.id === itemId);
     }
 
     public label() {

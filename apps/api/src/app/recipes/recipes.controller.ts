@@ -15,13 +15,15 @@ import {
 } from '@nestjs/common';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { RecipeInputsService } from './recipe-inputs.service';
+import { RecipeOutputsService } from './recipe-outputs.service';
 import { RecipesService } from './recipes.service';
 
 @Controller('/recipes')
 export class RecipesController {
     constructor(
         private readonly recipesService: RecipesService,
-        private readonly recipeInputsService: RecipeInputsService
+        private readonly recipeInputsService: RecipeInputsService,
+        private readonly recipeOutputsService: RecipeOutputsService
     ) {}
 
     @Get()
@@ -122,5 +124,59 @@ export class RecipesController {
     @Delete('/:recipeId/inputs/:itemId')
     public async removeInputFromRecipe(@Param('recipeId') recipeId: string, @Param('itemId') itemId: string) {
         await this.recipeInputsService.removeInputFromRecipe(recipeId, itemId);
+    }
+
+    @Get('/:recipeId/outputs')
+    public async getAllOutputsOfRecipe(@Param('recipeId') recipeId: string) {
+        return await this.recipeOutputsService.getAllOfRecipe(recipeId);
+    }
+
+    @Post('/:recipeId/outputs')
+    public async addOutputToRecipe(
+        @Param('recipeId') recipeId: string,
+        @Body() data: RecipeItemDto,
+        @Res({ passthrough: true }) response: FastifyReply
+    ) {
+        const result = await this.recipeOutputsService.addOutputToRecipe(recipeId, data);
+        const url = response.request.url;
+
+        response.code(HttpStatus.CREATED).headers({
+            location: `${url}/${result.item.id}`,
+        });
+        return result;
+    }
+
+    @Get('/:recipeId/outputs/:itemId')
+    public async getOutputOfRecipe(@Param('recipeId') recipeId: string, @Param('itemId') itemId: string) {
+        const result = await this.recipeOutputsService.getOutputOfRecipe(recipeId, itemId);
+
+        if (!result) {
+            throw new NotFoundException(
+                `Recipe with ID "${recipeId}" does not have output with Item with ID "${itemId}"`
+            );
+        }
+        return result;
+    }
+
+    @Put('/:recipeId/outputs/:itemId')
+    public async updateRecipeOutput(
+        @Param('recipeId') recipeId: string,
+        @Param('itemId') itemId: string,
+        @Body() dto: RecipeItemDto,
+        @Req() request: FastifyRequest
+    ) {
+        const url = request.url;
+
+        if (dto.itemId !== itemId) {
+            throw new BadRequestException(
+                `It's not allowed to update output with Item "${itemId}" of Recipe with ID "${recipeId}" on path "${url}" with data from output with Item "${itemId}"`
+            );
+        }
+        return await this.recipeOutputsService.updateOutputOfRecipe(recipeId, dto);
+    }
+
+    @Delete('/:recipeId/outputs/:itemId')
+    public async removeOutputFromRecipe(@Param('recipeId') recipeId: string, @Param('itemId') itemId: string) {
+        await this.recipeOutputsService.removeOutputFromRecipe(recipeId, itemId);
     }
 }
