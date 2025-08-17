@@ -26,4 +26,15 @@ export class RecipeInputsRepository {
         });
         return serialize(RecipeItem, result);
     }
+
+    public async remove(recipeId: string, itemId: string) {
+        await this.databaseService.recipeInput.delete({
+            where: {
+                itemId_recipeId: {
+                    recipeId: recipeId,
+                    itemId: itemId,
+                },
+            },
+        });
+    }
 }

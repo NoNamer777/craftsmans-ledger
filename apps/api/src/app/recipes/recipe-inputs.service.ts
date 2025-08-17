@@ -53,6 +53,24 @@ export class RecipeInputsService {
         return await this.recipeInputsRepository.create(recipeId, dto);
     }
 
+    public async removeInputFromRecipe(recipeId: string, itemId: string) {
+        const recipe = await this.verifyRecipeExists(
+            recipeId,
+            `Could not remove input from Recipe with ID "${recipeId}". - Reason: Recipe was not found`
+        );
+        await this.verifyItemExists(
+            itemId,
+            `Could not remove input from Recipe with ID "${recipeId}". - Reason: Item with ID "${itemId}" was not found`
+        );
+
+        if (!recipe.requiresInput(itemId)) {
+            throw new BadRequestException(
+                `Could not remove input from Recipe with ID "${recipeId}". - Reason: Recipe does not require input with Item with ID "${itemId}"`
+            );
+        }
+        await this.recipeInputsRepository.remove(recipeId, itemId);
+    }
+
     private async verifyRecipeExists(recipeId: string, errorMessage: string) {
         const recipe = await this.recipesService.getById(recipeId);
 

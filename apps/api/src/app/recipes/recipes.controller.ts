@@ -100,4 +100,9 @@ export class RecipesController {
         }
         return result;
     }
+
+    @Delete('/:recipeId/inputs/:itemId')
+    public async removeInputFromRecipe(@Param('recipeId') recipeId: string, @Param('itemId') itemId: string) {
+        await this.recipeInputsService.removeInputFromRecipe(recipeId, itemId);
+    }
 }
