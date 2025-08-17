@@ -1,8 +1,9 @@
 import { Expose } from 'class-transformer';
-import { IsDecimal, IsInt, IsNotEmpty, IsString, Min } from 'class-validator';
+import { IsInt, IsNotEmpty, IsNumber, IsString, Min } from 'class-validator';
 
 export class CreateRecipeData {
-    @IsDecimal({ decimal_digits: '0,2' })
+    @Min(0)
+    @IsNumber()
     @Expose()
     public craftingTime: number;
 

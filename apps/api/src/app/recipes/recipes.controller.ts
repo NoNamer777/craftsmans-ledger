@@ -1,4 +1,4 @@
-import { CreateRecipeData, UpdateRecipeData } from '@craftsmans-ledger/shared';
+import { CreateRecipeData, RecipeItemDto, UpdateRecipeData } from '@craftsmans-ledger/shared';
 import {
     BadRequestException,
     Body,
@@ -14,11 +14,15 @@ import {
     Res,
 } from '@nestjs/common';
 import { FastifyReply, FastifyRequest } from 'fastify';
+import { RecipeInputsService } from './recipe-inputs.service';
 import { RecipesService } from './recipes.service';
 
 @Controller('/recipes')
 export class RecipesController {
-    constructor(private readonly recipesService: RecipesService) {}
+    constructor(
+        private readonly recipesService: RecipesService,
+        private readonly recipeInputsService: RecipeInputsService
+    ) {}
 
     @Get()
     public async getAll() {
@@ -64,5 +68,58 @@ export class RecipesController {
     @Delete('/:recipeId')
     public async remove(@Param() recipeId: string) {
         await this.recipesService.remove(recipeId);
+    }
+
+    @Get('/:recipeId/inputs')
+    public async getAllInputsOfRecipe(@Param('recipeId') recipeId: string) {
+        return await this.recipeInputsService.getAllOfRecipe(recipeId);
+    }
+
+    @Post('/:recipeId/inputs')
+    public async addInputToRecipe(
+        @Param('recipeId') recipeId: string,
+        @Body() data: RecipeItemDto,
+        @Res() response: FastifyReply
+    ) {
+        const result = await this.recipeInputsService.addInputToRecipe(recipeId, data);
+        const url = response.request.url;
+
+        response.code(HttpStatus.CREATED).headers({
+            location: `${url}/${result.item.id}`,
+        });
+    }
+
+    @Get('/:recipeId/inputs/:itemId')
+    public async getInputOfRecipe(@Param('recipeId') recipeId: string, @Param('itemId') itemId: string) {
+        const result = await this.recipeInputsService.getInputOfRecipe(recipeId, itemId);
+
+        if (!result) {
+            throw new NotFoundException(
+                `Recipe with ID "${recipeId}" does not have input with Item with ID "${itemId}"`
+            );
+        }
+        return result;
+    }
+
+    @Put('/:recipeId/inputs/:itemId')
+    public async updateRecipeInput(
+        @Param('recipeId') recipeId: string,
+        @Param('itemId') itemId: string,
+        @Body() dto: RecipeItemDto,
+        @Req() request: FastifyRequest
+    ) {
+        const url = request.url;
+
+        if (dto.itemId !== itemId) {
+            throw new BadRequestException(
+                `It's not allowed to update input with Item "${itemId}" of Recipe with ID "${recipeId}" on path "${url}" with data from input with Item "${itemId}"`
+            );
+        }
+        return await this.recipeInputsService.updateInputOfRecipe(recipeId, dto);
+    }
+
+    @Delete('/:recipeId/inputs/:itemId')
+    public async removeInputFromRecipe(@Param('recipeId') recipeId: string, @Param('itemId') itemId: string) {
+        await this.recipeInputsService.removeInputFromRecipe(recipeId, itemId);
     }
 }

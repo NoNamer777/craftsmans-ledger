@@ -1,3 +1,17 @@
+export const selectedRecipeItemAttributes = {
+    select: {
+        quantity: true,
+        item: {
+            select: {
+                id: true,
+                name: true,
+                cost: true,
+                weight: true,
+            },
+        },
+    },
+} as const;
+
 export const selectedRecipeAttributes = {
     select: {
         id: true,
@@ -9,6 +23,9 @@ export const selectedRecipeAttributes = {
                 name: true,
                 maxPoints: true,
             },
+        },
+        inputs: {
+            ...selectedRecipeItemAttributes,
         },
     },
 } as const;

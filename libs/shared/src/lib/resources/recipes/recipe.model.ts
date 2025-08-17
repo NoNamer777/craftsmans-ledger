@@ -26,6 +26,14 @@ export class Recipe implements Resource {
     @Type(() => RecipeItem)
     public outputs: RecipeItem[] = [];
 
+    public requiresInput(itemId: string) {
+        return this.inputs.some((input) => input.item.id === itemId);
+    }
+
+    public getInput(itemId: string) {
+        return this.inputs.find((input) => input.item.id === itemId);
+    }
+
     public label() {
         return this.outputs?.map(({ item }) => item.name)?.join(', ') ?? this.id;
     }
