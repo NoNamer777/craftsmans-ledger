@@ -15,7 +15,7 @@ export class RecipeInputsRepository {
         return serializeAll(RecipeItem, results);
     }
 
-    public async create(recipeId: string, dto: RecipeItemDto) {
+    public async addInputToRecipe(recipeId: string, dto: RecipeItemDto) {
         const result = await this.databaseService.recipeInput.create({
             data: {
                 recipeId: recipeId,
@@ -27,7 +27,23 @@ export class RecipeInputsRepository {
         return serialize(RecipeItem, result);
     }
 
-    public async remove(recipeId: string, itemId: string) {
+    public async updateInputOfRecipe(recipeId: string, dto: RecipeItemDto) {
+        const result = await this.databaseService.recipeInput.update({
+            where: {
+                itemId_recipeId: {
+                    recipeId: recipeId,
+                    itemId: dto.itemId,
+                },
+            },
+            data: {
+                quantity: dto.quantity,
+            },
+            ...selectedRecipeItemAttributes,
+        });
+        return serialize(RecipeItem, result);
+    }
+
+    public async removeInputFromRecipe(recipeId: string, itemId: string) {
         await this.databaseService.recipeInput.delete({
             where: {
                 itemId_recipeId: {

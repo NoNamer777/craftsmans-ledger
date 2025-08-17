@@ -13,13 +13,10 @@ export class RecipeInputsService {
     ) {}
 
     public async getAllOfRecipe(recipeId: string) {
-        const recipe = await this.recipesService.getById(recipeId);
-
-        if (!recipe) {
-            throw new NotFoundException(
-                `Could not get Inputs for Recipe with ID "${recipeId}". - Reason: Recipe was not found`
-            );
-        }
+        await this.verifyRecipeExists(
+            recipeId,
+            `Could not get Inputs for Recipe with ID "${recipeId}". - Reason: Recipe was not found`
+        );
         return await this.recipeInputsRepository.findAllByRecipe(recipeId);
     }
 
@@ -50,7 +47,25 @@ export class RecipeInputsService {
                 `Could not add input to Recipe with ID "${recipeId}". - Reason: Recipe already has input with Item with ID "${dto.itemId}"`
             );
         }
-        return await this.recipeInputsRepository.create(recipeId, dto);
+        return await this.recipeInputsRepository.addInputToRecipe(recipeId, dto);
+    }
+
+    public async updateInputOfRecipe(recipeId: string, dto: RecipeItemDto) {
+        const recipe = await this.verifyRecipeExists(
+            recipeId,
+            `Could not update input of Recipe with ID "${recipeId}". - Reason: Recipe was not found`
+        );
+        await this.verifyItemExists(
+            dto.itemId,
+            `Could not update input of Recipe with ID "${recipeId}". - Reason: Item with ID "${dto.itemId}" was not found`
+        );
+
+        if (!recipe.requiresInput(dto.itemId)) {
+            throw new BadRequestException(
+                `Could not update input of Recipe with ID "${recipeId}". - Reason: Recipe does not require input with Item with ID "${dto.itemId}"`
+            );
+        }
+        return await this.recipeInputsRepository.updateInputOfRecipe(recipeId, dto);
     }
 
     public async removeInputFromRecipe(recipeId: string, itemId: string) {
@@ -68,7 +83,7 @@ export class RecipeInputsService {
                 `Could not remove input from Recipe with ID "${recipeId}". - Reason: Recipe does not require input with Item with ID "${itemId}"`
             );
         }
-        await this.recipeInputsRepository.remove(recipeId, itemId);
+        await this.recipeInputsRepository.removeInputFromRecipe(recipeId, itemId);
     }
 
     private async verifyRecipeExists(recipeId: string, errorMessage: string) {

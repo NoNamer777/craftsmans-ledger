@@ -101,6 +101,23 @@ export class RecipesController {
         return result;
     }
 
+    @Put('/:recipeId/inputs/:itemId')
+    public async updateRecipeInput(
+        @Param('recipeId') recipeId: string,
+        @Param('itemId') itemId: string,
+        @Body() dto: RecipeItemDto,
+        @Req() request: FastifyRequest
+    ) {
+        const url = request.url;
+
+        if (dto.itemId !== itemId) {
+            throw new BadRequestException(
+                `It's not allowed to update input with Item "${itemId}" of Recipe with ID "${recipeId}" on path "${url}" with data from input with Item "${itemId}"`
+            );
+        }
+        return await this.recipeInputsService.updateInputOfRecipe(recipeId, dto);
+    }
+
     @Delete('/:recipeId/inputs/:itemId')
     public async removeInputFromRecipe(@Param('recipeId') recipeId: string, @Param('itemId') itemId: string) {
         await this.recipeInputsService.removeInputFromRecipe(recipeId, itemId);
