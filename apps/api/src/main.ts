@@ -10,12 +10,14 @@ import { AppModule, validationOptions } from './app';
 async function bootstrap() {
     const app = await NestFactory.create(AppModule, new FastifyAdapter());
 
-    app.useGlobalPipes(new ValidationPipe({
-        transform: true,
-        exceptionFactory: (errors) => errors[0],
-        transformOptions: classTransformOptions,
-        ...validationOptions
-    }));
+    app.useGlobalPipes(
+        new ValidationPipe({
+            transform: true,
+            exceptionFactory: (errors) => errors[0],
+            transformOptions: classTransformOptions,
+            ...validationOptions,
+        })
+    );
 
     const configService = app.get(ConfigService);
 
