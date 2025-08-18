@@ -8,5 +8,6 @@ export * from './http';
 export * from './icons';
 export * from './notifications';
 export * from './resources';
+export * from './server-side-events/sse.service';
 export * from './sidebar';
-export * from './web-socket';
+export * from './web-socket/web-socket.service';
