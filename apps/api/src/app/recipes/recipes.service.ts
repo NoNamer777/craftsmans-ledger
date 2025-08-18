@@ -1,4 +1,4 @@
-import { CreateRecipeData, UpdateRecipeData } from '@craftsmans-ledger/shared';
+import { CreateRecipeData, isSortOrder, RecipeQueryParams, UpdateRecipeData } from '@craftsmans-ledger/shared';
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { TechnologyTreesService } from '../technology-trees';
 import { RecipesRepository } from './recipes.repository';
@@ -16,6 +16,24 @@ export class RecipesService {
 
     public async getById(recipeId: string) {
         return await this.recipesRepository.findOneById(recipeId);
+    }
+
+    public async query(queryParams: RecipeQueryParams) {
+        if (queryParams.offset < 0) {
+            throw new BadRequestException(`Offset "${queryParams.offset}" must be a positive whole number`);
+        }
+        if (queryParams.limit <= 0) {
+            throw new BadRequestException(
+                `Limit "${queryParams.limit}" must be a whole number greater than or equal to zero`
+            );
+        }
+        if (!isSortOrder(queryParams.sortOrder)) {
+            throw new BadRequestException(`Sort order must be either "asc" or "desc"`);
+        }
+        if (queryParams.techTreeIds.length !== queryParams.maxTechPoints.length) {
+            throw new BadRequestException(`The number of Technology Trees and maximum Tech points are not the same`);
+        }
+        return await this.recipesRepository.query(queryParams);
     }
 
     public async create(data: CreateRecipeData) {
