@@ -1,4 +1,12 @@
-import { CreateRecipeData, RecipeItemDto, UpdateRecipeData } from '@craftsmans-ledger/shared';
+import {
+    CreateRecipeData,
+    DEFAULT_SORT_ORDER,
+    RecipeItemDto,
+    RecipeQueryParams,
+    serialize,
+    SortOrder,
+    UpdateRecipeData,
+} from '@craftsmans-ledger/shared';
 import {
     BadRequestException,
     Body,
@@ -8,12 +16,15 @@ import {
     HttpStatus,
     NotFoundException,
     Param,
+    ParseArrayPipe,
     Post,
     Put,
+    Query,
     Req,
     Res,
 } from '@nestjs/common';
 import { FastifyReply, FastifyRequest } from 'fastify';
+import { DEFAULT_LIMIT, DEFAULT_OFFSET } from '../../../../../libs/shared/src/lib/http/standard-query-params';
 import { RecipeInputsService } from './recipe-inputs.service';
 import { RecipeOutputsService } from './recipe-outputs.service';
 import { RecipesService } from './recipes.service';
@@ -39,6 +50,21 @@ export class RecipesController {
 
         response.code(HttpStatus.CREATED).headers({ Location: `${url}/${created.id}` });
         return created;
+    }
+
+    @Get('/query')
+    public async query(
+        @Query('limit') limit: number = DEFAULT_LIMIT,
+        @Query('offset') offset: number = DEFAULT_OFFSET,
+        @Query('sortOrder') sortOrder: SortOrder = DEFAULT_SORT_ORDER,
+        @Query('techTreeIds', new ParseArrayPipe({ items: String, separator: ',', optional: true }))
+        techTreeIds: string[] = [],
+        @Query('maxTechPoints', new ParseArrayPipe({ items: Number, separator: ',', optional: true }))
+        maxTechPoints: string[] = []
+    ) {
+        return await this.recipesService.query(
+            serialize(RecipeQueryParams, { limit, offset, sortOrder, techTreeIds, maxTechPoints })
+        );
     }
 
     @Get('/:recipeId')

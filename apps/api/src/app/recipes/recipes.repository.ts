@@ -1,4 +1,12 @@
-import { CreateRecipeData, Recipe, serialize, serializeAll, UpdateRecipeData } from '@craftsmans-ledger/shared';
+import {
+    CreateRecipeData,
+    PaginatedResponse,
+    Recipe,
+    RecipeQueryParams,
+    serialize,
+    serializeAll,
+    UpdateRecipeData,
+} from '@craftsmans-ledger/shared';
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from '../core';
 import { selectedRecipeAttributes } from './models';
@@ -18,6 +26,42 @@ export class RecipesRepository {
             where: { id: recipeId },
         });
         return serialize(Recipe, result);
+    }
+
+    public async query(queryParams: RecipeQueryParams) {
+        const response = new PaginatedResponse<Recipe>();
+
+        const query: Parameters<typeof this.databaseService.recipe.count>[0] = {
+            skip: queryParams.offset,
+            take: queryParams.limit,
+            ...(queryParams.maxTechPoints.length === 0
+                ? {}
+                : {
+                      where: {
+                          OR: queryParams.maxTechPoints.map((techPoints, index) => ({
+                              technologyTree: {
+                                  id: queryParams.techTreeIds[index],
+                              },
+                              techPoints: {
+                                  lte: techPoints,
+                              },
+                          })),
+                      },
+                  }),
+        };
+        const countQuery = { ...query };
+        delete countQuery.skip;
+        delete countQuery.take;
+
+        const count = await this.databaseService.recipe.count(countQuery);
+        const results = await this.databaseService.recipe.findMany({ ...query, ...selectedRecipeAttributes });
+
+        response.lastPage = Math.ceil(count / queryParams.limit);
+        response.page = Math.floor(((queryParams.limit + queryParams.offset) / count) * response.lastPage);
+
+        response.count = count;
+        response.data = serializeAll(Recipe, results);
+        return response;
     }
 
     public async create(data: CreateRecipeData) {
