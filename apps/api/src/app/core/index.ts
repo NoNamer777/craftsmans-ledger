@@ -1,2 +1,2 @@
-export * from './config/constants';
+export * from './config';
 export * from './database';
