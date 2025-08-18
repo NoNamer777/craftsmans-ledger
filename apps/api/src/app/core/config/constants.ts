@@ -1,5 +1,5 @@
 import { ConfigModuleOptions } from '@nestjs/config/dist/interfaces';
-import { Expose } from 'class-transformer';
+import { Expose, Transform } from 'class-transformer';
 import { IsInt, IsNotEmpty, IsOptional, IsString, Max, Min, ValidatorOptions } from 'class-validator';
 import { appConfig } from './app.config';
 import { validateEnvVars } from './env.validator';
@@ -20,9 +20,12 @@ export const DEFAULT_DB_USER = 'root' as const;
 
 export const DEFAULT_DB_SCHEMA = 'mydb' as const;
 
+export const DEFAULT_CORS_ORIGINS = ['http://localhost:7000', 'http://localhost:7100'];
+
 export const EnvVarNames = {
     HOST: 'HOST',
     PORT: 'PORT',
+    CORS_ORIGINS: 'CORS_ORIGINS',
     SSL_CERT: 'SSL_CERT',
     SSL_KEY: 'SSL_KEY',
 
@@ -47,6 +50,13 @@ export class EnvironmentVariables {
     @IsOptional()
     @Expose()
     [EnvVarNames.PORT]: number = DEFAULT_PORT;
+
+    @IsNotEmpty({ each: true })
+    @IsString({ each: true })
+    @IsOptional()
+    @Expose()
+    @Transform(({ value }) => (value as string).split(','))
+    [EnvVarNames.CORS_ORIGINS]: string[] = DEFAULT_CORS_ORIGINS;
 
     @IsNotEmpty()
     @IsString()

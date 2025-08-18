@@ -1,5 +1,6 @@
 import * as process from 'node:process';
 import {
+    DEFAULT_CORS_ORIGINS,
     DEFAULT_DB_HOST,
     DEFAULT_DB_PORT,
     DEFAULT_DB_SCHEMA,
@@ -26,6 +27,7 @@ export interface SslConfig {
 export interface AppConfig {
     host: string;
     port: number;
+    corsOrigins: string[];
     ssl?: SslConfig;
     database: DatabaseConfig;
 }
@@ -46,6 +48,7 @@ export function appConfig(): AppConfig {
                   },
               }
             : {}),
+        corsOrigins: process.env[EnvVarNames.CORS_ORIGINS].split(',') ?? DEFAULT_CORS_ORIGINS,
 
         database: {
             host: process.env[EnvVarNames.DB_HOST] || DEFAULT_DB_HOST,

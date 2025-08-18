@@ -17,6 +17,7 @@ async function bootstrap() {
     const host = configService.get<string>('host');
     const port = configService.get<number>('port');
     const sslConfig = configService.get<SslConfig>('ssl');
+    const corsOrigins = configService.get<string[]>('corsOrigins');
 
     const app = await NestFactory.create(
         AppModule,
@@ -34,6 +35,10 @@ async function bootstrap() {
         }),
         {
             logger: ['log', 'error', 'warn'],
+            cors: {
+                origin: corsOrigins,
+                methods: ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
+            },
         }
     );
 
