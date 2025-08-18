@@ -1,4 +1,4 @@
-import { CreateItemData, Item } from '@craftsmans-ledger/shared';
+import { CreateItemData, Item, ResourceTypes } from '@craftsmans-ledger/shared';
 import {
     BadRequestException,
     Body,
@@ -14,11 +14,15 @@ import {
     Res,
 } from '@nestjs/common';
 import { FastifyReply, FastifyRequest } from 'fastify';
+import { CacheService } from '../core';
 import { ItemsService } from './items.service';
 
 @Controller('/items')
 export class ItemsController {
-    constructor(private readonly itemsService: ItemsService) {}
+    constructor(
+        private readonly itemsService: ItemsService,
+        private readonly cacheService: CacheService
+    ) {}
 
     @Get()
     public async getAll() {
@@ -32,6 +36,7 @@ export class ItemsController {
         const created = await this.itemsService.create(data);
 
         response.code(HttpStatus.CREATED).headers({ Location: `${url}/${created.id}` });
+        this.cacheService.resetCacheOfType(ResourceTypes.ITEMS);
         return created;
     }
 
@@ -52,11 +57,15 @@ export class ItemsController {
                 `It's not allowed to update Item on path "${url}" with data from Item with ID "${data.id}"`
             );
         }
-        return await this.itemsService.update(data);
+        const updated = await this.itemsService.update(data);
+        this.cacheService.resetCacheOfType(ResourceTypes.ITEMS);
+
+        return updated;
     }
 
     @Delete('/:itemId')
     public async remove(@Param('itemId') itemId: string) {
         await this.itemsService.remove(itemId);
+        this.cacheService.resetCacheOfType(ResourceTypes.ITEMS);
     }
 }

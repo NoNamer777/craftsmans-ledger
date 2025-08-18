@@ -1,8 +1,11 @@
 import {
     CreateRecipeData,
+    DEFAULT_LIMIT,
+    DEFAULT_OFFSET,
     DEFAULT_SORT_ORDER,
     RecipeItemDto,
     RecipeQueryParams,
+    ResourceTypes,
     serialize,
     SortOrder,
     UpdateRecipeData,
@@ -24,7 +27,7 @@ import {
     Res,
 } from '@nestjs/common';
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { DEFAULT_LIMIT, DEFAULT_OFFSET } from '../../../../../libs/shared/src/lib/http/standard-query-params';
+import { CacheService } from '../core';
 import { RecipeInputsService } from './recipe-inputs.service';
 import { RecipeOutputsService } from './recipe-outputs.service';
 import { RecipesService } from './recipes.service';
@@ -34,7 +37,8 @@ export class RecipesController {
     constructor(
         private readonly recipesService: RecipesService,
         private readonly recipeInputsService: RecipeInputsService,
-        private readonly recipeOutputsService: RecipeOutputsService
+        private readonly recipeOutputsService: RecipeOutputsService,
+        private readonly cacheService: CacheService
     ) {}
 
     @Get()
@@ -44,9 +48,10 @@ export class RecipesController {
 
     @Post()
     public async create(@Body() data: CreateRecipeData, @Res({ passthrough: true }) response: FastifyReply) {
+        const url = response.request.url;
         const created = await this.recipesService.create(data);
 
-        const url = response.request.url;
+        this.cacheService.resetCacheOfType(ResourceTypes.RECIPES);
 
         response.code(HttpStatus.CREATED).headers({ Location: `${url}/${created.id}` });
         return created;
@@ -90,12 +95,16 @@ export class RecipesController {
                 `It's not allowed to update Recipe on path "${url}" with data from Recipe with ID "${data.id}"`
             );
         }
-        return await this.recipesService.update(data);
+        const updated = await this.recipesService.update(data);
+        this.cacheService.resetCacheOfType(ResourceTypes.RECIPES);
+
+        return updated;
     }
 
     @Delete('/:recipeId')
     public async remove(@Param() recipeId: string) {
         await this.recipesService.remove(recipeId);
+        this.cacheService.resetCacheOfType(ResourceTypes.RECIPES);
     }
 
     @Get('/:recipeId/inputs')
@@ -112,9 +121,9 @@ export class RecipesController {
         const result = await this.recipeInputsService.addInputToRecipe(recipeId, data);
         const url = response.request.url;
 
-        response.code(HttpStatus.CREATED).headers({
-            location: `${url}/${result.item.id}`,
-        });
+        response.code(HttpStatus.CREATED).headers({ Location: `${url}/${result.item.id}` });
+        this.cacheService.resetCacheOfType(ResourceTypes.RECIPES);
+
         return result;
     }
 
@@ -144,12 +153,16 @@ export class RecipesController {
                 `It's not allowed to update input with Item "${itemId}" of Recipe with ID "${recipeId}" on path "${url}" with data from input with Item "${itemId}"`
             );
         }
-        return await this.recipeInputsService.updateInputOfRecipe(recipeId, dto);
+        const updated = await this.recipeInputsService.updateInputOfRecipe(recipeId, dto);
+
+        this.cacheService.resetCacheOfType(ResourceTypes.RECIPES);
+        return updated;
     }
 
     @Delete('/:recipeId/inputs/:itemId')
     public async removeInputFromRecipe(@Param('recipeId') recipeId: string, @Param('itemId') itemId: string) {
         await this.recipeInputsService.removeInputFromRecipe(recipeId, itemId);
+        this.cacheService.resetCacheOfType(ResourceTypes.RECIPES);
     }
 
     @Get('/:recipeId/outputs')
@@ -166,9 +179,9 @@ export class RecipesController {
         const result = await this.recipeOutputsService.addOutputToRecipe(recipeId, data);
         const url = response.request.url;
 
-        response.code(HttpStatus.CREATED).headers({
-            location: `${url}/${result.item.id}`,
-        });
+        response.code(HttpStatus.CREATED).headers({ Location: `${url}/${result.item.id}` });
+        this.cacheService.resetCacheOfType(ResourceTypes.RECIPES);
+
         return result;
     }
 
@@ -198,11 +211,15 @@ export class RecipesController {
                 `It's not allowed to update output with Item "${itemId}" of Recipe with ID "${recipeId}" on path "${url}" with data from output with Item "${itemId}"`
             );
         }
-        return await this.recipeOutputsService.updateOutputOfRecipe(recipeId, dto);
+        const updated = await this.recipeOutputsService.updateOutputOfRecipe(recipeId, dto);
+
+        this.cacheService.resetCacheOfType(ResourceTypes.RECIPES);
+        return updated;
     }
 
     @Delete('/:recipeId/outputs/:itemId')
     public async removeOutputFromRecipe(@Param('recipeId') recipeId: string, @Param('itemId') itemId: string) {
         await this.recipeOutputsService.removeOutputFromRecipe(recipeId, itemId);
+        this.cacheService.resetCacheOfType(ResourceTypes.RECIPES);
     }
 }

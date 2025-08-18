@@ -55,6 +55,7 @@ export default [
                                 'class-validator',
                                 'fastify',
                                 'reflect-metadata/*',
+                                'rxjs',
                             ],
                         },
                     ],

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NotificationsContainerComponent, WebSocketService } from '@craftsmans-ledger/shared-ui';
+import { ConfigService, NotificationsContainerComponent, SseService } from '@craftsmans-ledger/shared-ui';
 import { HeaderComponent } from '../header';
 
 @Component({
@@ -11,13 +11,14 @@ import { HeaderComponent } from '../header';
     imports: [RouterOutlet, HeaderComponent, NotificationsContainerComponent],
 })
 export class RootComponent implements OnInit, OnDestroy {
-    private readonly webSocketService = inject(WebSocketService);
+    private readonly sseService = inject(SseService);
+    private readonly configService = inject(ConfigService);
 
     public ngOnInit() {
-        this.webSocketService.connect();
+        this.sseService.subscribe(`${this.configService.config.baseApiUrl}/sse`);
     }
 
     public ngOnDestroy() {
-        this.webSocketService.closeConnection();
+        this.sseService.unsubscribe();
     }
 }
