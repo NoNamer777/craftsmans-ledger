@@ -1,3 +1,4 @@
+import * as process from 'node:process';
 import {
     DEFAULT_DB_HOST,
     DEFAULT_DB_PORT,
@@ -17,16 +18,34 @@ export interface DatabaseConfig {
     url: string;
 }
 
+export interface SslConfig {
+    cert: string;
+    key: string;
+}
+
 export interface AppConfig {
     host: string;
     port: number;
+    ssl?: SslConfig;
     database: DatabaseConfig;
+}
+
+function hasSslConfigured() {
+    return process.env[EnvVarNames.SSL_CERT] && process.env[EnvVarNames.SSL_KEY];
 }
 
 export function appConfig(): AppConfig {
     return {
         host: process.env[EnvVarNames.HOST] || DEFAULT_HOST,
         port: Number.parseInt(process.env[EnvVarNames.PORT]) || DEFAULT_PORT,
+        ...(hasSslConfigured()
+            ? {
+                  ssl: {
+                      cert: process.env[EnvVarNames.SSL_CERT],
+                      key: process.env[EnvVarNames.SSL_KEY],
+                  },
+              }
+            : {}),
 
         database: {
             host: process.env[EnvVarNames.DB_HOST] || DEFAULT_DB_HOST,

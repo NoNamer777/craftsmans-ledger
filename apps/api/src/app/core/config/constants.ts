@@ -23,6 +23,8 @@ export const DEFAULT_DB_SCHEMA = 'mydb' as const;
 export const EnvVarNames = {
     HOST: 'HOST',
     PORT: 'PORT',
+    SSL_CERT: 'SSL_CERT',
+    SSL_KEY: 'SSL_KEY',
 
     DB_HOST: 'DB_HOST',
     DB_PORT: 'DB_PORT',
@@ -45,6 +47,18 @@ export class EnvironmentVariables {
     @IsOptional()
     @Expose()
     [EnvVarNames.PORT]: number = DEFAULT_PORT;
+
+    @IsNotEmpty()
+    @IsString()
+    @IsOptional()
+    @Expose()
+    [EnvVarNames.SSL_CERT]?: string;
+
+    @IsNotEmpty()
+    @IsString()
+    @IsOptional()
+    @Expose()
+    [EnvVarNames.SSL_KEY]?: string;
 
     @IsNotEmpty()
     @IsString()
