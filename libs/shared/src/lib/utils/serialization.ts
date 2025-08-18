@@ -1,6 +1,6 @@
 import { ClassConstructor, ClassTransformOptions, instanceToPlain, plainToInstance } from 'class-transformer';
 
-const classTransformOptions: ClassTransformOptions = {
+export const classTransformOptions: ClassTransformOptions = {
     enableImplicitConversion: true,
     excludeExtraneousValues: true,
 };
