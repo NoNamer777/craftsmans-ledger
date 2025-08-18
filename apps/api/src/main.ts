@@ -6,7 +6,7 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter } from '@nestjs/platform-fastify';
 import { readFile } from 'fs/promises';
-import { AppModule, SslConfig, validationOptions } from './app';
+import { AppModule, ErrorFilter, SslConfig, validationOptions } from './app';
 
 async function bootstrap() {
     const applicationContext = await NestFactory.createApplicationContext(AppModule, {
@@ -50,6 +50,7 @@ async function bootstrap() {
             ...validationOptions,
         })
     );
+    app.useGlobalFilters(new ErrorFilter());
 
     await app.listen(port, host);
 
