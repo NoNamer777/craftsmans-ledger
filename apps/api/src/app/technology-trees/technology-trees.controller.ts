@@ -1,4 +1,4 @@
-import { CreateTechnologyTreeData, TechnologyTree } from '@craftsmans-ledger/shared';
+import { CreateTechnologyTreeData, ResourceTypes, TechnologyTree } from '@craftsmans-ledger/shared';
 import {
     BadRequestException,
     Body,
@@ -14,11 +14,15 @@ import {
     Res,
 } from '@nestjs/common';
 import { FastifyReply, FastifyRequest } from 'fastify';
+import { CacheService } from '../core';
 import { TechnologyTreesService } from './technology-trees.service';
 
 @Controller('/technology-trees')
 export class TechnologyTreesController {
-    constructor(private readonly technologyTreesService: TechnologyTreesService) {}
+    constructor(
+        private readonly technologyTreesService: TechnologyTreesService,
+        private readonly cacheService: CacheService
+    ) {}
 
     @Get()
     public async getAll() {
@@ -30,7 +34,9 @@ export class TechnologyTreesController {
         const created = await this.technologyTreesService.create(data);
         const url = response.request.url;
 
-        response.code(HttpStatus.CREATED).headers({ location: `${url}/${created.id}` });
+        this.cacheService.resetCacheOfType(ResourceTypes.TECHNOLOGY_TREES);
+
+        response.code(HttpStatus.CREATED).headers({ Location: `${url}/${created.id}` });
         return created;
     }
 
@@ -57,11 +63,15 @@ export class TechnologyTreesController {
                 `It's not allowed to update Technology Tree on path "${url}" with data from Technology Tree with ID "${data.id}"`
             );
         }
-        return await this.technologyTreesService.update(data);
+        const updated = await this.technologyTreesService.update(data);
+
+        this.cacheService.resetCacheOfType(ResourceTypes.TECHNOLOGY_TREES);
+        return updated;
     }
 
     @Delete('/:technologyTreeId')
     public async remove(@Param('technologyTreeId') technologyTreeId: string) {
         await this.technologyTreesService.remove(technologyTreeId);
+        this.cacheService.resetCacheOfType(ResourceTypes.TECHNOLOGY_TREES);
     }
 }

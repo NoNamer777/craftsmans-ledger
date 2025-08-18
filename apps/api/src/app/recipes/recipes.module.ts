@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { CacheModule, DatabaseModule } from '../core';
 import { ItemsModule } from '../items';
 import { TechnologyTreesModule } from '../technology-trees';
 import { RecipeInputsRepository } from './recipe-inputs.repository';
@@ -10,7 +11,7 @@ import { RecipesRepository } from './recipes.repository';
 import { RecipesService } from './recipes.service';
 
 @Module({
-    imports: [TechnologyTreesModule, ItemsModule],
+    imports: [DatabaseModule, CacheModule, TechnologyTreesModule, ItemsModule],
     controllers: [RecipesController],
     providers: [
         RecipesService,
