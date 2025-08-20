@@ -1,0 +1,41 @@
+<nav class="h-100">
+    <ul class="pagination pagination">
+        <li class="page-item" [class.disabled]="isOnFirstPage()">
+            <button type="button" class="page-link" (click)="paginationService.fetchPreviousPage()">Previous</button>
+        </li>
+        <li class="page-item" [class.disabled]="isOnFirstPage()">
+            <button type="button" class="page-link" (click)="paginationService.fetchPage(1)">First</button>
+        </li>
+        @if (!isOnFirstPage()) {
+            <li class="page-item">
+                <button type="button" class="page-link" (click)="paginationService.fetchPreviousPage()">
+                    {{ paginationService.previousPage() }}
+                </button>
+            </li>
+        }
+        <li class="page-item active">
+            <button type="button" class="page-link" (click)="paginationService.fetchPage(paginationService.page())">
+                {{ paginationService.page() }}
+            </button>
+        </li>
+        @if (!isOnLastPage()) {
+            <li class="page-item">
+                <button type="button" class="page-link" (click)="paginationService.fetchNextPage()">
+                    {{ paginationService.nextPage() }}
+                </button>
+            </li>
+        }
+        <li class="page-item" [class.disabled]="isOnLastPage()">
+            <button type="button" class="page-link" (click)="paginationService.fetchPage(paginationService.lastPage())">
+                Last
+            </button>
+        </li>
+        <li class="page-item" [class.disabled]="isOnLastPage()">
+            <button type="button" class="page-link" (click)="paginationService.fetchNextPage()">Next</button>
+        </li>
+    </ul>
+</nav>
+
+<span>Total results: {{ paginationService.count() }}</span>
+|
+<span>Number of pages: {{ paginationService.lastPage() }}</span>
