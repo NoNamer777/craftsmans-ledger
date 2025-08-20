@@ -18,5 +18,5 @@ export class TechnologyTreeFilter {
 export class RecipeFilters extends Filters {
     @Expose()
     @Type(() => TechnologyTreeFilter)
-    public technologyFilters: TechnologyTreeFilter[];
+    public technologyFilters?: TechnologyTreeFilter[];
 }
