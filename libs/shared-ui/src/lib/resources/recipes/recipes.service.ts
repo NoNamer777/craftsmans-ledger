@@ -46,11 +46,14 @@ export class RecipesService {
     public query(filters?: RecipeFilters) {
         const queryParams: QueryParams = {};
 
-        if (filters?.technologyFilters.length > 0) {
+        if (filters?.technologyFilters?.length > 0) {
             queryParams['technologyTreeIds'] = filters.technologyFilters
                 .map((filter) => filter.technologyTree.id)
                 .join(',');
             queryParams['maxTechPoints'] = filters.technologyFilters.map((filter) => filter.maxPoints).join(',');
+        }
+        if (filters?.offset) {
+            queryParams['offset'] = filters.offset;
         }
         return this.apiService.get<PaginatedResponse<Recipe>>(`${this.baseEndPoint}/query`, queryParams).pipe(
             map((response) => {
