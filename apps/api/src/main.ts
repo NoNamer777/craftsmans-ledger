@@ -1,4 +1,4 @@
-import 'reflect-metadata/Reflect.js';
+import 'reflect-metadata';
 
 import { classTransformOptions, tryCatch } from '@craftsmans-ledger/shared';
 import { Logger, ValidationPipe } from '@nestjs/common';
