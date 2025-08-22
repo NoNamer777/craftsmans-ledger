@@ -30,6 +30,12 @@
                 }
             }
         },
+        "docker-build": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "docker build --tag craftsmans-ledger/api:latest -f apps/api/.docker/Dockerfile ."
+            }
+        },
         "serve": {
             "continuous": true,
             "executor": "@nx/js:node",
