@@ -7,11 +7,11 @@ node_modules/
 
 # Build outputs
 .angular/
+.prisma/
 build/
 dist/
 
 **/public/config.json
-**/prisma/client
 
 certificate*.pem
 **/.env
