@@ -1,0 +1,17 @@
+.angular/
+.nx/
+dist/
+reports/
+
+**/.env
+*.pem
+
+node_modules/
+
+.idea/
+
+.msw/
+**/prisma/client/
+.dockerignore
+**/Dockerfile
+**/compose.yml
