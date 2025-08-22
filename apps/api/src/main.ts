@@ -52,6 +52,8 @@ async function bootstrap() {
     );
     app.useGlobalFilters(new ErrorFilter());
 
+    app.enableShutdownHooks();
+
     await app.listen(port, host);
 
     Logger.log(`API is running on: ${sslConfig ? 'https' : 'http'}://${host}:${port}`);
