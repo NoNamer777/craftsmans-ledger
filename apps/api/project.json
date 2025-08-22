@@ -5,8 +5,18 @@
     "sourceRoot": "apps/api/src",
     "tags": ["framework:nest", "scope:api"],
     "targets": {
+        "prisma-generate-client": {
+            "executor": "nx:run-commands",
+            "inputs": ["{workspaceRoot}/prisma.config.ts", "{projectRoot}/prisma/schema.prisma"],
+            "outputs": ["{workspaceRoot}/prisma/client"],
+            "cache": true,
+            "options": {
+                "command": "npx prisma generate client"
+            }
+        },
         "build": {
             "executor": "nx:run-commands",
+            "dependsOn": ["prisma-generate-client"],
             "options": {
                 "command": "webpack-cli build"
             },
