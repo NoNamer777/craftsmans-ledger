@@ -55,7 +55,7 @@ export class EnvironmentVariables {
     @IsString({ each: true })
     @IsOptional()
     @Expose()
-    @Transform(({ value }) => (value as string).split(','))
+    @Transform(({ value }) => (value as string)?.split(',') ?? [])
     [EnvVarNames.CORS_ORIGINS]: string[] = DEFAULT_CORS_ORIGINS;
 
     @IsNotEmpty()
