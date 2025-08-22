@@ -1,0 +1,8 @@
+name: craftsmans-ledger
+services:
+    admin-portal:
+        image: craftsmans-ledger/admin-portal
+        container_name: admin-portal
+        restart: unless-stopped
+        ports:
+            - '7100:80'
