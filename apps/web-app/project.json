@@ -75,6 +75,12 @@
                 }
             }
         },
+        "docker-build": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "docker build --tag craftsmans-ledger/craftsmans-ledger:latest -f apps/web-app/.docker/Dockerfile ."
+            }
+        },
         "serve": {
             "executor": "@angular/build:dev-server",
             "continuous": true,
