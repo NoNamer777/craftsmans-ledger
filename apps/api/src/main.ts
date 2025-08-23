@@ -22,16 +22,14 @@ async function bootstrap() {
     const app = await NestFactory.create(
         AppModule,
         new FastifyAdapter({
-            http2: true,
             ...(sslConfig
                 ? {
                       https: {
-                          allowHTTP1: false,
                           cert: await readFile(sslConfig.cert, { encoding: 'utf8' }),
                           key: await readFile(sslConfig.key, { encoding: 'utf8' }),
                       },
                   }
-                : {}),
+                : undefined),
         }),
         {
             logger: ['log', 'error', 'warn'],
