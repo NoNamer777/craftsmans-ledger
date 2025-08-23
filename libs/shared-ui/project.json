@@ -1,6 +1,6 @@
 {
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "name": "@craftsmans-ledger/shared-ui",
+    "name": "shared-ui",
     "projectType": "library",
     "sourceRoot": "libs/shared-ui/src",
     "prefix": "cml",
