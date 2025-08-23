@@ -1,16 +1,15 @@
-import { PrismaClient } from '@craftsmans-ledger/prisma/api';
-import { tryCatch } from '@craftsmans-ledger/shared';
-import { BeforeApplicationShutdown, Injectable, OnApplicationBootstrap } from '@nestjs/common';
+import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
+import { PrismaClient } from '@prisma/client';
 
 @Injectable()
-export class DatabaseService extends PrismaClient implements OnApplicationBootstrap, BeforeApplicationShutdown {
-    public async onApplicationBootstrap() {
-        const { error } = await tryCatch(this.$connect());
+export class DatabaseService implements OnModuleInit, OnModuleDestroy {
+    public readonly prismaClient = new PrismaClient();
 
-        if (error) console.error(error);
+    public async onModuleInit() {
+        await this.prismaClient.$connect();
     }
 
-    public async beforeApplicationShutdown() {
-        await this.$disconnect();
+    public async onModuleDestroy() {
+        await this.prismaClient.$disconnect();
     }
 }

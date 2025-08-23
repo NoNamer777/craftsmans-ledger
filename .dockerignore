@@ -11,7 +11,6 @@ node_modules/
 .idea/
 
 .msw/
-**/prisma/client/
 .dockerignore
 **/Dockerfile
 **/compose.yml

@@ -8,7 +8,7 @@
         "prisma-generate-client": {
             "executor": "nx:run-commands",
             "inputs": ["{workspaceRoot}/prisma.config.ts", "{projectRoot}/prisma/schema.prisma"],
-            "outputs": ["{workspaceRoot}/prisma/client"],
+            "outputs": ["{workspaceRoot}/node_modules/.prisma/client/schema.prisma"],
             "cache": true,
             "options": {
                 "command": "npx prisma generate client"

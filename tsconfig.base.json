@@ -21,7 +21,6 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "paths": {
-            "@craftsmans-ledger/prisma/api": [".prisma/api"],
             "@craftsmans-ledger/shared": ["libs/shared/src"],
             "@craftsmans-ledger/shared-ui": ["libs/shared-ui/src"],
             "@craftsmans-ledger/shared-ui/test": ["libs/shared-ui/test"]

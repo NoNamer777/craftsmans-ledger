@@ -8,7 +8,7 @@ export class RecipeOutputsRepository {
     constructor(private readonly databaseService: DatabaseService) {}
 
     public async findAllByRecipe(recipeId: string) {
-        const results = await this.databaseService.recipeOutput.findMany({
+        const results = await this.databaseService.prismaClient.recipeOutput.findMany({
             where: { recipeId: recipeId },
             ...selectedRecipeItemAttributes,
         });
@@ -16,7 +16,7 @@ export class RecipeOutputsRepository {
     }
 
     public async addOutputToRecipe(recipeId: string, dto: RecipeItemDto) {
-        const result = await this.databaseService.recipeOutput.create({
+        const result = await this.databaseService.prismaClient.recipeOutput.create({
             data: {
                 recipeId: recipeId,
                 itemId: dto.itemId,
@@ -28,7 +28,7 @@ export class RecipeOutputsRepository {
     }
 
     public async updateOutputOfRecipe(recipeId: string, dto: RecipeItemDto) {
-        const result = await this.databaseService.recipeOutput.update({
+        const result = await this.databaseService.prismaClient.recipeOutput.update({
             where: {
                 itemId_recipeId: {
                     recipeId: recipeId,
@@ -44,7 +44,7 @@ export class RecipeOutputsRepository {
     }
 
     public async removeOutputFromRecipe(recipeId: string, itemId: string) {
-        await this.databaseService.recipeOutput.delete({
+        await this.databaseService.prismaClient.recipeOutput.delete({
             where: {
                 itemId_recipeId: {
                     recipeId: recipeId,

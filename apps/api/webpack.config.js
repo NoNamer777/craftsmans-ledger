@@ -23,14 +23,7 @@ module.exports = {
     plugins: [
         new NxAppWebpackPlugin({
             externalDependencies: 'all',
-            assets: [
-                './src/assets',
-                {
-                    input: '../../.prisma',
-                    glob: 'api/**/*',
-                    output: '.prisma',
-                },
-            ],
+            assets: ['./src/assets'],
             compiler: 'swc',
             generatePackageJson: runsInProductionMode,
             main: './src/main.ts',
