@@ -52,9 +52,9 @@ async function bootstrap() {
 
     app.enableShutdownHooks();
 
-    await app.listen(port, host);
-
-    Logger.log(`API is running on: ${sslConfig ? 'https' : 'http'}://${host}:${port}`);
+    await app.listen(port, host, () => {
+        Logger.log(`API is running on: ${sslConfig ? 'https' : 'http'}://${host}:${port}`, 'NestApplication');
+    });
 }
 
 (async () => {
