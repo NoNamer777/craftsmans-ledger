@@ -78,7 +78,7 @@
         "docker-build": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "docker build --tag craftsmans-ledger/craftsmans-ledger:latest -f apps/web-app/.docker/Dockerfile ."
+                "command": "docker bake --sbom true --provenance true -f .docker/docker-bake.hcl web-app"
             }
         },
         "serve": {

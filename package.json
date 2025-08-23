@@ -20,6 +20,9 @@
             ".msw"
         ]
     },
+    "scripts": {
+        "docker-build:all": "docker bake --sbom true --provenance true -f .docker/docker-bake.hcl all"
+    },
     "dependencies": {
         "@angular/cdk": "~20.1.0",
         "@angular/common": "~20.1.0",
