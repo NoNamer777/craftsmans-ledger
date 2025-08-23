@@ -31,6 +31,7 @@ jobs:
 
             - name: Determine affected apps
               id: affected-apps
+              shell: bash
               run: |
                   AFFECTED_APPS=$(npx nx show projects --affected --type app)
 
