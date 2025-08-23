@@ -19,6 +19,23 @@ jobs:
             - name: Setup Tools
               uses: ./.github/actions/setup-tools
 
+            - name: Determine affected apps
+              id: affected-apps
+              if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+              run: |
+                  AFFECTED_APPS=$(npx nx show project --affected --type app)
+
+                  NUM_AFFECTED_APPS=$(echo "$AFFECTED_APPS" | grep -c . || echo 0)
+
+                  if [ "$NUM_AFFECTED_APPS" -eq 3 ]; then
+                    TARGETS="all"
+                  else
+                    TARGETS=$(echo "$AFFECTED_APPS" | tr '\n' ' ')
+                    TARGETS=$(echo "$AFFECTED_APPS" | xargs)
+                  fi
+
+                  echo "targets=$TARGETS" >> "$GITHUB_OUTPUT"
+
             - name: Compile code
               run: npx nx affected -t build
 
@@ -27,3 +44,9 @@ jobs:
 
             - name: Check formatting
               run: npx nx format:check
+
+            - name: Build Docker images
+              if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+              uses: ./.github/workflows/docker-build.yml
+              with:
+                  targets: ${{ steps.affected-apps.outputs.targets }}
