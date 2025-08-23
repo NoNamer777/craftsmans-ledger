@@ -34,15 +34,15 @@ jobs:
               run: |
                   AFFECTED_APPS=$(npx nx show projects --affected --type app)
 
-                  echo "AFFECTED_APPS: $AFFECTED_APPS"
+                  echo "AFFECTED_APPS: '$AFFECTED_APPS'"
 
-                  NUM_AFFECTED_APPS=$(echo "$AFFECTED_APPS" | grep -c . || echo 0)
+                  NUM_AFFECTED_APPS=$(echo "$AFFECTED_APPS" | grep -c .)
 
                   echo "NUM_AFFECTED_APPS: $NUM_AFFECTED_APPS"
 
                   TARGETS="all"
 
-                  if $(( NUM_AFFECTED_APPS > 0 )); then
+                  if (( NUM_AFFECTED_APPS > 0 )); then
                     TARGETS=$(echo "$AFFECTED_APPS" | tr '\n' ' ')
                     TARGETS=$(echo "$AFFECTED_APPS" | xargs)
                   fi
