@@ -1,0 +1,10 @@
+name: craftsmans-ledger
+services:
+    api:
+        image: ghcr.io/nonamer777/craftsmans-ledger/cml-api
+        container_name: api
+        restart: unless-stopped
+        env_file:
+            - ./.env
+        ports:
+            - '7200:7200'

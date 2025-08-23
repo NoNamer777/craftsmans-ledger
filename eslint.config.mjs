@@ -51,6 +51,7 @@ export default [
                             sourceTag: 'framework:nest',
                             allowedExternalImports: [
                                 '@nestjs/*',
+                                '@prisma/*',
                                 'class-transformer',
                                 'class-validator',
                                 'fastify',

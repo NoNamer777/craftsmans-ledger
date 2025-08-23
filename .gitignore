@@ -11,7 +11,7 @@ build/
 dist/
 
 **/public/config.json
-**/prisma/client
+**/.docker/config.json
 
 certificate*.pem
 **/.env

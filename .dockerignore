@@ -1,0 +1,16 @@
+.angular/
+.nx/
+dist/
+reports/
+
+**/.env
+*.pem
+
+node_modules/
+
+.idea/
+
+.msw/
+.dockerignore
+**/Dockerfile
+**/compose.yml

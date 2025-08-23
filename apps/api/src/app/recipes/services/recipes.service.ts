@@ -1,7 +1,7 @@
 import { CreateRecipeData, isSortOrder, RecipeQueryParams, UpdateRecipeData } from '@craftsmans-ledger/shared';
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
-import { TechnologyTreesService } from '../technology-trees';
-import { RecipesRepository } from './recipes.repository';
+import { TechnologyTreesService } from '../../technology-trees';
+import { RecipesRepository } from '../repositories';
 
 @Injectable()
 export class RecipesService {

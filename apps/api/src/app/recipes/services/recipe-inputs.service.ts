@@ -1,7 +1,7 @@
 import { RecipeItemDto } from '@craftsmans-ledger/shared';
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
-import { ItemsService } from '../items';
-import { RecipeInputsRepository } from './recipe-inputs.repository';
+import { ItemsService } from '../../items';
+import { RecipeInputsRepository } from '../repositories';
 import { RecipesService } from './recipes.service';
 
 @Injectable()

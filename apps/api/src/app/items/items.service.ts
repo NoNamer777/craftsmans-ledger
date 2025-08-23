@@ -1,9 +1,11 @@
 import { CreateItemData, Item } from '@craftsmans-ledger/shared';
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { ItemsRepository } from './items.repository';
 
 @Injectable()
 export class ItemsService {
+    private readonly logger = new Logger(ItemsService.name);
+
     constructor(private readonly itemsRepository: ItemsRepository) {}
 
     public async getAll() {
@@ -16,7 +18,10 @@ export class ItemsService {
 
     public async create(data: CreateItemData) {
         if (await this.isNameTaken(data.name)) {
-            throw new BadRequestException(`Could not create Item. - Reason: "${data.name}" is already in use`);
+            const error = new BadRequestException(`Could not create Item. - Reason: "${data.name}" is already in use`);
+            this.logger.warn(error.message);
+
+            throw error;
         }
         return await this.itemsRepository.create(data);
     }
@@ -25,12 +30,20 @@ export class ItemsService {
         const byId = await this.getById(data.id);
 
         if (!byId) {
-            throw new NotFoundException(`Could not update Item with ID "${data.id}". - Reason: Item was not found`);
+            const error = new NotFoundException(
+                `Could not update Item with ID "${data.id}". - Reason: Item was not found`
+            );
+            this.logger.warn(error.message);
+
+            throw error;
         }
         if (await this.isNameTaken(data.name, data.id)) {
-            throw new BadRequestException(
+            const error = new BadRequestException(
                 `Could not update Item with ID "${data.id}". - Reason: Name "${data.name}" is already in use`
             );
+            this.logger.warn(error.message);
+
+            throw error;
         }
         return await this.itemsRepository.update(data);
     }
@@ -39,7 +52,12 @@ export class ItemsService {
         const byId = await this.getById(itemId);
 
         if (!byId) {
-            throw new NotFoundException(`Could not remove Item with ID "${itemId}" - Reason: Item was not found`);
+            const error = new NotFoundException(
+                `Could not remove Item with ID "${itemId}" - Reason: Item was not found`
+            );
+            this.logger.warn(error.message);
+
+            throw error;
         }
         await this.itemsRepository.remove(itemId);
     }

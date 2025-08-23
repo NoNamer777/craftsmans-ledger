@@ -1,6 +1,6 @@
 {
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "name": "@craftsmans-ledger/web-app",
+    "name": "web-app",
     "projectType": "application",
     "sourceRoot": "apps/web-app/src",
     "tags": ["scope:ui", "framework:angular"],
@@ -75,11 +75,17 @@
                 }
             }
         },
+        "docker-build": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "docker bake --sbom true --provenance true -f .docker/docker-bake.hcl web-app"
+            }
+        },
         "serve": {
             "executor": "@angular/build:dev-server",
             "continuous": true,
             "options": {
-                "buildTarget": "@craftsmans-ledger/web-app:build:dev",
+                "buildTarget": "web-app:build:dev",
                 "host": "localhost.www.craftsmans-ledger.net",
                 "port": 7000,
                 "ssl": true,

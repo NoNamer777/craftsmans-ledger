@@ -1,10 +1,10 @@
 name: Setup Tools
 description: Sets up Node.Js
 runs:
-    using: Composite
+    using: composite
     steps:
         - name: Setup Node.Js
-          uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+          uses: actions/setup-node@v4
           with:
               node-version-file: '.tool-versions'
               cache: 'npm'

@@ -8,7 +8,7 @@ import {
     UpdateRecipeData,
 } from '@craftsmans-ledger/shared';
 import { Injectable } from '@nestjs/common';
-import { DatabaseService } from '../core';
+import { DatabaseService } from '../../core';
 import { selectedRecipeAttributes } from './models';
 
 @Injectable()
@@ -16,12 +16,12 @@ export class RecipesRepository {
     constructor(private readonly databaseService: DatabaseService) {}
 
     public async findAll() {
-        const results = await this.databaseService.recipe.findMany({ ...selectedRecipeAttributes });
+        const results = await this.databaseService.prismaClient.recipe.findMany({ ...selectedRecipeAttributes });
         return serializeAll(Recipe, results);
     }
 
     public async findOneById(recipeId: string) {
-        const result = await this.databaseService.recipe.findUnique({
+        const result = await this.databaseService.prismaClient.recipe.findUnique({
             ...selectedRecipeAttributes,
             where: { id: recipeId },
         });
@@ -31,7 +31,7 @@ export class RecipesRepository {
     public async query(queryParams: RecipeQueryParams) {
         const response = new PaginatedResponse<Recipe>();
 
-        const query: Parameters<typeof this.databaseService.recipe.count>[0] = {
+        const query: Parameters<typeof this.databaseService.prismaClient.recipe.count>[0] = {
             skip: queryParams.offset,
             take: queryParams.limit,
             ...(queryParams.maxTechPoints.length === 0
@@ -53,8 +53,11 @@ export class RecipesRepository {
         delete countQuery.skip;
         delete countQuery.take;
 
-        const count = await this.databaseService.recipe.count(countQuery);
-        const results = await this.databaseService.recipe.findMany({ ...query, ...selectedRecipeAttributes });
+        const count = await this.databaseService.prismaClient.recipe.count(countQuery);
+        const results = await this.databaseService.prismaClient.recipe.findMany({
+            ...query,
+            ...selectedRecipeAttributes,
+        });
 
         response.lastPage = Math.ceil(count / queryParams.limit);
         response.page = Math.floor(((queryParams.limit + queryParams.offset) / count) * response.lastPage);
@@ -65,7 +68,7 @@ export class RecipesRepository {
     }
 
     public async create(data: CreateRecipeData) {
-        const result = await this.databaseService.recipe.create({
+        const result = await this.databaseService.prismaClient.recipe.create({
             ...selectedRecipeAttributes,
             data: {
                 craftingTime: data.craftingTime,
@@ -77,7 +80,7 @@ export class RecipesRepository {
     }
 
     public async update(data: UpdateRecipeData) {
-        const result = await this.databaseService.recipe.update({
+        const result = await this.databaseService.prismaClient.recipe.update({
             ...selectedRecipeAttributes,
             where: { id: data.id },
             data: {
@@ -90,6 +93,6 @@ export class RecipesRepository {
     }
 
     public async remove(recipeId: string) {
-        await this.databaseService.recipe.delete({ where: { id: recipeId } });
+        await this.databaseService.prismaClient.recipe.delete({ where: { id: recipeId } });
     }
 }

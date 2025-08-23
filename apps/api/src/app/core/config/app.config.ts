@@ -1,4 +1,4 @@
-import * as process from 'node:process';
+import * as process from 'process';
 import {
     DEFAULT_CORS_ORIGINS,
     DEFAULT_DB_HOST,
@@ -48,7 +48,7 @@ export function appConfig(): AppConfig {
                   },
               }
             : {}),
-        corsOrigins: process.env[EnvVarNames.CORS_ORIGINS].split(',') ?? DEFAULT_CORS_ORIGINS,
+        corsOrigins: process.env[EnvVarNames.CORS_ORIGINS]?.split(',') ?? DEFAULT_CORS_ORIGINS,
 
         database: {
             host: process.env[EnvVarNames.DB_HOST] || DEFAULT_DB_HOST,

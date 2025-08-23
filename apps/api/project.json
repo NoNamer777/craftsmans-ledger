@@ -1,12 +1,22 @@
 {
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "name": "@craftsmans-ledger/api",
+    "name": "api",
     "projectType": "application",
     "sourceRoot": "apps/api/src",
     "tags": ["framework:nest", "scope:api"],
     "targets": {
+        "prisma-generate-client": {
+            "executor": "nx:run-commands",
+            "inputs": ["{workspaceRoot}/prisma.config.ts", "{projectRoot}/prisma/schema.prisma"],
+            "outputs": ["{workspaceRoot}/node_modules/.prisma/client/schema.prisma"],
+            "cache": true,
+            "options": {
+                "command": "npx prisma generate client"
+            }
+        },
         "build": {
             "executor": "nx:run-commands",
+            "dependsOn": ["prisma-generate-client"],
             "options": {
                 "command": "webpack-cli build"
             },
@@ -20,11 +30,17 @@
                 }
             }
         },
+        "docker-build": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "docker bake --sbom true --provenance true -f .docker/docker-bake.hcl api"
+            }
+        },
         "serve": {
             "continuous": true,
             "executor": "@nx/js:node",
             "options": {
-                "buildTarget": "@craftsmans-ledger/api:build:dev",
+                "buildTarget": "api:build:dev",
                 "inspect": false,
                 "runBuildTargetDependencies": false
             }

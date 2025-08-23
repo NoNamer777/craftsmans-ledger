@@ -1,0 +1,36 @@
+name: Docker build
+on:
+    workflow_call:
+        inputs:
+            targets:
+                required: true
+                type: string
+                default: all
+                description: Which Docker Bake target
+            tags:
+                required: false
+                type: string
+                default: latest
+                description: Which tags to use for the images
+permissions:
+    contents: read
+    packages: write
+jobs:
+    docker-build:
+        name: Docker build
+        runs-on: ubuntu-22.04
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v5
+
+            - name: Login to GHCR.io
+              uses: docker/login-action@v3
+              with:
+                  registry: ghcr.io
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Create and push images
+              run: docker bake --sbom true --provenance true --push -f .docker/docker-bake.hcl ${{ inputs.targets }}
+              env:
+                  TAG: ${{ inputs.tags }}

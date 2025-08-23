@@ -1,4 +1,4 @@
-import 'reflect-metadata/Reflect.js';
+import 'reflect-metadata';
 
 import { classTransformOptions, tryCatch } from '@craftsmans-ledger/shared';
 import { Logger, ValidationPipe } from '@nestjs/common';
@@ -22,16 +22,14 @@ async function bootstrap() {
     const app = await NestFactory.create(
         AppModule,
         new FastifyAdapter({
-            http2: true,
             ...(sslConfig
                 ? {
                       https: {
-                          allowHTTP1: false,
                           cert: await readFile(sslConfig.cert, { encoding: 'utf8' }),
                           key: await readFile(sslConfig.key, { encoding: 'utf8' }),
                       },
                   }
-                : {}),
+                : undefined),
         }),
         {
             logger: ['log', 'error', 'warn'],
@@ -52,9 +50,11 @@ async function bootstrap() {
     );
     app.useGlobalFilters(new ErrorFilter());
 
-    await app.listen(port, host);
+    app.enableShutdownHooks();
 
-    Logger.log(`API is running on: ${sslConfig ? 'https' : 'http'}://${host}:${port}`);
+    await app.listen(port, host, () => {
+        Logger.log(`API is running on: ${sslConfig ? 'https' : 'http'}://${host}:${port}`, 'NestApplication');
+    });
 }
 
 (async () => {

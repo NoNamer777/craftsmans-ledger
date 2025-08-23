@@ -22,8 +22,9 @@ module.exports = {
     },
     plugins: [
         new NxAppWebpackPlugin({
+            externalDependencies: 'all',
             assets: ['./src/assets'],
-            compiler: 'tsc',
+            compiler: 'swc',
             generatePackageJson: runsInProductionMode,
             main: './src/main.ts',
             optimization: runsInProductionMode,
