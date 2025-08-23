@@ -31,18 +31,23 @@ jobs:
 
             - name: Determine affected apps
               id: affected-apps
-              if: github.event_name == 'push' && github.ref == 'refs/heads/main'
               run: |
                   AFFECTED_APPS=$(npx nx show projects --affected --type app)
 
-                  NUM_AFFECTED_APPS=$(echo "$AFFECTED_APPS" | grep -c . || echo 0)
+                  echo "AFFECTED_APPS: '$AFFECTED_APPS'"
 
-                  if [ "$NUM_AFFECTED_APPS" -eq 3 ]; then
-                    TARGETS="all"
-                  else
+                  NUM_AFFECTED_APPS=$(echo "$AFFECTED_APPS" | grep -c . || echo "0")
+
+                  echo "NUM_AFFECTED_APPS: $NUM_AFFECTED_APPS"
+
+                  TARGETS="all"
+
+                  if [ "$NUM_AFFECTED_APPS" -gt "0" ] && [ "$NUM_AFFECTED_APPS" -lt "3" ]; then
                     TARGETS=$(echo "$AFFECTED_APPS" | tr '\n' ' ')
                     TARGETS=$(echo "$AFFECTED_APPS" | xargs)
                   fi
+
+                  echo "TARGETS: $TARGETS"
 
                   echo "targets=$TARGETS" >> "$GITHUB_OUTPUT"
     build-docker-images:
