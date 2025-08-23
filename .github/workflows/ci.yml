@@ -40,6 +40,8 @@ jobs:
 
                   echo "NUM_AFFECTED_APPS: $NUM_AFFECTED_APPS"
 
+                  TARGETS=""
+
                   if [ NUM_AFFECTED_APPS == 3 ]; then
                     TARGETS="all"
                   elif [ NUM_AFFECTED_APPS == 0 ]; then
