@@ -31,6 +31,11 @@ jobs:
                   password: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Create and push images
-              run: docker bake --sbom true --provenance true --push -f .docker/docker-bake.hcl ${{ inputs.targets }}
+              uses: docker/bake-action@v6
               env:
                   TAG: ${{ inputs.tags }}
+              with:
+                  push: true
+                  provenance: true
+                  sbom: true
+                  targets: ${{ inputs.targets }}

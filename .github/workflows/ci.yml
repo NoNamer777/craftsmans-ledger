@@ -31,6 +31,7 @@ jobs:
 
             - name: Determine affected apps
               id: affected-apps
+              if: github.event_name == 'push' && github.ref == 'refs/heads/main'
               run: |
                   AFFECTED_APPS=$(npx nx show projects --affected --type app)
 
