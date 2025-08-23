@@ -1,6 +1,6 @@
 {
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "name": "@craftsmans-ledger/admin-portal",
+    "name": "admin-portal",
     "projectType": "application",
     "sourceRoot": "apps/admin-portal/src",
     "prefix": "cml",
@@ -85,7 +85,7 @@
             "executor": "@angular/build:dev-server",
             "continuous": true,
             "options": {
-                "buildTarget": "@craftsmans-ledger/admin-portal:build:dev",
+                "buildTarget": "admin-portal:build:dev",
                 "host": "localhost.admin.craftsmans-ledger.net",
                 "port": 7100,
                 "ssl": true,

@@ -1,6 +1,6 @@
 {
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "name": "@craftsmans-ledger/api",
+    "name": "api",
     "projectType": "application",
     "sourceRoot": "apps/api/src",
     "tags": ["framework:nest", "scope:api"],
@@ -40,7 +40,7 @@
             "continuous": true,
             "executor": "@nx/js:node",
             "options": {
-                "buildTarget": "@craftsmans-ledger/api:build:dev",
+                "buildTarget": "api:build:dev",
                 "inspect": false,
                 "runBuildTargetDependencies": false
             }
