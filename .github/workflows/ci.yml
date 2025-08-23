@@ -36,17 +36,13 @@ jobs:
 
                   echo "AFFECTED_APPS: $AFFECTED_APPS"
 
-                  NUM_AFFECTED_APPS=$(echo "$AFFECTED_APPS" | grep -c . || echo 0)
+                  NUM_AFFECTED_APPS=$(echo "$AFFECTED_APPS" | grep -c .)
 
                   echo "NUM_AFFECTED_APPS: $NUM_AFFECTED_APPS"
 
-                  TARGETS=""
+                  TARGETS="all"
 
-                  if [ NUM_AFFECTED_APPS == 3 ]; then
-                    TARGETS="all"
-                  elif [ NUM_AFFECTED_APPS == 0 ]; then
-                    TARGETS="all"
-                  else
+                  if $(( NUM_AFFECTED_APPS > 0 )); then
                     TARGETS=$(echo "$AFFECTED_APPS" | tr '\n' ' ')
                     TARGETS=$(echo "$AFFECTED_APPS" | xargs)
                   fi
