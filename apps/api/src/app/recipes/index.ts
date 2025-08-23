@@ -1,2 +1,2 @@
 export * from './recipes.module';
-export * from './recipes.service';
+export * from './services';
