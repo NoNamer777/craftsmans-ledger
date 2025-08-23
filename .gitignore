@@ -11,7 +11,7 @@ build/
 dist/
 
 **/public/config.json
-.docker/config.json
+**/.docker/config.json
 
 certificate*.pem
 **/.env
