@@ -23,7 +23,7 @@ jobs:
               id: affected-apps
               if: github.event_name == 'push' && github.ref == 'refs/heads/main'
               run: |
-                  AFFECTED_APPS=$(npx nx show project --affected --type app)
+                  AFFECTED_APPS=$(npx nx show projects --affected --type app)
 
                   NUM_AFFECTED_APPS=$(echo "$AFFECTED_APPS" | grep -c . || echo 0)
 

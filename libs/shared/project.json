@@ -1,6 +1,6 @@
 {
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "name": "@craftsmans-ledger/shared",
+    "name": "shared",
     "projectType": "library",
     "sourceRoot": "libs/shared/src",
     "tags": ["scope:shared"],
