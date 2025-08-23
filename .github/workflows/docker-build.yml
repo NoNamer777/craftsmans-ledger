@@ -35,6 +35,8 @@ jobs:
               env:
                   TAG: ${{ inputs.tags }}
               with:
+                  source: .
+                  files: .docker/docker-bake.hcl
                   push: true
                   provenance: true
                   sbom: true
