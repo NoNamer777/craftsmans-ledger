@@ -2,13 +2,9 @@ import { Module } from '@nestjs/common';
 import { CacheModule, DatabaseModule } from '../core';
 import { ItemsModule } from '../items';
 import { TechnologyTreesModule } from '../technology-trees';
-import { RecipeInputsRepository } from './recipe-inputs.repository';
-import { RecipeInputsService } from './recipe-inputs.service';
-import { RecipeOutputsRepository } from './recipe-outputs.repository';
-import { RecipeOutputsService } from './recipe-outputs.service';
 import { RecipesController } from './recipes.controller';
-import { RecipesRepository } from './recipes.repository';
-import { RecipesService } from './recipes.service';
+import { RecipeInputsRepository, RecipeOutputsRepository, RecipesRepository } from './repositories';
+import { RecipeInputsService, RecipeOutputsService, RecipesService } from './services';
 
 @Module({
     imports: [DatabaseModule, CacheModule, TechnologyTreesModule, ItemsModule],

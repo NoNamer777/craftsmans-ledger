@@ -1,22 +1,22 @@
 import { RecipeItem, RecipeItemDto, serialize, serializeAll } from '@craftsmans-ledger/shared';
 import { Injectable } from '@nestjs/common';
-import { DatabaseService } from '../core';
+import { DatabaseService } from '../../core';
 import { selectedRecipeItemAttributes } from './models';
 
 @Injectable()
-export class RecipeOutputsRepository {
+export class RecipeInputsRepository {
     constructor(private readonly databaseService: DatabaseService) {}
 
     public async findAllByRecipe(recipeId: string) {
-        const results = await this.databaseService.prismaClient.recipeOutput.findMany({
+        const results = await this.databaseService.prismaClient.recipeInput.findMany({
             where: { recipeId: recipeId },
             ...selectedRecipeItemAttributes,
         });
         return serializeAll(RecipeItem, results);
     }
 
-    public async addOutputToRecipe(recipeId: string, dto: RecipeItemDto) {
-        const result = await this.databaseService.prismaClient.recipeOutput.create({
+    public async addInputToRecipe(recipeId: string, dto: RecipeItemDto) {
+        const result = await this.databaseService.prismaClient.recipeInput.create({
             data: {
                 recipeId: recipeId,
                 itemId: dto.itemId,
@@ -27,8 +27,8 @@ export class RecipeOutputsRepository {
         return serialize(RecipeItem, result);
     }
 
-    public async updateOutputOfRecipe(recipeId: string, dto: RecipeItemDto) {
-        const result = await this.databaseService.prismaClient.recipeOutput.update({
+    public async updateInputOfRecipe(recipeId: string, dto: RecipeItemDto) {
+        const result = await this.databaseService.prismaClient.recipeInput.update({
             where: {
                 itemId_recipeId: {
                     recipeId: recipeId,
@@ -43,8 +43,8 @@ export class RecipeOutputsRepository {
         return serialize(RecipeItem, result);
     }
 
-    public async removeOutputFromRecipe(recipeId: string, itemId: string) {
-        await this.databaseService.prismaClient.recipeOutput.delete({
+    public async removeInputFromRecipe(recipeId: string, itemId: string) {
+        await this.databaseService.prismaClient.recipeInput.delete({
             where: {
                 itemId_recipeId: {
                     recipeId: recipeId,

@@ -8,7 +8,7 @@ import {
     UpdateRecipeData,
 } from '@craftsmans-ledger/shared';
 import { Injectable } from '@nestjs/common';
-import { DatabaseService } from '../core';
+import { DatabaseService } from '../../core';
 import { selectedRecipeAttributes } from './models';
 
 @Injectable()

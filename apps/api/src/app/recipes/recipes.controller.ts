@@ -28,9 +28,7 @@ import {
 } from '@nestjs/common';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { CacheService } from '../core';
-import { RecipeInputsService } from './recipe-inputs.service';
-import { RecipeOutputsService } from './recipe-outputs.service';
-import { RecipesService } from './recipes.service';
+import { RecipeInputsService, RecipeOutputsService, RecipesService } from './services';
 
 @Controller('/recipes')
 export class RecipesController {
