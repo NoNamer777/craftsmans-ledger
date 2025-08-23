@@ -36,7 +36,7 @@ jobs:
 
                   echo "AFFECTED_APPS: $AFFECTED_APPS"
 
-                  NUM_AFFECTED_APPS=$(echo "$AFFECTED_APPS" | grep -c .)
+                  NUM_AFFECTED_APPS=$(echo "$AFFECTED_APPS" | grep -c . || echo 0)
 
                   echo "NUM_AFFECTED_APPS: $NUM_AFFECTED_APPS"
 
