@@ -19,6 +19,15 @@ jobs:
             - name: Setup Tools
               uses: ./.github/actions/setup-tools
 
+            - name: Compile code
+              run: npx nx affected -t build
+
+            - name: Check linting
+              run: npx nx affected -t lint
+
+            - name: Check formatting
+              run: npx nx format:check
+
             - name: Determine affected apps
               id: affected-apps
               if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -35,18 +44,10 @@ jobs:
                   fi
 
                   echo "targets=$TARGETS" >> "$GITHUB_OUTPUT"
-
-            - name: Compile code
-              run: npx nx affected -t build
-
-            - name: Check linting
-              run: npx nx affected -t lint
-
-            - name: Check formatting
-              run: npx nx format:check
-
-            - name: Build Docker images
-              if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-              uses: ./.github/workflows/docker-build.yml
-              with:
-                  targets: ${{ steps.affected-apps.outputs.targets }}
+    build-docker-images:
+        name: Build & push Docker images
+        needs: ci
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: ./.github/workflows/docker-build.yml
+        with:
+            targets: ${{ needs.ci.outputs.targets }}
