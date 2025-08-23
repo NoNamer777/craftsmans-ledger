@@ -40,7 +40,9 @@ jobs:
 
                   echo "NUM_AFFECTED_APPS: $NUM_AFFECTED_APPS"
 
-                  if (( NUM_AFFECTED_APPS == 3 )); then
+                  if [ "$NUM_AFFECTED_APPS" -eq "3" ]; then
+                    TARGETS="all"
+                  elif [ "$NUM_AFFECTED_APPS" -eq "0" ]; then
                     TARGETS="all"
                   else
                     TARGETS=$(echo "$AFFECTED_APPS" | tr '\n' ' ')
