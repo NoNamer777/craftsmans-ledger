@@ -1,8 +1,8 @@
 name: craftsmans-ledger
 services:
-    admin-portal:
-        image: craftsmans-ledger/craftsmans-ledger
-        container_name: craftsmans-ledger
+    web-app:
+        image: ghcr.io/nonamer777/craftsmans-ledger/cml-web-app
+        container_name: web-app
         restart: unless-stopped
         ports:
             - '7000:80'

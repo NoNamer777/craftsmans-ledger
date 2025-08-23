@@ -1,7 +1,7 @@
 name: craftsmans-ledger
 services:
-    admin-portal:
-        image: craftsmans-ledger/api
+    api:
+        image: ghcr.io/nonamer777/craftsmans-ledger/cml-api
         container_name: api
         restart: unless-stopped
         env_file:

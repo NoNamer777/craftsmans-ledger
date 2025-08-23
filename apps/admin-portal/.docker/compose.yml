@@ -1,7 +1,7 @@
 name: craftsmans-ledger
 services:
     admin-portal:
-        image: craftsmans-ledger/admin-portal
+        image: ghcr.io/nonamer777/craftsmans-ledger/cml-admin-portal
         container_name: admin-portal
         restart: unless-stopped
         ports:
