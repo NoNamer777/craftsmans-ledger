@@ -1,0 +1,55 @@
+name: craftsmans-ledger
+services:
+    web-app:
+        image: ghcr.io/nonamer777/craftsmans-ledger/cml-web-app
+        container_name: web-app
+        restart: unless-stopped
+        depends_on:
+            - api
+        ports:
+            - '7000:80'
+        volumes:
+            - ./config.json:/usr/share/nginx/html/config.json
+    admin-portal:
+        image: ghcr.io/nonamer777/craftsmans-ledger/cml-admin-portal
+        container_name: admin-portal
+        restart: unless-stopped
+        depends_on:
+            - api
+        ports:
+            - '7100:80'
+        volumes:
+            - ./config.json:/usr/share/nginx/html/config.json
+    api:
+        image: ghcr.io/nonamer777/craftsmans-ledger/cml-api
+        container_name: api
+        restart: unless-stopped
+        depends_on:
+            - mariadb-server
+        env_file:
+            - ./.env
+        ports:
+            - '7200:7200'
+    dbeaver:
+        image: dbeaver/cloudbeaver
+        container_name: dbeaver
+        restart: unless-stopped
+        ports:
+            - '8978:8978'
+        volumes:
+            - ./dbeaver/workspace:/opt/cloudbeaver/workspace
+    mariadb-server:
+        image: mariadb
+        container_name: mariadb
+        restart: unless-stopped
+        ports:
+            - '3306:3306/tcp'
+        environment:
+            MARIADB_ROOT_PASSWORD_FILE: /run/secrets/mariadb_root_password
+        volumes:
+            - ./mariadb/data:/var/lib/mysql
+        secrets:
+            - mariadb_root_password
+secrets:
+    mariadb_root_password:
+        file: ./mariadb/mariadb-root-password.txt
