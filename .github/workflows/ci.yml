@@ -12,6 +12,8 @@ jobs:
     ci:
         name: CI
         runs-on: ubuntu-22.04
+        outputs:
+            targets: ${{ steps.affected-apps.outputs.targets }}
         steps:
             - name: Checkout repository
               uses: actions/checkout@v5
