@@ -7,7 +7,9 @@ export class TechnologyTreesRepository {
     constructor(private readonly databaseService: DatabaseService) {}
 
     public async findAll() {
-        const results = await this.databaseService.prismaClient.techTree.findMany();
+        const results = await this.databaseService.prismaClient.techTree.findMany({
+            orderBy: { name: 'asc' },
+        });
         return serializeAll(TechnologyTree, results);
     }
 
