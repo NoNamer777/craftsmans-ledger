@@ -30,8 +30,10 @@ export class RequestService {
 
         Object.entries(queryParams).forEach(([queryParam, value]) => {
             if (Array.isArray(value)) {
-                url += `${queryParam}=${value.map((entry) => this.handleQueryParam(entry)).join(',')}&`;
-            } else {
+                if (value.length !== 0) {
+                    url += `${queryParam}=${value.map((entry) => this.handleQueryParam(entry)).join(',')}&`;
+                }
+            } else if (value !== undefined) {
                 url += `${queryParam}=${this.handleQueryParam(value)}&`;
             }
         });
