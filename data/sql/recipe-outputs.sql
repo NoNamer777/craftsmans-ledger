@@ -1,156 +1,325 @@
 DELETE FROM cml_dev_db.recipe_outputs;
 
 INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('Pn-2W5rzsCOh4kk9GvdNK','_esmQubVj2gOEh6y-55cw',1.00),
 	 ('mhAYW-WT5y7INOF_X8mx4','_i1VwpFAoOpy4m3_GjhRH',10.00),
+	 ('BuLvqPPmpBSEgPyEG78-N','-GFAduUBVk1U2P37HGb9m',1.00),
 	 ('LcMC1XKUz5T2HkN-xd3AT','-OTuKYF9kfI-7m-37EwLN',7.00),
 	 ('TwdGksXXCjUUS8q-myMrw','-OTuKYF9kfI-7m-37EwLN',7.00),
 	 ('zhawbh3mSVXnNhX8DPAXR','-OTuKYF9kfI-7m-37EwLN',7.00),
+	 ('ihEg2i1fP2eu0UYnHbI2c','-XyAOUCfILZvXdYwIt8RB',1.00),
+	 ('a4bbUoXn-qoASf82-sXiM','-YSwHws0eCc80XcowV6zl',1.00),
 	 ('7BpDBNNJjjluhchfzKwZw','0_4XzEzw-2l8m-d9CtLcL',1.00),
+	 ('PRL67Rtbf4_HLGEhw15TO','0AGgAwJZbBxzMppWldrP3',1.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
 	 ('eG17JP3vf9Ett1a4cjXVb','0sgBt-iKqmAL35sMSP0D_',5.00),
 	 ('sxAJ_m9gqg3lrFYmTligp','0weL-yY8qwctdHKAH91DG',1.00),
 	 ('AWKkPs4ndVphmgrMovPkc','18fIBP3YRS8Zfx3WVivve',1.00),
+	 ('KrbQtG2aQblkW-rgue3wi','1rJGCFKA7ELUWQfhxpOD5',1.00),
+	 ('xCRdQm-ed_Ynz8MQVR-2b','2G6jRJv_P2ZifJ4fSy_iI',5.00),
 	 ('KDLxhTLUWiWynqz-Harz4','2NCidgaUeKFDpg2C7CQH0',1.00),
+	 ('CnT_HcekLTsKaySX14jpI','3dQFwKpuF3u9DQvoJBy7j',1.00),
+	 ('LgipeWKuAJrAh6wZjsm-9','3IWzHnRF0oLStFxtoBucy',1.00),
+	 ('Wb6HyF7yHyEA5mTuPo43d','3PFX-rvHbqHW5-PIn3lgG',1.00),
 	 ('Y44an16gqyxoDbxVUvIGt','3wuJPnxZHhLtRmLszej0D',1.00);
 INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('Xpt-N7t0s9PZhqJStqhX1','43wHVUBD-blmpqypcMGqV',1.00),
+	 ('qSIhlz_JnUSzc-NykfrDh','4MhbZi-tbt4svdgXUGUH7',1.00),
+	 ('UEFNKUeguTQvmZ41OtKBQ','4u-krm_XlrTfdjpYS7ljc',1.00),
 	 ('TwdGksXXCjUUS8q-myMrw','4XCAe6xzdziQdPOBbhwN5',10.00),
+	 ('wwXtr0jZsofxUXYKmvrOi','529kmEhBrT6bLdJxz78ol',1.00),
+	 ('-9JdYVYFMr6Kyp0fIonav','5mN6Az3g2EPjbVtPZyVkE',1.00),
+	 ('AUsYJJXy0Wdnbh0VFMOjq','5Uo3zrV9DvNjqqn76zk9z',1.00),
 	 ('6VWv0FsFZeldr_KvVZUmT','61f5I83eXLHXEg2t48YkP',10.00),
 	 ('xL-zLlZZVMNUaJbKVCSId','69J1vQLM8qoIYw2ujQ5Zj',1.00),
-	 ('y1AiAa5ggjH_f3LimR1u8','6bQUO23FcKhXEN2ZOxzMC',1.00),
+	 ('y1AiAa5ggjH_f3LimR1u8','6bQUO23FcKhXEN2ZOxzMC',1.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('DBejTxC0GFctBDiaOo1Sf','6BTBtSGXXu71I6kBTsmXV',1.00),
 	 ('8IXc17zlWDZ9Zc04fF7F5','6sIp03PoKIHPGG-LX49Q4',1.00),
 	 ('KoI_z4bCRjq-3lZeEwP5K','6sIp03PoKIHPGG-LX49Q4',1.00),
 	 ('GbeYwaYwH8ESMSNC2DRmK','6tgO5P9du4nB5nCGEHTUG',5.00),
 	 ('kVaGYigglPPszExmAnNNa','6X_4UED2obFjyXg6dTmyM',1.00),
+	 ('EKNixg3-zVMSPc10QrXkO','70IvUdKHkCxOyXTC8IOwZ',1.00),
 	 ('dAYsoV4KqjUbk87g-AyU6','7I_EbPvMpKWkfhdMAmhpG',1.00),
-	 ('ohMOBv48lXHI0B3t0JRWR','8mxxLWFqGzlC6FGhrUacT',1.00);
+	 ('ncuz9UmblPs5b5t8XMs_h','7q2gS48k22mXAQHcpxRgN',1.00),
+	 ('ggaKe4-m-178spYMuJZJ_','7z8YXpPN6zLIDigpl4t19',1.00),
+	 ('hKi0r5l3Jw-puT-r1qwU9','8IcTIbqHngrecfd019-J_',1.00);
 INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('ohMOBv48lXHI0B3t0JRWR','8mxxLWFqGzlC6FGhrUacT',1.00),
 	 ('Ay5uMzBLGHGPe-5-cBZhy','8n2WKqknrZskPFny7kry_',1.00),
 	 ('P1FaGdSIOlLhKDYHfSQPp','8r-m0_fpTVQu4cCbnMHsm',1.00),
+	 ('1kxaCabrXc9EmTrYzH2OX','8ZJbxcWed3nNm0vdAco9A',1.00),
 	 ('cqixX6tcXjFv6NWBhxkbf','96c4hAG-pzUnvtyTekWNd',1.00),
 	 ('9i2twQsEzNIa5REJYQB2C','9Bh7XfmXiG4AflN9QcsyE',1.00),
 	 ('shGJh3m5zq22m95ahNkrF','9C_M5pGnOIPeOl35jsjMK',1.00),
 	 ('zDbglXgHjA9861xmxnnab','9c0f20RkihCE2p1QbeuB5',1.00),
 	 ('9aA8GmA65R31FfhbQiJFl','9EEfPLSU0eiqeL6jKKFZR',1.00),
+	 ('Zt2H5gd_r5w2Hk0oU-sXK','9O6J-A_wzu-D4Rbn6jjet',1.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
 	 ('ElWvH_LNmLGxz9QgmwLg4','a3sUdvTRXuLi6tmVJarDb',1.00),
 	 ('VOGCW2BCoeRtUfxlU2gIL','AAPCXCdIOnjHELwkY6LNx',10.00),
-	 ('bxfax6TN53YF3O_6OY4gT','Ab4l7oCXXh234CMd-rimf',1.00);
-INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('bxfax6TN53YF3O_6OY4gT','Ab4l7oCXXh234CMd-rimf',1.00),
 	 ('V03fW48pRtemoWA4ik5rr','ABWvQu3Y9KsI6ZGY6zdnU',1.00),
 	 ('LcMC1XKUz5T2HkN-xd3AT','AfmZGcufMqg0KEaT92J52',14.00),
 	 ('RaoSvCN13fs4klr2nr9et','aHNAm94cyBSMpaIuqn6Tt',1.00),
+	 ('6j_OXkglMtMGlABJB9dTT','aTXMfgHwDEYGJtuHTRg8d',1.00),
+	 ('i-23yD_2lhDLSNkf51iLW','avxGf7KfrixIrh3NvXqTB',1.00),
 	 ('DRPY5nZ0jBspUfIJjKAk-','b_JDF3sQ89zv1olxmODCR',1.00),
+	 ('jpGoIvDkt3E6Y0LaPcHp8','B20MUlWHKlP9UH_uFJqaY',1.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('-YkD6E1C18wsqMlzQa9Gu','bchAmaJySN9xz9Mfjexcn',1.00),
+	 ('IvMIUHWEn0QUazaRA3JJk','BdFPs4MXOZww2lSS8hLqH',1.00),
+	 ('Gml9iThacrIOIPU3utDgo','bE22mtnt6jIwsHvSkh9ha',2.00),
+	 ('jNAmgwHMWwL8Xd1MsVxtf','Bf43DrqxZ772k9MmYN-x2',1.00),
+	 ('YwMdgPJCZUF9qzktTNXT2','bGScyFBA85ypZ2oQBo-fN',1.00),
+	 ('ifUnYRh0oismmaibc93sL','BmQ-olOcm0qJN0cQKPFju',1.00),
+	 ('0Hjhgq7fj9YQ9RFnGMejx','boB3DftinWVE6in060zR_',1.00),
+	 ('wXspJF9mZ62RNDfpY9-39','bsPkgSY65QUTOaUsJ-7xI',1.00),
+	 ('a9i2JKaa_vWCtt4rYCVQQ','bu5KFmfApyFfS9yBXj5Vf',1.00),
+	 ('0cSE8vrX1s8lD6mxuvMWu','cQ7lLfIJzL0smXHmSquL3',10.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
 	 ('CqG6_ROn52zvhPfpF7Vis','cQVgYQyrtPYC_EbmV8yKt',1.00),
+	 ('H8y6v617nR0pvFROmY_Us','Crxo7hGCzb3n5jMvvt-H_',1.00),
+	 ('H-6tiyPEsijfuWkDPwINv','cUDMfEj4YcDyvOf2XzaM8',1.00),
 	 ('BiLfIb4rl1bf2O2m8PDiB','CUxe6ActsWRtlvZyn8u8x',1.00),
+	 ('s9cSL-AqMHFMn640qv56u','CVkjO2ooA0wuNjINoRcII',1.00),
 	 ('6e4TvEqrkJLwZTcDCZzDF','d2Y0mCkI_0b7xfRG97SVj',2.00),
 	 ('I2MiZMbMULDBZxz--JVqg','D9Ska1XwM3crQ5JS1diA3',1.00),
 	 ('miPmRiU3WGS4x3AuSaKyP','D9Ska1XwM3crQ5JS1diA3',1.00),
-	 ('NFDPDtmARHKkaUs1oxHU2','DfDAND-c2ZZXW92Imu-hW',1.00);
+	 ('NFDPDtmARHKkaUs1oxHU2','DfDAND-c2ZZXW92Imu-hW',1.00),
+	 ('rsyt5fTS5P240FennSBGW','dL7w_D5pDso6v3ZJsEZod',1.00);
 INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
-	 ('rsyt5fTS5P240FennSBGW','dL7w_D5pDso6v3ZJsEZod',1.00),
+	 ('UF_ubVlwKLBbFfzs9CTER','Do2YjnTNBI9gRGs0r4Z6e',1.00),
 	 ('8hQl0htwpSdJi7SdzaDAe','DseBuffB75OsK8vgkMRST',1.00),
 	 ('zaYdygfyQ8X2Hg92YIs6k','duR1LAScDFk1Rga1Z99M0',10.00),
 	 ('DgX8VeYEqHHcBxkQOYtmW','dvH1ZH6OGEpeGPO6YgGCY',1.00),
 	 ('EVUT9PsWc7yQfhJlaLu6t','dvH1ZH6OGEpeGPO6YgGCY',1.00),
 	 ('pu0KsYxsG5czzpp_5T9ys','e0bGQ-ixp1_uO6_JKy-7s',1.00),
+	 ('okTh21Yx2ej-5Yc0wui6Z','e1ye91NQKXu0xBcRPOvD_',2.00),
 	 ('ar_GfpBE_WZ5vwFPOFBss','ECcBpRFdEafPdJGu9_chP',1.00),
 	 ('cTPsOAZozws7XxPwKPrJK','ECcBpRFdEafPdJGu9_chP',1.00),
-	 ('2fyW0e0v6qwts-KFNI_XU','ECGVzNU8qNq25ieG63Keu',2.00),
-	 ('dF3wGQf0HIPNVu2T5M7hm','Eeo2gWjzxXV3yRKszstJg',1.00);
+	 ('2fyW0e0v6qwts-KFNI_XU','ECGVzNU8qNq25ieG63Keu',2.00);
 INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('JczsjPzpYMRhu5a5hqdvh','EcoLcKlutlsZf7l087CA4',1.00),
+	 ('9FLbX2iax6w_mPdZt60LY','EEHneDNzmGQbu6FBely-s',1.00),
+	 ('dF3wGQf0HIPNVu2T5M7hm','Eeo2gWjzxXV3yRKszstJg',1.00),
+	 ('Z0M3QCzvZXGCsyVFAW9iz','EhRIvo7udUTpm9o_ivvY-',1.00),
+	 ('HZvUCq4zCzfHCdfAZLHf1','EkHc4HBKy8n-NSpPoBuhW',1.00),
+	 ('TkAPyQd_wdm-zY0skS4Is','El1pblMP1T7z78TJ352iq',1.00),
 	 ('StUWf5n6EKbmTn9t6MP7c','eplnaBjYotDAPtPQeva3O',1.00),
-	 ('vTsgkc6o46PMx_0XPCfRX','eVbHBJPF4LbXaCHx7rxGu',1.00),
+	 ('7whQxvqIxrEA0Tx47mfYx','EpQibdsOi2_et_VEzQd5T',1.00),
+	 ('XNILa-32WI5l5_mdYfLOZ','EUpbqIgl3zv1xk0qfrcM3',1.00),
+	 ('vTsgkc6o46PMx_0XPCfRX','eVbHBJPF4LbXaCHx7rxGu',1.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
 	 ('hAmx5s8darW3pylDk4ym0','f5T_pyPMfAtd-_0vrDL1x',1.00),
 	 ('Dybagr3mXfdeey2oG26_5','F90FyCxcZtBynesOUZeNN',4.00),
+	 ('58tQ-EWQApE_djxy-Hw48','F9wEURKdmDOR5e0OwF0KI',1.00),
+	 ('Jf73hTaK2J0I7D_EFrwPM','FApjicQTHlF_tdG5JQ_Mo',1.00),
 	 ('35s1bXfsKHnXGHOmOCEQe','fCR-0NY-zra322j0DQraU',1.00),
 	 ('NQxX9D11nZCuX6H696LRH','FiEvDr5Uvw4xIqbBKnv3Z',1.00),
+	 ('XwyX1V5exaocyI6aJ6Ne0','FIsqrjyEqZOrH-_K98hSQ',1.00),
 	 ('LHW1zoRi7J3h00vc5RhPg','FNCyM1_hwp47T9vVaj2Rp',1.00),
 	 ('coRI_gGc8QkaGNEPYWJLs','fR1yKZGXPdR3C3s64xK48',1.00),
-	 ('cTwPMKTvVyrYd8O2s16od','fWHtNoFGaXzAn717-g_uo',1.00),
-	 ('Mp_GyowOj9cCpKZwrvqyQ','G_Rt2RsfZqaEHVtRM04g_',1.00);
+	 ('jEJW_SaRd1FVvlfJTNTSF','fR1yKZGXPdR3C3s64xK48',1.00);
 INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('cTwPMKTvVyrYd8O2s16od','fWHtNoFGaXzAn717-g_uo',1.00),
+	 ('Mp_GyowOj9cCpKZwrvqyQ','G_Rt2RsfZqaEHVtRM04g_',1.00),
+	 ('AVVAcm4ql4SbS3_IhMxYm','G-1vGu1Ed-ylsHgS5GwUQ',1.00),
+	 ('hxDf_63UrEHrFwW-mgujc','g5q79laemkfwkjn1RMiXB',1.00),
+	 ('pIkuGgEfkr65K4HQ9IBmN','gDK_P8AcGFsz7AJ3p_qjF',1.00),
 	 ('0jCLHDCGV-LS7RJbGg8_F','GdtruNjg_dYmmlJxL4OJP',1.00),
+	 ('2zpa3AsvH6lWV45WXKYXD','gH15DkHo5fs9AqCyS5949',1.00),
+	 ('iN23ewLQqtN2uR3DeoXdu','GjLaop5HbBGz6RqG072KA',1.00),
 	 ('9BOMaJ33dDT2vKJSsvUFo','Guoggj9HsaUg29ZSAlGS1',1.00),
+	 ('tok-vdXADyS70E0-PAuTq','GXpTLtXUH0hrOuMMxsqqC',1.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('j6Mqz1RfxPBEpW9hJYQnI','gYIn-rrPL22HREcYiYREn',1.00),
+	 ('HO1enskktZ-KG_dv0w3Lp','GyuOXDCExGlo-E5JHiBG0',1.00),
+	 ('A6vZLeQnzXM7I10SfkS_c','HcGq3fxWa51tBbQJ8lMie',1.00),
+	 ('JnNyxadvY7TptZwYuHedE','Hfh7-P6UVPko65xERx6k5',1.00),
+	 ('9qNsL87Y5XyzXR6iBsJdi','HGky3t97DrQ1uyI0qUQ4j',1.00),
+	 ('FPb6RhNWSQfM3DBO4_GNi','HMcpoZzAJvkNrWJMIYNQp',1.00),
 	 ('78C6lBzmzVW0QZ2ycEIUb','HoxF20a35XBOipDkq9cnM',1.00),
-	 ('78C6lBzmzVW0QZ2ycEIUb','IJcM_riYwdRt-oAVGYkYI',2.00),
+	 ('T4LiK6oM91sZ0rwrs-jNR','iA4ZPY7tce-4j3LfSbjBO',1.00),
+	 ('tBoNCz8hMY5XeZqEftnz1','Ie_0u9dgI9JoxABrISBtQ',1.00),
+	 ('78C6lBzmzVW0QZ2ycEIUb','IJcM_riYwdRt-oAVGYkYI',2.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
 	 ('Uc8WmURCFcCPDXy9GgzYp','ikqftY0VIew5AIdLxE7Gq',1.00),
+	 ('o1zUu6-KEqDeoRwYzk4_V','ilFF2OuXLTauYLj9prVHG',10.00),
+	 ('IOY1AS2F8vjj0YpeA4dHk','iNYJ0Cyg55p8mVu0XYrc-',1.00),
+	 ('S1vmW1BY_EYOvPH2HyeiE','iQbmqQtzyq_gWY-ETvM-M',1.00),
+	 ('fGXonpJQ6ncyj_o_6f3aq','ixHy7ltVKiuxGFxCgCSaN',1.00),
 	 ('kFXgjyuM02eSv48kIkGqr','iYx_UHOcR0n6HwDdIvxd9',1.00),
 	 ('7Gfoopw2BzWX7FktLj_q2','j2kIOHk8nB8C7I2UVnIIO',1.00),
 	 ('YkaGG11nTQ4LkG4L6tJnK','j5AEnN5HLK7RhzHQF-KJx',1.00),
-	 ('63wJ3u6_3329aHJnHQXfG','JazCZWFqVwVK_0SY5Uc1w',1.00),
-	 ('WlW_NmtMVz1kgxEsF9XEV','jSUalTcezNcG9-Nb4FX6T',1.00);
+	 ('1jJPVtK86GGNjJsTzwwgq','jAr_9pgDjR8anHPpDeiaV',1.00),
+	 ('63wJ3u6_3329aHJnHQXfG','JazCZWFqVwVK_0SY5Uc1w',1.00);
 INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('Fdf66MnsY47Nrz7svPeMZ','JEBnxI1IsnQxfqFJ-OhmO',1.00),
+	 ('Hih-16GLSrHeJ9cvXOSYj','JEsJLKiuFwN3Ur1keq_jU',10.00),
+	 ('kkJddOCn9XzkbjoiyeC4W','jIjtJdtzl7hi180Ua53CW',1.00),
+	 ('J-IUCTXiYSdoHsuIhESa5','JKwy6qItbseUjMt8NEa2y',1.00),
+	 ('WlW_NmtMVz1kgxEsF9XEV','jSUalTcezNcG9-Nb4FX6T',1.00),
+	 ('VCCuJi2D-dD5Gvm-Lzial','jzxiOFNOFdZjdLhpCIfo0',1.00),
 	 ('94ssge0RtQyEGA5Cep_jy','K0Ui4zWZkRrJdbl0ciMle',1.00),
 	 ('iJxAjxUjV50_Nam3Qb0Sr','kCgnHIqKWn286BgAFRkbh',1.00),
 	 ('iW-Wv8bu_QQ6thJaX614J','Kjsv2GTvJNWfOn7suDuDP',1.00),
-	 ('NxvaH5m3Y9j8bWpmGAhQw','Kjsv2GTvJNWfOn7suDuDP',1.00),
+	 ('NxvaH5m3Y9j8bWpmGAhQw','Kjsv2GTvJNWfOn7suDuDP',1.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('xUYSFWICL-4kFRmUJ8sZs','Kkk3t9Iy5STnAUrrrEN9w',1.00),
+	 ('pv4qhfSYuJP0sE_fkf-ar','kmPR0mof-ARnyAULbvHH9',1.00),
+	 ('YWaHF2Z5w4nHJuYNnQI6-','kMToUQxBTcqvtq-01KDrc',1.00),
 	 ('0a233nEklcQ4tMpRND4r3','KWgctw8BuwCqYpGK9cBHH',10.00),
+	 ('s8gOAJCFyOkYAMML1tEFz','l1j8UBV17gJRd6wWwUIIF',1.00),
 	 ('zhawbh3mSVXnNhX8DPAXR','L3e1vVNvbra82c00WhjZr',14.00),
+	 ('ECfhD6TUazIlPVYF5yUY5','l8jRqMOB88n1kfsVykszy',1.00),
+	 ('TjM_uY51lOJL4c1636-kw','l9HXQ9K0BpURcfHibMgG0',1.00),
+	 ('4Js5AGUZegPNdsJT-olUy','laq0sMfNtyB1Zed1kmL-Z',10.00),
+	 ('O8pqEi_f5o2KLMsiqkAK4','lKR722z4D8Ku_oaW-VJUG',1.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('r7jBxAypaBaBLY_qPUmo_','LPdG8lJO4nS2bPqMh4A69',1.00),
+	 ('Ic3gAuQ8gy2rjvkOi9VEu','LsAlSgvtLYux0PmAhKT7b',1.00),
+	 ('ftKWdSRQ19DSbjJCMTnDS','Lwf_FcAftORU3QSNPUyvK',1.00),
 	 ('4aPmWruhJIb_ANxNit3C1','m9xIX13-Fi3sYGwXTyBAH',10.00),
+	 ('fgWFr5T2yt8amsT_clw80','Mfb-kS1HGSUi5jH1_I3GZ',1.00),
+	 ('9-rkBrMkQ16CbJvqdnaxL','mFVYmzqld6j4e_tS9hybN',2.00),
+	 ('Aiwxw-grJ67RD3rxG86hj','MlsSrQmEmWYp4troa7r4c',1.00),
 	 ('pnfw5xlBLLjy5v7pjKt62','MQUlDlhWeugBQI2XgyjTe',1.00),
 	 ('A8YATEEB7n3bW1NloKkJ5','mWAA53hIkB2EAyNxev2pp',10.00),
 	 ('ec2rt8DcGnU_iX40Jef76','MXBpB2ML4o8rA3R0QsXc6',1.00);
 INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('MyE-6c6h5GR6xLobPv9gN','nbxnz_hvE1S96LcPsAOLf',1.00),
+	 ('OXPdzXrXGAtVWPru38Oax','NcoLc4dJgR-5XnH-XxRNn',1.00),
+	 ('bFU0BMxhWxftN_0r4hy-c','nd7UnJbbuAC2SGQ_YMGEH',1.00),
 	 ('-8AQarLDRyVwG_PdsAoM-','nLO8I04xGfD424Z7EIFju',1.00),
 	 ('qsfOQXsVgXLlh885Ce5gM','Nmm02_rWeiG2gqu4YLi3o',1.00),
 	 ('2V_8S_VYK71SLjgHeZr7z','npWQAUSuPUf9urLpthkjJ',10.00),
-	 ('FRKX4jK-xP6OY4RqwtLhe','O6h3ER-GRChFwQkodtLcW',10.00),
+	 ('wwf2zINxhhOwp8z6CFI6F','NS-ZhTJIvEwZZyOZCgOWG',1.00),
+	 ('U4tl3MZx3_YVSuvKPxSer','NyOvwbK41-RzHk8gSywKa',1.00),
+	 ('QoymuXGQTu7rbeV8kD1MD','o_RvT8J41tF4VwvGbzBNo',1.00),
+	 ('FRKX4jK-xP6OY4RqwtLhe','O6h3ER-GRChFwQkodtLcW',10.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('UvX2iCShEbUKZ0E0TyNgG','Oj5_CYcnL7PfluaSh4grX',1.00),
+	 ('DoT1RR7vgNfeGoxjUH4Nx','OokryGYiPuX4VROBjKYIL',1.00),
 	 ('EqnMTEDFk-nku_DDdQ5UN','orVqJToOlgQA-91mLsLk4',1.00),
+	 ('8-hNgDB5XXfP4HrNMgtyI','Ou0CIJjRJH09yjSseKvYo',1.00),
+	 ('tAeWBKPozjkEZns2BkZ8I','p16cKaa2zDttuCoh_Xz6e',1.00),
+	 ('5s4j4tcC73LY5fHSfSJpz','P1GkBuPAc4FOHJMUE67B4',1.00),
+	 ('S2ILEafg7KbDb67NtRXF-','p2KOJOKJDX63Ib-YnDzfD',1.00),
+	 ('GQp75sVFWP7ghXrb25LJw','P5qHryaPXIUH5OEhWqxHf',1.00),
+	 ('2Zye1FTOcSvMT2gPwSyhc','PI6n-C05FTk3_g8vSk-UA',1.00),
+	 ('PCssU5DLHbTmp242kXDRR','pKfa6NT1ITz-Nq-O6TQ06',1.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('akirQYQkOQhhwkmbtZuZQ','pN1ADZFQ0Cn1fZGEtSODw',1.00),
+	 ('kkmeF1xxlokN5KHhyiyfa','PTBA6CebeMMowoDsZx0JS',10.00),
 	 ('u1-ml2_5hTT_nY8JwvFv-','qaLSYiqwdsa-ML4k4cyGV',1.00),
 	 ('RgK_m177i29vzJU10pQOy','QAUGRRM3ZnWKmsNID0Xu7',1.00),
 	 ('ZHiQ8mRE_5Et9etH4NFM7','QjMdrAb7ctCyGTpkdNssp',10.00),
-	 ('STN6frpzT8SR2cIXFJRHM','R0rLpf-BFgZFH48GwkBCP',10.00),
-	 ('1it25uNCPGG-rp5d6lHnM','R8EaAq9h7t_xlmfyOt6k7',1.00);
+	 ('jqRzBMclKj16qSJqi9XFp','qK84GUFrFXUI5RE24q9qq',1.00),
+	 ('i7Ykk7C_aII5fBoE0m26E','QnqJABFnXcNkvh0rvD5zn',1.00),
+	 ('YLbxVo1BfFmH-7P_UIg2z','QS1jDFYUkyw7BVl2OVuVJ',1.00),
+	 ('lS1_X5CNSi3fqJANNN3_H','Qw-1C0PeEMEK08wXO_UhT',1.00),
+	 ('STN6frpzT8SR2cIXFJRHM','R0rLpf-BFgZFH48GwkBCP',10.00);
 INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('gje0yquygj01qsIgBMamH','r73eNNLHJBG85SFsuXj2w',1.00),
+	 ('1it25uNCPGG-rp5d6lHnM','R8EaAq9h7t_xlmfyOt6k7',1.00),
+	 ('Lcj2NoVuTwYTzN9UCkKLT','rCRnSHLRuCK7B4EbhiASa',1.00),
+	 ('rvdYrOA5QbFXQEP7eHJuG','rg_hYHHG6ZkSrAkSCGOOw',1.00),
 	 ('UPBMKQJYZ18cWB3afBcXZ','rhAigutpue1xw77xQ8pDM',1.00),
 	 ('8vBzgqqiAcJT0GKdEEm6f','RIfyRiJeYIBvjTwBh6HCo',1.00),
 	 ('o1yrRcAuC_0Sh-WqfJ3eO','RkI2vgpPOAEFVY-itxS2z',1.00),
+	 ('ESmBbm9EBq0NijStLlVs_','rUk4Ht28P__1tOPEnXjve',1.00),
+	 ('98rAqgSBphGshWWjpOI0-','s-bpl_WpbmgRJSktuW05h',1.00),
+	 ('dtlVV5T4j8ZjUfze5khpe','s3g0jgSgUm01nUqMthDsI',1.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
 	 ('KNbtauxf5CFyniZWa5oqN','S43EJhsr315BNokB2TJBP',1.00),
+	 ('vSRUJvGsUrXykTyVOLpvs','S7o6A0_Jf4rCbF1MOoh7d',1.00),
+	 ('Fxi6kiaLzZnsKLnVmqvvl','shu8lSpTeoHPZwq4ri-Ee',1.00),
 	 ('Y73MiM3ClclDmi4kXnBTJ','Slv_4uS1qo3R7KCYbbX1f',5.00),
 	 ('qcT0vNahOC2qr6nSLsUdu','SoXCUD1J1e7dNbYkUHq0N',1.00),
+	 ('Xi5GbYq-naQpqScKevA0W','SoXCUD1J1e7dNbYkUHq0N',1.00),
+	 ('gbIkaViR4a3M69tMVIZow','ss8mTjeUXAktlW0esjNyg',1.00),
+	 ('-6EApLhLr8sRBQDIVrwNM','svZyqmS7I-97hJazddENY',1.00),
 	 ('-YCHlF0RHHjxB97ipfwne','SzDrITmHhXumyLnixvZaH',10.00),
-	 ('YqFL1AMWfivl4xXlpKcsT','SziSfJKF_xCnZ4WKyuLkF',1.00),
-	 ('KCY2ROLPO-AGQKSPd6jki','T2AowouQv2gBUz4PdKNQo',4.00),
-	 ('NA1yrSERAH0bJ0e39KxHm','T2AowouQv2gBUz4PdKNQo',1.00);
+	 ('YqFL1AMWfivl4xXlpKcsT','SziSfJKF_xCnZ4WKyuLkF',1.00);
 INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('KCY2ROLPO-AGQKSPd6jki','T2AowouQv2gBUz4PdKNQo',4.00),
+	 ('NA1yrSERAH0bJ0e39KxHm','T2AowouQv2gBUz4PdKNQo',1.00),
 	 ('WAKBkRuoer_KV_9ALzSM5','T2AowouQv2gBUz4PdKNQo',1.00),
 	 ('wbl01n_cCP3uTTuKIcn-Q','T2AowouQv2gBUz4PdKNQo',1.00),
 	 ('wHMEpBXEieoy-5LlErOa6','T2AowouQv2gBUz4PdKNQo',7.00),
+	 ('7DZTlJAUy8GQHfOBh16Np','t2zDEf4mDukCJxOWKvrqH',1.00),
 	 ('eQ5yjhmn0wkK-7BanZ7dv','Ta2SFwCgVZK4OEHwB4U-c',1.00),
 	 ('j5qoxFgO0dtAeAfGfhnOT','tAt3sdQrt1qMKVq17afYR',1.00),
 	 ('Au6sK9Fr4mkMjmlnxNG-9','tcIq33GkZm69Fm3fPxlG6',1.00),
-	 ('MIJ6Mr6dJDKbp3_zQmlRV','tGOU-o3sTLH185T4E9-0Z',1.00),
+	 ('MIJ6Mr6dJDKbp3_zQmlRV','tGOU-o3sTLH185T4E9-0Z',1.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('_6YEmVfh1R2vXdVXOGm2z','tiq9ff1tB363gxV5j66Tb',1.00),
 	 ('7Yw0MslwsBDdnsG5___6-','TnWCu3Dg3JewQ1vvFBNzw',1.00),
 	 ('dMdL9eMTr_EBIuw_ZbHoG','TnWCu3Dg3JewQ1vvFBNzw',1.00),
-	 ('F8QdcEwvuwyq2qHz4nSWX','ToToLX5zrlcbm7kKPqfXW',1.00);
-INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('F8QdcEwvuwyq2qHz4nSWX','ToToLX5zrlcbm7kKPqfXW',1.00),
 	 ('0JrUn3p3wggNMy1qN-va3','trMZATJguOwyuR6PaNHxQ',1.00),
+	 ('bWfisXrhxGeC9XkJ4Bjhw','tT3AQEbpS2aQwXnEfW31n',1.00),
 	 ('ASnWF8gZkaQlygjVMECWY','TXnqLz4GWvzo9XaKiQTVg',10.00),
 	 ('lWE-CBxCiFFvEd-Bbafqt','TXnqLz4GWvzo9XaKiQTVg',10.00),
 	 ('pjWhgaHDuLlxZW3TNofsh','TXnqLz4GWvzo9XaKiQTVg',12.00),
-	 ('KWPh9O8-P_-vQR7B2lpDs','TYGsK96_Q3hdsVpiLh0tV',1.00),
-	 ('a_7d-hZZNv8y2R0QcfusZ','TymNh52K6J5nNOXx5Hqh5',1.00),
-	 ('3NQm3AtM_tTvcZNE9kEYI','UgI_LdKRVh_REWrFRhPyl',1.00),
-	 ('lSyKLteCSMG48l2YRpa9j','UVk0-FQYzf4-n34bHsgqp',1.00),
-	 ('HzobVYStpPpXMt6Np12nG','UzL7oNDJi9yqOwwr0gmz4',1.00),
-	 ('xtuz65fB99BnWYgjhoOAb','UzL7oNDJi9yqOwwr0gmz4',1.00);
+	 ('KWPh9O8-P_-vQR7B2lpDs','TYGsK96_Q3hdsVpiLh0tV',1.00);
 INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('a_7d-hZZNv8y2R0QcfusZ','TymNh52K6J5nNOXx5Hqh5',1.00),
+	 ('BnUt92brjsajxV76BWBiC','U0c9sgbNBzrf7K1i4L391',1.00),
+	 ('cLf4WOm3Vfe8eUvw2TtRi','U2cGaYy_r5Bea80ix4BqB',1.00),
+	 ('Hm3NHCQjNv_5tzv6VycEH','UCHSsU8_3RqMuguZ9jMVF',1.00),
+	 ('_meELw9PjhesKXUkoZmBN','udPIinYK1lInQmeGEepxL',10.00),
+	 ('AIlgI4FQPXnrv82pD7vx8','UFjVs_uqQgDcLs2u5-B37',1.00),
+	 ('fFFAwFHqe8shqcu38udoF','UFS9AQk0dVpgt6bzmVV1Z',1.00),
+	 ('3NQm3AtM_tTvcZNE9kEYI','UgI_LdKRVh_REWrFRhPyl',1.00),
+	 ('lrmZna6qtYnRSd7SXyiW6','UMnifYSVhqvfmGau3iKFh',1.00),
+	 ('lSyKLteCSMG48l2YRpa9j','UVk0-FQYzf4-n34bHsgqp',1.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('HzobVYStpPpXMt6Np12nG','UzL7oNDJi9yqOwwr0gmz4',1.00),
+	 ('xtuz65fB99BnWYgjhoOAb','UzL7oNDJi9yqOwwr0gmz4',1.00),
 	 ('CrZO7y70BIfMlHEvJFxdk','v1x0Fc-mN25sC4rkYSpE0',1.00),
 	 ('Pf_ylAMvYfUkSHWfhS2Fp','V6P1emphzig8CI6yIoPDN',1.00),
+	 ('OE55TWBNrqSOWGis9oqoV','vcIu4FD6oWHUUaJb6hItJ',1.00),
 	 ('xdDPpDdogWs6BwhyjlxqG','Vg6HutKpkvpdYMtng-e2l',1.00),
 	 ('5zaX7wptkLwdAljf8OYbc','VGIrvuvRmcGfnRGcysExE',1.00),
 	 ('k6ZzBGBHVCW2UHuQRneYv','VGIrvuvRmcGfnRGcysExE',1.00),
 	 ('blPQvop08yQjXSwy2B_0Z','Vi4-HFBp5n6ZyCDPahw-S',1.00),
-	 ('nscOPD6C2ws8SyKvOIAbm','VrCpKy4_cXKvVYM0AnwOH',1.00),
+	 ('nscOPD6C2ws8SyKvOIAbm','VrCpKy4_cXKvVYM0AnwOH',1.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('oCda-p-L8HXM-anA-Ri5W','VUTmgOuYaLFgprta4pP4C',1.00),
+	 ('JxDC5dVA1c-UC_3N--j7y','w3bYY8RN62qkx9Lvxtx6S',1.00),
+	 ('uhP2gV492dn7EHGzk3974','WcrRlAnv_eZDQv6JsoOxS',1.00),
+	 ('EFur6V73OINJF7BGpNx3M','WMEiVJXFY0kwTgzOTEgjU',1.00),
+	 ('t4NCOY2qKZ5cOU4siZOHu','wNsMMGWmFb-YyABFw6khw',1.00),
 	 ('LILrv1nSkXexeBFrnOgyf','WqbQtXOWEHbCYJR0hxVOV',1.00),
+	 ('YCSr_4mQ-LJsc7_qzFgG0','WRkRzx6jCpr3BCfZIyOZT',1.00),
 	 ('r06lANBHqD1VALKvbl1pZ','WV45e6Jo-G8CIz9M1nUq_',1.00),
+	 ('1b7raLzAVzwj4_2equ0KQ','wYC3E8JO_l8rkY3hNZxty',1.00),
 	 ('OQbZpP3dmxy6RPZm5P3gn','X7H7T98M_mTDtH2BuVkd0',10.00);
 INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('F6ytQeh0_LfzJMmyZ3XbW','xjiLwS2eSVIhc25lCsTap',1.00),
 	 ('-TEe5UcBsyeWHGjscWFMI','xmpusveIbQiPlmyXIjsUj',1.00),
 	 ('jjO3RvEOzlksCU6xO8Bsw','XQYPeIYMeLCNIny-a-WsM',1.00),
 	 ('lUO6wo7qoOzFmgWYh6BtM','xtZn0KFAIDV2CY6qxPPY3',1.00),
+	 ('gM8s7UXD7mQZpjB2N6TWg','XUDj-xs9jPb7KCJEUwe4Y',1.00),
+	 ('ANN6m-EInM5WhVNatr9Ue','XxVdkTKTen3Az0qwPxaLB',1.00),
+	 ('uQrYXyGG3E2pIpiDg6u4u','y73TsBxoMSxHb4mpH_ljX',1.00),
 	 ('ytBWHlScx18VLtfgGoFyF','yc8IEbQfIadINSVjKKxfz',1.00),
 	 ('lHg1yMEc8-vONJ14pwtv2','yRX5TQrbRzQUtF-ntyfHC',1.00),
+	 ('mmTFc4XIxuS-eGNUiTXcD','Ys5HkBVWA_dPDmNNeZwoh',1.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
+	 ('k_s-ow5uQW3IIH5KiGk5G','Z_jwHsnGncfLsFYfCZwhw',1.00),
+	 ('vmKd5-wUHM8-u-3KrvFTA','Z3k_G4lL3XPsMFmGLUsfL',1.00),
+	 ('0fqqURjAyWfxcCot_Ls-8','z6JqNsWRCjtzCHUw2gNfr',1.00),
+	 ('_576yh3DeAUUnEb-GJZkM','ZC3GL_Zpz7hi25nLrxTGq',1.00),
+	 ('4o_hwpSHaSCPK51QpAN8x','zCAS-CYNi7l8RB8_I_LSR',1.00),
+	 ('Z_AGrHkHgoCDzcstwu_wn','zdL0Y8lIiAY6qYTC0XgyH',1.00),
 	 ('e63GDPIZb_uc6WrXBY4TI','ZDZgcFcxQb_r46dSOKtO9',1.00),
+	 ('H6PdOJgTWfyvUh8ceAuDr','ZGX76uZGg-XkduLG8qUPo',1.00),
 	 ('eiPDYgatZun1Fh3E-Y2ii','zLqJUeLCotyB_IicL7bhI',1.00),
-	 ('C1dxC-GwIdUh41QqQKorz','ZnrYk7bdJH5NXrMywK0sG',1.00),
+	 ('C1dxC-GwIdUh41QqQKorz','ZnrYk7bdJH5NXrMywK0sG',1.00);
+INSERT INTO cml_dev_db.recipe_outputs (recipe_id,item_id,quantity) VALUES
 	 ('W5sgkCVWylLdd1O8w-u8F','zw0WFXSExYBMKeljsoSZE',1.00),
+	 ('SNCSaxioNAkwBlptlaTjh','zwGTInDGhGwhbnJJKf3Hv',1.00),
 	 ('O_mTKBvPr0TPmhozAB85A','ZWwniL7roteJLIEQR4MVm',1.00);
