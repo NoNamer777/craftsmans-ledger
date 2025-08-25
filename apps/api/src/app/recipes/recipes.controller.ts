@@ -1,15 +1,4 @@
-import {
-    CreateRecipeData,
-    DEFAULT_LIMIT,
-    DEFAULT_OFFSET,
-    DEFAULT_SORT_ORDER,
-    RecipeItemDto,
-    RecipeQueryParams,
-    ResourceTypes,
-    serialize,
-    SortOrder,
-    UpdateRecipeData,
-} from '@craftsmans-ledger/shared';
+import { CreateRecipeData, RecipeItemDto, ResourceTypes, UpdateRecipeData } from '@craftsmans-ledger/shared';
 import {
     BadRequestException,
     Body,
@@ -17,12 +6,11 @@ import {
     Delete,
     Get,
     HttpStatus,
+    Logger,
     NotFoundException,
     Param,
-    ParseArrayPipe,
     Post,
     Put,
-    Query,
     Req,
     Res,
 } from '@nestjs/common';
@@ -32,20 +20,33 @@ import { RecipeInputsService, RecipeOutputsService, RecipesService } from './ser
 
 @Controller('/recipes')
 export class RecipesController {
+    private readonly recipesService: RecipesService;
+    private readonly recipeInputsService: RecipeInputsService;
+    private readonly recipeOutputsService: RecipeOutputsService;
+    private readonly cacheService: CacheService;
+    private readonly logger = new Logger(RecipesController.name);
+
     constructor(
-        private readonly recipesService: RecipesService,
-        private readonly recipeInputsService: RecipeInputsService,
-        private readonly recipeOutputsService: RecipeOutputsService,
-        private readonly cacheService: CacheService
-    ) {}
+        recipesService: RecipesService,
+        recipeInputsService: RecipeInputsService,
+        recipeOutputsService: RecipeOutputsService,
+        cacheService: CacheService
+    ) {
+        this.recipesService = recipesService;
+        this.recipeInputsService = recipeInputsService;
+        this.recipeOutputsService = recipeOutputsService;
+        this.cacheService = cacheService;
+    }
 
     @Get()
     public async getAll() {
+        this.logger.log('Received request to fetch all Recipes');
         return await this.recipesService.getAll();
     }
 
     @Post()
     public async create(@Body() data: CreateRecipeData, @Res({ passthrough: true }) response: FastifyReply) {
+        this.logger.log('Received request to create a new Recipe');
         const url = response.request.url;
         const created = await this.recipesService.create(data);
 
@@ -55,27 +56,16 @@ export class RecipesController {
         return created;
     }
 
-    @Get('/query')
-    public async query(
-        @Query('limit') limit: number = DEFAULT_LIMIT,
-        @Query('offset') offset: number = DEFAULT_OFFSET,
-        @Query('sortOrder') sortOrder: SortOrder = DEFAULT_SORT_ORDER,
-        @Query('techTreeIds', new ParseArrayPipe({ items: String, separator: ',', optional: true }))
-        techTreeIds: string[] = [],
-        @Query('maxTechPoints', new ParseArrayPipe({ items: Number, separator: ',', optional: true }))
-        maxTechPoints: string[] = []
-    ) {
-        return await this.recipesService.query(
-            serialize(RecipeQueryParams, { limit, offset, sortOrder, techTreeIds, maxTechPoints })
-        );
-    }
-
     @Get('/:recipeId')
-    public async getById(@Param() recipeId: string) {
+    public async getById(@Param('recipeId') recipeId: string) {
+        this.logger.log(`Received request to fetch Recipe with ID "${recipeId}"`);
         const byId = await this.recipesService.getById(recipeId);
 
         if (!byId) {
-            throw new NotFoundException(`Recipe with ID "${recipeId}" was not found`);
+            const error = new NotFoundException(`Recipe with ID "${recipeId}" was not found`);
+            this.logger.warn(error.message);
+
+            throw error;
         }
         return byId;
     }
@@ -86,12 +76,16 @@ export class RecipesController {
         @Body() data: UpdateRecipeData,
         @Req() request: FastifyRequest
     ) {
+        this.logger.log(`Received request to update Recipe with ID "${recipeId}"`);
         const url = request.url;
 
         if (recipeId !== data.id) {
-            throw new BadRequestException(
+            const error = new BadRequestException(
                 `It's not allowed to update Recipe on path "${url}" with data from Recipe with ID "${data.id}"`
             );
+            this.logger.warn(error.message);
+
+            throw error;
         }
         const updated = await this.recipesService.update(data);
         this.cacheService.resetCacheOfType(ResourceTypes.RECIPES);
@@ -100,13 +94,15 @@ export class RecipesController {
     }
 
     @Delete('/:recipeId')
-    public async remove(@Param() recipeId: string) {
+    public async remove(@Param('recipeId') recipeId: string) {
+        this.logger.log(`Received request to remove Recipe with ID "${recipeId}"`);
         await this.recipesService.remove(recipeId);
         this.cacheService.resetCacheOfType(ResourceTypes.RECIPES);
     }
 
     @Get('/:recipeId/inputs')
     public async getAllInputsOfRecipe(@Param('recipeId') recipeId: string) {
+        this.logger.log(`Received request to fetch all inputs of Recipe with ID "${recipeId}"`);
         return await this.recipeInputsService.getAllOfRecipe(recipeId);
     }
 
@@ -116,6 +112,7 @@ export class RecipesController {
         @Body() data: RecipeItemDto,
         @Res({ passthrough: true }) response: FastifyReply
     ) {
+        this.logger.log(`Received request to add a new input to Recipe with ID "${recipeId}"`);
         const result = await this.recipeInputsService.addInputToRecipe(recipeId, data);
         const url = response.request.url;
 
@@ -127,12 +124,17 @@ export class RecipesController {
 
     @Get('/:recipeId/inputs/:itemId')
     public async getInputOfRecipe(@Param('recipeId') recipeId: string, @Param('itemId') itemId: string) {
+        this.logger.log(
+            `Received request to fetch input of Recipe with ID "${recipeId}" where Item has ID "${itemId}"`
+        );
         const result = await this.recipeInputsService.getInputOfRecipe(recipeId, itemId);
 
         if (!result) {
-            throw new NotFoundException(
+            const error = new NotFoundException(
                 `Recipe with ID "${recipeId}" does not have input with Item with ID "${itemId}"`
             );
+            this.logger.warn(error.message);
+            throw error;
         }
         return result;
     }
@@ -144,12 +146,17 @@ export class RecipesController {
         @Body() dto: RecipeItemDto,
         @Req() request: FastifyRequest
     ) {
+        this.logger.log(
+            `Received request to update input of Recipe with ID "${recipeId}" where Item has ID "${itemId}"`
+        );
         const url = request.url;
 
         if (dto.itemId !== itemId) {
-            throw new BadRequestException(
+            const error = new BadRequestException(
                 `It's not allowed to update input with Item "${itemId}" of Recipe with ID "${recipeId}" on path "${url}" with data from input with Item "${itemId}"`
             );
+            this.logger.warn(error.message);
+            throw error;
         }
         const updated = await this.recipeInputsService.updateInputOfRecipe(recipeId, dto);
 
@@ -159,12 +166,16 @@ export class RecipesController {
 
     @Delete('/:recipeId/inputs/:itemId')
     public async removeInputFromRecipe(@Param('recipeId') recipeId: string, @Param('itemId') itemId: string) {
+        this.logger.log(
+            `Received request to remove input from Recipe with ID "${recipeId}" where Item has ID "${itemId}"`
+        );
         await this.recipeInputsService.removeInputFromRecipe(recipeId, itemId);
         this.cacheService.resetCacheOfType(ResourceTypes.RECIPES);
     }
 
     @Get('/:recipeId/outputs')
     public async getAllOutputsOfRecipe(@Param('recipeId') recipeId: string) {
+        this.logger.log(`Received request to fetch all outputs of Recipe with ID "${recipeId}"`);
         return await this.recipeOutputsService.getAllOfRecipe(recipeId);
     }
 
@@ -174,6 +185,7 @@ export class RecipesController {
         @Body() data: RecipeItemDto,
         @Res({ passthrough: true }) response: FastifyReply
     ) {
+        this.logger.log(`Received request to add a new output to Recipe with ID "${recipeId}"`);
         const result = await this.recipeOutputsService.addOutputToRecipe(recipeId, data);
         const url = response.request.url;
 
@@ -185,12 +197,18 @@ export class RecipesController {
 
     @Get('/:recipeId/outputs/:itemId')
     public async getOutputOfRecipe(@Param('recipeId') recipeId: string, @Param('itemId') itemId: string) {
+        this.logger.log(
+            `Received request to fetch output of Recipe with ID "${recipeId}" where Item has ID "${itemId}"`
+        );
         const result = await this.recipeOutputsService.getOutputOfRecipe(recipeId, itemId);
 
         if (!result) {
-            throw new NotFoundException(
+            const error = new NotFoundException(
                 `Recipe with ID "${recipeId}" does not have output with Item with ID "${itemId}"`
             );
+            this.logger.warn(error.message);
+
+            throw error;
         }
         return result;
     }
@@ -202,12 +220,18 @@ export class RecipesController {
         @Body() dto: RecipeItemDto,
         @Req() request: FastifyRequest
     ) {
+        this.logger.log(
+            `Received request to update output of Recipe with ID "${recipeId}" where Item has ID "${itemId}"`
+        );
         const url = request.url;
 
         if (dto.itemId !== itemId) {
-            throw new BadRequestException(
+            const error = new BadRequestException(
                 `It's not allowed to update output with Item "${itemId}" of Recipe with ID "${recipeId}" on path "${url}" with data from output with Item "${itemId}"`
             );
+            this.logger.warn(error.message);
+
+            throw error;
         }
         const updated = await this.recipeOutputsService.updateOutputOfRecipe(recipeId, dto);
 
@@ -217,6 +241,9 @@ export class RecipesController {
 
     @Delete('/:recipeId/outputs/:itemId')
     public async removeOutputFromRecipe(@Param('recipeId') recipeId: string, @Param('itemId') itemId: string) {
+        this.logger.log(
+            `Received request to remove output from Recipe with ID "${recipeId}" where Item has ID "${itemId}"`
+        );
         await this.recipeOutputsService.removeOutputFromRecipe(recipeId, itemId);
         this.cacheService.resetCacheOfType(ResourceTypes.RECIPES);
     }
