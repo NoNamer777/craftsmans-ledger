@@ -15,5 +15,5 @@ export class CreateRecipeData {
     @Min(0)
     @IsInt()
     @Expose()
-    public technologyPoints: number;
+    public techPoints: number;
 }

@@ -16,8 +16,8 @@ export class RecipeBuilder {
         if ('craftingTime' in value && typeof value.craftingTime === 'number') {
             this.recipe.craftingTime = value.craftingTime;
         }
-        if ('technologyPoints' in value && typeof value.technologyPoints === 'number') {
-            this.recipe.technologyPoints = value.technologyPoints;
+        if ('techPoints' in value && typeof value.techPoints === 'number') {
+            this.recipe.techPoints = value.techPoints;
         }
         if ('technologyTreeId' in value && typeof value.technologyTreeId === 'string') {
             this.recipe.technologyTree = new TechnologyTreeBuilder().withId(value.technologyTreeId).build();
@@ -55,8 +55,8 @@ export class RecipeBuilder {
         return this;
     }
 
-    public withTechnologyPoints(technologyPoints: number) {
-        this.recipe.technologyPoints = technologyPoints;
+    public withTechnologyPoints(techPoints: number) {
+        this.recipe.techPoints = techPoints;
         return this;
     }
 }

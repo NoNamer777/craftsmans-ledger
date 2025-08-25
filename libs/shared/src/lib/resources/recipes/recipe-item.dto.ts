@@ -9,8 +9,8 @@ export class RecipeItemDto implements Comparable {
     @Expose()
     public itemId: string;
 
-    @Min(1)
-    @IsNumber()
+    @Min(0.1)
+    @IsNumber({ allowInfinity: false, allowNaN: false, maxDecimalPlaces: 2 })
     @Expose()
     public quantity: number;
 
