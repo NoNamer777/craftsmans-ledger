@@ -1,4 +1,18 @@
-import { CreateItemData, Item, ResourceTypes } from '@craftsmans-ledger/shared';
+import {
+    CreateItemData,
+    DEFAULT_ITEM_SORTING_ATTRIBUTE,
+    DEFAULT_LIMIT,
+    DEFAULT_OFFSET,
+    DEFAULT_SORT_ORDER,
+    Item,
+    ItemQueryParamNames,
+    ItemQueryParams,
+    ResourceTypes,
+    serialize,
+    SortableItemAttribute,
+    SortOrder,
+    StandardQueryParamNames,
+} from '@craftsmans-ledger/shared';
 import {
     BadRequestException,
     Body,
@@ -9,8 +23,10 @@ import {
     Logger,
     NotFoundException,
     Param,
+    ParseArrayPipe,
     Post,
     Put,
+    Query,
     Req,
     Res,
 } from '@nestjs/common';
@@ -20,12 +36,14 @@ import { ItemsService } from './items.service';
 
 @Controller('/items')
 export class ItemsController {
+    private readonly itemsService: ItemsService;
+    private readonly cacheService: CacheService;
     private readonly logger = new Logger(ItemsController.name);
 
-    constructor(
-        private readonly itemsService: ItemsService,
-        private readonly cacheService: CacheService
-    ) {}
+    constructor(itemsService: ItemsService, cacheService: CacheService) {
+        this.itemsService = itemsService;
+        this.cacheService = cacheService;
+    }
 
     @Get()
     public async getAll() {
@@ -44,6 +62,36 @@ export class ItemsController {
         response.code(HttpStatus.CREATED).headers({ Location: `${url}/${created.id}` });
         this.cacheService.resetCacheOfType(ResourceTypes.ITEMS);
         return created;
+    }
+
+    @Get('/query')
+    public async query(
+        @Query(StandardQueryParamNames.OFFSET) offset: number = DEFAULT_OFFSET,
+        @Query(StandardQueryParamNames.LIMIT) limit: number = DEFAULT_LIMIT,
+        @Query(StandardQueryParamNames.ORDER) order: SortOrder = DEFAULT_SORT_ORDER,
+        @Query(StandardQueryParamNames.SORT_BY) sortBy: SortableItemAttribute = DEFAULT_ITEM_SORTING_ATTRIBUTE,
+        @Query(ItemQueryParamNames.NAME) name: string = null,
+        @Query(ItemQueryParamNames.TECH_TREE_IDS, new ParseArrayPipe({ separator: ',', items: String, optional: true }))
+        techTreeIds: string[] = [],
+        @Query(
+            ItemQueryParamNames.MAX_TECH_POINTS,
+            new ParseArrayPipe({ separator: ',', items: Number, optional: true })
+        )
+        maxTechPoints: number[] = []
+    ) {
+        this.logger.log('Received request to query Items');
+
+        return this.itemsService.query(
+            serialize(ItemQueryParams, {
+                [StandardQueryParamNames.OFFSET]: offset,
+                [StandardQueryParamNames.LIMIT]: limit,
+                [StandardQueryParamNames.ORDER]: order,
+                [StandardQueryParamNames.SORT_BY]: sortBy,
+                [ItemQueryParamNames.NAME]: name,
+                [ItemQueryParamNames.TECH_TREE_IDS]: techTreeIds,
+                [ItemQueryParamNames.MAX_TECH_POINTS]: maxTechPoints,
+            })
+        );
     }
 
     @Get('/:itemId')
@@ -66,10 +114,12 @@ export class ItemsController {
         const url = request.url;
 
         if (itemId !== data.id) {
-            this.logger.warn(`Invalid request. Body containing ID of Item "${itemId}" send to Item on path "${url}"`);
-            throw new BadRequestException(
+            const error = new BadRequestException(
                 `It's not allowed to update Item on path "${url}" with data from Item with ID "${data.id}"`
             );
+            this.logger.warn(error.message);
+
+            throw error;
         }
         const updated = await this.itemsService.update(data);
         this.cacheService.resetCacheOfType(ResourceTypes.ITEMS);

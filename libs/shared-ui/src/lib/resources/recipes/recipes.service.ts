@@ -47,9 +47,7 @@ export class RecipesService {
         const queryParams: QueryParams = {};
 
         if (filters?.technologyFilters?.length > 0) {
-            queryParams['technologyTreeIds'] = filters.technologyFilters
-                .map((filter) => filter.technologyTree.id)
-                .join(',');
+            queryParams['techTreeIds'] = filters.technologyFilters.map((filter) => filter.technologyTree.id).join(',');
             queryParams['maxTechPoints'] = filters.technologyFilters.map((filter) => filter.maxPoints).join(',');
         }
         if (filters?.offset) {

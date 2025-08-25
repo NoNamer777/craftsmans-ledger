@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 export class PaginationService {
     public readonly count = signal(0);
 
-    public readonly page = signal(1);
+    public readonly page = signal(0);
 
     public readonly lastPage = signal(1);
 

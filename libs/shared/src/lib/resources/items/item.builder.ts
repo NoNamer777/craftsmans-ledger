@@ -13,7 +13,7 @@ export class ItemBuilder {
 
         if ('name' in value && typeof value.name === 'string') this.item.name = value.name;
         if ('weight' in value && typeof value.weight === 'number') this.item.weight = value.weight;
-        if ('baseValue' in value && typeof value.baseValue === 'number') this.item.cost = value.baseValue;
+        if ('cost' in value && typeof value.cost === 'number') this.item.cost = value.cost;
     }
 
     public withId(itemId?: string) {
@@ -31,8 +31,8 @@ export class ItemBuilder {
         return this;
     }
 
-    public withBaseValue(baseValue: number) {
-        this.item.cost = baseValue;
+    public withCost(cost: number) {
+        this.item.cost = cost;
         return this;
     }
 }

@@ -8,6 +8,7 @@ export class RecipeItem {
     public item: Item;
 
     @Expose()
+    @Type(() => Number)
     public quantity: number;
 
     public toDto() {

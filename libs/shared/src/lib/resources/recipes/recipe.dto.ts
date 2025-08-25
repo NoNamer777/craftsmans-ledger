@@ -17,7 +17,7 @@ export class RecipeDto implements Resource, Comparable {
     public technologyTreeId: string;
 
     @Expose()
-    public technologyPoints: number;
+    public techPoints: number;
 
     @Expose()
     @Type(() => RecipeItemDto)
@@ -47,7 +47,7 @@ export class RecipeDto implements Resource, Comparable {
             this.id === other.id &&
             this.craftingTime === other.craftingTime &&
             this.technologyTreeId === other.technologyTreeId &&
-            this.technologyPoints === other.technologyPoints &&
+            this.techPoints === other.techPoints &&
             this.compareRecipeItemDtos(this.inputs, other.inputs) &&
             this.compareRecipeItemDtos(this.outputs, other.outputs)
         );

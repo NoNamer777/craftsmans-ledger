@@ -1,16 +1,25 @@
 import { RecipeItemDto } from '@craftsmans-ledger/shared';
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { ItemsService } from '../../items';
 import { RecipeInputsRepository } from '../repositories';
 import { RecipesService } from './recipes.service';
 
 @Injectable()
 export class RecipeInputsService {
+    private readonly recipesService: RecipesService;
+    private readonly itemsService: ItemsService;
+    private readonly recipeInputsRepository: RecipeInputsRepository;
+    private readonly logger = new Logger(RecipeInputsService.name);
+
     constructor(
-        private readonly recipesService: RecipesService,
-        private readonly itemsService: ItemsService,
-        private readonly recipeInputsRepository: RecipeInputsRepository
-    ) {}
+        recipesService: RecipesService,
+        itemsService: ItemsService,
+        recipeInputsRepository: RecipeInputsRepository
+    ) {
+        this.recipesService = recipesService;
+        this.itemsService = itemsService;
+        this.recipeInputsRepository = recipeInputsRepository;
+    }
 
     public async getAllOfRecipe(recipeId: string) {
         await this.verifyRecipeExists(
@@ -43,9 +52,12 @@ export class RecipeInputsService {
         );
 
         if (recipe.requiresInput(dto.itemId)) {
-            throw new BadRequestException(
+            const error = new BadRequestException(
                 `Could not add input to Recipe with ID "${recipeId}". - Reason: Recipe already has input with Item with ID "${dto.itemId}"`
             );
+            this.logger.warn(error.message);
+
+            throw error;
         }
         return await this.recipeInputsRepository.addInputToRecipe(recipeId, dto);
     }
@@ -61,9 +73,12 @@ export class RecipeInputsService {
         );
 
         if (!recipe.requiresInput(dto.itemId)) {
-            throw new BadRequestException(
+            const error = new BadRequestException(
                 `Could not update input of Recipe with ID "${recipeId}". - Reason: Recipe does not require input with Item with ID "${dto.itemId}"`
             );
+            this.logger.warn(error.message);
+
+            throw error;
         }
         return await this.recipeInputsRepository.updateInputOfRecipe(recipeId, dto);
     }
@@ -79,9 +94,12 @@ export class RecipeInputsService {
         );
 
         if (!recipe.requiresInput(itemId)) {
-            throw new BadRequestException(
+            const error = new BadRequestException(
                 `Could not remove input from Recipe with ID "${recipeId}". - Reason: Recipe does not require input with Item with ID "${itemId}"`
             );
+            this.logger.warn(error.message);
+
+            throw error;
         }
         await this.recipeInputsRepository.removeInputFromRecipe(recipeId, itemId);
     }
@@ -89,14 +107,24 @@ export class RecipeInputsService {
     private async verifyRecipeExists(recipeId: string, errorMessage: string) {
         const recipe = await this.recipesService.getById(recipeId);
 
-        if (!recipe) throw new NotFoundException(errorMessage);
+        if (!recipe) {
+            const error = new NotFoundException(errorMessage);
+            this.logger.warn(error.message);
+
+            throw error;
+        }
         return recipe;
     }
 
     private async verifyItemExists(itemId: string, errorMessage: string) {
         const item = await this.itemsService.getById(itemId);
 
-        if (!item) throw new NotFoundException(errorMessage);
+        if (!item) {
+            const error = new NotFoundException(errorMessage);
+            this.logger.warn(error.message);
+
+            throw error;
+        }
         return item;
     }
 }
