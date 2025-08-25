@@ -1,15 +1,40 @@
-import { CreateItemData, Item } from '@craftsmans-ledger/shared';
+import { CreateItemData, Item, ItemQueryParams, SortableItemAttributes } from '@craftsmans-ledger/shared';
 import { BadRequestException, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { ItemsRepository } from './items.repository';
 
 @Injectable()
 export class ItemsService {
+    private readonly itemsRepository: ItemsRepository;
     private readonly logger = new Logger(ItemsService.name);
 
-    constructor(private readonly itemsRepository: ItemsRepository) {}
+    constructor(itemsRepository: ItemsRepository) {
+        this.itemsRepository = itemsRepository;
+    }
 
     public async getAll() {
         return await this.itemsRepository.findAll();
+    }
+
+    public async query(queryParams: ItemQueryParams) {
+        const sortableOptions: string[] = Object.values(SortableItemAttributes);
+
+        if (queryParams.techTreeIds.length !== queryParams.maxTechPoints.length) {
+            const error = new BadRequestException(
+                `The number of Technology Trees IDs "${queryParams.techTreeIds.length}" and maximum Tech points "${queryParams.maxTechPoints.length}" are not the same`
+            );
+            this.logger.warn(error.message);
+
+            throw error;
+        }
+        if (!sortableOptions.includes(queryParams.sortBy)) {
+            const error = new BadRequestException(
+                `Unknown sorting option "${queryParams.sortBy}". Available options are: [${sortableOptions.map((option) => `"${option}"`).join(', ')}]`
+            );
+            this.logger.warn(error.message);
+
+            throw error;
+        }
+        return await this.itemsRepository.query(queryParams);
     }
 
     public async getById(itemId: string) {
