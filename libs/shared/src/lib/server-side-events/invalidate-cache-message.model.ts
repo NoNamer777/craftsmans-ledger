@@ -1,4 +1,4 @@
-import { ResourceType } from '@craftsmans-ledger/shared';
+import { ResourceType } from '../resources';
 import { SseMessage } from './sse-message.model';
 import { SseMessageTypes } from './sse-message.type';
 
