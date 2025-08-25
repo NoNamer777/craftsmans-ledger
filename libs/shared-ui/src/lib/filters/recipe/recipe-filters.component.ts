@@ -48,11 +48,11 @@ export class RecipeFiltersComponent implements OnInit {
     private readonly addingTechnologyFilter = signal(false);
 
     public ngOnInit() {
-        from(this.browserStorageService.getItem(StorageKeys.RECIPE_FILTERS))
+        from(this.browserStorageService.getItem(StorageKeys.ITEM_FILTERS))
             .pipe(
                 switchMap((filters: RecipeFilters) =>
                     forkJoin([
-                        ...filters.technologyFilters.map((filter) =>
+                        ...(filters?.technologyFilters ?? []).map((filter) =>
                             this.addTechnologyFilter(filter.technologyTree.id, filter.maxPoints)
                         ),
                     ])
@@ -86,6 +86,7 @@ export class RecipeFiltersComponent implements OnInit {
         this.sidebarService.closeSidebar(
             serialize(RecipeFilters, {
                 technologyFilters: this.form.value.technologyFilters,
+                offset: 0,
             })
         );
     }
