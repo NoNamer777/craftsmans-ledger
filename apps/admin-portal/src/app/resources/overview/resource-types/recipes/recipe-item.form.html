@@ -14,7 +14,7 @@
                         class="form-select"
                         formControlName="itemId"
                     >
-                        @for (option of itemOptions$ | async; track option.value) {
+                        @for (option of itemOptions$(); track option.value) {
                             <option [value]="option.value" [disabled]="shouldDisable(option.value, i)">
                                 {{ option.label }}
                             </option>

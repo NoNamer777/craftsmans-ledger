@@ -24,7 +24,7 @@ export class ItemForm extends BaseResourceFormComponent {
     protected override readonly form = this.formBuilder.group({
         name: this.formBuilder.control<string>(null, [Validators.required, Validators.minLength(2)]),
         weight: this.formBuilder.control<number>(null, [Validators.required, Validators.min(0)]),
-        baseValue: this.formBuilder.control<number>(null, [Validators.required, Validators.min(0)]),
+        cost: this.formBuilder.control<number>(null, [Validators.required, Validators.min(0)]),
     });
 
     constructor() {
@@ -51,7 +51,7 @@ export class ItemForm extends BaseResourceFormComponent {
         this.form.reset({
             name: name,
             weight: weight,
-            baseValue: cost,
+            cost: cost,
         });
     }
 

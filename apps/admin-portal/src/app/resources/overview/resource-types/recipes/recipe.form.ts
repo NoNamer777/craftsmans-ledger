@@ -56,13 +56,13 @@ export class RecipeForm extends BaseResourceFormComponent {
     }
 
     protected override populateForm() {
-        const { craftingTime, technologyTreeId, technologyPoints, inputs, outputs } =
+        const { craftingTime, technologyTreeId, techPoints, inputs, outputs } =
             this.resourceService.resource() as RecipeDto;
 
         this.form.reset({
             craftingTime: craftingTime,
             technologyTreeId: technologyTreeId ?? '',
-            technologyPoints: technologyPoints,
+            technologyPoints: techPoints,
         });
 
         this.form.controls.inputs.clear();
@@ -116,7 +116,7 @@ export class RecipeForm extends BaseResourceFormComponent {
         dto.id = this.resourceService.resourceId();
         dto.craftingTime = formValue.craftingTime;
         dto.technologyTreeId = formValue.technologyTreeId;
-        dto.technologyPoints = formValue.technologyPoints;
+        dto.techPoints = formValue.technologyPoints;
         dto.inputs = formValue.inputs.map((inputValue) => serialize(RecipeItemDto, inputValue));
         dto.outputs = formValue.outputs.map((inputValue) => serialize(RecipeItemDto, inputValue));
         return dto;

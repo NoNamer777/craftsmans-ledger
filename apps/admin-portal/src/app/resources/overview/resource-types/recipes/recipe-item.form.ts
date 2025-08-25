@@ -1,4 +1,4 @@
-import { AsyncPipe, TitleCasePipe } from '@angular/common';
+import { TitleCasePipe } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -8,7 +8,7 @@ import {
     inject,
     input,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { ControlContainer, FormArray, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { RecipeDto } from '@craftsmans-ledger/shared';
 import { ItemsService, RecipesService } from '@craftsmans-ledger/shared-ui';
@@ -23,7 +23,7 @@ import { addRecipeItem, provideControlContainer, RecipeItemDtoForm } from './mod
     templateUrl: './recipe-item.form.html',
     styleUrl: './recipe-item.form.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [TitleCasePipe, ReactiveFormsModule, ElementIdPipe, AsyncPipe],
+    imports: [TitleCasePipe, ReactiveFormsModule, ElementIdPipe],
     viewProviders: [provideControlContainer()],
 })
 export class RecipeItemForm {
@@ -37,9 +37,9 @@ export class RecipeItemForm {
 
     public readonly type = input.required<string>();
 
-    protected readonly itemOptions$ = this.itemsService
-        .getAll()
-        .pipe(map((items) => items.map(({ id, name }) => ({ label: name, value: id }))));
+    protected readonly itemOptions$ = toSignal(
+        this.itemsService.getAll().pipe(map((items) => items.map(({ id, name }) => ({ label: name, value: id }))))
+    );
 
     protected get recipeItemsFormArray() {
         return (this.controlContainer as FormGroupDirective).form.get(
