@@ -1,149 +1,140 @@
 DELETE FROM cml_dev_db.items;
 
 INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
-	 ('__QJHvPqa0UQTLzTTgqBc','Fancy Shoes',0.15,290.00),
 	 ('_esmQubVj2gOEh6y-55cw','Iron Kite Shield',0.50,740.00),
 	 ('_i1VwpFAoOpy4m3_GjhRH','Poisoned Iron Bolt',0.02,100.00),
 	 ('_PaZJ1S2YpE7xQZe0c6IO','Astrolabe',0.40,500.00),
 	 ('_tZCE_p80EB64CfTPmkv7','Rot',0.05,0.00),
 	 ('_vzGCGmuMogxIK0w4CQiC','Flute',0.90,500.00),
-	 ('_ZXuZ0togXIs07BjQShsZ','Shoes',0.15,140.00),
 	 ('-_K3cuzZh8xecsbf05F2K','Thumble',0.10,500.00),
 	 ('-g-3azY7LAdHVx1TWsqa2','Mead',1.00,210.00),
-	 ('-GFAduUBVk1U2P37HGb9m','Light Tunic',0.30,720.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('-GFAduUBVk1U2P37HGb9m','Light Tunic',0.30,720.00),
 	 ('-NtszDTnxHdD-H2oKfnAH','Pike',1.40,36.00),
-	 ('-OTuKYF9kfI-7m-37EwLN','Straw',0.04,0.10),
-	 ('-vFkSlZbAs9pNTvgLvKN8','Quilted Vest',0.80,740.00),
+	 ('-OTuKYF9kfI-7m-37EwLN','Straw',0.04,0.10);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('-XyAOUCfILZvXdYwIt8RB','Iron Scythe',4.00,880.00),
 	 ('-YSwHws0eCc80XcowV6zl','Iron Pick',1.50,410.00),
 	 ('0_4XzEzw-2l8m-d9CtLcL','Fruit Pie',1.00,70.00),
-	 ('01UPkiqFirTva6R1-xLra','Felt Hat',0.15,520.00),
 	 ('0AGgAwJZbBxzMppWldrP3','Thick Coif',0.10,1110.00),
 	 ('0BpE8pcPoMhaDYo6KbSRB','Mastic Gum',0.05,500.00),
-	 ('0n_Rj8enHx2NXBjNggMaS','Egg',0.05,1.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('0n_Rj8enHx2NXBjNggMaS','Egg',0.05,1.00),
 	 ('0sgBt-iKqmAL35sMSP0D_','Wooden Plate',0.20,0.80),
 	 ('0weL-yY8qwctdHKAH91DG','Green Dye',0.10,140.00),
 	 ('18fIBP3YRS8Zfx3WVivve','Wooden Ladle',0.07,2.00),
-	 ('1b7dn2v0heo_lTdtQEpIj','Clay Jug',0.50,3.00),
+	 ('1b7dn2v0heo_lTdtQEpIj','Clay Jug',0.50,3.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('1rJGCFKA7ELUWQfhxpOD5','Fine Shoes',0.50,730.00),
 	 ('2fmc1FOjavKArmsz7BLqd','Lavender Honey',0.00,0.00),
 	 ('2G6jRJv_P2ZifJ4fSy_iI','Throwing Stone',0.20,0.20),
 	 ('2NCidgaUeKFDpg2C7CQH0','Poppy Seed Pie',1.00,120.00),
-	 ('2rCyMCXyQzEJrgqBHV5L0','Tunic',0.50,470.00),
-	 ('2tyJ8nWA8h9hApuIa5pSR','Broardleaf Plantain',0.01,0.70);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('2tyJ8nWA8h9hApuIa5pSR','Broardleaf Plantain',0.01,0.70),
 	 ('2zfEsnzIHVM1fMKrN3dGy','Morel Mushroom',0.10,0.60),
 	 ('3A1zGFJ_5fVS7FtJ19TlT','Kaptorga',0.40,1000.00),
 	 ('3dQFwKpuF3u9DQvoJBy7j','Saddlebag',3.00,1020.00),
 	 ('3IWzHnRF0oLStFxtoBucy','Bronze Shovel',3.00,360.00),
-	 ('3juLyhoKeYcAaxPYycqFP','Copper Ore',1.00,7.00),
+	 ('3juLyhoKeYcAaxPYycqFP','Copper Ore',1.00,7.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('3PFX-rvHbqHW5-PIn3lgG','Simple Dress',0.60,550.00),
 	 ('3wuJPnxZHhLtRmLszej0D','Wool Fabric',0.50,140.00),
 	 ('426sx-m1POnuPbJL4l-rD','Pouch of Spices',0.09,1250.00),
 	 ('43wHVUBD-blmpqypcMGqV','Copper Shovel',3.00,180.00),
-	 ('4MhbZi-tbt4svdgXUGUH7','Bronze Bar',2.00,140.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('4MhbZi-tbt4svdgXUGUH7','Bronze Bar',2.00,140.00),
 	 ('4RevAeOcwPyPyJljr8zk5','Beetroot',0.15,3.00),
 	 ('4u-krm_XlrTfdjpYS7ljc','Iron Bar',1.00,90.00),
 	 ('4XCAe6xzdziQdPOBbhwN5','Wheat Grain',0.01,5.00),
 	 ('529kmEhBrT6bLdJxz78ol','Tin Bar',1.00,35.00),
-	 ('5kEDlj-7RBENXYdDekGpE','Roach',0.20,7.00),
+	 ('5kEDlj-7RBENXYdDekGpE','Roach',0.20,7.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('5mN6Az3g2EPjbVtPZyVkE','Simple Large Backpack',1.50,760.00),
 	 ('5Uo3zrV9DvNjqqn76zk9z','Warm Coat',0.50,1530.00),
 	 ('5xOH6HjYoYiFvUPnGU2xG','Coin',0.00,1.00),
 	 ('5zqPGpQ47lVlrJe2gMmwP','Meat',0.20,3.00),
-	 ('61f5I83eXLHXEg2t48YkP','Poisoned Iron Arrow',0.03,100.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('61f5I83eXLHXEg2t48YkP','Poisoned Iron Arrow',0.03,100.00),
 	 ('69J1vQLM8qoIYw2ujQ5Zj','Potion of Instant Healing I',0.20,5.00),
 	 ('6bQUO23FcKhXEN2ZOxzMC','Potion of Cure',0.20,12.00),
 	 ('6BTBtSGXXu71I6kBTsmXV','Elite Sword',1.00,880.00),
 	 ('6sIp03PoKIHPGG-LX49Q4','Potage',0.70,26.00),
-	 ('6tgO5P9du4nB5nCGEHTUG','Wooden Cup',0.20,0.80),
+	 ('6tgO5P9du4nB5nCGEHTUG','Wooden Cup',0.20,0.80);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('6X_4UED2obFjyXg6dTmyM','Simple Torch',0.46,3.00),
 	 ('70IvUdKHkCxOyXTC8IOwZ','Simple Hood',0.30,320.00),
 	 ('71OkJOE0uXfFQ8J2qe7-n','Tin Ore',1.00,8.00),
 	 ('7FqF7krNFjhaDKeGHYco8','Apple',0.09,4.00),
-	 ('7I_EbPvMpKWkfhdMAmhpG','Stone Knife',0.50,5.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('7I_EbPvMpKWkfhdMAmhpG','Stone Knife',0.50,5.00),
 	 ('7j_8N15vUGy8Yz0ZbHOTc','Cabbage Seed',0.01,5.00),
 	 ('7KEJE7w_KRfowzJD9lWdu','Mead Bottle',0.30,6.00),
 	 ('7lzjUeNaQrUOkBxKr4sVm','Toy Sword',0.75,45.00),
-	 ('7nv33e53wuAWprYjBRnwK','Cap with Coif',0.10,290.00),
 	 ('7q2gS48k22mXAQHcpxRgN','Elite Pick',1.00,890.00),
-	 ('7QUhGjq61yzyWv6wNBXCc','Olive Oil',0.70,750.00),
+	 ('7QUhGjq61yzyWv6wNBXCc','Olive Oil',0.70,750.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('7sHR0iLnt2pb7gh4mELo8','Dried Figs',0.06,750.00),
 	 ('7xoX0558PI6r2PBqvH84O','Berry',0.05,0.20),
 	 ('7z8YXpPN6zLIDigpl4t19','Copper Hoe',3.00,220.00),
-	 ('8fVZic9VXmA1nhRTNMTzt','Pipe',0.20,500.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('8fVZic9VXmA1nhRTNMTzt','Pipe',0.20,500.00),
 	 ('8IcTIbqHngrecfd019-J_','Noble Hat',0.10,1240.00),
 	 ('8mxxLWFqGzlC6FGhrUacT','Scrambled Eggs with Mushroom',0.20,12.00),
 	 ('8n2WKqknrZskPFny7kry_','Red Dye',0.10,19.00),
 	 ('8OlwzqVchLlLV9GQduiRU','Parasol Mushroom',0.10,0.60),
 	 ('8r-m0_fpTVQu4cCbnMHsm','Wooden Spoon',0.07,2.00),
-	 ('8uWF5BFjosAaH5OOHyqWV','Stick',0.10,0.30),
+	 ('8uWF5BFjosAaH5OOHyqWV','Stick',0.10,0.30);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('8ZJbxcWed3nNm0vdAco9A','Bronze Battle Axe',2.00,280.00),
 	 ('90UY4EtkGzpd9oq0YSXiI','Hop Plant Seedling',1.00,18.00),
 	 ('96c4hAG-pzUnvtyTekWNd','Vegetable Soup',0.80,38.00),
-	 ('98Vu7Hw5ePHslXkpHi0lO','Trousers',0.30,200.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('9Bh7XfmXiG4AflN9QcsyE','Wooden Shovel',2.00,25.00),
 	 ('9C_M5pGnOIPeOl35jsjMK','Potion of Camouflage',0.20,14.00),
 	 ('9c0f20RkihCE2p1QbeuB5','Linen Thread',0.10,40.00),
 	 ('9EEfPLSU0eiqeL6jKKFZR','Potion of Instant Healing II',0.20,14.00),
 	 ('9KMtYwNpdcMIgDZOq3ZUD','Unripe Berry',0.05,0.20),
 	 ('9O6J-A_wzu-D4Rbn6jjet','Excellent Boots',0.20,1010.00),
-	 ('9VFfQiMfqir8RChEod6hz','Fang Necklace',0.10,500.00),
+	 ('9VFfQiMfqir8RChEod6hz','Fang Necklace',0.10,500.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('A_GoBSrs25JtwDo7T5PfQ','Rye Beer',1.00,170.00),
 	 ('A3gPDyy8dJ3gznuCBJ0zr','Clay Bottle',0.50,4.00),
-	 ('a3sUdvTRXuLi6tmVJarDb','Potion of Satiety',0.20,13.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('a3sUdvTRXuLi6tmVJarDb','Potion of Satiety',0.20,13.00),
 	 ('AAPCXCdIOnjHELwkY6LNx','Poisoned Copper Bolt',0.02,26.00),
 	 ('Ab4l7oCXXh234CMd-rimf','Potion of Healing I',0.20,14.00),
 	 ('ABWvQu3Y9KsI6ZGY6zdnU','Potion of Healing II',0.20,30.00),
 	 ('AfmZGcufMqg0KEaT92J52','Rye Grain',0.01,4.00),
 	 ('afwA7zgXwHBc54Ipu_pyl','Wooden Rabbit Figurine',0.10,30.00),
 	 ('aHNAm94cyBSMpaIuqn6Tt','Potion of Saturation',0.20,11.00),
-	 ('APU7mnvgtR1XrD2jI5FBj','Stone',1.00,0.40),
+	 ('APU7mnvgtR1XrD2jI5FBj','Stone',1.00,0.40);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('aTXMfgHwDEYGJtuHTRg8d','Thick Boots',2.00,330.00),
 	 ('avxGf7KfrixIrh3NvXqTB','Noble Hood',0.50,1400.00),
-	 ('b_JDF3sQ89zv1olxmODCR','Porridge with Apple',0.25,39.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('b_JDF3sQ89zv1olxmODCR','Porridge with Apple',0.25,39.00),
 	 ('B20MUlWHKlP9UH_uFJqaY','Iron Dagger',0.20,210.00),
 	 ('bchAmaJySN9xz9Mfjexcn','Fine Dress',0.60,850.00),
 	 ('BD4rfw4VkqtTZi7FL-0_U','Plum Tree Seedling',1.00,17.00),
 	 ('BdFPs4MXOZww2lSS8hLqH','Saddle',4.00,760.00),
-	 ('bE22mtnt6jIwsHvSkh9ha','Bronze Shears',1.00,110.00),
+	 ('bE22mtnt6jIwsHvSkh9ha','Bronze Shearing Scissors',1.00,150.00),
 	 ('Bf43DrqxZ772k9MmYN-x2','Warm Hat',0.10,810.00),
-	 ('bGScyFBA85ypZ2oQBo-fN','Elite Collar',4.00,4020.00),
+	 ('bGScyFBA85ypZ2oQBo-fN','Elite Collar',4.00,4020.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('bkt8NgSVqbCdkOneIKwn2','Wooden Bear Figurine',0.10,30.00),
 	 ('BmQ-olOcm0qJN0cQKPFju','Thick Gloves',1.00,1000.00),
-	 ('boB3DftinWVE6in060zR_','Warm Boots',0.35,830.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('boB3DftinWVE6in060zR_','Warm Boots',0.35,830.00),
 	 ('brM8m1dAWoOYdKYi2udMp','Carrot Seed',0.01,5.00),
 	 ('bsPkgSY65QUTOaUsJ-7xI','Ornate Saddle',4.00,1440.00),
 	 ('bu5KFmfApyFfS9yBXj5Vf','Simple Trousers',0.35,490.00),
 	 ('Cbc6sf4pxmEN9O1fj1ZsU','Limestone',1.00,2.00),
 	 ('CLpiMcAeo5hNAQHHtTk9U','Feather',0.01,0.90),
 	 ('cpoaaduLD6GeawjnwnGpY','Daisy',0.01,0.60),
-	 ('cQ7lLfIJzL0smXHmSquL3','Copper Bolt',0.02,14.00),
+	 ('cQ7lLfIJzL0smXHmSquL3','Copper Bolt',0.02,14.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('cQVgYQyrtPYC_EbmV8yKt','Meat with Gravy',0.55,23.00),
 	 ('Crxo7hGCzb3n5jMvvt-H_','Iron Legwear',5.00,2500.00),
-	 ('cUDMfEj4YcDyvOf2XzaM8','Copper Knife',0.50,110.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('cUDMfEj4YcDyvOf2XzaM8','Copper Knife',0.50,110.00),
 	 ('CUxe6ActsWRtlvZyn8u8x','Wooden Wheel',4.00,18.00),
 	 ('CVkjO2ooA0wuNjINoRcII','Noble Tunic',0.60,1410.00),
 	 ('D-RXg5eqHRnaN-0Gu21hy','Golden Ring',0.05,750.00),
 	 ('d2Y0mCkI_0b7xfRG97SVj','Poppy Seed',0.01,3.00),
 	 ('D9Ska1XwM3crQ5JS1diA3','Stew',0.75,20.00),
 	 ('dAYEmPtZPqbWoBzyOysR2','Leather Bracelet',0.20,500.00),
-	 ('DbGgYH52i-XDIba746Rxo','Fur Boots',0.35,250.00),
-	 ('DD2HcwLpsEQBhIOrftCzN','Clay Bowl',0.40,2.00),
-	 ('DfaphPP1CMpAalcFFGmNU','Red Pine Mushroom',0.10,0.60),
-	 ('DfDAND-c2ZZXW92Imu-hW','Orange Dye',0.10,130.00);
+	 ('DD2HcwLpsEQBhIOrftCzN','Clay Bowl',0.40,2.00);
 INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('DfaphPP1CMpAalcFFGmNU','Red Pine Mushroom',0.10,0.60),
+	 ('DfDAND-c2ZZXW92Imu-hW','Orange Dye',0.10,130.00),
 	 ('dL7w_D5pDso6v3ZJsEZod','Potion of Night Vision',0.20,25.00),
 	 ('DM6wvmZWn6ak8XN1c-om4','Leather',0.25,8.00),
 	 ('dNXj2G-GWn8Tyj6YZD50X','Woolly Milkcap Mushroom',0.10,0.60),
@@ -151,10 +142,10 @@ INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('DseBuffB75OsK8vgkMRST','Wheat Bread',0.15,150.00),
 	 ('duR1LAScDFk1Rga1Z99M0','Poisoned Wooden Bolt',0.02,7.00),
 	 ('dvH1ZH6OGEpeGPO6YgGCY','Roasted Meat',0.20,6.00),
-	 ('e0bGQ-ixp1_uO6_JKy-7s','Violet Dye',0.10,180.00),
-	 ('e1ye91NQKXu0xBcRPOvD_','Fishing Spear',2.50,50.00),
-	 ('ECcBpRFdEafPdJGu9_chP','Meat Tart',0.30,60.00);
+	 ('e0bGQ-ixp1_uO6_JKy-7s','Violet Dye',0.10,180.00);
 INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('e1ye91NQKXu0xBcRPOvD_','Fishing Spear',2.50,50.00),
+	 ('ECcBpRFdEafPdJGu9_chP','Meat Tart',0.30,60.00),
 	 ('ECGVzNU8qNq25ieG63Keu','Plank',1.00,2.00),
 	 ('EcoLcKlutlsZf7l087CA4','Rich Coat',0.70,1100.00),
 	 ('EEHneDNzmGQbu6FBely-s','Iron Hoe',2.00,440.00),
@@ -162,33 +153,30 @@ INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('EhRIvo7udUTpm9o_ivvY-','Basic Shoes',0.15,270.00),
 	 ('EkHc4HBKy8n-NSpPoBuhW','Elite Helmet',2.00,2000.00),
 	 ('El1pblMP1T7z78TJ352iq','Excellent Gambeson',3.00,3160.00),
-	 ('eplnaBjYotDAPtPQeva3O','Poison',0.20,8.00),
-	 ('EpQibdsOi2_et_VEzQd5T','Copper Kite Shield',0.50,290.00),
-	 ('EUpbqIgl3zv1xk0qfrcM3','Simple Shoes',0.15,290.00);
+	 ('eplnaBjYotDAPtPQeva3O','Poison',0.20,8.00);
 INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('EpQibdsOi2_et_VEzQd5T','Copper Kite Shield',0.50,290.00),
+	 ('EUpbqIgl3zv1xk0qfrcM3','Simple Shoes',0.15,290.00),
 	 ('eVbHBJPF4LbXaCHx7rxGu','Porridge',0.20,17.00),
-	 ('eZQ9Joz6MHAwdkFRS8F1x','Coif',0.05,150.00),
 	 ('F4JMBsUYHLs6x_uk9O3jz','Wisent Skull',5.00,30.00),
 	 ('f5T_pyPMfAtd-_0vrDL1x','Fruit Tart',0.30,50.00),
 	 ('F90FyCxcZtBynesOUZeNN','Firewood',0.50,0.90),
 	 ('F9wEURKdmDOR5e0OwF0KI','Warm Shawl',0.35,810.00),
 	 ('FApjicQTHlF_tdG5JQ_Mo','Iron Sickle',1.50,440.00),
 	 ('fChb_1ISeiiKX2Nge9MZx','Flax',0.05,7.00),
-	 ('fCR-0NY-zra322j0DQraU','Rye Bread',0.40,27.00),
-	 ('fHs9w0mnqQnTP9FtaeLT8','Salted Meat',0.20,8.00);
+	 ('fCR-0NY-zra322j0DQraU','Rye Bread',0.40,27.00);
 INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('fHs9w0mnqQnTP9FtaeLT8','Salted Meat',0.20,8.00),
 	 ('fI7IBOLpGLNbWbJZJSH7V','Ivory Knife',0.30,1000.00),
 	 ('FiEvDr5Uvw4xIqbBKnv3Z','Wooden Hoe',2.00,7.00),
 	 ('FIsqrjyEqZOrH-_K98hSQ','Excellent Gloves',0.50,1400.00),
-	 ('Fllo-PGc0f7TLEY3IeQ_Q','Fur Capelet',0.20,240.00),
 	 ('FNCyM1_hwp47T9vVaj2Rp','Potion of Temperature',0.20,34.00),
 	 ('FqFX7Fa4mvGQI6ZVPgq83','Dandelion',0.01,0.60),
 	 ('fR1yKZGXPdR3C3s64xK48','Stone Spear',2.50,80.00),
-	 ('fR3_bKiwztky4rlkn7Jot','Hood',0.30,330.00),
 	 ('fWHtNoFGaXzAn717-g_uo','Linen Fabric',0.10,80.00),
-	 ('G_Rt2RsfZqaEHVtRM04g_','Large Wicker Basket',1.20,8.00);
+	 ('G_Rt2RsfZqaEHVtRM04g_','Large Wicker Basket',1.20,8.00),
+	 ('G-1vGu1Ed-ylsHgS5GwUQ','Thin Gambeson',3.00,1400.00);
 INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
-	 ('G-1vGu1Ed-ylsHgS5GwUQ','Thin Gambeson',3.00,1400.00),
 	 ('g5q79laemkfwkjn1RMiXB','Large Pouch',1.00,440.00),
 	 ('g9N8QVrfMA8_uC1bu8LbK','Clay Cup',0.20,0.80),
 	 ('gDK_P8AcGFsz7AJ3p_qjF','Thick Gambeson',6.00,3040.00),
@@ -197,21 +185,20 @@ INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('gH15DkHo5fs9AqCyS5949','Thin Boots',1.00,220.00),
 	 ('GjLaop5HbBGz6RqG072KA','Warm Trousers',0.40,1090.00),
 	 ('GkRROu9xzijjb9ZihdXvN','Hedge Seed',0.01,20.00),
-	 ('gLKzhF7bOpVSWMteeXYPd','Amber Figurine',0.09,750.00);
+	 ('gLKzhF7bOpVSWMteeXYPd','Amber Figurine',0.09,750.00),
+	 ('GO1gerfWi-X6DHi2MWCh0','Apple Juice',1.00,60.00);
 INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
-	 ('GO1gerfWi-X6DHi2MWCh0','Apple Juice',1.00,60.00),
 	 ('Guoggj9HsaUg29ZSAlGS1','Recurve Bow',1.50,600.00),
 	 ('GWFSM6eoiNFG8NofLCypU','Cherry',0.05,3.00),
 	 ('GXpTLtXUH0hrOuMMxsqqC','Copper Bar',1.00,28.00),
 	 ('gYIn-rrPL22HREcYiYREn','Winter Collar',130.00,0.25),
 	 ('GyuOXDCExGlo-E5JHiBG0','Iron Axe',3.50,880.00),
 	 ('GzFOFUbhaxXHVwsFgUEj-','Hnefatafl',1.00,500.00),
-	 ('gZK8yDXhjYR65MQAeiMat','Noble Boots',0.20,420.00),
 	 ('h-oLsGMlE9v2FaKRJkes8','Wheat',0.06,6.00),
-	 ('h4PgwWmKT9KacIPfS8ONV','Majestic Tree Seedling',1.00,200.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('h4PgwWmKT9KacIPfS8ONV','Majestic Tree Seedling',1.00,200.00),
 	 ('H9q_TXq2J3UNhMzgkrFUz','Small Evergreen Seedling',1.00,50.00),
-	 ('HcGq3fxWa51tBbQJ8lMie','Light Shoes',0.30,730.00),
+	 ('HcGq3fxWa51tBbQJ8lMie','Light Shoes',0.30,730.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('HDktoJwn4UubsDV4zwOfx','Needle Case',0.07,750.00),
 	 ('Hfh7-P6UVPko65xERx6k5','Noble Hose',0.50,1000.00),
 	 ('HGky3t97DrQ1uyI0qUQ4j','Bronze Greaves',3.00,810.00),
@@ -219,118 +206,111 @@ INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('HIQw1PRYHBPiF-Mou6oPf','Pear Tree Seedling',1.00,17.00),
 	 ('HMcpoZzAJvkNrWJMIYNQp','Elite Bracers',2.00,1900.00),
 	 ('HoxF20a35XBOipDkq9cnM','Flax Seed',0.02,6.00),
-	 ('HPDgpzOj6QqnVqPlQwRWK','Oat Ale',1.00,100.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('HPDgpzOj6QqnVqPlQwRWK','Oat Ale',1.00,100.00),
 	 ('HqksGWajFARXwUE96GdSR','Lodestone',0.50,750.00),
-	 ('HXtZqUCNBWTEBuOu-EVGi','Felt Vest',0.70,590.00),
-	 ('iA4ZPY7tce-4j3LfSbjBO','Iron Crossbow',3.00,1530.00),
+	 ('iA4ZPY7tce-4j3LfSbjBO','Iron Crossbow',3.00,1530.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('IcPKTarFMA3X3rg_nDdDg','Hop',0.02,3.00),
 	 ('Ie_0u9dgI9JoxABrISBtQ','Small Saddlebag',2.00,380.00),
 	 ('IEJseTC3A7VFOi8hh0NcO','Perch',0.80,21.00),
 	 ('iFEAkqnf2jP1PQkq3iDk2','Deer Skull',2.50,10.00),
 	 ('iGqdU5zLqvdo6j_0Rsfbm','Cabbage',0.20,3.00),
 	 ('IiBPYNOLsMx-BOhOuS1jx','Pan Flute',0.30,750.00),
-	 ('IJcM_riYwdRt-oAVGYkYI','Flax Stalk',0.04,5.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('IJcM_riYwdRt-oAVGYkYI','Flax Stalk',0.04,5.00),
 	 ('ikqftY0VIew5AIdLxE7Gq','Torch',0.50,33.00),
 	 ('ilFF2OuXLTauYLj9prVHG','Iron Bolt',0.02,50.00),
-	 ('ILZ8ETzh1D9RqhkS1yxnK','Cherry Juice',1.00,130.00),
+	 ('ILZ8ETzh1D9RqhkS1yxnK','Cherry Juice',1.00,130.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('inRdqhyYM6_v9AAkN07_J','Wheat Beer',1.00,150.00),
 	 ('iNYJ0Cyg55p8mVu0XYrc-','Waterskin',0.25,32.00),
 	 ('iP98EBboL0OIabsBDFYrN','Pear Juice',1.00,100.00),
 	 ('iQbmqQtzyq_gWY-ETvM-M','Noble Shoes',0.15,900.00),
 	 ('ITRKi81hwSvkJT3LFoxb0','Wild Rose Bush Seed',0.01,50.00),
 	 ('iv51PfUl05i-yvkT4NmD0','Dried Fish Meat',0.20,20.00),
-	 ('ixHy7ltVKiuxGFxCgCSaN','Basic Shirt',0.25,300.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('ixHy7ltVKiuxGFxCgCSaN','Basic Shirt',0.25,300.00),
 	 ('iYx_UHOcR0n6HwDdIvxd9','Medium Wicker Basket',0.80,5.00),
 	 ('j2cRvBJPUnu6__jrCYqdo','Wooden Deer Figurine',0.10,30.00),
-	 ('j2kIOHk8nB8C7I2UVnIIO','Wooden Spear',1.50,4.00),
+	 ('j2kIOHk8nB8C7I2UVnIIO','Wooden Spear',1.50,4.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('j5AEnN5HLK7RhzHQF-KJx','Cheese',0.20,50.00),
 	 ('jAr_9pgDjR8anHPpDeiaV','Wooden Round Shield',0.50,150.00),
 	 ('JazCZWFqVwVK_0SY5Uc1w','Waterskin with Water',0.50,32.00),
 	 ('jb2zVBAgkU0Hba4WRHTnK','Chicory',0.01,0.40),
 	 ('JEBnxI1IsnQxfqFJ-OhmO','Bronze Knife',0.75,300.00),
 	 ('JEsJLKiuFwN3Ur1keq_jU','Bronze Arrow',0.03,32.00),
-	 ('JHehe7behrWnXXL7Wvs-D','Fish Meat',0.20,10.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('JHehe7behrWnXXL7Wvs-D','Fish Meat',0.20,10.00),
 	 ('JhqhqqudUB3ALwKXHndcI','St. John''s Wort',0.01,0.50),
 	 ('jIjtJdtzl7hi180Ua53CW','Simple Small Backpack',0.50,210.00),
-	 ('jjHeyoNaN9naZU_2a7wM9','Drinking Horn',0.50,750.00),
+	 ('jjHeyoNaN9naZU_2a7wM9','Drinking Horn',0.50,750.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('jJwKrp75Jz2FxjNXH4pP4','Berry Wine',1.00,60.00),
-	 ('JKwy6qItbseUjMt8NEa2y','Bronze Maze',1.50,340.00),
-	 ('JkxcZB_m4DPITN-sybsSL','Fur Hood',0.35,370.00),
+	 ('JKwy6qItbseUjMt8NEa2y','Bronze Mace',1.50,340.00),
 	 ('Jl3Kk0-c1AFB3_aqja2D3','Boots',0.25,280.00),
 	 ('Joolq97aGDKwVc6irloTb','Beer Bottle',0.30,6.00),
 	 ('jsf0wVbKdnEJjM91QuWzo','Moose Skull',4.00,20.00),
-	 ('jSUalTcezNcG9-Nb4FX6T','Scrambled Eggs',0.20,7.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('jSUalTcezNcG9-Nb4FX6T','Scrambled Eggs',0.20,7.00),
 	 ('jzxiOFNOFdZjdLhpCIfo0','Fine Hood',0.40,630.00),
 	 ('K0Ui4zWZkRrJdbl0ciMle','White Bread',0.40,18.00),
 	 ('k4A3FvdhIXLDdtEOKoxfJ','Bolete Mushroom',0.10,0.60),
-	 ('kCgnHIqKWn286BgAFRkbh','Longbow',1.50,370.00),
+	 ('kCgnHIqKWn286BgAFRkbh','Longbow',1.50,370.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('KgiB-JKHod5hhQVOg54dl','Bucket of Milk',4.00,68.00),
 	 ('Kjsv2GTvJNWfOn7suDuDP','Fertiliser',0.50,4.00),
 	 ('Kkk3t9Iy5STnAUrrrEN9w','Excellent Coif',1.00,1440.00),
 	 ('kmPR0mof-ARnyAULbvHH9','Basic Hat',0.20,160.00),
 	 ('kMToUQxBTcqvtq-01KDrc','Bronze Hammer',2.00,290.00),
-	 ('KQ2ijEwgAJ4tyF74rypGh','Manure',0.25,0.90);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('KQ2ijEwgAJ4tyF74rypGh','Manure',0.25,0.90),
 	 ('Kr5KxbnUi_Rn9dEkq1tRD','Cherry Wine',1.00,310.00),
 	 ('KteHULr8ZquENSdfig4Br','Lunula',0.10,750.00),
 	 ('KWgctw8BuwCqYpGK9cBHH','Ash',0.01,0.20),
-	 ('l1D8hPc8Q52UphbPUq-3H','Amber Necklace',0.07,500.00),
+	 ('l1D8hPc8Q52UphbPUq-3H','Amber Necklace',0.07,500.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('l1j8UBV17gJRd6wWwUIIF','Light Dress',0.60,720.00),
 	 ('L3e1vVNvbra82c00WhjZr','Oat Grain',0.01,4.00),
 	 ('l8jRqMOB88n1kfsVykszy','Bronze Axe',3.50,590.00),
 	 ('l9HXQ9K0BpURcfHibMgG0','Bronze Armour',9.00,2390.00),
 	 ('laq0sMfNtyB1Zed1kmL-Z','Bronze Bolt',0.02,32.00),
-	 ('lKR722z4D8Ku_oaW-VJUG','Iron Armour',7.50,3680.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('lKR722z4D8Ku_oaW-VJUG','Iron Armour',7.50,3680.00),
 	 ('loYlYyyDgfFUxXe4qoYiu','Jewellry Box',1.50,1000.00),
 	 ('LPdG8lJO4nS2bPqMh4A69','Bronze Pickaxe',1.00,150.00),
 	 ('LsAlSgvtLYux0PmAhKT7b','Fine Hose',0.40,810.00),
-	 ('lSLGNQL2BN9iX5-fmZjFj','Short Sleeve Tunic',0.45,320.00),
-	 ('luICE5JbShi25BlhDa5rO','Trousers with Cuffs',0.35,220.00),
-	 ('Lwf_FcAftORU3QSNPUyvK','Bronze Hoe',3.00,590.00),
+	 ('Lwf_FcAftORU3QSNPUyvK','Bronze Hoe',3.00,590.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('m9xIX13-Fi3sYGwXTyBAH','Stone Arrow',0.03,3.00),
 	 ('Mfb-kS1HGSUi5jH1_I3GZ','Bronze Sword',1.50,290.00),
 	 ('mFVYmzqld6j4e_tS9hybN','Bronze Dagger',0.50,150.00),
-	 ('mgVrz9LG1hZlZzWWWNXGf','Rye',0.06,6.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('mgVrz9LG1hZlZzWWWNXGf','Rye',0.06,6.00),
 	 ('mJbFCOE0mEbsdcSBWWqgK','Coverlet',0.20,500.00),
 	 ('MlsSrQmEmWYp4troa7r4c','Rich Gloves',200.00,840.00),
 	 ('MpOo2lHSpbq-_Z-1UWnwU','Spruce Bark',0.01,0.20),
 	 ('MQUlDlhWeugBQI2XgyjTe','Clay Vase with Henbane',0.50,6.00),
 	 ('mWAA53hIkB2EAyNxev2pp','Poisoned Stone Arrow',0.03,8.00),
-	 ('MXBpB2ML4o8rA3R0QsXc6','Clay Vase with Thistle',0.50,6.00),
-	 ('n8FMZGE9vMDo_QRtlOicl','Long Fur Hood',0.40,520.00),
+	 ('MXBpB2ML4o8rA3R0QsXc6','Clay Vase with Thistle',0.50,6.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('nADnk5nTwDAeqbpo-pSNO','Salted Fish Meat',0.20,23.00),
 	 ('nbxnz_hvE1S96LcPsAOLf','Stone Hoe',2.50,9.00),
-	 ('NcoLc4dJgR-5XnH-XxRNn','Winter Trousers',0.35,150.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('NcoLc4dJgR-5XnH-XxRNn','Winter Trousers',0.35,150.00),
 	 ('NCPAZdQXeJTykPbfBsy6r','Folding Scales',1.00,1000.00),
 	 ('nd7UnJbbuAC2SGQ_YMGEH','Winter Bracers',0.15,70.00),
 	 ('nDxYS8eqhe7HWu7GwTrB2','Perfume',1.00,500.00),
 	 ('Nk1Pn5g2xpff3RlnnE8cM','Oat',0.06,6.00),
 	 ('nLO8I04xGfD424Z7EIFju','Wicker Crate',1.60,11.00),
 	 ('nLon-iJwFg_RyQJkRTtUA','Plum Juice',1.00,130.00),
-	 ('Nmm02_rWeiG2gqu4YLi3o','Stone Axe',2.50,7.00),
+	 ('Nmm02_rWeiG2gqu4YLi3o','Stone Axe',2.50,7.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('NnBYa7tcxG2Qd46lCIX8G','Rag Doll',0.15,60.00),
 	 ('npWQAUSuPUf9urLpthkjJ','Daub',0.50,1.00),
-	 ('NS-ZhTJIvEwZZyOZCgOWG','Elite Shield',0.50,1260.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('NS-ZhTJIvEwZZyOZCgOWG','Elite Shield',0.50,1260.00),
 	 ('nV8ZSNyOtsOaNPYpCcNmu','Pear Wine',1.00,240.00),
 	 ('nWWaaD2yCzcKXcFdIQdnD','Clay Vase',0.50,3.00),
 	 ('NyOvwbK41-RzHk8gSywKa','Large Saddlebag',4.00,1160.00),
 	 ('o_RvT8J41tF4VwvGbzBNo','Fine Hat',0.10,740.00),
-	 ('o3HhgdTvlHEBnbE-0hsTl','Linen Shirt',0.25,270.00),
 	 ('o3HuQitoxKJ6LEt27Y4uL','Poppy',0.05,6.00),
 	 ('O6h3ER-GRChFwQkodtLcW','Poisoned Bronze Arrow',0.03,70.00),
-	 ('O9hxUgnCTodBpZniktf20','Fur',0.25,4.00),
-	 ('OaaXEABAi7WxopguMA_aN','Clay',0.50,0.40),
-	 ('OEhM8MNUjDbHL7He2Lejy','Carrot',0.10,2.00);
+	 ('O9hxUgnCTodBpZniktf20','Fur',0.25,4.00);
 INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('OaaXEABAi7WxopguMA_aN','Clay',0.50,0.40),
+	 ('OEhM8MNUjDbHL7He2Lejy','Carrot',0.10,2.00),
 	 ('Oj5_CYcnL7PfluaSh4grX','Bronze Bracers',3.00,810.00),
 	 ('OokryGYiPuX4VROBjKYIL','Pouch',0.50,180.00),
 	 ('oR8o6XyfzjgB-kkKtSoxd','Ornate Toolbox',1.00,1000.00),
@@ -338,10 +318,10 @@ INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('Ou0CIJjRJH09yjSseKvYo','Noble Dress',0.70,1410.00),
 	 ('p16cKaa2zDttuCoh_Xz6e','Iron Hammer',2.00,430.00),
 	 ('P1GkBuPAc4FOHJMUE67B4','Copper Axe',3.00,220.00),
-	 ('p2KOJOKJDX63Ib-YnDzfD','Small Pouch',0.25,70.00),
-	 ('P5qHryaPXIUH5OEhWqxHf','Elite Mace',0.80,890.00),
-	 ('pbvoSwfNJ9ER-jqgiLCzq','White Flowering Shrub Seed',0.01,50.00);
+	 ('p2KOJOKJDX63Ib-YnDzfD','Small Pouch',0.25,70.00);
 INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('P5qHryaPXIUH5OEhWqxHf','Elite Mace',0.80,890.00),
+	 ('pbvoSwfNJ9ER-jqgiLCzq','White Flowering Shrub Seed',0.01,50.00),
 	 ('PCLpbDg4qWSBioekpiGO8','Log',5.00,1.00),
 	 ('PI6n-C05FTk3_g8vSk-UA','Bag',0.50,190.00),
 	 ('pKfa6NT1ITz-Nq-O6TQ06','Iron Battle Axe',0.80,380.00),
@@ -349,10 +329,9 @@ INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('PQqGNSl9eyOgq2uw5SK9q','Glass Beads',0.07,500.00),
 	 ('pS54vePAtmuohSkLQjGJi','Hard Soap',0.20,500.00),
 	 ('PTBA6CebeMMowoDsZx0JS','Copper Arrow',0.03,14.00),
-	 ('pVXYmFQjj3rlQJJ4ri2J7','Sesame-honey Bar',0.15,500.00),
-	 ('PxqUMNsu704kwpBeDsfp9','Joined Hose',0.50,460.00),
-	 ('PZ4ike5DW4rJdhsdU18fY','Thistle',0.01,0.70);
+	 ('pVXYmFQjj3rlQJJ4ri2J7','Sesame-honey Bar',0.15,500.00);
 INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('PZ4ike5DW4rJdhsdU18fY','Thistle',0.01,0.70),
 	 ('qaLSYiqwdsa-ML4k4cyGV','Wool Thread',0.50,70.00),
 	 ('QAUGRRM3ZnWKmsNID0Xu7','Multigrain Bread',0.40,50.00),
 	 ('QEl7Jfk_9hkynrFIugGAE','Dried Dates',0.06,750.00),
@@ -360,7 +339,6 @@ INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('QjMdrAb7ctCyGTpkdNssp','Wooden Vial',0.10,0.40),
 	 ('qK84GUFrFXUI5RE24q9qq','Light Hat',0.15,680.00),
 	 ('QkysZczs3T06ZmDurbLaV','Onion',0.10,3.00),
-	 ('qlJCfQ4ZJfJyajxvZnklB','Hat with Lapels',0.10,380.00),
 	 ('QmvAkZ-Rmws72-jFeT6sw','Green Shrub Seed',0.01,50.00),
 	 ('QnqJABFnXcNkvh0rvD5zn','Bronze Kite Shield',0.50,660.00);
 INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
@@ -382,11 +360,10 @@ INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('RkI2vgpPOAEFVY-itxS2z','Animal Feed',0.20,16.00),
 	 ('rQEL78UaQwH-ghOxgyIXh','Wooden Wolf Figurine',0.10,30.00),
 	 ('RQlC2e4J5juNsT3u7J9T5','Spruce Seedling',1.00,30.00),
-	 ('rtxLxJgzvFUWPJ0Zfp1fN','Cap',0.05,230.00),
 	 ('rUk4Ht28P__1tOPEnXjve','Iron Spear',2.00,610.00),
-	 ('s-bpl_WpbmgRJSktuW05h','Thin Gloves',0.50,220.00);
+	 ('s-bpl_WpbmgRJSktuW05h','Thin Gloves',0.50,220.00),
+	 ('s3g0jgSgUm01nUqMthDsI','Bronze Pick',2.00,340.00);
 INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
-	 ('s3g0jgSgUm01nUqMthDsI','Bronze Pick',2.00,340.00),
 	 ('S43EJhsr315BNokB2TJBP','Clay Vase with Dandelion',0.50,6.00),
 	 ('S7o6A0_Jf4rCbF1MOoh7d','Fine Tunic',0.50,550.00),
 	 ('SdbmORcivOtuROmPq3WSu','Maple Seedling',1.00,40.00),
@@ -395,96 +372,87 @@ INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('Slv_4uS1qo3R7KCYbbX1f','Wooden Bowl',0.20,0.80),
 	 ('SoXCUD1J1e7dNbYkUHq0N','Stone Sickle',0.75,6.00),
 	 ('ss8mTjeUXAktlW0esjNyg','Excellent Collar',2.00,2880.00),
-	 ('svZyqmS7I-97hJazddENY','Bronze Sickle',1.50,300.00);
+	 ('svZyqmS7I-97hJazddENY','Bronze Sickle',1.50,300.00),
+	 ('SzDrITmHhXumyLnixvZaH','Wooden Bolt',0.02,3.00);
 INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
-	 ('SwmkCkcsRy8hoJVA27HKu','Straw Hat',0.20,120.00),
-	 ('SzDrITmHhXumyLnixvZaH','Wooden Bolt',0.02,3.00),
 	 ('SziSfJKF_xCnZ4WKyuLkF','Gruel',0.20,17.00),
 	 ('T2AowouQv2gBUz4PdKNQo','Roasted Fish Meat',0.20,19.00),
 	 ('t2zDEf4mDukCJxOWKvrqH','Winter Coat',0.60,210.00),
 	 ('Ta2SFwCgVZK4OEHwB4U-c','Wheat Roll',0.20,20.00),
 	 ('tAt3sdQrt1qMKVq17afYR','Potion of Health',0.20,60.00),
-	 ('tBhMIOJ_1eSmAAT3aML-I','Long Hood',0.40,480.00),
 	 ('tcIq33GkZm69Fm3fPxlG6','Clay Vase with St. John''s Wort',0.50,6.00),
-	 ('TDl5mzvJxxamXqq92qAHk','Cloak Brooch',0.10,750.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('TDl5mzvJxxamXqq92qAHk','Cloak Brooch',0.10,750.00),
 	 ('tGGGFKbUEvJzo4SkfvjY5','Decorated Beer Mug',0.50,1000.00),
 	 ('tGOU-o3sTLH185T4E9-0Z','Potion of Strength',0.20,8.00),
-	 ('tiq9ff1tB363gxV5j66Tb','Wooden Crossbow',2.00,360.00),
+	 ('tiq9ff1tB363gxV5j66Tb','Wooden Crossbow',2.00,360.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('tnG2TN5orSBG1nAw_MZIr','Fly Agaric Mushroom',0.10,0.60),
 	 ('TnWCu3Dg3JewQ1vvFBNzw','Soup',0.75,39.00),
 	 ('ToToLX5zrlcbm7kKPqfXW','Potion of Possibilities',0.20,470.00),
 	 ('trMZATJguOwyuR6PaNHxQ','Bow',1.25,170.00),
 	 ('tsAVvwCiBzONKxFEfglwV','Wool',0.10,5.00),
 	 ('tT3AQEbpS2aQwXnEfW31n','Rich Hood',0.40,1310.00),
-	 ('TXGEH56O2icilxVWHajGd','Plum',0.07,3.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('TXGEH56O2icilxVWHajGd','Plum',0.07,3.00),
 	 ('TXnqLz4GWvzo9XaKiQTVg','Flour',0.01,4.00),
 	 ('TYGsK96_Q3hdsVpiLh0tV','Decolouriser',1.00,25.00),
-	 ('TymNh52K6J5nNOXx5Hqh5','Bucket',2.00,8.00),
+	 ('TymNh52K6J5nNOXx5Hqh5','Bucket',2.00,8.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('U0c9sgbNBzrf7K1i4L391','Winter Shoes',240.00,0.25),
 	 ('U2cGaYy_r5Bea80ix4BqB','Winter Cap',0.20,100.00),
 	 ('UA8BQCakzO6gIrmjiWvup','Dice Set',0.20,750.00),
 	 ('UCHSsU8_3RqMuguZ9jMVF','Warm Gloves',0.15,420.00),
 	 ('udPIinYK1lInQmeGEepxL','Iron Arrow',0.03,50.00),
 	 ('UFjVs_uqQgDcLs2u5-B37','Bronze Helmet',3.00,790.00),
-	 ('ufJYtQ30R6E8HGlbbWd4Z','Bag Hat',0.20,600.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('UFS9AQk0dVpgt6bzmVV1Z','Iron Shearing Scissors',1.00,210.00),
 	 ('UgI_LdKRVh_REWrFRhPyl','Flatbread',0.20,9.00),
 	 ('UMnifYSVhqvfmGau3iKFh','Iron Greaves',2.50,1190.00),
-	 ('UVk0-FQYzf4-n34bHsgqp','Yellow Dye',0.10,40.00),
+	 ('UVk0-FQYzf4-n34bHsgqp','Yellow Dye',0.10,40.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('UzL7oNDJi9yqOwwr0gmz4','Mushroom Soup',0.20,11.00),
 	 ('v-1V3kiIPFRfFjyzg9ES2','Oat Beer',1.00,150.00),
 	 ('v19lFFNQp7phnjPzd06Eb','Hand Fan',0.60,500.00),
 	 ('v1x0Fc-mN25sC4rkYSpE0','Pear Tart',0.30,80.00),
 	 ('V6P1emphzig8CI6yIoPDN','Hand Lantern',0.50,320.00),
-	 ('vBQeLhUUfexWQ-v4NM2rv','Clay Vial',0.20,20.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('vBQeLhUUfexWQ-v4NM2rv','Clay Vial',0.20,20.00),
 	 ('vcIu4FD6oWHUUaJb6hItJ','Elite Armour',6.00,6050.00),
 	 ('Vg6HutKpkvpdYMtng-e2l','Stone Pickaxe',3.00,7.00),
 	 ('VGIrvuvRmcGfnRGcysExE','Fish Tart',0.30,140.00),
-	 ('Vi4-HFBp5n6ZyCDPahw-S','Snowball',0.03,0.00),
+	 ('Vi4-HFBp5n6ZyCDPahw-S','Snowball',0.03,0.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('vJkDvI2iI8ch0feIH1ufF','Yellow Flowering Shrub Seed',0.01,50.00),
 	 ('vP_AWh5KKlxLGOIIO9DJ6','Onion Seed',0.01,5.00),
 	 ('VrCpKy4_cXKvVYM0AnwOH','Clay Vase with Daisy',0.50,6.00),
 	 ('vT3xd0fTkfQCeDK3u4Gnu','Iron Ore',1.00,17.00),
 	 ('VUTmgOuYaLFgprta4pP4C','Iron Helmet',2.50,1170.00),
-	 ('vvQ42pvI2h54s9w8wINJe','Glass Bottle',1.10,750.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('vvQ42pvI2h54s9w8wINJe','Glass Bottle',1.10,750.00),
 	 ('VZMwcEsQeVwEViKQGWp8l','Incense',1.00,750.00),
 	 ('w36VUjM0JGBCsA8661LaN','Cerry Tree Seedling',1.00,17.00),
 	 ('w3bYY8RN62qkx9Lvxtx6S','Cudgel',1.50,4.00),
-	 ('WcrRlAnv_eZDQv6JsoOxS','Bronze Scythe',4.00,590.00),
-	 ('WJh41khhktCHasBUOKj08','Hose',0.40,370.00),
+	 ('WcrRlAnv_eZDQv6JsoOxS','Bronze Scythe',4.00,590.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('WJHFLU30qdpmYQ3lu8y7K','Salt',0.40,7.00),
-	 ('WM7zlR8x-Ie_l7XVXQQrC','Flat Straw Hat',0.15,130.00),
 	 ('WMEiVJXFY0kwTgzOTEgjU','Rich Hat',0.15,1410.00),
 	 ('wNsMMGWmFb-YyABFw6khw','Copper Hammer',2.00,110.00),
-	 ('WqbQtXOWEHbCYJR0hxVOV','Oat Roll',0.20,18.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('WqbQtXOWEHbCYJR0hxVOV','Oat Roll',0.20,18.00),
 	 ('WRkRzx6jCpr3BCfZIyOZT','Copper Sickle',1.00,120.00),
 	 ('WV45e6Jo-G8CIz9M1nUq_','Wooden Hammer',1.00,9.00),
 	 ('wYC3E8JO_l8rkY3hNZxty','Rich Boots',0.50,1800.00),
 	 ('X7H7T98M_mTDtH2BuVkd0','Poisoned Copper Arrow',0.03,26.00),
 	 ('x8qGBZtiDEU4HcuMkwH8b','Deadly Nightshade',0.01,0.70),
-	 ('xBENAQ1ohcfdAewyNRYq4','Wine Bottle',0.30,6.00),
-	 ('xcAz8U_5HwrMorFV5OEj7','Fur Shoes',0.25,170.00),
+	 ('xBENAQ1ohcfdAewyNRYq4','Wine Bottle',0.30,6.00);
+INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('xjiLwS2eSVIhc25lCsTap','Iron Pickaxe',5.00,880.00),
 	 ('xKy8Z3-exMImUpexsliCu','Apple Tree Seedling',1.00,13.00),
-	 ('xmpusveIbQiPlmyXIjsUj','Meat Pie',1.00,110.00);
-INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('xmpusveIbQiPlmyXIjsUj','Meat Pie',1.00,110.00),
 	 ('XQYPeIYMeLCNIny-a-WsM','Porridge with Berries',0.25,28.00),
 	 ('xtZn0KFAIDV2CY6qxPPY3','Clay Vase with Chicory',0.50,6.00),
 	 ('XUDj-xs9jPb7KCJEUwe4Y','Spiked Cudgel',2.00,60.00),
 	 ('Xv35EQhVqNed4EP8o5rA-','Honeycomb',0.10,10.00),
 	 ('XxVdkTKTen3Az0qwPxaLB','Iron Shovel',3.00,860.00),
-	 ('Y3yTVJ2XiakDlM2cbwfQS','Hat',0.10,320.00),
 	 ('y73TsBxoMSxHb4mpH_ljX','Iron Sword',1.25,410.00),
-	 ('y9RfSBkTWuh-r4UIRFaSO','Henbane',0.01,0.70),
-	 ('yc8IEbQfIadINSVjKKxfz','Simple Bag',0.15,14.00),
-	 ('ydV0SPMiBiljnLFqQOY24','Iron Spiked Cudgel',2.00,180.00);
+	 ('y9RfSBkTWuh-r4UIRFaSO','Henbane',0.01,0.70);
 INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
+	 ('yc8IEbQfIadINSVjKKxfz','Simple Bag',0.15,14.00),
 	 ('YO-AIcztoq1jDuRVVwG-R','Apple Wine',1.00,140.00),
 	 ('yRX5TQrbRzQUtF-ntyfHC','Plum Tart',0.30,100.00),
 	 ('Ys5HkBVWA_dPDmNNeZwoh','Basic Trousers',0.30,300.00),
@@ -493,10 +461,9 @@ INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
 	 ('Z_jwHsnGncfLsFYfCZwhw','Iron Knife',0.75,440.00),
 	 ('Z3k_G4lL3XPsMFmGLUsfL','Bronze Legwear',6.00,1570.00),
 	 ('z6JqNsWRCjtzCHUw2gNfr','Simple Backpack',1.00,380.00),
-	 ('ZC3GL_Zpz7hi25nLrxTGq','Copper Spear',2.00,200.00),
-	 ('zCAS-CYNi7l8RB8_I_LSR','Iron Mace',1.00,410.00);
+	 ('ZC3GL_Zpz7hi25nLrxTGq','Copper Spear',2.00,200.00);
 INSERT INTO cml_dev_db.items (id,name,weight,cost) VALUES
-	 ('ZdjkUhEOwnrd7dz5kTJFW','Simple Linen Shirt',0.25,200.00),
+	 ('zCAS-CYNi7l8RB8_I_LSR','Iron Mace',1.00,410.00),
 	 ('zdL0Y8lIiAY6qYTC0XgyH','Elite Greaves',2.00,2000.00),
 	 ('ZDZgcFcxQb_r46dSOKtO9','Potion of Weight',0.20,37.00),
 	 ('zFlRLqo3yITIOR63-LTXe','Beetroot Seed',0.01,5.00),

@@ -5,13 +5,15 @@ INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('F8QdcEwvuwyq2qHz4nSWX','-g-3azY7LAdHVx1TWsqa2',1.00),
 	 ('wHMEpBXEieoy-5LlErOa6','-NtszDTnxHdD-H2oKfnAH',1.00),
 	 ('2V_8S_VYK71SLjgHeZr7z','-OTuKYF9kfI-7m-37EwLN',10.00),
+	 ('jqRzBMclKj16qSJqi9XFp','-OTuKYF9kfI-7m-37EwLN',40.00),
 	 ('kVaGYigglPPszExmAnNNa','-OTuKYF9kfI-7m-37EwLN',9.00),
 	 ('o1yrRcAuC_0Sh-WqfJ3eO','-OTuKYF9kfI-7m-37EwLN',5.00),
+	 ('pv4qhfSYuJP0sE_fkf-ar','-OTuKYF9kfI-7m-37EwLN',20.00),
 	 ('-TEe5UcBsyeWHGjscWFMI','0n_Rj8enHx2NXBjNggMaS',5.00),
-	 ('0jCLHDCGV-LS7RJbGg8_F','0n_Rj8enHx2NXBjNggMaS',5.00),
-	 ('5zaX7wptkLwdAljf8OYbc','0n_Rj8enHx2NXBjNggMaS',4.00),
-	 ('7BpDBNNJjjluhchfzKwZw','0n_Rj8enHx2NXBjNggMaS',5.00);
+	 ('0jCLHDCGV-LS7RJbGg8_F','0n_Rj8enHx2NXBjNggMaS',5.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('5zaX7wptkLwdAljf8OYbc','0n_Rj8enHx2NXBjNggMaS',4.00),
+	 ('7BpDBNNJjjluhchfzKwZw','0n_Rj8enHx2NXBjNggMaS',5.00),
 	 ('ar_GfpBE_WZ5vwFPOFBss','0n_Rj8enHx2NXBjNggMaS',4.00),
 	 ('CrZO7y70BIfMlHEvJFxdk','0n_Rj8enHx2NXBjNggMaS',4.00),
 	 ('cTPsOAZozws7XxPwKPrJK','0n_Rj8enHx2NXBjNggMaS',4.00),
@@ -19,10 +21,10 @@ INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('k6ZzBGBHVCW2UHuQRneYv','0n_Rj8enHx2NXBjNggMaS',4.00),
 	 ('KDLxhTLUWiWynqz-Harz4','0n_Rj8enHx2NXBjNggMaS',5.00),
 	 ('lHg1yMEc8-vONJ14pwtv2','0n_Rj8enHx2NXBjNggMaS',4.00),
-	 ('ohMOBv48lXHI0B3t0JRWR','0n_Rj8enHx2NXBjNggMaS',3.00),
-	 ('WlW_NmtMVz1kgxEsF9XEV','0n_Rj8enHx2NXBjNggMaS',3.00),
-	 ('CqG6_ROn52zvhPfpF7Vis','0sgBt-iKqmAL35sMSP0D_',1.00);
+	 ('ohMOBv48lXHI0B3t0JRWR','0n_Rj8enHx2NXBjNggMaS',3.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('WlW_NmtMVz1kgxEsF9XEV','0n_Rj8enHx2NXBjNggMaS',3.00),
+	 ('CqG6_ROn52zvhPfpF7Vis','0sgBt-iKqmAL35sMSP0D_',1.00),
 	 ('9aA8GmA65R31FfhbQiJFl','2tyJ8nWA8h9hApuIa5pSR',4.00),
 	 ('bxfax6TN53YF3O_6OY4gT','2tyJ8nWA8h9hApuIa5pSR',5.00),
 	 ('j5qoxFgO0dtAeAfGfhnOT','2tyJ8nWA8h9hApuIa5pSR',5.00),
@@ -30,56 +32,230 @@ INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('xL-zLlZZVMNUaJbKVCSId','2tyJ8nWA8h9hApuIa5pSR',1.00),
 	 ('ohMOBv48lXHI0B3t0JRWR','2zfEsnzIHVM1fMKrN3dGy',3.00),
 	 ('shGJh3m5zq22m95ahNkrF','2zfEsnzIHVM1fMKrN3dGy',3.00),
+	 ('tok-vdXADyS70E0-PAuTq','3juLyhoKeYcAaxPYycqFP',2.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('-YkD6E1C18wsqMlzQa9Gu','3wuJPnxZHhLtRmLszej0D',2.00),
+	 ('0Hjhgq7fj9YQ9RFnGMejx','3wuJPnxZHhLtRmLszej0D',2.00),
+	 ('1b7raLzAVzwj4_2equ0KQ','3wuJPnxZHhLtRmLszej0D',4.00),
+	 ('58tQ-EWQApE_djxy-Hw48','3wuJPnxZHhLtRmLszej0D',2.00),
+	 ('Aiwxw-grJ67RD3rxG86hj','3wuJPnxZHhLtRmLszej0D',2.00),
+	 ('AUsYJJXy0Wdnbh0VFMOjq','3wuJPnxZHhLtRmLszej0D',4.00),
+	 ('bWfisXrhxGeC9XkJ4Bjhw','3wuJPnxZHhLtRmLszej0D',4.00),
+	 ('EFur6V73OINJF7BGpNx3M','3wuJPnxZHhLtRmLszej0D',2.00),
+	 ('gbIkaViR4a3M69tMVIZow','3wuJPnxZHhLtRmLszej0D',6.00),
+	 ('hKi0r5l3Jw-puT-r1qwU9','3wuJPnxZHhLtRmLszej0D',2.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('Hm3NHCQjNv_5tzv6VycEH','3wuJPnxZHhLtRmLszej0D',1.00),
+	 ('i-23yD_2lhDLSNkf51iLW','3wuJPnxZHhLtRmLszej0D',3.00),
+	 ('Ic3gAuQ8gy2rjvkOi9VEu','3wuJPnxZHhLtRmLszej0D',1.00),
+	 ('iN23ewLQqtN2uR3DeoXdu','3wuJPnxZHhLtRmLszej0D',3.00),
+	 ('JczsjPzpYMRhu5a5hqdvh','3wuJPnxZHhLtRmLszej0D',2.00),
+	 ('jNAmgwHMWwL8Xd1MsVxtf','3wuJPnxZHhLtRmLszej0D',1.00),
+	 ('JnNyxadvY7TptZwYuHedE','3wuJPnxZHhLtRmLszej0D',2.00),
+	 ('QoymuXGQTu7rbeV8kD1MD','3wuJPnxZHhLtRmLszej0D',1.00),
+	 ('S1vmW1BY_EYOvPH2HyeiE','3wuJPnxZHhLtRmLszej0D',2.00),
+	 ('SNCSaxioNAkwBlptlaTjh','3wuJPnxZHhLtRmLszej0D',3.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('TkAPyQd_wdm-zY0skS4Is','3wuJPnxZHhLtRmLszej0D',9.00),
+	 ('U4tl3MZx3_YVSuvKPxSer','3wuJPnxZHhLtRmLszej0D',1.00),
+	 ('VCCuJi2D-dD5Gvm-Lzial','3wuJPnxZHhLtRmLszej0D',2.00),
+	 ('vSRUJvGsUrXykTyVOLpvs','3wuJPnxZHhLtRmLszej0D',1.00),
+	 ('xUYSFWICL-4kFRmUJ8sZs','3wuJPnxZHhLtRmLszej0D',3.00),
+	 ('XwyX1V5exaocyI6aJ6Ne0','3wuJPnxZHhLtRmLszej0D',3.00),
+	 ('-6EApLhLr8sRBQDIVrwNM','4MhbZi-tbt4svdgXUGUH7',1.00),
+	 ('1kxaCabrXc9EmTrYzH2OX','4MhbZi-tbt4svdgXUGUH7',1.00),
+	 ('4Js5AGUZegPNdsJT-olUy','4MhbZi-tbt4svdgXUGUH7',1.00),
+	 ('9-rkBrMkQ16CbJvqdnaxL','4MhbZi-tbt4svdgXUGUH7',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('9qNsL87Y5XyzXR6iBsJdi','4MhbZi-tbt4svdgXUGUH7',3.00),
+	 ('AIlgI4FQPXnrv82pD7vx8','4MhbZi-tbt4svdgXUGUH7',3.00),
+	 ('dtlVV5T4j8ZjUfze5khpe','4MhbZi-tbt4svdgXUGUH7',1.00),
+	 ('ECfhD6TUazIlPVYF5yUY5','4MhbZi-tbt4svdgXUGUH7',2.00),
+	 ('Fdf66MnsY47Nrz7svPeMZ','4MhbZi-tbt4svdgXUGUH7',1.00),
+	 ('fgWFr5T2yt8amsT_clw80','4MhbZi-tbt4svdgXUGUH7',1.00),
+	 ('ftKWdSRQ19DSbjJCMTnDS','4MhbZi-tbt4svdgXUGUH7',1.00),
+	 ('gje0yquygj01qsIgBMamH','4MhbZi-tbt4svdgXUGUH7',1.00),
+	 ('Gml9iThacrIOIPU3utDgo','4MhbZi-tbt4svdgXUGUH7',1.00),
+	 ('Hih-16GLSrHeJ9cvXOSYj','4MhbZi-tbt4svdgXUGUH7',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('i7Ykk7C_aII5fBoE0m26E','4MhbZi-tbt4svdgXUGUH7',1.00),
+	 ('J-IUCTXiYSdoHsuIhESa5','4MhbZi-tbt4svdgXUGUH7',1.00),
+	 ('LgipeWKuAJrAh6wZjsm-9','4MhbZi-tbt4svdgXUGUH7',2.00),
+	 ('r7jBxAypaBaBLY_qPUmo_','4MhbZi-tbt4svdgXUGUH7',2.00),
+	 ('TjM_uY51lOJL4c1636-kw','4MhbZi-tbt4svdgXUGUH7',9.00),
+	 ('UF_ubVlwKLBbFfzs9CTER','4MhbZi-tbt4svdgXUGUH7',1.00),
+	 ('uhP2gV492dn7EHGzk3974','4MhbZi-tbt4svdgXUGUH7',2.00),
+	 ('UvX2iCShEbUKZ0E0TyNgG','4MhbZi-tbt4svdgXUGUH7',3.00),
+	 ('vmKd5-wUHM8-u-3KrvFTA','4MhbZi-tbt4svdgXUGUH7',6.00),
+	 ('YWaHF2Z5w4nHJuYNnQI6-','4MhbZi-tbt4svdgXUGUH7',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('7Yw0MslwsBDdnsG5___6-','4RevAeOcwPyPyJljr8zk5',3.00),
 	 ('cqixX6tcXjFv6NWBhxkbf','4RevAeOcwPyPyJljr8zk5',2.00),
-	 ('dMdL9eMTr_EBIuw_ZbHoG','4RevAeOcwPyPyJljr8zk5',3.00);
+	 ('dMdL9eMTr_EBIuw_ZbHoG','4RevAeOcwPyPyJljr8zk5',3.00),
+	 ('_meELw9PjhesKXUkoZmBN','4u-krm_XlrTfdjpYS7ljc',2.00),
+	 ('4o_hwpSHaSCPK51QpAN8x','4u-krm_XlrTfdjpYS7ljc',2.00),
+	 ('9FLbX2iax6w_mPdZt60LY','4u-krm_XlrTfdjpYS7ljc',2.00),
+	 ('a4bbUoXn-qoASf82-sXiM','4u-krm_XlrTfdjpYS7ljc',2.00),
+	 ('ANN6m-EInM5WhVNatr9Ue','4u-krm_XlrTfdjpYS7ljc',4.00),
+	 ('DBejTxC0GFctBDiaOo1Sf','4u-krm_XlrTfdjpYS7ljc',4.00),
+	 ('ESmBbm9EBq0NijStLlVs_','4u-krm_XlrTfdjpYS7ljc',2.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
-	 ('Pf_ylAMvYfUkSHWfhS2Fp','4u-krm_XlrTfdjpYS7ljc',1.00),
-	 ('8hQl0htwpSdJi7SdzaDAe','4XCAe6xzdziQdPOBbhwN5',1.00),
+	 ('F6ytQeh0_LfzJMmyZ3XbW','4u-krm_XlrTfdjpYS7ljc',4.00),
+	 ('fFFAwFHqe8shqcu38udoF','4u-krm_XlrTfdjpYS7ljc',1.00),
+	 ('FPb6RhNWSQfM3DBO4_GNi','4u-krm_XlrTfdjpYS7ljc',9.00),
+	 ('Fxi6kiaLzZnsKLnVmqvvl','4u-krm_XlrTfdjpYS7ljc',6.00),
+	 ('GQp75sVFWP7ghXrb25LJw','4u-krm_XlrTfdjpYS7ljc',4.00),
+	 ('H8y6v617nR0pvFROmY_Us','4u-krm_XlrTfdjpYS7ljc',12.00),
+	 ('HO1enskktZ-KG_dv0w3Lp','4u-krm_XlrTfdjpYS7ljc',4.00),
+	 ('HZvUCq4zCzfHCdfAZLHf1','4u-krm_XlrTfdjpYS7ljc',9.00),
+	 ('ihEg2i1fP2eu0UYnHbI2c','4u-krm_XlrTfdjpYS7ljc',4.00),
+	 ('Jf73hTaK2J0I7D_EFrwPM','4u-krm_XlrTfdjpYS7ljc',2.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('jpGoIvDkt3E6Y0LaPcHp8','4u-krm_XlrTfdjpYS7ljc',1.00),
+	 ('k_s-ow5uQW3IIH5KiGk5G','4u-krm_XlrTfdjpYS7ljc',2.00),
+	 ('lrmZna6qtYnRSd7SXyiW6','4u-krm_XlrTfdjpYS7ljc',6.00),
+	 ('ncuz9UmblPs5b5t8XMs_h','4u-krm_XlrTfdjpYS7ljc',4.00),
+	 ('o1zUu6-KEqDeoRwYzk4_V','4u-krm_XlrTfdjpYS7ljc',2.00),
+	 ('O8pqEi_f5o2KLMsiqkAK4','4u-krm_XlrTfdjpYS7ljc',18.00),
+	 ('oCda-p-L8HXM-anA-Ri5W','4u-krm_XlrTfdjpYS7ljc',6.00),
+	 ('OE55TWBNrqSOWGis9oqoV','4u-krm_XlrTfdjpYS7ljc',27.00),
+	 ('PCssU5DLHbTmp242kXDRR','4u-krm_XlrTfdjpYS7ljc',2.00),
+	 ('Pf_ylAMvYfUkSHWfhS2Fp','4u-krm_XlrTfdjpYS7ljc',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('Pn-2W5rzsCOh4kk9GvdNK','4u-krm_XlrTfdjpYS7ljc',3.00),
+	 ('rvdYrOA5QbFXQEP7eHJuG','4u-krm_XlrTfdjpYS7ljc',2.00),
+	 ('T4LiK6oM91sZ0rwrs-jNR','4u-krm_XlrTfdjpYS7ljc',4.00),
+	 ('tAeWBKPozjkEZns2BkZ8I','4u-krm_XlrTfdjpYS7ljc',2.00),
+	 ('uQrYXyGG3E2pIpiDg6u4u','4u-krm_XlrTfdjpYS7ljc',2.00),
+	 ('wwf2zINxhhOwp8z6CFI6F','4u-krm_XlrTfdjpYS7ljc',5.00),
+	 ('YLbxVo1BfFmH-7P_UIg2z','4u-krm_XlrTfdjpYS7ljc',18.00),
+	 ('YwMdgPJCZUF9qzktTNXT2','4u-krm_XlrTfdjpYS7ljc',18.00),
+	 ('Z_AGrHkHgoCDzcstwu_wn','4u-krm_XlrTfdjpYS7ljc',9.00),
+	 ('8hQl0htwpSdJi7SdzaDAe','4XCAe6xzdziQdPOBbhwN5',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('eQ5yjhmn0wkK-7BanZ7dv','4XCAe6xzdziQdPOBbhwN5',1.00),
 	 ('pjWhgaHDuLlxZW3TNofsh','4XCAe6xzdziQdPOBbhwN5',6.00),
 	 ('RgK_m177i29vzJU10pQOy','4XCAe6xzdziQdPOBbhwN5',1.00),
+	 ('CnT_HcekLTsKaySX14jpI','529kmEhBrT6bLdJxz78ol',1.00),
+	 ('DoT1RR7vgNfeGoxjUH4Nx','529kmEhBrT6bLdJxz78ol',1.00),
+	 ('hxDf_63UrEHrFwW-mgujc','529kmEhBrT6bLdJxz78ol',1.00),
+	 ('IvMIUHWEn0QUazaRA3JJk','529kmEhBrT6bLdJxz78ol',2.00),
+	 ('qSIhlz_JnUSzc-NykfrDh','529kmEhBrT6bLdJxz78ol',1.00),
+	 ('tBoNCz8hMY5XeZqEftnz1','529kmEhBrT6bLdJxz78ol',1.00),
+	 ('U4tl3MZx3_YVSuvKPxSer','529kmEhBrT6bLdJxz78ol',3.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('wXspJF9mZ62RNDfpY9-39','529kmEhBrT6bLdJxz78ol',2.00),
 	 ('WAKBkRuoer_KV_9ALzSM5','5kEDlj-7RBENXYdDekGpE',1.00),
 	 ('7Yw0MslwsBDdnsG5___6-','5zqPGpQ47lVlrJe2gMmwP',4.00),
 	 ('cTPsOAZozws7XxPwKPrJK','5zqPGpQ47lVlrJe2gMmwP',2.00),
 	 ('DgX8VeYEqHHcBxkQOYtmW','5zqPGpQ47lVlrJe2gMmwP',1.00),
-	 ('I2MiZMbMULDBZxz--JVqg','5zqPGpQ47lVlrJe2gMmwP',2.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('I2MiZMbMULDBZxz--JVqg','5zqPGpQ47lVlrJe2gMmwP',2.00),
 	 ('KoI_z4bCRjq-3lZeEwP5K','5zqPGpQ47lVlrJe2gMmwP',3.00),
 	 ('xtuz65fB99BnWYgjhoOAb','5zqPGpQ47lVlrJe2gMmwP',1.00),
-	 ('DRPY5nZ0jBspUfIJjKAk-','7FqF7krNFjhaDKeGHYco8',2.00),
+	 ('wwXtr0jZsofxUXYKmvrOi','71OkJOE0uXfFQ8J2qe7-n',2.00),
+	 ('DRPY5nZ0jBspUfIJjKAk-','7FqF7krNFjhaDKeGHYco8',2.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('7BpDBNNJjjluhchfzKwZw','7xoX0558PI6r2PBqvH84O',20.00),
 	 ('hAmx5s8darW3pylDk4ym0','7xoX0558PI6r2PBqvH84O',20.00),
 	 ('jjO3RvEOzlksCU6xO8Bsw','7xoX0558PI6r2PBqvH84O',20.00),
 	 ('UPBMKQJYZ18cWB3afBcXZ','7xoX0558PI6r2PBqvH84O',50.00),
 	 ('NFDPDtmARHKkaUs1oxHU2','8n2WKqknrZskPFny7kry_',1.00),
 	 ('pu0KsYxsG5czzpp_5T9ys','8n2WKqknrZskPFny7kry_',2.00),
-	 ('HzobVYStpPpXMt6Np12nG','8OlwzqVchLlLV9GQduiRU',1.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('HzobVYStpPpXMt6Np12nG','8OlwzqVchLlLV9GQduiRU',1.00),
 	 ('shGJh3m5zq22m95ahNkrF','8OlwzqVchLlLV9GQduiRU',3.00),
 	 ('xtuz65fB99BnWYgjhoOAb','8OlwzqVchLlLV9GQduiRU',1.00),
+	 ('_meELw9PjhesKXUkoZmBN','8uWF5BFjosAaH5OOHyqWV',10.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('-8AQarLDRyVwG_PdsAoM-','8uWF5BFjosAaH5OOHyqWV',16.00),
+	 ('-9JdYVYFMr6Kyp0fIonav','8uWF5BFjosAaH5OOHyqWV',5.00),
 	 ('-YCHlF0RHHjxB97ipfwne','8uWF5BFjosAaH5OOHyqWV',10.00),
+	 ('0cSE8vrX1s8lD6mxuvMWu','8uWF5BFjosAaH5OOHyqWV',10.00),
+	 ('0fqqURjAyWfxcCot_Ls-8','8uWF5BFjosAaH5OOHyqWV',5.00),
 	 ('4aPmWruhJIb_ANxNit3C1','8uWF5BFjosAaH5OOHyqWV',10.00),
+	 ('4Js5AGUZegPNdsJT-olUy','8uWF5BFjosAaH5OOHyqWV',10.00),
 	 ('AWKkPs4ndVphmgrMovPkc','8uWF5BFjosAaH5OOHyqWV',2.00),
 	 ('dAYsoV4KqjUbk87g-AyU6','8uWF5BFjosAaH5OOHyqWV',5.00),
-	 ('EqnMTEDFk-nku_DDdQ5UN','8uWF5BFjosAaH5OOHyqWV',5.00),
-	 ('kFXgjyuM02eSv48kIkGqr','8uWF5BFjosAaH5OOHyqWV',8.00),
-	 ('kVaGYigglPPszExmAnNNa','8uWF5BFjosAaH5OOHyqWV',1.00);
+	 ('EqnMTEDFk-nku_DDdQ5UN','8uWF5BFjosAaH5OOHyqWV',5.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
-	 ('Mp_GyowOj9cCpKZwrvqyQ','8uWF5BFjosAaH5OOHyqWV',10.00),
+	 ('Fdf66MnsY47Nrz7svPeMZ','8uWF5BFjosAaH5OOHyqWV',1.00),
+	 ('H-6tiyPEsijfuWkDPwINv','8uWF5BFjosAaH5OOHyqWV',1.00),
+	 ('Hih-16GLSrHeJ9cvXOSYj','8uWF5BFjosAaH5OOHyqWV',10.00),
+	 ('ihEg2i1fP2eu0UYnHbI2c','8uWF5BFjosAaH5OOHyqWV',1.00),
+	 ('k_s-ow5uQW3IIH5KiGk5G','8uWF5BFjosAaH5OOHyqWV',1.00),
+	 ('kFXgjyuM02eSv48kIkGqr','8uWF5BFjosAaH5OOHyqWV',8.00),
+	 ('kkJddOCn9XzkbjoiyeC4W','8uWF5BFjosAaH5OOHyqWV',5.00),
+	 ('kkmeF1xxlokN5KHhyiyfa','8uWF5BFjosAaH5OOHyqWV',10.00),
+	 ('kVaGYigglPPszExmAnNNa','8uWF5BFjosAaH5OOHyqWV',1.00),
+	 ('Mp_GyowOj9cCpKZwrvqyQ','8uWF5BFjosAaH5OOHyqWV',10.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('NQxX9D11nZCuX6H696LRH','8uWF5BFjosAaH5OOHyqWV',5.00),
+	 ('o1zUu6-KEqDeoRwYzk4_V','8uWF5BFjosAaH5OOHyqWV',10.00),
 	 ('P1FaGdSIOlLhKDYHfSQPp','8uWF5BFjosAaH5OOHyqWV',2.00),
 	 ('qcT0vNahOC2qr6nSLsUdu','8uWF5BFjosAaH5OOHyqWV',4.00),
 	 ('qsfOQXsVgXLlh885Ce5gM','8uWF5BFjosAaH5OOHyqWV',10.00),
 	 ('r06lANBHqD1VALKvbl1pZ','8uWF5BFjosAaH5OOHyqWV',10.00),
-	 ('Uc8WmURCFcCPDXy9GgzYp','8uWF5BFjosAaH5OOHyqWV',2.00),
-	 ('0JrUn3p3wggNMy1qN-va3','9c0f20RkihCE2p1QbeuB5',2.00),
-	 ('9BOMaJ33dDT2vKJSsvUFo','9c0f20RkihCE2p1QbeuB5',6.00),
-	 ('coRI_gGc8QkaGNEPYWJLs','9c0f20RkihCE2p1QbeuB5',1.00);
+	 ('S2ILEafg7KbDb67NtRXF-','8uWF5BFjosAaH5OOHyqWV',1.00),
+	 ('t4NCOY2qKZ5cOU4siZOHu','8uWF5BFjosAaH5OOHyqWV',1.00),
+	 ('tAeWBKPozjkEZns2BkZ8I','8uWF5BFjosAaH5OOHyqWV',1.00),
+	 ('Uc8WmURCFcCPDXy9GgzYp','8uWF5BFjosAaH5OOHyqWV',2.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('uhP2gV492dn7EHGzk3974','8uWF5BFjosAaH5OOHyqWV',1.00),
+	 ('Xi5GbYq-naQpqScKevA0W','8uWF5BFjosAaH5OOHyqWV',4.00),
+	 ('YWaHF2Z5w4nHJuYNnQI6-','8uWF5BFjosAaH5OOHyqWV',1.00),
+	 ('_576yh3DeAUUnEb-GJZkM','9c0f20RkihCE2p1QbeuB5',1.00),
+	 ('_6YEmVfh1R2vXdVXOGm2z','9c0f20RkihCE2p1QbeuB5',4.00),
+	 ('-9JdYVYFMr6Kyp0fIonav','9c0f20RkihCE2p1QbeuB5',4.00),
+	 ('-YkD6E1C18wsqMlzQa9Gu','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('0fqqURjAyWfxcCot_Ls-8','9c0f20RkihCE2p1QbeuB5',3.00),
+	 ('0JrUn3p3wggNMy1qN-va3','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('1jJPVtK86GGNjJsTzwwgq','9c0f20RkihCE2p1QbeuB5',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('2zpa3AsvH6lWV45WXKYXD','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('7whQxvqIxrEA0Tx47mfYx','9c0f20RkihCE2p1QbeuB5',1.00),
+	 ('8-hNgDB5XXfP4HrNMgtyI','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('98rAqgSBphGshWWjpOI0-','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('9BOMaJ33dDT2vKJSsvUFo','9c0f20RkihCE2p1QbeuB5',6.00),
+	 ('A6vZLeQnzXM7I10SfkS_c','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('a9i2JKaa_vWCtt4rYCVQQ','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('akirQYQkOQhhwkmbtZuZQ','9c0f20RkihCE2p1QbeuB5',1.00),
+	 ('AUsYJJXy0Wdnbh0VFMOjq','9c0f20RkihCE2p1QbeuB5',3.00),
+	 ('AVVAcm4ql4SbS3_IhMxYm','9c0f20RkihCE2p1QbeuB5',2.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('BuLvqPPmpBSEgPyEG78-N','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('CnT_HcekLTsKaySX14jpI','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('coRI_gGc8QkaGNEPYWJLs','9c0f20RkihCE2p1QbeuB5',1.00),
 	 ('cTwPMKTvVyrYd8O2s16od','9c0f20RkihCE2p1QbeuB5',1.00),
+	 ('dtlVV5T4j8ZjUfze5khpe','9c0f20RkihCE2p1QbeuB5',1.00),
+	 ('fGXonpJQ6ncyj_o_6f3aq','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('H6PdOJgTWfyvUh8ceAuDr','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('Hm3NHCQjNv_5tzv6VycEH','9c0f20RkihCE2p1QbeuB5',1.00),
+	 ('i7Ykk7C_aII5fBoE0m26E','9c0f20RkihCE2p1QbeuB5',1.00),
+	 ('Ic3gAuQ8gy2rjvkOi9VEu','9c0f20RkihCE2p1QbeuB5',2.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('iJxAjxUjV50_Nam3Qb0Sr','9c0f20RkihCE2p1QbeuB5',4.00),
+	 ('iN23ewLQqtN2uR3DeoXdu','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('jEJW_SaRd1FVvlfJTNTSF','9c0f20RkihCE2p1QbeuB5',1.00),
+	 ('JnNyxadvY7TptZwYuHedE','9c0f20RkihCE2p1QbeuB5',1.00),
+	 ('jqRzBMclKj16qSJqi9XFp','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('kkJddOCn9XzkbjoiyeC4W','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('Lcj2NoVuTwYTzN9UCkKLT','9c0f20RkihCE2p1QbeuB5',3.00),
+	 ('lS1_X5CNSi3fqJANNN3_H','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('mmTFc4XIxuS-eGNUiTXcD','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('okTh21Yx2ej-5Yc0wui6Z','9c0f20RkihCE2p1QbeuB5',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('PRL67Rtbf4_HLGEhw15TO','9c0f20RkihCE2p1QbeuB5',3.00),
+	 ('QoymuXGQTu7rbeV8kD1MD','9c0f20RkihCE2p1QbeuB5',1.00),
+	 ('s8gOAJCFyOkYAMML1tEFz','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('s9cSL-AqMHFMn640qv56u','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('T4LiK6oM91sZ0rwrs-jNR','9c0f20RkihCE2p1QbeuB5',6.00),
+	 ('tBoNCz8hMY5XeZqEftnz1','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('U4tl3MZx3_YVSuvKPxSer','9c0f20RkihCE2p1QbeuB5',2.00),
+	 ('UF_ubVlwKLBbFfzs9CTER','9c0f20RkihCE2p1QbeuB5',1.00),
+	 ('vSRUJvGsUrXykTyVOLpvs','9c0f20RkihCE2p1QbeuB5',3.00),
+	 ('Wb6HyF7yHyEA5mTuPo43d','9c0f20RkihCE2p1QbeuB5',3.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('wXspJF9mZ62RNDfpY9-39','9c0f20RkihCE2p1QbeuB5',3.00),
+	 ('Zt2H5gd_r5w2Hk0oU-sXK','9c0f20RkihCE2p1QbeuB5',2.00),
 	 ('35s1bXfsKHnXGHOmOCEQe','AfmZGcufMqg0KEaT92J52',1.00),
 	 ('lWE-CBxCiFFvEd-Bbafqt','AfmZGcufMqg0KEaT92J52',6.00),
 	 ('o1yrRcAuC_0Sh-WqfJ3eO','AfmZGcufMqg0KEaT92J52',1.00),
@@ -89,17 +265,29 @@ INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('coRI_gGc8QkaGNEPYWJLs','APU7mnvgtR1XrD2jI5FBj',1.00),
 	 ('dAYsoV4KqjUbk87g-AyU6','APU7mnvgtR1XrD2jI5FBj',2.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('jEJW_SaRd1FVvlfJTNTSF','APU7mnvgtR1XrD2jI5FBj',1.00),
+	 ('MyE-6c6h5GR6xLobPv9gN','APU7mnvgtR1XrD2jI5FBj',5.00),
+	 ('okTh21Yx2ej-5Yc0wui6Z','APU7mnvgtR1XrD2jI5FBj',2.00),
 	 ('qcT0vNahOC2qr6nSLsUdu','APU7mnvgtR1XrD2jI5FBj',4.00),
 	 ('qsfOQXsVgXLlh885Ce5gM','APU7mnvgtR1XrD2jI5FBj',2.00),
+	 ('xCRdQm-ed_Ynz8MQVR-2b','APU7mnvgtR1XrD2jI5FBj',1.00),
 	 ('xdDPpDdogWs6BwhyjlxqG','APU7mnvgtR1XrD2jI5FBj',4.00),
-	 ('-YCHlF0RHHjxB97ipfwne','CLpiMcAeo5hNAQHHtTk9U',10.00),
+	 ('Xi5GbYq-naQpqScKevA0W','APU7mnvgtR1XrD2jI5FBj',4.00),
+	 ('_meELw9PjhesKXUkoZmBN','CLpiMcAeo5hNAQHHtTk9U',10.00),
+	 ('-YCHlF0RHHjxB97ipfwne','CLpiMcAeo5hNAQHHtTk9U',10.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('0cSE8vrX1s8lD6mxuvMWu','CLpiMcAeo5hNAQHHtTk9U',10.00),
 	 ('4aPmWruhJIb_ANxNit3C1','CLpiMcAeo5hNAQHHtTk9U',10.00),
+	 ('4Js5AGUZegPNdsJT-olUy','CLpiMcAeo5hNAQHHtTk9U',10.00),
+	 ('Hih-16GLSrHeJ9cvXOSYj','CLpiMcAeo5hNAQHHtTk9U',10.00),
+	 ('kkmeF1xxlokN5KHhyiyfa','CLpiMcAeo5hNAQHHtTk9U',10.00),
+	 ('o1zUu6-KEqDeoRwYzk4_V','CLpiMcAeo5hNAQHHtTk9U',10.00),
 	 ('dF3wGQf0HIPNVu2T5M7hm','cpoaaduLD6GeawjnwnGpY',2.00),
 	 ('j5qoxFgO0dtAeAfGfhnOT','cpoaaduLD6GeawjnwnGpY',5.00),
 	 ('nscOPD6C2ws8SyKvOIAbm','cpoaaduLD6GeawjnwnGpY',1.00),
-	 ('RaoSvCN13fs4klr2nr9et','cpoaaduLD6GeawjnwnGpY',4.00),
-	 ('VOGCW2BCoeRtUfxlU2gIL','cQ7lLfIJzL0smXHmSquL3',10.00);
+	 ('RaoSvCN13fs4klr2nr9et','cpoaaduLD6GeawjnwnGpY',4.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('VOGCW2BCoeRtUfxlU2gIL','cQ7lLfIJzL0smXHmSquL3',10.00),
 	 ('e63GDPIZb_uc6WrXBY4TI','d2Y0mCkI_0b7xfRG97SVj',5.00),
 	 ('j5qoxFgO0dtAeAfGfhnOT','d2Y0mCkI_0b7xfRG97SVj',2.00),
 	 ('KDLxhTLUWiWynqz-Harz4','d2Y0mCkI_0b7xfRG97SVj',8.00),
@@ -108,132 +296,360 @@ INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('lSyKLteCSMG48l2YRpa9j','DD2HcwLpsEQBhIOrftCzN',1.00),
 	 ('UPBMKQJYZ18cWB3afBcXZ','DD2HcwLpsEQBhIOrftCzN',1.00),
 	 ('HzobVYStpPpXMt6Np12nG','DfaphPP1CMpAalcFFGmNU',1.00),
-	 ('shGJh3m5zq22m95ahNkrF','DfaphPP1CMpAalcFFGmNU',3.00),
-	 ('xtuz65fB99BnWYgjhoOAb','DfaphPP1CMpAalcFFGmNU',1.00);
+	 ('shGJh3m5zq22m95ahNkrF','DfaphPP1CMpAalcFFGmNU',3.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('xtuz65fB99BnWYgjhoOAb','DfaphPP1CMpAalcFFGmNU',1.00),
+	 ('-9JdYVYFMr6Kyp0fIonav','DM6wvmZWn6ak8XN1c-om4',6.00),
+	 ('-YkD6E1C18wsqMlzQa9Gu','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('0fqqURjAyWfxcCot_Ls-8','DM6wvmZWn6ak8XN1c-om4',5.00),
+	 ('0Hjhgq7fj9YQ9RFnGMejx','DM6wvmZWn6ak8XN1c-om4',8.00),
+	 ('1b7raLzAVzwj4_2equ0KQ','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('1jJPVtK86GGNjJsTzwwgq','DM6wvmZWn6ak8XN1c-om4',4.00),
+	 ('1kxaCabrXc9EmTrYzH2OX','DM6wvmZWn6ak8XN1c-om4',1.00),
+	 ('2zpa3AsvH6lWV45WXKYXD','DM6wvmZWn6ak8XN1c-om4',4.00),
+	 ('2Zye1FTOcSvMT2gPwSyhc','DM6wvmZWn6ak8XN1c-om4',2.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('4o_hwpSHaSCPK51QpAN8x','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('6j_OXkglMtMGlABJB9dTT','DM6wvmZWn6ak8XN1c-om4',10.00),
+	 ('7DZTlJAUy8GQHfOBh16Np','DM6wvmZWn6ak8XN1c-om4',5.00),
+	 ('7whQxvqIxrEA0Tx47mfYx','DM6wvmZWn6ak8XN1c-om4',4.00),
+	 ('9-rkBrMkQ16CbJvqdnaxL','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('98rAqgSBphGshWWjpOI0-','DM6wvmZWn6ak8XN1c-om4',4.00),
 	 ('9BOMaJ33dDT2vKJSsvUFo','DM6wvmZWn6ak8XN1c-om4',3.00),
+	 ('9qNsL87Y5XyzXR6iBsJdi','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('a4bbUoXn-qoASf82-sXiM','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('A6vZLeQnzXM7I10SfkS_c','DM6wvmZWn6ak8XN1c-om4',12.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('a9i2JKaa_vWCtt4rYCVQQ','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('AIlgI4FQPXnrv82pD7vx8','DM6wvmZWn6ak8XN1c-om4',1.00),
+	 ('akirQYQkOQhhwkmbtZuZQ','DM6wvmZWn6ak8XN1c-om4',4.00),
+	 ('bFU0BMxhWxftN_0r4hy-c','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('BnUt92brjsajxV76BWBiC','DM6wvmZWn6ak8XN1c-om4',10.00),
+	 ('BuLvqPPmpBSEgPyEG78-N','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('cLf4WOm3Vfe8eUvw2TtRi','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('CnT_HcekLTsKaySX14jpI','DM6wvmZWn6ak8XN1c-om4',6.00),
+	 ('DBejTxC0GFctBDiaOo1Sf','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('DoT1RR7vgNfeGoxjUH4Nx','DM6wvmZWn6ak8XN1c-om4',6.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('fgWFr5T2yt8amsT_clw80','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('FPb6RhNWSQfM3DBO4_GNi','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('Fxi6kiaLzZnsKLnVmqvvl','DM6wvmZWn6ak8XN1c-om4',1.00),
+	 ('GQp75sVFWP7ghXrb25LJw','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('H8y6v617nR0pvFROmY_Us','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('Hm3NHCQjNv_5tzv6VycEH','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('hxDf_63UrEHrFwW-mgujc','DM6wvmZWn6ak8XN1c-om4',8.00),
+	 ('HZvUCq4zCzfHCdfAZLHf1','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('i7Ykk7C_aII5fBoE0m26E','DM6wvmZWn6ak8XN1c-om4',10.00),
+	 ('ifUnYRh0oismmaibc93sL','DM6wvmZWn6ak8XN1c-om4',2.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('iJxAjxUjV50_Nam3Qb0Sr','DM6wvmZWn6ak8XN1c-om4',1.00),
+	 ('IOY1AS2F8vjj0YpeA4dHk','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('IvMIUHWEn0QUazaRA3JJk','DM6wvmZWn6ak8XN1c-om4',12.00),
+	 ('J-IUCTXiYSdoHsuIhESa5','DM6wvmZWn6ak8XN1c-om4',1.00),
+	 ('j6Mqz1RfxPBEpW9hJYQnI','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('JczsjPzpYMRhu5a5hqdvh','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('jpGoIvDkt3E6Y0LaPcHp8','DM6wvmZWn6ak8XN1c-om4',1.00),
+	 ('kkJddOCn9XzkbjoiyeC4W','DM6wvmZWn6ak8XN1c-om4',3.00),
+	 ('KrbQtG2aQblkW-rgue3wi','DM6wvmZWn6ak8XN1c-om4',18.00),
+	 ('lrmZna6qtYnRSd7SXyiW6','DM6wvmZWn6ak8XN1c-om4',2.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('lS1_X5CNSi3fqJANNN3_H','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('ncuz9UmblPs5b5t8XMs_h','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('O8pqEi_f5o2KLMsiqkAK4','DM6wvmZWn6ak8XN1c-om4',3.00),
+	 ('oCda-p-L8HXM-anA-Ri5W','DM6wvmZWn6ak8XN1c-om4',1.00),
+	 ('OE55TWBNrqSOWGis9oqoV','DM6wvmZWn6ak8XN1c-om4',5.00),
+	 ('OXPdzXrXGAtVWPru38Oax','DM6wvmZWn6ak8XN1c-om4',4.00),
 	 ('Pf_ylAMvYfUkSHWfhS2Fp','DM6wvmZWn6ak8XN1c-om4',1.00),
+	 ('Pn-2W5rzsCOh4kk9GvdNK','DM6wvmZWn6ak8XN1c-om4',10.00),
+	 ('S1vmW1BY_EYOvPH2HyeiE','DM6wvmZWn6ak8XN1c-om4',6.00),
+	 ('S2ILEafg7KbDb67NtRXF-','DM6wvmZWn6ak8XN1c-om4',4.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('s8gOAJCFyOkYAMML1tEFz','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('SNCSaxioNAkwBlptlaTjh','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('T4LiK6oM91sZ0rwrs-jNR','DM6wvmZWn6ak8XN1c-om4',1.00),
+	 ('tBoNCz8hMY5XeZqEftnz1','DM6wvmZWn6ak8XN1c-om4',10.00),
+	 ('TjM_uY51lOJL4c1636-kw','DM6wvmZWn6ak8XN1c-om4',3.00),
+	 ('U4tl3MZx3_YVSuvKPxSer','DM6wvmZWn6ak8XN1c-om4',8.00),
 	 ('Uc8WmURCFcCPDXy9GgzYp','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('UF_ubVlwKLBbFfzs9CTER','DM6wvmZWn6ak8XN1c-om4',4.00),
+	 ('uQrYXyGG3E2pIpiDg6u4u','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('UvX2iCShEbUKZ0E0TyNgG','DM6wvmZWn6ak8XN1c-om4',2.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('vmKd5-wUHM8-u-3KrvFTA','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('vSRUJvGsUrXykTyVOLpvs','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('wwf2zINxhhOwp8z6CFI6F','DM6wvmZWn6ak8XN1c-om4',10.00),
+	 ('wXspJF9mZ62RNDfpY9-39','DM6wvmZWn6ak8XN1c-om4',12.00),
+	 ('XNILa-32WI5l5_mdYfLOZ','DM6wvmZWn6ak8XN1c-om4',18.00),
+	 ('XwyX1V5exaocyI6aJ6Ne0','DM6wvmZWn6ak8XN1c-om4',2.00),
+	 ('YLbxVo1BfFmH-7P_UIg2z','DM6wvmZWn6ak8XN1c-om4',4.00),
 	 ('ytBWHlScx18VLtfgGoFyF','DM6wvmZWn6ak8XN1c-om4',1.00),
+	 ('YwMdgPJCZUF9qzktTNXT2','DM6wvmZWn6ak8XN1c-om4',4.00),
+	 ('Z_AGrHkHgoCDzcstwu_wn','DM6wvmZWn6ak8XN1c-om4',2.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('Z0M3QCzvZXGCsyVFAW9iz','DM6wvmZWn6ak8XN1c-om4',8.00),
+	 ('Zt2H5gd_r5w2Hk0oU-sXK','DM6wvmZWn6ak8XN1c-om4',24.00),
 	 ('F8QdcEwvuwyq2qHz4nSWX','dNXj2G-GWn8Tyj6YZD50X',5.00),
 	 ('-TEe5UcBsyeWHGjscWFMI','dvH1ZH6OGEpeGPO6YgGCY',4.00),
 	 ('CqG6_ROn52zvhPfpF7Vis','dvH1ZH6OGEpeGPO6YgGCY',1.00),
+	 ('1jJPVtK86GGNjJsTzwwgq','ECGVzNU8qNq25ieG63Keu',2.00),
+	 ('7whQxvqIxrEA0Tx47mfYx','ECGVzNU8qNq25ieG63Keu',2.00),
 	 ('a_7d-hZZNv8y2R0QcfusZ','ECGVzNU8qNq25ieG63Keu',2.00),
+	 ('akirQYQkOQhhwkmbtZuZQ','ECGVzNU8qNq25ieG63Keu',2.00),
 	 ('BiLfIb4rl1bf2O2m8PDiB','ECGVzNU8qNq25ieG63Keu',4.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('i7Ykk7C_aII5fBoE0m26E','ECGVzNU8qNq25ieG63Keu',2.00),
 	 ('Pf_ylAMvYfUkSHWfhS2Fp','ECGVzNU8qNq25ieG63Keu',1.00),
+	 ('Pn-2W5rzsCOh4kk9GvdNK','ECGVzNU8qNq25ieG63Keu',2.00),
+	 ('UF_ubVlwKLBbFfzs9CTER','ECGVzNU8qNq25ieG63Keu',2.00),
 	 ('ZHiQ8mRE_5Et9etH4NFM7','ECGVzNU8qNq25ieG63Keu',1.00),
 	 ('6VWv0FsFZeldr_KvVZUmT','eplnaBjYotDAPtPQeva3O',1.00),
 	 ('A8YATEEB7n3bW1NloKkJ5','eplnaBjYotDAPtPQeva3O',1.00),
 	 ('FRKX4jK-xP6OY4RqwtLhe','eplnaBjYotDAPtPQeva3O',1.00),
 	 ('mhAYW-WT5y7INOF_X8mx4','eplnaBjYotDAPtPQeva3O',1.00),
-	 ('OQbZpP3dmxy6RPZm5P3gn','eplnaBjYotDAPtPQeva3O',1.00),
+	 ('OQbZpP3dmxy6RPZm5P3gn','eplnaBjYotDAPtPQeva3O',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('STN6frpzT8SR2cIXFJRHM','eplnaBjYotDAPtPQeva3O',1.00),
 	 ('VOGCW2BCoeRtUfxlU2gIL','eplnaBjYotDAPtPQeva3O',1.00),
-	 ('zaYdygfyQ8X2Hg92YIs6k','eplnaBjYotDAPtPQeva3O',1.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('zaYdygfyQ8X2Hg92YIs6k','eplnaBjYotDAPtPQeva3O',1.00),
 	 ('0a233nEklcQ4tMpRND4r3','F90FyCxcZtBynesOUZeNN',1.00),
 	 ('78C6lBzmzVW0QZ2ycEIUb','fChb_1ISeiiKX2Nge9MZx',2.00),
 	 ('8IXc17zlWDZ9Zc04fF7F5','fHs9w0mnqQnTP9FtaeLT8',3.00),
 	 ('ar_GfpBE_WZ5vwFPOFBss','fHs9w0mnqQnTP9FtaeLT8',2.00),
 	 ('dMdL9eMTr_EBIuw_ZbHoG','fHs9w0mnqQnTP9FtaeLT8',4.00),
 	 ('EVUT9PsWc7yQfhJlaLu6t','fHs9w0mnqQnTP9FtaeLT8',1.00),
-	 ('HzobVYStpPpXMt6Np12nG','fHs9w0mnqQnTP9FtaeLT8',1.00),
+	 ('HzobVYStpPpXMt6Np12nG','fHs9w0mnqQnTP9FtaeLT8',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('miPmRiU3WGS4x3AuSaKyP','fHs9w0mnqQnTP9FtaeLT8',2.00),
 	 ('9aA8GmA65R31FfhbQiJFl','FqFX7Fa4mvGQI6ZVPgq83',4.00),
-	 ('bxfax6TN53YF3O_6OY4gT','FqFX7Fa4mvGQI6ZVPgq83',5.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('bxfax6TN53YF3O_6OY4gT','FqFX7Fa4mvGQI6ZVPgq83',5.00),
 	 ('C1dxC-GwIdUh41QqQKorz','FqFX7Fa4mvGQI6ZVPgq83',5.00),
 	 ('j5qoxFgO0dtAeAfGfhnOT','FqFX7Fa4mvGQI6ZVPgq83',5.00),
 	 ('KNbtauxf5CFyniZWa5oqN','FqFX7Fa4mvGQI6ZVPgq83',1.00),
 	 ('V03fW48pRtemoWA4ik5rr','FqFX7Fa4mvGQI6ZVPgq83',10.00),
 	 ('xL-zLlZZVMNUaJbKVCSId','FqFX7Fa4mvGQI6ZVPgq83',2.00),
 	 ('y1AiAa5ggjH_f3LimR1u8','FqFX7Fa4mvGQI6ZVPgq83',4.00),
-	 ('0jCLHDCGV-LS7RJbGg8_F','GWFSM6eoiNFG8NofLCypU',15.00),
+	 ('-9JdYVYFMr6Kyp0fIonav','fWHtNoFGaXzAn717-g_uo',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('2Zye1FTOcSvMT2gPwSyhc','fWHtNoFGaXzAn717-g_uo',1.00),
+	 ('8-hNgDB5XXfP4HrNMgtyI','fWHtNoFGaXzAn717-g_uo',6.00),
+	 ('A6vZLeQnzXM7I10SfkS_c','fWHtNoFGaXzAn717-g_uo',2.00),
+	 ('a9i2JKaa_vWCtt4rYCVQQ','fWHtNoFGaXzAn717-g_uo',2.00),
+	 ('AVVAcm4ql4SbS3_IhMxYm','fWHtNoFGaXzAn717-g_uo',8.00),
+	 ('BuLvqPPmpBSEgPyEG78-N','fWHtNoFGaXzAn717-g_uo',3.00),
+	 ('CnT_HcekLTsKaySX14jpI','fWHtNoFGaXzAn717-g_uo',4.00),
+	 ('EFur6V73OINJF7BGpNx3M','fWHtNoFGaXzAn717-g_uo',1.00),
+	 ('EKNixg3-zVMSPc10QrXkO','fWHtNoFGaXzAn717-g_uo',2.00),
+	 ('fGXonpJQ6ncyj_o_6f3aq','fWHtNoFGaXzAn717-g_uo',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('gbIkaViR4a3M69tMVIZow','fWHtNoFGaXzAn717-g_uo',2.00),
+	 ('H6PdOJgTWfyvUh8ceAuDr','fWHtNoFGaXzAn717-g_uo',2.00),
+	 ('H8y6v617nR0pvFROmY_Us','fWHtNoFGaXzAn717-g_uo',1.00),
+	 ('hKi0r5l3Jw-puT-r1qwU9','fWHtNoFGaXzAn717-g_uo',1.00),
+	 ('hxDf_63UrEHrFwW-mgujc','fWHtNoFGaXzAn717-g_uo',1.00),
+	 ('Ic3gAuQ8gy2rjvkOi9VEu','fWHtNoFGaXzAn717-g_uo',2.00),
+	 ('ifUnYRh0oismmaibc93sL','fWHtNoFGaXzAn717-g_uo',5.00),
+	 ('IvMIUHWEn0QUazaRA3JJk','fWHtNoFGaXzAn717-g_uo',2.00),
+	 ('jNAmgwHMWwL8Xd1MsVxtf','fWHtNoFGaXzAn717-g_uo',2.00),
+	 ('JnNyxadvY7TptZwYuHedE','fWHtNoFGaXzAn717-g_uo',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('jqRzBMclKj16qSJqi9XFp','fWHtNoFGaXzAn717-g_uo',3.00),
+	 ('KrbQtG2aQblkW-rgue3wi','fWHtNoFGaXzAn717-g_uo',2.00),
+	 ('Lcj2NoVuTwYTzN9UCkKLT','fWHtNoFGaXzAn717-g_uo',2.00),
+	 ('lS1_X5CNSi3fqJANNN3_H','fWHtNoFGaXzAn717-g_uo',3.00),
+	 ('mmTFc4XIxuS-eGNUiTXcD','fWHtNoFGaXzAn717-g_uo',1.00),
+	 ('O8pqEi_f5o2KLMsiqkAK4','fWHtNoFGaXzAn717-g_uo',1.00),
+	 ('pIkuGgEfkr65K4HQ9IBmN','fWHtNoFGaXzAn717-g_uo',15.00),
+	 ('PRL67Rtbf4_HLGEhw15TO','fWHtNoFGaXzAn717-g_uo',5.00),
+	 ('pv4qhfSYuJP0sE_fkf-ar','fWHtNoFGaXzAn717-g_uo',1.00),
+	 ('QoymuXGQTu7rbeV8kD1MD','fWHtNoFGaXzAn717-g_uo',2.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('s8gOAJCFyOkYAMML1tEFz','fWHtNoFGaXzAn717-g_uo',3.00),
+	 ('s9cSL-AqMHFMn640qv56u','fWHtNoFGaXzAn717-g_uo',6.00),
+	 ('TkAPyQd_wdm-zY0skS4Is','fWHtNoFGaXzAn717-g_uo',2.00),
+	 ('U4tl3MZx3_YVSuvKPxSer','fWHtNoFGaXzAn717-g_uo',1.00),
+	 ('Wb6HyF7yHyEA5mTuPo43d','fWHtNoFGaXzAn717-g_uo',2.00),
+	 ('wXspJF9mZ62RNDfpY9-39','fWHtNoFGaXzAn717-g_uo',3.00),
+	 ('xUYSFWICL-4kFRmUJ8sZs','fWHtNoFGaXzAn717-g_uo',1.00),
+	 ('XwyX1V5exaocyI6aJ6Ne0','fWHtNoFGaXzAn717-g_uo',1.00),
+	 ('Z0M3QCzvZXGCsyVFAW9iz','fWHtNoFGaXzAn717-g_uo',1.00),
+	 ('0jCLHDCGV-LS7RJbGg8_F','GWFSM6eoiNFG8NofLCypU',15.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('_576yh3DeAUUnEb-GJZkM','GXpTLtXUH0hrOuMMxsqqC',2.00),
+	 ('0cSE8vrX1s8lD6mxuvMWu','GXpTLtXUH0hrOuMMxsqqC',2.00),
+	 ('5s4j4tcC73LY5fHSfSJpz','GXpTLtXUH0hrOuMMxsqqC',4.00),
+	 ('7whQxvqIxrEA0Tx47mfYx','GXpTLtXUH0hrOuMMxsqqC',2.00),
+	 ('akirQYQkOQhhwkmbtZuZQ','GXpTLtXUH0hrOuMMxsqqC',2.00),
+	 ('ggaKe4-m-178spYMuJZJ_','GXpTLtXUH0hrOuMMxsqqC',2.00),
+	 ('gM8s7UXD7mQZpjB2N6TWg','GXpTLtXUH0hrOuMMxsqqC',1.00),
+	 ('H-6tiyPEsijfuWkDPwINv','GXpTLtXUH0hrOuMMxsqqC',2.00),
+	 ('kkmeF1xxlokN5KHhyiyfa','GXpTLtXUH0hrOuMMxsqqC',2.00),
+	 ('qSIhlz_JnUSzc-NykfrDh','GXpTLtXUH0hrOuMMxsqqC',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('t4NCOY2qKZ5cOU4siZOHu','GXpTLtXUH0hrOuMMxsqqC',2.00),
+	 ('Xpt-N7t0s9PZhqJStqhX1','GXpTLtXUH0hrOuMMxsqqC',4.00),
+	 ('YCSr_4mQ-LJsc7_qzFgG0','GXpTLtXUH0hrOuMMxsqqC',2.00),
 	 ('TwdGksXXCjUUS8q-myMrw','h-oLsGMlE9v2FaKRJkes8',7.00),
 	 ('ElWvH_LNmLGxz9QgmwLg4','IcPKTarFMA3X3rg_nDdDg',1.00),
-	 ('LHW1zoRi7J3h00vc5RhPg','IcPKTarFMA3X3rg_nDdDg',5.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('LHW1zoRi7J3h00vc5RhPg','IcPKTarFMA3X3rg_nDdDg',5.00),
 	 ('RaoSvCN13fs4klr2nr9et','IcPKTarFMA3X3rg_nDdDg',1.00),
 	 ('KCY2ROLPO-AGQKSPd6jki','IEJseTC3A7VFOi8hh0NcO',1.00),
 	 ('8IXc17zlWDZ9Zc04fF7F5','iGqdU5zLqvdo6j_0Rsfbm',2.00),
-	 ('cqixX6tcXjFv6NWBhxkbf','iGqdU5zLqvdo6j_0Rsfbm',2.00),
+	 ('cqixX6tcXjFv6NWBhxkbf','iGqdU5zLqvdo6j_0Rsfbm',2.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('KoI_z4bCRjq-3lZeEwP5K','iGqdU5zLqvdo6j_0Rsfbm',2.00),
 	 ('zDbglXgHjA9861xmxnnab','IJcM_riYwdRt-oAVGYkYI',5.00),
 	 ('mhAYW-WT5y7INOF_X8mx4','ilFF2OuXLTauYLj9prVHG',10.00),
 	 ('63wJ3u6_3329aHJnHQXfG','iNYJ0Cyg55p8mVu0XYrc-',1.00),
 	 ('C1dxC-GwIdUh41QqQKorz','jb2zVBAgkU0Hba4WRHTnK',5.00),
-	 ('ElWvH_LNmLGxz9QgmwLg4','jb2zVBAgkU0Hba4WRHTnK',5.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('ElWvH_LNmLGxz9QgmwLg4','jb2zVBAgkU0Hba4WRHTnK',5.00),
 	 ('lUO6wo7qoOzFmgWYh6BtM','jb2zVBAgkU0Hba4WRHTnK',1.00),
 	 ('W5sgkCVWylLdd1O8w-u8F','jb2zVBAgkU0Hba4WRHTnK',3.00),
 	 ('FRKX4jK-xP6OY4RqwtLhe','JEsJLKiuFwN3Ur1keq_jU',10.00),
-	 ('5zaX7wptkLwdAljf8OYbc','JHehe7behrWnXXL7Wvs-D',2.00),
+	 ('5zaX7wptkLwdAljf8OYbc','JHehe7behrWnXXL7Wvs-D',2.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('wbl01n_cCP3uTTuKIcn-Q','JHehe7behrWnXXL7Wvs-D',1.00),
 	 ('Au6sK9Fr4mkMjmlnxNG-9','JhqhqqudUB3ALwKXHndcI',1.00),
 	 ('W5sgkCVWylLdd1O8w-u8F','JhqhqqudUB3ALwKXHndcI',2.00),
 	 ('y1AiAa5ggjH_f3LimR1u8','JhqhqqudUB3ALwKXHndcI',2.00),
 	 ('HzobVYStpPpXMt6Np12nG','k4A3FvdhIXLDdtEOKoxfJ',1.00),
-	 ('shGJh3m5zq22m95ahNkrF','k4A3FvdhIXLDdtEOKoxfJ',3.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('shGJh3m5zq22m95ahNkrF','k4A3FvdhIXLDdtEOKoxfJ',3.00),
 	 ('xtuz65fB99BnWYgjhoOAb','k4A3FvdhIXLDdtEOKoxfJ',1.00),
 	 ('YkaGG11nTQ4LkG4L6tJnK','KgiB-JKHod5hhQVOg54dl',1.00),
 	 ('NxvaH5m3Y9j8bWpmGAhQw','KQ2ijEwgAJ4tyF74rypGh',2.00),
-	 ('KWPh9O8-P_-vQR7B2lpDs','KWgctw8BuwCqYpGK9cBHH',10.00),
+	 ('KWPh9O8-P_-vQR7B2lpDs','KWgctw8BuwCqYpGK9cBHH',10.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('ASnWF8gZkaQlygjVMECWY','L3e1vVNvbra82c00WhjZr',6.00),
 	 ('DRPY5nZ0jBspUfIJjKAk-','L3e1vVNvbra82c00WhjZr',2.00),
 	 ('jjO3RvEOzlksCU6xO8Bsw','L3e1vVNvbra82c00WhjZr',2.00),
 	 ('LILrv1nSkXexeBFrnOgyf','L3e1vVNvbra82c00WhjZr',1.00),
 	 ('o1yrRcAuC_0Sh-WqfJ3eO','L3e1vVNvbra82c00WhjZr',1.00),
-	 ('RgK_m177i29vzJU10pQOy','L3e1vVNvbra82c00WhjZr',1.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('RgK_m177i29vzJU10pQOy','L3e1vVNvbra82c00WhjZr',1.00),
 	 ('vTsgkc6o46PMx_0XPCfRX','L3e1vVNvbra82c00WhjZr',2.00),
 	 ('STN6frpzT8SR2cIXFJRHM','laq0sMfNtyB1Zed1kmL-Z',10.00),
 	 ('A8YATEEB7n3bW1NloKkJ5','m9xIX13-Fi3sYGwXTyBAH',10.00),
-	 ('LcMC1XKUz5T2HkN-xd3AT','mgVrz9LG1hZlZzWWWNXGf',7.00),
+	 ('LcMC1XKUz5T2HkN-xd3AT','mgVrz9LG1hZlZzWWWNXGf',7.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('eiPDYgatZun1Fh3E-Y2ii','MpOo2lHSpbq-_Z-1UWnwU',40.00),
 	 ('k6ZzBGBHVCW2UHuQRneYv','nADnk5nTwDAeqbpo-pSNO',2.00),
 	 ('NA1yrSERAH0bJ0e39KxHm','nADnk5nTwDAeqbpo-pSNO',1.00),
 	 ('zhawbh3mSVXnNhX8DPAXR','Nk1Pn5g2xpff3RlnnE8cM',7.00),
 	 ('Au6sK9Fr4mkMjmlnxNG-9','nWWaaD2yCzcKXcFdIQdnD',1.00),
-	 ('ec2rt8DcGnU_iX40Jef76','nWWaaD2yCzcKXcFdIQdnD',1.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('ec2rt8DcGnU_iX40Jef76','nWWaaD2yCzcKXcFdIQdnD',1.00),
 	 ('KNbtauxf5CFyniZWa5oqN','nWWaaD2yCzcKXcFdIQdnD',1.00),
 	 ('KWPh9O8-P_-vQR7B2lpDs','nWWaaD2yCzcKXcFdIQdnD',1.00),
 	 ('lUO6wo7qoOzFmgWYh6BtM','nWWaaD2yCzcKXcFdIQdnD',1.00),
-	 ('nscOPD6C2ws8SyKvOIAbm','nWWaaD2yCzcKXcFdIQdnD',1.00),
+	 ('nscOPD6C2ws8SyKvOIAbm','nWWaaD2yCzcKXcFdIQdnD',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('pnfw5xlBLLjy5v7pjKt62','nWWaaD2yCzcKXcFdIQdnD',1.00),
 	 ('6e4TvEqrkJLwZTcDCZzDF','o3HuQitoxKJ6LEt27Y4uL',1.00),
+	 ('-9JdYVYFMr6Kyp0fIonav','O9hxUgnCTodBpZniktf20',3.00),
+	 ('0fqqURjAyWfxcCot_Ls-8','O9hxUgnCTodBpZniktf20',2.00),
+	 ('0Hjhgq7fj9YQ9RFnGMejx','O9hxUgnCTodBpZniktf20',8.00),
+	 ('58tQ-EWQApE_djxy-Hw48','O9hxUgnCTodBpZniktf20',4.00),
+	 ('7DZTlJAUy8GQHfOBh16Np','O9hxUgnCTodBpZniktf20',15.00),
+	 ('bFU0BMxhWxftN_0r4hy-c','O9hxUgnCTodBpZniktf20',4.00),
+	 ('BnUt92brjsajxV76BWBiC','O9hxUgnCTodBpZniktf20',10.00),
+	 ('bWfisXrhxGeC9XkJ4Bjhw','O9hxUgnCTodBpZniktf20',6.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('cLf4WOm3Vfe8eUvw2TtRi','O9hxUgnCTodBpZniktf20',8.00),
+	 ('j6Mqz1RfxPBEpW9hJYQnI','O9hxUgnCTodBpZniktf20',12.00),
+	 ('KrbQtG2aQblkW-rgue3wi','O9hxUgnCTodBpZniktf20',8.00),
+	 ('OXPdzXrXGAtVWPru38Oax','O9hxUgnCTodBpZniktf20',10.00),
+	 ('UvX2iCShEbUKZ0E0TyNgG','O9hxUgnCTodBpZniktf20',1.00),
+	 ('Zt2H5gd_r5w2Hk0oU-sXK','O9hxUgnCTodBpZniktf20',2.00),
 	 ('2V_8S_VYK71SLjgHeZr7z','OaaXEABAi7WxopguMA_aN',10.00),
 	 ('Ay5uMzBLGHGPe-5-cBZhy','OaaXEABAi7WxopguMA_aN',10.00),
 	 ('cqixX6tcXjFv6NWBhxkbf','OEhM8MNUjDbHL7He2Lejy',2.00),
 	 ('I2MiZMbMULDBZxz--JVqg','OEhM8MNUjDbHL7He2Lejy',2.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('miPmRiU3WGS4x3AuSaKyP','OEhM8MNUjDbHL7He2Lejy',2.00),
+	 ('_576yh3DeAUUnEb-GJZkM','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('_6YEmVfh1R2vXdVXOGm2z','PCLpbDg4qWSBioekpiGO8',2.00),
+	 ('-6EApLhLr8sRBQDIVrwNM','PCLpbDg4qWSBioekpiGO8',1.00),
 	 ('0JrUn3p3wggNMy1qN-va3','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('1kxaCabrXc9EmTrYzH2OX','PCLpbDg4qWSBioekpiGO8',1.00),
 	 ('2fyW0e0v6qwts-KFNI_XU','PCLpbDg4qWSBioekpiGO8',1.00),
-	 ('7Gfoopw2BzWX7FktLj_q2','PCLpbDg4qWSBioekpiGO8',1.00),
-	 ('9BOMaJ33dDT2vKJSsvUFo','PCLpbDg4qWSBioekpiGO8',1.00),
-	 ('9i2twQsEzNIa5REJYQB2C','PCLpbDg4qWSBioekpiGO8',2.00),
-	 ('coRI_gGc8QkaGNEPYWJLs','PCLpbDg4qWSBioekpiGO8',1.00),
-	 ('Dybagr3mXfdeey2oG26_5','PCLpbDg4qWSBioekpiGO8',1.00),
-	 ('eG17JP3vf9Ett1a4cjXVb','PCLpbDg4qWSBioekpiGO8',1.00),
-	 ('GbeYwaYwH8ESMSNC2DRmK','PCLpbDg4qWSBioekpiGO8',1.00);
+	 ('4o_hwpSHaSCPK51QpAN8x','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('5s4j4tcC73LY5fHSfSJpz','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('7Gfoopw2BzWX7FktLj_q2','PCLpbDg4qWSBioekpiGO8',1.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('9-rkBrMkQ16CbJvqdnaxL','PCLpbDg4qWSBioekpiGO8',2.00),
+	 ('9BOMaJ33dDT2vKJSsvUFo','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('9FLbX2iax6w_mPdZt60LY','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('9i2twQsEzNIa5REJYQB2C','PCLpbDg4qWSBioekpiGO8',2.00),
+	 ('a4bbUoXn-qoASf82-sXiM','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('ANN6m-EInM5WhVNatr9Ue','PCLpbDg4qWSBioekpiGO8',2.00),
+	 ('coRI_gGc8QkaGNEPYWJLs','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('dtlVV5T4j8ZjUfze5khpe','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('Dybagr3mXfdeey2oG26_5','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('ECfhD6TUazIlPVYF5yUY5','PCLpbDg4qWSBioekpiGO8',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('eG17JP3vf9Ett1a4cjXVb','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('ESmBbm9EBq0NijStLlVs_','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('F6ytQeh0_LfzJMmyZ3XbW','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('ftKWdSRQ19DSbjJCMTnDS','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('GbeYwaYwH8ESMSNC2DRmK','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('ggaKe4-m-178spYMuJZJ_','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('gje0yquygj01qsIgBMamH','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('gM8s7UXD7mQZpjB2N6TWg','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('GQp75sVFWP7ghXrb25LJw','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('HO1enskktZ-KG_dv0w3Lp','PCLpbDg4qWSBioekpiGO8',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('ihEg2i1fP2eu0UYnHbI2c','PCLpbDg4qWSBioekpiGO8',1.00),
 	 ('iJxAjxUjV50_Nam3Qb0Sr','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('J-IUCTXiYSdoHsuIhESa5','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('jEJW_SaRd1FVvlfJTNTSF','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('Jf73hTaK2J0I7D_EFrwPM','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('jpGoIvDkt3E6Y0LaPcHp8','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('JxDC5dVA1c-UC_3N--j7y','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('LgipeWKuAJrAh6wZjsm-9','PCLpbDg4qWSBioekpiGO8',2.00),
+	 ('MyE-6c6h5GR6xLobPv9gN','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('ncuz9UmblPs5b5t8XMs_h','PCLpbDg4qWSBioekpiGO8',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('NQxX9D11nZCuX6H696LRH','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('okTh21Yx2ej-5Yc0wui6Z','PCLpbDg4qWSBioekpiGO8',2.00),
+	 ('PCssU5DLHbTmp242kXDRR','PCLpbDg4qWSBioekpiGO8',1.00),
 	 ('r06lANBHqD1VALKvbl1pZ','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('r7jBxAypaBaBLY_qPUmo_','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('T4LiK6oM91sZ0rwrs-jNR','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('uhP2gV492dn7EHGzk3974','PCLpbDg4qWSBioekpiGO8',1.00),
 	 ('xdDPpDdogWs6BwhyjlxqG','PCLpbDg4qWSBioekpiGO8',1.00),
-	 ('Y73MiM3ClclDmi4kXnBTJ','PCLpbDg4qWSBioekpiGO8',1.00),
+	 ('Xpt-N7t0s9PZhqJStqhX1','PCLpbDg4qWSBioekpiGO8',2.00),
+	 ('Y73MiM3ClclDmi4kXnBTJ','PCLpbDg4qWSBioekpiGO8',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('YCSr_4mQ-LJsc7_qzFgG0','PCLpbDg4qWSBioekpiGO8',1.00),
 	 ('OQbZpP3dmxy6RPZm5P3gn','PTBA6CebeMMowoDsZx0JS',10.00),
 	 ('dF3wGQf0HIPNVu2T5M7hm','PZ4ike5DW4rJdhsdU18fY',2.00),
 	 ('ec2rt8DcGnU_iX40Jef76','PZ4ike5DW4rJdhsdU18fY',1.00),
 	 ('W5sgkCVWylLdd1O8w-u8F','PZ4ike5DW4rJdhsdU18fY',3.00),
-	 ('Y44an16gqyxoDbxVUvIGt','qaLSYiqwdsa-ML4k4cyGV',1.00);
+	 ('1b7raLzAVzwj4_2equ0KQ','qaLSYiqwdsa-ML4k4cyGV',2.00),
+	 ('58tQ-EWQApE_djxy-Hw48','qaLSYiqwdsa-ML4k4cyGV',1.00),
+	 ('6j_OXkglMtMGlABJB9dTT','qaLSYiqwdsa-ML4k4cyGV',1.00),
+	 ('Aiwxw-grJ67RD3rxG86hj','qaLSYiqwdsa-ML4k4cyGV',1.00),
+	 ('bWfisXrhxGeC9XkJ4Bjhw','qaLSYiqwdsa-ML4k4cyGV',1.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('EFur6V73OINJF7BGpNx3M','qaLSYiqwdsa-ML4k4cyGV',3.00),
+	 ('ESmBbm9EBq0NijStLlVs_','qaLSYiqwdsa-ML4k4cyGV',1.00),
+	 ('gbIkaViR4a3M69tMVIZow','qaLSYiqwdsa-ML4k4cyGV',2.00),
+	 ('gje0yquygj01qsIgBMamH','qaLSYiqwdsa-ML4k4cyGV',1.00),
+	 ('hKi0r5l3Jw-puT-r1qwU9','qaLSYiqwdsa-ML4k4cyGV',2.00),
+	 ('i-23yD_2lhDLSNkf51iLW','qaLSYiqwdsa-ML4k4cyGV',2.00),
+	 ('ifUnYRh0oismmaibc93sL','qaLSYiqwdsa-ML4k4cyGV',1.00),
+	 ('IvMIUHWEn0QUazaRA3JJk','qaLSYiqwdsa-ML4k4cyGV',2.00),
+	 ('JczsjPzpYMRhu5a5hqdvh','qaLSYiqwdsa-ML4k4cyGV',2.00),
+	 ('jNAmgwHMWwL8Xd1MsVxtf','qaLSYiqwdsa-ML4k4cyGV',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('pIkuGgEfkr65K4HQ9IBmN','qaLSYiqwdsa-ML4k4cyGV',3.00),
+	 ('S1vmW1BY_EYOvPH2HyeiE','qaLSYiqwdsa-ML4k4cyGV',1.00),
+	 ('SNCSaxioNAkwBlptlaTjh','qaLSYiqwdsa-ML4k4cyGV',2.00),
+	 ('TkAPyQd_wdm-zY0skS4Is','qaLSYiqwdsa-ML4k4cyGV',2.00),
+	 ('wXspJF9mZ62RNDfpY9-39','qaLSYiqwdsa-ML4k4cyGV',2.00),
+	 ('xUYSFWICL-4kFRmUJ8sZs','qaLSYiqwdsa-ML4k4cyGV',1.00),
+	 ('XwyX1V5exaocyI6aJ6Ne0','qaLSYiqwdsa-ML4k4cyGV',1.00),
+	 ('Y44an16gqyxoDbxVUvIGt','qaLSYiqwdsa-ML4k4cyGV',1.00),
 	 ('bxfax6TN53YF3O_6OY4gT','QjMdrAb7ctCyGTpkdNssp',1.00),
-	 ('C1dxC-GwIdUh41QqQKorz','QjMdrAb7ctCyGTpkdNssp',1.00),
+	 ('C1dxC-GwIdUh41QqQKorz','QjMdrAb7ctCyGTpkdNssp',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('e63GDPIZb_uc6WrXBY4TI','QjMdrAb7ctCyGTpkdNssp',1.00),
 	 ('LHW1zoRi7J3h00vc5RhPg','QjMdrAb7ctCyGTpkdNssp',1.00),
 	 ('MIJ6Mr6dJDKbp3_zQmlRV','QjMdrAb7ctCyGTpkdNssp',1.00),
@@ -241,10 +657,10 @@ INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('StUWf5n6EKbmTn9t6MP7c','QjMdrAb7ctCyGTpkdNssp',1.00),
 	 ('W5sgkCVWylLdd1O8w-u8F','QjMdrAb7ctCyGTpkdNssp',1.00),
 	 ('xL-zLlZZVMNUaJbKVCSId','QjMdrAb7ctCyGTpkdNssp',1.00),
-	 ('8vBzgqqiAcJT0GKdEEm6f','QkysZczs3T06ZmDurbLaV',1.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('8vBzgqqiAcJT0GKdEEm6f','QkysZczs3T06ZmDurbLaV',1.00),
 	 ('ar_GfpBE_WZ5vwFPOFBss','QkysZczs3T06ZmDurbLaV',2.00),
-	 ('CqG6_ROn52zvhPfpF7Vis','QkysZczs3T06ZmDurbLaV',3.00),
+	 ('CqG6_ROn52zvhPfpF7Vis','QkysZczs3T06ZmDurbLaV',3.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('cqixX6tcXjFv6NWBhxkbf','QkysZczs3T06ZmDurbLaV',2.00),
 	 ('cTPsOAZozws7XxPwKPrJK','QkysZczs3T06ZmDurbLaV',2.00),
 	 ('lSyKLteCSMG48l2YRpa9j','QkysZczs3T06ZmDurbLaV',10.00),
@@ -252,10 +668,10 @@ INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('YkaGG11nTQ4LkG4L6tJnK','R8EaAq9h7t_xlmfyOt6k7',1.00),
 	 ('pu0KsYxsG5czzpp_5T9ys','rhAigutpue1xw77xQ8pDM',2.00),
 	 ('sxAJ_m9gqg3lrFYmTligp','rhAigutpue1xw77xQ8pDM',1.00),
-	 ('F8QdcEwvuwyq2qHz4nSWX','RkCsE0QoJjwt98L5IkuGa',5.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('F8QdcEwvuwyq2qHz4nSWX','RkCsE0QoJjwt98L5IkuGa',5.00),
 	 ('1it25uNCPGG-rp5d6lHnM','SDpOhoGIUjIZ3PAGFG1kr',1.00),
-	 ('7Yw0MslwsBDdnsG5___6-','Slv_4uS1qo3R7KCYbbX1f',1.00),
+	 ('7Yw0MslwsBDdnsG5___6-','Slv_4uS1qo3R7KCYbbX1f',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('8IXc17zlWDZ9Zc04fF7F5','Slv_4uS1qo3R7KCYbbX1f',1.00),
 	 ('cqixX6tcXjFv6NWBhxkbf','Slv_4uS1qo3R7KCYbbX1f',1.00),
 	 ('dMdL9eMTr_EBIuw_ZbHoG','Slv_4uS1qo3R7KCYbbX1f',1.00),
@@ -263,10 +679,10 @@ INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('HzobVYStpPpXMt6Np12nG','Slv_4uS1qo3R7KCYbbX1f',1.00),
 	 ('I2MiZMbMULDBZxz--JVqg','Slv_4uS1qo3R7KCYbbX1f',1.00),
 	 ('jjO3RvEOzlksCU6xO8Bsw','Slv_4uS1qo3R7KCYbbX1f',1.00),
-	 ('KoI_z4bCRjq-3lZeEwP5K','Slv_4uS1qo3R7KCYbbX1f',1.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('KoI_z4bCRjq-3lZeEwP5K','Slv_4uS1qo3R7KCYbbX1f',1.00),
 	 ('miPmRiU3WGS4x3AuSaKyP','Slv_4uS1qo3R7KCYbbX1f',1.00),
-	 ('ohMOBv48lXHI0B3t0JRWR','Slv_4uS1qo3R7KCYbbX1f',1.00),
+	 ('ohMOBv48lXHI0B3t0JRWR','Slv_4uS1qo3R7KCYbbX1f',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('vTsgkc6o46PMx_0XPCfRX','Slv_4uS1qo3R7KCYbbX1f',1.00),
 	 ('WlW_NmtMVz1kgxEsF9XEV','Slv_4uS1qo3R7KCYbbX1f',1.00),
 	 ('xtuz65fB99BnWYgjhoOAb','Slv_4uS1qo3R7KCYbbX1f',1.00),
@@ -274,10 +690,10 @@ INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('zaYdygfyQ8X2Hg92YIs6k','SzDrITmHhXumyLnixvZaH',10.00),
 	 ('F8QdcEwvuwyq2qHz4nSWX','tnG2TN5orSBG1nAw_MZIr',5.00),
 	 ('u1-ml2_5hTT_nY8JwvFv-','tsAVvwCiBzONKxFEfglwV',6.00),
-	 ('lHg1yMEc8-vONJ14pwtv2','TXGEH56O2icilxVWHajGd',10.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('lHg1yMEc8-vONJ14pwtv2','TXGEH56O2icilxVWHajGd',10.00),
 	 ('-TEe5UcBsyeWHGjscWFMI','TXnqLz4GWvzo9XaKiQTVg',4.00),
-	 ('0jCLHDCGV-LS7RJbGg8_F','TXnqLz4GWvzo9XaKiQTVg',4.00),
+	 ('0jCLHDCGV-LS7RJbGg8_F','TXnqLz4GWvzo9XaKiQTVg',4.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('35s1bXfsKHnXGHOmOCEQe','TXnqLz4GWvzo9XaKiQTVg',2.00),
 	 ('3NQm3AtM_tTvcZNE9kEYI','TXnqLz4GWvzo9XaKiQTVg',1.00),
 	 ('5zaX7wptkLwdAljf8OYbc','TXnqLz4GWvzo9XaKiQTVg',2.00),
@@ -285,10 +701,10 @@ INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('8hQl0htwpSdJi7SdzaDAe','TXnqLz4GWvzo9XaKiQTVg',2.00),
 	 ('8vBzgqqiAcJT0GKdEEm6f','TXnqLz4GWvzo9XaKiQTVg',1.00),
 	 ('94ssge0RtQyEGA5Cep_jy','TXnqLz4GWvzo9XaKiQTVg',2.00),
-	 ('ar_GfpBE_WZ5vwFPOFBss','TXnqLz4GWvzo9XaKiQTVg',2.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('ar_GfpBE_WZ5vwFPOFBss','TXnqLz4GWvzo9XaKiQTVg',2.00),
 	 ('CrZO7y70BIfMlHEvJFxdk','TXnqLz4GWvzo9XaKiQTVg',2.00),
-	 ('cTPsOAZozws7XxPwKPrJK','TXnqLz4GWvzo9XaKiQTVg',2.00),
+	 ('cTPsOAZozws7XxPwKPrJK','TXnqLz4GWvzo9XaKiQTVg',2.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('eQ5yjhmn0wkK-7BanZ7dv','TXnqLz4GWvzo9XaKiQTVg',1.00),
 	 ('hAmx5s8darW3pylDk4ym0','TXnqLz4GWvzo9XaKiQTVg',2.00),
 	 ('k6ZzBGBHVCW2UHuQRneYv','TXnqLz4GWvzo9XaKiQTVg',2.00),
@@ -296,31 +712,32 @@ INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('lHg1yMEc8-vONJ14pwtv2','TXnqLz4GWvzo9XaKiQTVg',2.00),
 	 ('LILrv1nSkXexeBFrnOgyf','TXnqLz4GWvzo9XaKiQTVg',1.00),
 	 ('RgK_m177i29vzJU10pQOy','TXnqLz4GWvzo9XaKiQTVg',2.00),
-	 ('9aA8GmA65R31FfhbQiJFl','TymNh52K6J5nNOXx5Hqh5',1.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('9aA8GmA65R31FfhbQiJFl','TymNh52K6J5nNOXx5Hqh5',1.00),
 	 ('O_mTKBvPr0TPmhozAB85A','TymNh52K6J5nNOXx5Hqh5',1.00),
-	 ('6VWv0FsFZeldr_KvVZUmT','udPIinYK1lInQmeGEepxL',10.00),
+	 ('6VWv0FsFZeldr_KvVZUmT','udPIinYK1lInQmeGEepxL',10.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('NFDPDtmARHKkaUs1oxHU2','UVk0-FQYzf4-n34bHsgqp',1.00),
 	 ('sxAJ_m9gqg3lrFYmTligp','UVk0-FQYzf4-n34bHsgqp',1.00),
-	 ('9aA8GmA65R31FfhbQiJFl','vBQeLhUUfexWQ-v4NM2rv',1.00),
+	 ('9aA8GmA65R31FfhbQiJFl','vBQeLhUUfexWQ-v4NM2rv',0.10),
 	 ('dF3wGQf0HIPNVu2T5M7hm','vBQeLhUUfexWQ-v4NM2rv',1.00),
 	 ('ElWvH_LNmLGxz9QgmwLg4','vBQeLhUUfexWQ-v4NM2rv',1.00),
 	 ('F8QdcEwvuwyq2qHz4nSWX','vBQeLhUUfexWQ-v4NM2rv',1.00),
 	 ('j5qoxFgO0dtAeAfGfhnOT','vBQeLhUUfexWQ-v4NM2rv',1.00),
-	 ('rsyt5fTS5P240FennSBGW','vBQeLhUUfexWQ-v4NM2rv',1.00);
-INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
+	 ('rsyt5fTS5P240FennSBGW','vBQeLhUUfexWQ-v4NM2rv',1.00),
 	 ('shGJh3m5zq22m95ahNkrF','vBQeLhUUfexWQ-v4NM2rv',1.00),
-	 ('V03fW48pRtemoWA4ik5rr','vBQeLhUUfexWQ-v4NM2rv',1.00),
+	 ('V03fW48pRtemoWA4ik5rr','vBQeLhUUfexWQ-v4NM2rv',1.00);
+INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('y1AiAa5ggjH_f3LimR1u8','vBQeLhUUfexWQ-v4NM2rv',1.00),
 	 ('eiPDYgatZun1Fh3E-Y2ii','vT3xd0fTkfQCeDK3u4Gnu',3.00),
+	 ('UEFNKUeguTQvmZ41OtKBQ','vT3xd0fTkfQCeDK3u4Gnu',2.00),
 	 ('rsyt5fTS5P240FennSBGW','x8qGBZtiDEU4HcuMkwH8b',10.00),
 	 ('StUWf5n6EKbmTn9t6MP7c','x8qGBZtiDEU4HcuMkwH8b',5.00),
 	 ('Pf_ylAMvYfUkSHWfhS2Fp','Xv35EQhVqNed4EP8o5rA-',5.00),
 	 ('e63GDPIZb_uc6WrXBY4TI','y9RfSBkTWuh-r4UIRFaSO',5.00),
 	 ('MIJ6Mr6dJDKbp3_zQmlRV','y9RfSBkTWuh-r4UIRFaSO',5.00),
-	 ('pnfw5xlBLLjy5v7pjKt62','y9RfSBkTWuh-r4UIRFaSO',1.00);
+	 ('pnfw5xlBLLjy5v7pjKt62','y9RfSBkTWuh-r4UIRFaSO',1.00),
+	 ('rsyt5fTS5P240FennSBGW','y9RfSBkTWuh-r4UIRFaSO',3.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
-	 ('rsyt5fTS5P240FennSBGW','y9RfSBkTWuh-r4UIRFaSO',3.00),
 	 ('y1AiAa5ggjH_f3LimR1u8','y9RfSBkTWuh-r4UIRFaSO',4.00),
 	 ('-TEe5UcBsyeWHGjscWFMI','ZWwniL7roteJLIEQR4MVm',5.00),
 	 ('0jCLHDCGV-LS7RJbGg8_F','ZWwniL7roteJLIEQR4MVm',5.00),
@@ -329,35 +746,35 @@ INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
 	 ('5zaX7wptkLwdAljf8OYbc','ZWwniL7roteJLIEQR4MVm',5.00),
 	 ('7BpDBNNJjjluhchfzKwZw','ZWwniL7roteJLIEQR4MVm',5.00),
 	 ('8hQl0htwpSdJi7SdzaDAe','ZWwniL7roteJLIEQR4MVm',1.00),
-	 ('8vBzgqqiAcJT0GKdEEm6f','ZWwniL7roteJLIEQR4MVm',1.00);
+	 ('8vBzgqqiAcJT0GKdEEm6f','ZWwniL7roteJLIEQR4MVm',1.00),
+	 ('94ssge0RtQyEGA5Cep_jy','ZWwniL7roteJLIEQR4MVm',1.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
-	 ('94ssge0RtQyEGA5Cep_jy','ZWwniL7roteJLIEQR4MVm',1.00),
 	 ('ar_GfpBE_WZ5vwFPOFBss','ZWwniL7roteJLIEQR4MVm',5.00),
-	 ('bxfax6TN53YF3O_6OY4gT','ZWwniL7roteJLIEQR4MVm',1.00),
-	 ('C1dxC-GwIdUh41QqQKorz','ZWwniL7roteJLIEQR4MVm',1.00),
+	 ('bxfax6TN53YF3O_6OY4gT','ZWwniL7roteJLIEQR4MVm',0.10),
+	 ('C1dxC-GwIdUh41QqQKorz','ZWwniL7roteJLIEQR4MVm',0.10),
 	 ('CrZO7y70BIfMlHEvJFxdk','ZWwniL7roteJLIEQR4MVm',5.00),
 	 ('cTPsOAZozws7XxPwKPrJK','ZWwniL7roteJLIEQR4MVm',5.00),
-	 ('dF3wGQf0HIPNVu2T5M7hm','ZWwniL7roteJLIEQR4MVm',1.00),
-	 ('e63GDPIZb_uc6WrXBY4TI','ZWwniL7roteJLIEQR4MVm',1.00),
-	 ('ElWvH_LNmLGxz9QgmwLg4','ZWwniL7roteJLIEQR4MVm',1.00),
-	 ('eQ5yjhmn0wkK-7BanZ7dv','ZWwniL7roteJLIEQR4MVm',1.00);
+	 ('dF3wGQf0HIPNVu2T5M7hm','ZWwniL7roteJLIEQR4MVm',0.10),
+	 ('e63GDPIZb_uc6WrXBY4TI','ZWwniL7roteJLIEQR4MVm',0.10),
+	 ('ElWvH_LNmLGxz9QgmwLg4','ZWwniL7roteJLIEQR4MVm',0.10),
+	 ('eQ5yjhmn0wkK-7BanZ7dv','ZWwniL7roteJLIEQR4MVm',1.00),
+	 ('hAmx5s8darW3pylDk4ym0','ZWwniL7roteJLIEQR4MVm',5.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
-	 ('hAmx5s8darW3pylDk4ym0','ZWwniL7roteJLIEQR4MVm',5.00),
-	 ('j5qoxFgO0dtAeAfGfhnOT','ZWwniL7roteJLIEQR4MVm',1.00),
+	 ('j5qoxFgO0dtAeAfGfhnOT','ZWwniL7roteJLIEQR4MVm',0.10),
 	 ('k6ZzBGBHVCW2UHuQRneYv','ZWwniL7roteJLIEQR4MVm',5.00),
 	 ('KDLxhTLUWiWynqz-Harz4','ZWwniL7roteJLIEQR4MVm',5.00),
 	 ('KWPh9O8-P_-vQR7B2lpDs','ZWwniL7roteJLIEQR4MVm',1.00),
 	 ('lHg1yMEc8-vONJ14pwtv2','ZWwniL7roteJLIEQR4MVm',5.00),
-	 ('LHW1zoRi7J3h00vc5RhPg','ZWwniL7roteJLIEQR4MVm',1.00),
+	 ('LHW1zoRi7J3h00vc5RhPg','ZWwniL7roteJLIEQR4MVm',0.10),
 	 ('LILrv1nSkXexeBFrnOgyf','ZWwniL7roteJLIEQR4MVm',1.00),
-	 ('MIJ6Mr6dJDKbp3_zQmlRV','ZWwniL7roteJLIEQR4MVm',1.00),
-	 ('RaoSvCN13fs4klr2nr9et','ZWwniL7roteJLIEQR4MVm',1.00);
+	 ('MIJ6Mr6dJDKbp3_zQmlRV','ZWwniL7roteJLIEQR4MVm',0.10),
+	 ('RaoSvCN13fs4klr2nr9et','ZWwniL7roteJLIEQR4MVm',0.10),
+	 ('RgK_m177i29vzJU10pQOy','ZWwniL7roteJLIEQR4MVm',1.00);
 INSERT INTO cml_dev_db.recipe_inputs (recipe_id,item_id,quantity) VALUES
-	 ('RgK_m177i29vzJU10pQOy','ZWwniL7roteJLIEQR4MVm',1.00),
-	 ('rsyt5fTS5P240FennSBGW','ZWwniL7roteJLIEQR4MVm',1.00),
-	 ('shGJh3m5zq22m95ahNkrF','ZWwniL7roteJLIEQR4MVm',1.00),
-	 ('StUWf5n6EKbmTn9t6MP7c','ZWwniL7roteJLIEQR4MVm',1.00),
-	 ('V03fW48pRtemoWA4ik5rr','ZWwniL7roteJLIEQR4MVm',1.00),
-	 ('W5sgkCVWylLdd1O8w-u8F','ZWwniL7roteJLIEQR4MVm',1.00),
-	 ('xL-zLlZZVMNUaJbKVCSId','ZWwniL7roteJLIEQR4MVm',1.00),
-	 ('y1AiAa5ggjH_f3LimR1u8','ZWwniL7roteJLIEQR4MVm',1.00);
+	 ('rsyt5fTS5P240FennSBGW','ZWwniL7roteJLIEQR4MVm',0.10),
+	 ('shGJh3m5zq22m95ahNkrF','ZWwniL7roteJLIEQR4MVm',0.10),
+	 ('StUWf5n6EKbmTn9t6MP7c','ZWwniL7roteJLIEQR4MVm',0.10),
+	 ('V03fW48pRtemoWA4ik5rr','ZWwniL7roteJLIEQR4MVm',0.10),
+	 ('W5sgkCVWylLdd1O8w-u8F','ZWwniL7roteJLIEQR4MVm',0.10),
+	 ('xL-zLlZZVMNUaJbKVCSId','ZWwniL7roteJLIEQR4MVm',0.10),
+	 ('y1AiAa5ggjH_f3LimR1u8','ZWwniL7roteJLIEQR4MVm',0.10);

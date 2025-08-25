@@ -15,7 +15,7 @@ erDiagram
         string id           PK
         string name
         string weight
-        string baseValue
+        string cost
     }
     
     "Technology_Tree" {
