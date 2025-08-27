@@ -14,7 +14,7 @@ RUN npx nx build admin-portal
 FROM nginx:1.29 AS runner
 
 COPY --from=builder /app/dist/apps/admin-portal/browser /usr/share/nginx/html
-COPY apps/admin-portal/.docker/nginx.conf /etc/nginx/nginx.conf
+COPY apps/admin-portal/.docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
