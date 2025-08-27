@@ -17,3 +17,5 @@ COPY --from=builder /app/dist/apps/web-app/browser /usr/share/nginx/html
 COPY apps/web-app/.docker/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
+
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
