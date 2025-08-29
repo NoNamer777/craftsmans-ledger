@@ -11,7 +11,6 @@
             "outputs": ["{options.outputPath}"],
             "options": {
                 "allowedCommonJsDependencies": ["class-validator", "papaparse"],
-                "baseHref": "./",
                 "browser": "apps/web-app/src/main.ts",
                 "outputPath": "dist/apps/web-app",
                 "inlineStyleLanguage": "scss",
