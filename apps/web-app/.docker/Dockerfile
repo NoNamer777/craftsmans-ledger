@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM node:24 AS builder
+FROM --platform=$BUILDPLATFORM node:24.12.0 AS builder
 
 WORKDIR /app
 
@@ -11,7 +11,7 @@ COPY . .
 RUN npx nx build web-app
 
 
-FROM nginx:1.29 AS runner
+FROM nginx:1.29.4-alpine3.23 AS runner
 
 COPY --from=builder /app/dist/apps/web-app/browser /usr/share/nginx/html
 COPY apps/web-app/.docker/nginx.conf /etc/nginx/conf.d/default.conf
