@@ -5,7 +5,7 @@ export default [
     ...nx.configs['flat/typescript'],
     ...nx.configs['flat/javascript'],
     {
-        ignores: ['**/dist'],
+        ignores: ['**/dist', '**/src/prisma'],
     },
     {
         files: ['**/*.ts', '**/*.js'],
@@ -51,10 +51,10 @@ export default [
                             sourceTag: 'framework:nest',
                             allowedExternalImports: [
                                 '@nestjs/*',
-                                '@prisma/*',
                                 'class-transformer',
                                 'class-validator',
                                 'fastify',
+                                'prisma/*',
                                 'reflect-metadata/*',
                                 'rxjs',
                             ],
