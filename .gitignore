@@ -9,6 +9,7 @@ node_modules/
 .angular/
 build/
 dist/
+**/src/prisma/
 
 **/public/config.json
 **/.docker/config.json
