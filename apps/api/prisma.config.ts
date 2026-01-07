@@ -5,7 +5,7 @@ function parseInt(fallback: number, value?: string) {
     const parsed = Number.parseInt(value);
 
     if (Number.isNaN(parsed)) return fallback;
-    return parsed
+    return parsed;
 }
 
 interface DbUrlParams {
@@ -37,5 +37,5 @@ export default defineConfig({
     },
     migrations: {
         path: './prisma/migrations',
-    }
-})
+    },
+});
