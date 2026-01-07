@@ -11,7 +11,7 @@ COPY . .
 RUN npx nx build api
 
 
-FROM node:24.12.0-alpine3.22
+FROM node:24.12.0-alpine3.23
 
 WORKDIR /app
 
