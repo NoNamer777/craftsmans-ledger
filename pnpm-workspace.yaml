@@ -1,0 +1,10 @@
+packages:
+    - apps/*
+    - libs/*
+    - packages/*
+
+savePrefix: "~"
+
+minimumReleaseAge: 4320
+trustPolicy: no-downgrade
+engineStrict: true

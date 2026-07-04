@@ -1,0 +1,31 @@
+{
+  "name": "craftsmans-ledger",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A personal companion tool for Medieval Dynasty: track unlocked recipes, find vendors across villages/realms, compare recipe profitability, and look up recipes/items/buildings by tech-tree progression.",
+  "license": "MIT",
+  "homepage": "https://github.com/nonamer777/craftsmans-ledger#readme",
+  "bugs": {
+    "url": "https://github.com/nonamer777/craftsmans-ledger/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nonamer777/craftsmans-ledger.git"
+  },
+  "engines": {
+    "node": "24.18.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24.18.0",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.9.0",
+      "onFail": "error"
+    }
+  }
+}
