@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+out-tsc/
+tmp/
+.angular/cache/
+
+# Moonrepo
+.moon/cache/
+.moon/docker/
+
+# Environment
+.env
+.env.*.local
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs & test output
+*.log
+coverage/
+reports/
