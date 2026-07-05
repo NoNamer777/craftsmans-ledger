@@ -3,6 +3,8 @@
 ![Node](https://img.shields.io/badge/node-24.18.0-339933?logo=node.js&logoColor=white)
 ![pnpm](https://img.shields.io/badge/pnpm-11.9.0-F69220?logo=pnpm&logoColor=white)
 ![moon](https://img.shields.io/badge/moon-2.3.5-6F53F3?logo=moonrepo&logoColor=white)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
+[![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-F7B93E?logo=prettier&logoColor=black)](https://prettier.io)
 [![CI](https://github.com/nonamer777/craftsmans-ledger/actions/workflows/push-main.yml/badge.svg)](https://github.com/nonamer777/craftsmans-ledger/actions/workflows/push-main.yml)
 
 A personal companion tool for Medieval Dynasty: track unlocked recipes, find vendors across villages/realms, compare recipe profitability, and look up recipes/items/buildings by tech-tree progression.
@@ -28,9 +30,16 @@ Task orchestration is handled by [moon](https://moonrepo.dev/) (`pnpm moon <comm
 - `pnpm moon run root:format`: format the workspace
 - `pnpm moon run root:format-check`: check formatting without writing (this is what CI runs)
 
+### Git Hooks
+
+[Husky](https://typicode.github.io/husky/) manages git hooks, installed automatically by the `prepare` script on `pnpm install`; see [ADR-0004](docs/adr/0004-husky-lint-staged-for-git-hooks.md) for why husky/lint-staged were chosen over moon's native `vcs.hooks`.
+
+- `pre-commit` runs [lint-staged](https://github.com/lint-staged/lint-staged) (config in `lint-staged.config.mjs`), which formats staged files with Prettier and re-stages the result.
+- `commit-msg` runs commitlint locally against the same rules CI enforces (see below).
+
 ### Commit Messages
 
-Commits follow [Conventional Commits](https://www.conventionalcommits.org/), enforced by [commitlint](https://commitlint.js.org/) against `commitlint.config.mjs` at the repo root, only on pull requests; see [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for why it's invoked directly via the CLI rather than a local hook or marketplace action, and why it doesn't also run on push to `main`.
+Commits follow [Conventional Commits](https://www.conventionalcommits.org/), enforced by [commitlint](https://commitlint.js.org/) against `commitlint.config.mjs` at the repo root — locally via the `commit-msg` hook above, and in CI only on pull requests; see [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for why CI invokes it directly via the CLI rather than a marketplace action, and why it doesn't also run on push to `main`.
 
 ## Continuous Integration
 
