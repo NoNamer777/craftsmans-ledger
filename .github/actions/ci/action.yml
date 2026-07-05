@@ -1,0 +1,12 @@
+name: CI
+description: Provision the toolchain and run moon's CI checks
+
+runs:
+    using: composite
+    steps:
+        - name: Setup
+          uses: ./.github/actions/setup
+
+        - name: Run CI checks
+          shell: bash
+          run: pnpm moon ci :format-check
