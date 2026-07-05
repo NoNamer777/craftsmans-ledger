@@ -13,6 +13,18 @@ A personal companion tool for Medieval Dynasty: track unlocked recipes, find ven
 
 Early development: repository scaffolding in progress.
 
+## Project Structure
+
+- `apps/` — deployable applications (currently empty; created lazily once the first app lands)
+- `libs/` — shared *application* code consumed at runtime by `apps/*` (currently empty)
+- `packages/` — shared *build/tooling* config, consumed by name (e.g. `@craftsmans-ledger/tsconfig`), not by relative path
+
+See [ADR-0003](docs/adr/0003-libs-vs-packages-split.md) for the full runtime/build-time rationale.
+
+Currently populated packages:
+
+- [`@craftsmans-ledger/tsconfig`](packages/tsconfig) — shared, environment-agnostic TypeScript compiler options; see [ADR-0011](docs/adr/0011-per-framework-typescript-catalogs.md) for why framework-specific overlays aren't included yet.
+
 ## Getting Started
 
 This project uses [mise](https://mise.jdx.dev/) to manage the Node.js and pnpm versions, reading them directly from `package.json` instead of a separate `mise.toml`. See [ADR-0001](docs/adr/0001-moonrepo-mise-pnpm-for-monorepo-tooling.md) and [ADR-0002](docs/adr/0002-mise-as-sole-toolchain-version-authority.md) for the rationale.
