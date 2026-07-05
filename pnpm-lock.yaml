@@ -253,6 +253,8 @@ importers:
         specifier: catalog:tooling
         version: 4.3.0(prettier@3.9.4)(typescript@6.0.3)
 
+  packages/tsconfig: {}
+
 packages:
 
   '@babel/code-frame@7.29.7':
