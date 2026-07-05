@@ -9,17 +9,17 @@ A personal companion tool for Medieval Dynasty: track unlocked recipes, find ven
 
 ## Status
 
-Early development — repository scaffolding in progress.
+Early development: repository scaffolding in progress.
 
 ## Getting Started
 
 This project uses [mise](https://mise.jdx.dev/) to manage the Node.js and pnpm versions, reading them directly from `package.json` instead of a separate `mise.toml`. See [ADR-0001](docs/adr/0001-moonrepo-mise-pnpm-for-monorepo-tooling.md) and [ADR-0002](docs/adr/0002-mise-as-sole-toolchain-version-authority.md) for the rationale.
 
 1. Install [mise](https://mise.jdx.dev/getting-started.html)
-2. `mise install` — installs the pinned Node.js and pnpm versions
-3. `pnpm install` — installs workspace dependencies
+2. `mise install`: installs the pinned Node.js and pnpm versions
+3. `pnpm install`: installs workspace dependencies
 
-Task orchestration is handled by [moon](https://moonrepo.dev/) (`pnpm moon <command>`) — see [ADR-0001](docs/adr/0001-moonrepo-mise-pnpm-for-monorepo-tooling.md) for why. Its `.mcp.json` also registers a moon MCP server for Claude Code, letting the assistant query the project/task graph directly (`get_project`, `get_tasks`, `get_changed_files`, etc.) without extra setup.
+Task orchestration is handled by [moon](https://moonrepo.dev/) (`pnpm moon <command>`); see [ADR-0001](docs/adr/0001-moonrepo-mise-pnpm-for-monorepo-tooling.md) for why. Its `.mcp.json` also registers a moon MCP server for Claude Code, letting the assistant query the project/task graph directly (`get_project`, `get_tasks`, `get_changed_files`, etc.) without extra setup.
 
 ### Formatting
 
@@ -34,4 +34,4 @@ A `ci` job (formatting today, joined by linting/build/typecheck/tests as those t
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).
