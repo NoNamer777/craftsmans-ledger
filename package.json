@@ -17,8 +17,13 @@
     "@commitlint/cli": "catalog:tooling",
     "@commitlint/config-conventional": "catalog:tooling",
     "@moonrepo/cli": "catalog:tooling",
+    "husky": "catalog:tooling",
+    "lint-staged": "catalog:tooling",
     "prettier": "catalog:tooling",
     "prettier-plugin-organize-imports": "catalog:tooling"
+  },
+  "scripts": {
+    "prepare": "husky"
   },
   "engines": {
     "node": "24.18.0"

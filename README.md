@@ -28,9 +28,16 @@ Task orchestration is handled by [moon](https://moonrepo.dev/) (`pnpm moon <comm
 - `pnpm moon run root:format`: format the workspace
 - `pnpm moon run root:format-check`: check formatting without writing (this is what CI runs)
 
+### Git Hooks
+
+[Husky](https://typicode.github.io/husky/) manages git hooks, installed automatically by the `prepare` script on `pnpm install`; see [ADR-0004](docs/adr/0004-husky-lint-staged-for-git-hooks.md) for why husky/lint-staged were chosen over moon's native `vcs.hooks`.
+
+- `pre-commit` runs [lint-staged](https://github.com/lint-staged/lint-staged) (config in `lint-staged.config.mjs`), which formats staged files with Prettier and re-stages the result.
+- `commit-msg` runs commitlint locally against the same rules CI enforces (see below).
+
 ### Commit Messages
 
-Commits follow [Conventional Commits](https://www.conventionalcommits.org/), enforced by [commitlint](https://commitlint.js.org/) against `commitlint.config.mjs` at the repo root, only on pull requests; see [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for why it's invoked directly via the CLI rather than a local hook or marketplace action, and why it doesn't also run on push to `main`.
+Commits follow [Conventional Commits](https://www.conventionalcommits.org/), enforced by [commitlint](https://commitlint.js.org/) against `commitlint.config.mjs` at the repo root — locally via the `commit-msg` hook above, and in CI only on pull requests; see [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for why CI invokes it directly via the CLI rather than a marketplace action, and why it doesn't also run on push to `main`.
 
 ## Continuous Integration
 
