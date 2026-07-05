@@ -1,0 +1,23 @@
+{
+  "name": "web",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@angular/common": "catalog:angular",
+    "@angular/compiler": "catalog:angular",
+    "@angular/core": "catalog:angular",
+    "@angular/forms": "catalog:angular",
+    "@angular/platform-browser": "catalog:angular",
+    "@angular/router": "catalog:angular",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "catalog:angular",
+    "@angular/cli": "catalog:angular",
+    "@angular/compiler-cli": "catalog:angular",
+    "jsdom": "^28.0.0",
+    "typescript": "catalog:angular",
+    "vitest": "^4.0.8"
+  }
+}
