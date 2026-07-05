@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=./cache/schemas/workspace.json
+
+projects:
+    globs:
+        - "apps/*"
+        - "libs/*"
+        - "packages/*"
+    sources:
+        root: "."
+
+vcs:
+    defaultBranch: "main"
+    provider: "github"
+
+remote:
+    host: "grpc://bazel-remote.wolf-triggerfish.ts.net:9092"

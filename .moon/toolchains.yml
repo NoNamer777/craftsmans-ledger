@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=./cache/schemas/toolchains.json
+
+javascript:
+    packageManager: pnpm
+
+node: {}
+
+pnpm: {}

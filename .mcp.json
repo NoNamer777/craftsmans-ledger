@@ -1,0 +1,8 @@
+{
+    "mcpServers": {
+        "moon": {
+            "command": "pnpm",
+            "args": ["moon", "mcp"]
+        }
+    }
+}

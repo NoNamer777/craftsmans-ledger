@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=./.moon/cache/schemas/project.json
+
+layer: "automation"
+stack: "unknown"
+
+project:
+    title: "Craftsman's Ledger"
+    description: "Workspace root — houses repo-wide maintenance and process tasks, not application code."

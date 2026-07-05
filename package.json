@@ -13,6 +13,9 @@
     "type": "git",
     "url": "git+https://github.com/nonamer777/craftsmans-ledger.git"
   },
+  "devDependencies": {
+    "@moonrepo/cli": "catalog:tooling"
+  },
   "engines": {
     "node": "24.18.0"
   },

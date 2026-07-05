@@ -3,6 +3,10 @@ packages:
     - libs/*
     - packages/*
 
+catalogs:
+    tooling:
+        "@moonrepo/cli": "~2.3.5"
+
 savePrefix: "~"
 
 minimumReleaseAge: 4320

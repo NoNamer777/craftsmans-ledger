@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../cache/schemas/tasks.json
+
+implicitInputs:
+    - "package.json"
+    - "/pnpm-lock.yaml"
+    - "/pnpm-workspace.yaml"
+
+inheritedBy:
+    toolchain: "node"
