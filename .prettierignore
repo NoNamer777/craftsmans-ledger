@@ -6,6 +6,10 @@
 !*.json
 !*.yaml
 !*.yml
+!*.js
+!*.mjs
+!*.cjs
+!*.ts
 
 # Re-exclude specific files/folders despite matching above
 /pnpm-lock.yaml

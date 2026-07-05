@@ -24,3 +24,7 @@ jobs:
 
             - name: Run CI
               uses: ./.github/actions/ci
+
+            - name: Lint commit messages
+              shell: bash
+              run: pnpm commitlint --last --verbose

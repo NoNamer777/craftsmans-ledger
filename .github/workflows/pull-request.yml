@@ -25,3 +25,7 @@ jobs:
 
             - name: Run CI
               uses: ./.github/actions/ci
+
+            - name: Lint commit messages
+              shell: bash
+              run: pnpm commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose

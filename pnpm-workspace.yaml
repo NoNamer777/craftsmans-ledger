@@ -5,6 +5,8 @@ packages:
 
 catalogs:
     tooling:
+        "@commitlint/cli": "~21.2.0"
+        "@commitlint/config-conventional": "~21.2.0"
         "@moonrepo/cli": "~2.3.5"
         "prettier": "~3.9.4"
         "prettier-plugin-organize-imports": "~4.3.0"
