@@ -30,11 +30,11 @@ Task orchestration is handled by [moon](https://moonrepo.dev/) (`pnpm moon <comm
 
 ### Commit Messages
 
-Commits follow [Conventional Commits](https://www.conventionalcommits.org/), enforced in CI by [commitlint](https://commitlint.js.org/) against `commitlint.config.mjs` at the repo root; see [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for why it's invoked directly via the CLI rather than a local hook or marketplace action.
+Commits follow [Conventional Commits](https://www.conventionalcommits.org/), enforced by [commitlint](https://commitlint.js.org/) against `commitlint.config.mjs` at the repo root, only on pull requests; see [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for why it's invoked directly via the CLI rather than a local hook or marketplace action, and why it doesn't also run on push to `main`.
 
 ## Continuous Integration
 
-A `ci` job (Prettier formatting and commit message linting today, joined by code linting/build/typecheck/tests as those tasks come to exist) runs via GitHub Actions on pull requests targeting `main` (required to pass before merging) and again on every push to `main`, confirming `main` itself stays green and deployable/releasable at any point in time. See [ADR-0007](docs/adr/0007-ci-toolchain-via-setup-node-pnpm-action-setup.md), [ADR-0008](docs/adr/0008-ci-workflows-split-by-trigger.md), [ADR-0009](docs/adr/0009-branch-protection-requires-ci-check.md), and [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for the toolchain-provisioning, workflow-split, branch-protection, and commit-linting rationale.
+A `ci` job (Prettier formatting today, joined by code linting/build/typecheck/tests as those tasks come to exist) runs via GitHub Actions on pull requests targeting `main` (required to pass before merging) and again on every push to `main`, confirming `main` itself stays green and deployable/releasable at any point in time. Commit messages are linted separately, only on pull requests — see [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md). See [ADR-0007](docs/adr/0007-ci-toolchain-via-setup-node-pnpm-action-setup.md), [ADR-0008](docs/adr/0008-ci-workflows-split-by-trigger.md), [ADR-0009](docs/adr/0009-branch-protection-requires-ci-check.md), and [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for the toolchain-provisioning, workflow-split, branch-protection, and commit-linting rationale.
 
 ## License
 
