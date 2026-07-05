@@ -13,18 +13,6 @@
     "type": "git",
     "url": "git+https://github.com/nonamer777/craftsmans-ledger.git"
   },
-  "devDependencies": {
-    "@commitlint/cli": "catalog:tooling",
-    "@commitlint/config-conventional": "catalog:tooling",
-    "@moonrepo/cli": "catalog:tooling",
-    "husky": "catalog:tooling",
-    "lint-staged": "catalog:tooling",
-    "prettier": "catalog:tooling",
-    "prettier-plugin-organize-imports": "catalog:tooling"
-  },
-  "scripts": {
-    "prepare": "husky"
-  },
   "engines": {
     "node": "24.18.0"
   },
@@ -39,5 +27,17 @@
       "version": "11.9.0",
       "onFail": "error"
     }
+  },
+  "scripts": {
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "catalog:tooling",
+    "@commitlint/config-conventional": "catalog:tooling",
+    "@moonrepo/cli": "catalog:tooling",
+    "husky": "catalog:tooling",
+    "lint-staged": "catalog:tooling",
+    "prettier": "catalog:tooling",
+    "prettier-plugin-organize-imports": "catalog:tooling"
   }
 }
