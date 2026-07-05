@@ -1,0 +1,20 @@
+# Deny all files by default
+*
+!*/
+
+# Re-include known file types
+!*.json
+!*.yaml
+!*.yml
+
+# Re-exclude specific files/folders despite matching above
+/pnpm-lock.yaml
+/.moon/cache/
+/.moon/docker/
+/tmp/
+node_modules/
+dist/
+out-tsc/
+.angular/
+coverage/
+reports/

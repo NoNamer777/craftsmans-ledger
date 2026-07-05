@@ -14,7 +14,9 @@
     "url": "git+https://github.com/nonamer777/craftsmans-ledger.git"
   },
   "devDependencies": {
-    "@moonrepo/cli": "catalog:tooling"
+    "@moonrepo/cli": "catalog:tooling",
+    "prettier": "catalog:tooling",
+    "prettier-plugin-organize-imports": "catalog:tooling"
   },
   "engines": {
     "node": "24.18.0"

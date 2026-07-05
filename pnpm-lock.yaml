@@ -208,6 +208,12 @@ catalogs:
     '@moonrepo/cli':
       specifier: ~2.3.5
       version: 2.3.5
+    prettier:
+      specifier: ~3.9.4
+      version: 3.9.4
+    prettier-plugin-organize-imports:
+      specifier: ~4.3.0
+      version: 4.3.0
 
 importers:
 
@@ -216,6 +222,12 @@ importers:
       '@moonrepo/cli':
         specifier: catalog:tooling
         version: 2.3.5
+      prettier:
+        specifier: catalog:tooling
+        version: 3.9.4
+      prettier-plugin-organize-imports:
+        specifier: catalog:tooling
+        version: 4.3.0(prettier@3.9.4)(typescript@6.0.3)
 
 packages:
 
@@ -266,6 +278,26 @@ packages:
     resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
     engines: {node: '>=8'}
 
+  prettier-plugin-organize-imports@4.3.0:
+    resolution: {integrity: sha512-FxFz0qFhyBsGdIsb697f/EkvHzi5SZOhWAjxcx2dLt+Q532bAlhswcXGYB1yzjZ69kW8UoadFBw7TyNwlq96Iw==}
+    peerDependencies:
+      prettier: '>=2.0'
+      typescript: '>=2.9'
+      vue-tsc: ^2.1.0 || 3
+    peerDependenciesMeta:
+      vue-tsc:
+        optional: true
+
+  prettier@3.9.4:
+    resolution: {integrity: sha512-yWG/o/4oJfo036EKAfK6ACAoDOfHeRHx4tuxkfBZiauURiaSmYwlpOr5LQqKtIkRD2z1PLteme2WoxEnj4tHTg==}
+    engines: {node: '>=14'}
+    hasBin: true
+
+  typescript@6.0.3:
+    resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
 snapshots:
 
   '@moonrepo/cli@2.3.5':
@@ -302,3 +334,12 @@ snapshots:
     optional: true
 
   detect-libc@2.1.2: {}
+
+  prettier-plugin-organize-imports@4.3.0(prettier@3.9.4)(typescript@6.0.3):
+    dependencies:
+      prettier: 3.9.4
+      typescript: 6.0.3
+
+  prettier@3.9.4: {}
+
+  typescript@6.0.3: {}

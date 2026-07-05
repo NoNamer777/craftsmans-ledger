@@ -6,6 +6,8 @@ packages:
 catalogs:
     tooling:
         "@moonrepo/cli": "~2.3.5"
+        "prettier": "~3.9.4"
+        "prettier-plugin-organize-imports": "~4.3.0"
 
 savePrefix: "~"
 

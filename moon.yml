@@ -6,3 +6,19 @@ stack: "unknown"
 project:
     title: "Craftsman's Ledger"
     description: "Workspace root — houses repo-wide maintenance and process tasks, not application code."
+
+tasks:
+    format:
+        command: "prettier --write ."
+        toolchains: ["node"]
+        inputs:
+            - "**/*"
+        options:
+            cache: false
+            runInCI: false
+
+    format-check:
+        command: "prettier --check ."
+        toolchains: ["node"]
+        inputs:
+            - "**/*"

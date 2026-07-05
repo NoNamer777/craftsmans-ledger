@@ -1,0 +1,8 @@
+# tabWidth/useTabs/endOfLine are intentionally omitted: Prettier's built-in
+# .editorconfig awareness already covers them (4-space indent, LF) as the
+# single source of truth. See .editorconfig.
+
+plugins:
+    - prettier-plugin-organize-imports
+
+quoteProps: "consistent"
