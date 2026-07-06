@@ -4,15 +4,15 @@
     "cli": {
         "packageManager": "pnpm"
     },
-    "newProjectRoot": "projects",
+    "schematics": {
+        "@schematics/angular:component": {
+            "changeDetection": "OnPush",
+            "style": "scss"
+        }
+    },
     "projects": {
         "web": {
             "projectType": "application",
-            "schematics": {
-                "@schematics/angular:component": {
-                    "style": "scss"
-                }
-            },
             "root": "",
             "sourceRoot": "src",
             "prefix": "app",
@@ -20,17 +20,19 @@
                 "build": {
                     "builder": "@angular/build:application",
                     "options": {
-                        "browser": "src/main.ts",
-                        "tsConfig": "tsconfig.app.json",
-                        "inlineStyleLanguage": "scss",
                         "assets": [
                             {
                                 "glob": "**/*",
                                 "input": "public"
                             }
                         ],
-                        "styles": ["src/styles.scss"]
+                        "browser": "src/main.ts",
+                        "inlineStyleLanguage": "scss",
+                        "sourceMap": true,
+                        "styles": ["src/styles.scss"],
+                        "tsConfig": "tsconfig.app.json"
                     },
+                    "defaultConfiguration": "production",
                     "configurations": {
                         "production": {
                             "budgets": [
@@ -45,27 +47,21 @@
                                     "maximumError": "8kB"
                                 }
                             ],
-                            "outputHashing": "all"
+                            "outputHashing": "all",
+                            "subresourceIntegrity": true
                         },
                         "development": {
-                            "optimization": false,
+                            "namedChunks": true,
                             "extractLicenses": false,
-                            "sourceMap": true
+                            "optimization": false
                         }
-                    },
-                    "defaultConfiguration": "production"
+                    }
                 },
                 "serve": {
                     "builder": "@angular/build:dev-server",
-                    "configurations": {
-                        "production": {
-                            "buildTarget": "web:build:production"
-                        },
-                        "development": {
-                            "buildTarget": "web:build:development"
-                        }
-                    },
-                    "defaultConfiguration": "development"
+                    "options": {
+                        "buildTarget": "web:build:development"
+                    }
                 },
                 "test": {
                     "builder": "@angular/build:unit-test"
