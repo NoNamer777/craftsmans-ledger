@@ -4,12 +4,14 @@ Shared, environment-agnostic TypeScript compiler options for Craftsman's Ledger 
 
 ## Usage
 
-Extend `base.json` from an app's own `tsconfig.json`:
+`base.json` deliberately excludes `target`, `module`, `moduleResolution`, and `lib` — those are environment-specific and belong to a framework overlay. See [ADR-0011](../../docs/adr/0011-per-framework-typescript-catalogs.md) for the rationale.
+
+Extend the overlay matching your framework from an app's own `tsconfig.json` (each overlay extends `base.json` internally, so there's no need to extend both):
 
 ```json
 {
-  "extends": "@craftsmans-ledger/tsconfig/base.json"
+  "extends": "@craftsmans-ledger/tsconfig/angular.json"
 }
 ```
 
-`base.json` deliberately excludes `target`, `module`, `moduleResolution`, and `lib` — those are environment-specific and belong to a framework overlay (e.g. `angular.json`, `nest.json`), which doesn't exist yet since no app has landed. See [ADR-0011](../../docs/adr/0011-per-framework-typescript-catalogs.md) for the rationale.
+Currently available overlays: `angular.json`. A `nest.json` overlay will land once a NestJS app exists.
