@@ -24,3 +24,13 @@ tasks:
         inputs:
             - '**/*'
             - '!**/node_modules/**'
+
+    lint-ts:
+        command: 'eslint .'
+        toolchains: ['node']
+        inputs:
+            - '*.js'
+            - '*.mjs'
+            - '*.cjs'
+            - '*.ts'
+            - 'eslint.config.mts'
