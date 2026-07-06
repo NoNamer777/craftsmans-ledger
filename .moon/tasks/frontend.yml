@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../cache/schemas/tasks.json
+
+inheritedBy:
+    stack: 'frontend'
+
+tasks:
+    install-browsers:
+        command: 'playwright install chromium'
+        toolchains: ['node']
