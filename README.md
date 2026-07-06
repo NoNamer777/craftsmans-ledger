@@ -46,6 +46,17 @@ Task orchestration is handled by [moon](https://moonrepo.dev/) (`pnpm moon <comm
 - `pnpm moon run root:format`: format the workspace
 - `pnpm moon run root:format-check`: check formatting without writing (this is what CI runs)
 
+To format on save instead of relying on the commands above:
+
+- **VS Code**: install the [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) extension, then add to `.vscode/settings.json`:
+    ```json
+    {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    }
+    ```
+- **WebStorm**: open Settings → Languages & Frameworks → JavaScript → Prettier, set the Prettier package to `<repo root>/node_modules/prettier`, and enable "On save" (and "On 'Reformat Code' action" if desired).
+
 ### Git Hooks
 
 [Husky](https://typicode.github.io/husky/) manages git hooks, installed automatically by the `prepare` script on `pnpm install`; see [ADR-0004](docs/adr/0004-husky-lint-staged-for-git-hooks.md) for why husky/lint-staged were chosen over moon's native `vcs.hooks`.
