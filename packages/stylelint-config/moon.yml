@@ -13,6 +13,8 @@ tasks:
         toolchains: ['node']
         inputs:
             - '*.mts'
+            - 'base.js'
+            - 'angular.js'
             - 'eslint.config.mts'
             - 'tsconfig.json'
 
