@@ -1,0 +1,3 @@
+{
+    "extends": "@craftsmans-ledger/stylelint-config/angular"
+}

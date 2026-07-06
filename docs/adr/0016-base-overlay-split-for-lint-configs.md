@@ -8,4 +8,8 @@ status: accepted
 
 ## Consequences
 
-- A future `nest` overlay for both packages is expected to follow the same shape: extend `base` internally, add only NestJS-specific rules.
+- A future `nest` overlay for `eslint-config` is expected to follow the same shape: extend `base` internally, add only NestJS-specific rules.
+
+## Amendment (2026-07-06)
+
+The original "Consequences" section claimed a future `nest` overlay would follow for *both* packages. That doesn't hold for `stylelint-config`: it lints CSS/SCSS, and a NestJS API produces no stylesheets at all, so there's no NestJS-specific CSS convention a `nest` overlay could ever hold — `base.js` alone is expected to remain sufficient for `stylelint-config` indefinitely. The base/overlay split itself, and the expectation of a `nest` overlay for `eslint-config`, are unchanged.

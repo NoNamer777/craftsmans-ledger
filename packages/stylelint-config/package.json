@@ -1,0 +1,41 @@
+{
+  "name": "@craftsmans-ledger/stylelint-config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared Stylelint configs for Craftsman's Ledger apps.",
+  "author": "NoNamer777",
+  "license": "MIT",
+  "homepage": "https://github.com/nonamer777/craftsmans-ledger/tree/main/packages/stylelint-config#readme",
+  "bugs": {
+    "url": "https://github.com/nonamer777/craftsmans-ledger/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nonamer777/craftsmans-ledger.git",
+    "directory": "packages/stylelint-config"
+  },
+  "exports": {
+    "./base": "./base.js",
+    "./angular": "./angular.js"
+  },
+  "files": [
+    "base.js",
+    "angular.js",
+    "README.md"
+  ],
+  "dependencies": {
+    "stylelint-config-clean-order": "catalog:tooling",
+    "stylelint-config-standard-scss": "catalog:tooling",
+    "stylelint-order": "catalog:tooling"
+  },
+  "devDependencies": {
+    "@craftsmans-ledger/eslint-config": "workspace:*",
+    "@craftsmans-ledger/tsconfig": "workspace:*",
+    "@types/node": "catalog:tooling",
+    "eslint": "catalog:tooling",
+    "jiti": "catalog:tooling",
+    "stylelint": "catalog:tooling",
+    "typescript": "catalog:tooling"
+  }
+}
