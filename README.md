@@ -27,6 +27,8 @@ Currently populated apps:
 
 Currently populated packages:
 
+- [`@craftsmans-ledger/eslint-config`](packages/eslint-config): shared ESLint flat configs, with framework-agnostic base rules and an `angular` overlay for Angular/Tailwind-specific rules.
+- [`@craftsmans-ledger/stylelint-config`](packages/stylelint-config): shared Stylelint configs, with framework-agnostic base rules and an `angular` overlay for Angular/Tailwind-specific conventions.
 - [`@craftsmans-ledger/tsconfig`](packages/tsconfig): shared, environment-agnostic TypeScript compiler options; see [ADR-0011](docs/adr/0011-per-framework-typescript-catalogs.md) for why framework-specific overlays aren't included yet.
 
 ## Getting Started
