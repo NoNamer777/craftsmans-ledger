@@ -1,6 +1,7 @@
 /* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
 /* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
+    "extends": "@craftsmans-ledger/tsconfig/angular.json",
     "references": [
         { "path": "./tsconfig.app.json" },
         { "path": "./tsconfig.spec.json" }
@@ -8,16 +9,7 @@
     "files": [],
     "compileOnSave": false,
     "compilerOptions": {
-        "noImplicitOverride": true,
-        "noPropertyAccessFromIndexSignature": true,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true,
-        "skipLibCheck": true,
-        "isolatedModules": true,
         "experimentalDecorators": true,
-        "importHelpers": true,
-        "target": "ES2022",
-        "module": "preserve",
         "paths": {
             "@/core/*": ["./src/core/*"]
         }
