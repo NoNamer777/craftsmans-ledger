@@ -37,7 +37,7 @@ This project uses [mise](https://mise.jdx.dev/) to manage the Node.js and pnpm v
 2. `mise install`: installs the pinned Node.js and pnpm versions
 3. `pnpm install`: installs workspace dependencies
 
-Task orchestration is handled by [moon](https://moonrepo.dev/) (`pnpm moon <command>`); see [ADR-0001](docs/adr/0001-moonrepo-mise-pnpm-for-monorepo-tooling.md) for why. Its `.mcp.json` also registers a moon MCP server for Claude Code, letting the assistant query the project/task graph directly (`get_project`, `get_tasks`, `get_changed_files`, etc.) without extra setup.
+Task orchestration is handled by [moon](https://moonrepo.dev/) (`pnpm moon <command>`); see [ADR-0001](docs/adr/0001-moonrepo-mise-pnpm-for-monorepo-tooling.md) for why. See [docs/agents/mcp-servers.md](docs/agents/mcp-servers.md) for the MCP servers `.mcp.json` registers for AI coding assistants.
 
 ### Formatting
 
