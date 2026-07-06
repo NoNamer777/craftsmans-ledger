@@ -17,7 +17,7 @@ export default defineConfig(
         },
     },
     {
-        files: ['**/*.{js,mjs,cjs}', 'eslint.config.{ts,mts,cts}'],
+        files: ['**/*.{js,mjs,cjs}', 'eslint.config.{ts,mts,cts}', 'vitest.config.{ts,mts,cts}'],
         extends: [tseslint.configs.disableTypeChecked],
     },
 );
