@@ -74,15 +74,16 @@ Phase 1 already scaffolded Vitest (`vitest`, `jsdom` devDependencies; `tsconfig.
 
 ## Phase 7 — Wire linting/testing into git hooks and CI
 
-- Extend `lint-staged.config.mjs` with `*.ts`/`*.scss` entries running `eslint --fix`/`stylelint --fix` respectively, alongside the existing catch-all `"*": "prettier -w"` rule. [ADR-0004](../adr/0004-husky-lint-staged-for-git-hooks.md) explicitly named this as deferred "until real code exists to lint" — that condition is now met.
-- Extend `.github/actions/ci/action.yml`'s `pnpm moon ci :format-check` call to `pnpm moon ci :format-check :build :test-ci :lint-ts :lint-css :typecheck`.
-- Add a Playwright Chromium install step to the CI setup (`.github/actions/setup/action.yml` or the `ci` action) so `test-ci`'s browser-mode Vitest run has a browser available.
-- Verify: push a throwaway branch (or inspect via `act`/manual reasoning) confirming the composite action's step order provisions Playwright before `moon ci` runs; run `pnpm lint-staged` locally against a staged dummy change to confirm ESLint/Stylelint actually fire.
+- Extend `lint-staged.config.mjs` with a `*.{ts,js,mjs,cjs}` entry running `eslint --fix` and a `*.scss` entry running `stylelint --fix`, alongside the existing catch-all `"*": "prettier -w"` rule. [ADR-0004](../adr/0004-husky-lint-staged-for-git-hooks.md) explicitly named this as deferred "until real code exists to lint" — that condition is now met. The ESLint glob covers `.js`/`.mjs`/`.cjs` alongside `.ts` to match `packages/eslint-config/base.mts`'s own file scoping (`**/*.{js,mjs,cjs,ts,mts,cts}`) — otherwise staged changes to plain-JS config files (root `commitlint.config.mjs`/`lint-staged.config.mjs`, `packages/stylelint-config/base.js`/`angular.js`) would be linted in CI (`root:lint-ts`, `stylelint-config:lint-ts`) but silently skipped by the git hook. Also add `--concurrent false` to `.husky/pre-commit`'s `pnpm lint-staged` invocation (not settable inside `lint-staged.config.mjs` itself — every key there is validated as a glob-to-task mapping) — a staged file matching both a type-specific entry and the `"*"` catch-all would otherwise run both commands against it at the same time, causing a silent last-write-wins race between them; see [ADR-0024](../adr/0024-serial-lint-staged-tasks-to-prevent-file-races.md).
+- Add `stylelint` (`catalog:tooling`) as a root-level devDependency alongside its existing `apps/web` entry, mirroring how `eslint` is already declared in both places — lint-staged always invokes from the repo root, so the `stylelint` binary needs to resolve from there too.
+- Extend `.github/actions/ci/action.yml`'s `pnpm moon ci :format-check` call to `pnpm moon ci :format-check :build :test-ci :lint-ts :lint-css :typecheck` (target order is cosmetic — moon schedules by its own dependency graph, not CLI argument order).
+- ~~Add a Playwright Chromium install step to the CI setup~~ — not needed. `apps/web/moon.yml`'s `test-ci` task already declares `deps: ['install-browsers']` ([ADR-0023](../adr/0023-stack-scoped-moon-tasks-for-environment-provisioning.md)), and `moon ci` expands a task's `deps:` into the executed graph exactly like `moon run` does — confirmed empirically by running `pnpm moon ci :test-ci` and observing `RunTask(web:install-browsers)` execute before `RunTask(web:test-ci)` with no separate CI step at all.
+- Verify: run `pnpm moon ci :format-check :build :test-ci :lint-ts :lint-css :typecheck` locally to confirm the full target list passes; run `pnpm lint-staged` locally against a staged dummy change to confirm ESLint/Stylelint actually fire (and, given the concurrency fix above, that neither clobbers the other's output).
 
 ## Phase 8 — Docs
 
 - Update the root `README.md`'s "Project Structure" section: `apps/` is no longer empty (list `apps/web`), and `eslint-config`/`stylelint-config` join `tsconfig` under "Currently populated packages".
-- No further ADRs are expected — 0012 through 0019 already cover every non-obvious call made in this plan.
+- No further ADRs are expected beyond those already recorded across this plan's phases (0012 through 0024).
 
 ## Verification (end to end, once all phases have landed)
 
