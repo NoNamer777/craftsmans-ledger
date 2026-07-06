@@ -1,5 +1,7 @@
 # @craftsmans-ledger/tsconfig
 
+![TypeScript](https://img.shields.io/badge/typescript-6.0.3-3178C6?logo=typescript&logoColor=white)
+
 Shared, environment-agnostic TypeScript compiler options for Craftsman's Ledger apps.
 
 ## Usage

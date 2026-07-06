@@ -11,8 +11,13 @@ Main Angular web client for Craftsman's Ledger — track unlocked recipes, find 
 Run these via moon from the repo root, not `ng` directly — moon owns task orchestration/caching for the whole workspace (see [ADR-0001](../../docs/adr/0001-moonrepo-mise-pnpm-for-monorepo-tooling.md)):
 
 ```bash
-pnpm moon run web:start   # dev server at http://localhost:4200
-pnpm moon run web:build   # production build to dist/web
+pnpm moon run web:start       # dev server at http://localhost:4200
+pnpm moon run web:build       # production build to dist/web
+pnpm moon run web:test        # Vitest in watch mode
+pnpm moon run web:test-ci     # Vitest once, with coverage and an HTML report
+pnpm moon run web:lint-ts     # ESLint
+pnpm moon run web:lint-css    # Stylelint
+pnpm moon run web:typecheck   # tsc --noEmit across the app, spec, and eslint tsconfigs
 ```
 
 ## Notable choices
