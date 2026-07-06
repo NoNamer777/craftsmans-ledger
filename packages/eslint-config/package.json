@@ -34,6 +34,7 @@
     "@craftsmans-ledger/tsconfig": "workspace:*",
     "@types/node": "catalog:tooling",
     "eslint": "catalog:tooling",
-    "jiti": "catalog:tooling"
+    "jiti": "catalog:tooling",
+    "typescript": "catalog:tooling"
   }
 }

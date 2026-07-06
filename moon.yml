@@ -34,3 +34,10 @@ tasks:
             - '*.cjs'
             - '*.ts'
             - 'eslint.config.mts'
+
+    typecheck:
+        command: 'tsc --noEmit -p tsconfig.json'
+        toolchains: ['node']
+        inputs:
+            - '*.mts'
+            - 'tsconfig.json'

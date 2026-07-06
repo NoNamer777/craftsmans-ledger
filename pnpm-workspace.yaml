@@ -29,6 +29,7 @@ catalogs:
         'prettier': '~3.9.4'
         'prettier-plugin-organize-imports': '~4.3.0'
         'prettier-plugin-tailwindcss': '~0.8.0'
+        'typescript': '~6.0.3'
         'typescript-eslint': '~8.62.1'
 
 savePrefix: '~'
