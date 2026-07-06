@@ -1,5 +1,8 @@
 # @craftsmans-ledger/eslint-config
 
+![ESLint](https://img.shields.io/badge/eslint-10.6.0-4B32C3?logo=eslint&logoColor=white)
+![typescript-eslint](https://img.shields.io/badge/typescript--eslint-8.62.1-3178C6?logo=typescript&logoColor=white)
+
 Shared ESLint flat configs for Craftsman's Ledger apps.
 
 ## Usage
@@ -23,3 +26,10 @@ export default defineConfig(angular, {
 ```
 
 Currently available overlays: `angular`. A `nest` overlay will land once a NestJS app exists.
+
+## Commands
+
+```bash
+pnpm moon run eslint-config:lint-ts     # ESLint
+pnpm moon run eslint-config:typecheck   # tsc --noEmit
+```

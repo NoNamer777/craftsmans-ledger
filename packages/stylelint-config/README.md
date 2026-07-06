@@ -1,5 +1,7 @@
 # @craftsmans-ledger/stylelint-config
 
+![Stylelint](https://img.shields.io/badge/stylelint-17.14.0-263238?logo=stylelint&logoColor=white)
+
 Shared Stylelint configs for Craftsman's Ledger apps.
 
 ## Usage
@@ -17,3 +19,10 @@ Extend the overlay matching your framework from an app's own Stylelint config (e
 ```
 
 Currently available overlays: `angular`. Unlike `@craftsmans-ledger/eslint-config`, no `nest` overlay is expected here — a NestJS API produces no stylesheets, so there's no NestJS-specific CSS convention to overlay ([ADR-0016](../../docs/adr/0016-base-overlay-split-for-lint-configs.md)).
+
+## Commands
+
+```bash
+pnpm moon run stylelint-config:lint-ts     # ESLint over this package's own .mts/.js source
+pnpm moon run stylelint-config:typecheck   # tsc --noEmit
+```

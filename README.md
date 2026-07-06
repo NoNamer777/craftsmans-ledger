@@ -27,6 +27,8 @@ Currently populated apps:
 
 Currently populated packages:
 
+- [`@craftsmans-ledger/eslint-config`](packages/eslint-config): shared ESLint flat configs, with framework-agnostic base rules and an `angular` overlay for Angular/Tailwind-specific rules.
+- [`@craftsmans-ledger/stylelint-config`](packages/stylelint-config): shared Stylelint configs, with framework-agnostic base rules and an `angular` overlay for Angular/Tailwind-specific conventions.
 - [`@craftsmans-ledger/tsconfig`](packages/tsconfig): shared, environment-agnostic TypeScript compiler options; see [ADR-0011](docs/adr/0011-per-framework-typescript-catalogs.md) for why framework-specific overlays aren't included yet.
 
 ## Getting Started
@@ -70,7 +72,7 @@ Commits follow [Conventional Commits](https://www.conventionalcommits.org/), enf
 
 ## Continuous Integration
 
-A `ci` job (Prettier formatting today, joined by code linting/build/typecheck/tests as those tasks come to exist) runs via GitHub Actions on pull requests targeting `main` (required to pass before merging) and again on every push to `main`, confirming `main` itself stays green and deployable/releasable at any point in time. Commit messages are linted separately, only on pull requests; see [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md). See [ADR-0007](docs/adr/0007-ci-toolchain-via-setup-node-pnpm-action-setup.md), [ADR-0008](docs/adr/0008-ci-workflows-split-by-trigger.md), [ADR-0009](docs/adr/0009-branch-protection-requires-ci-check.md), and [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for the toolchain-provisioning, workflow-split, branch-protection, and commit-linting rationale.
+A `ci` job (formatting, build, tests, linting, and type-checking — the full `pnpm moon ci :format-check :build :test-ci :lint-ts :lint-css :typecheck` target list) runs via GitHub Actions on pull requests targeting `main` (required to pass before merging) and again on every push to `main`, confirming `main` itself stays green and deployable/releasable at any point in time. Commit messages are linted separately, only on pull requests; see [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md). See [ADR-0007](docs/adr/0007-ci-toolchain-via-setup-node-pnpm-action-setup.md), [ADR-0008](docs/adr/0008-ci-workflows-split-by-trigger.md), [ADR-0009](docs/adr/0009-branch-protection-requires-ci-check.md), and [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for the toolchain-provisioning, workflow-split, branch-protection, and commit-linting rationale.
 
 ## License
 
