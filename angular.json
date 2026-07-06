@@ -69,7 +69,35 @@
                     }
                 },
                 "test": {
-                    "builder": "@angular/build:unit-test"
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "browsers": ["chromium"],
+                        "coverage": true,
+                        "coverageExclude": ["src/main.ts", "src/*/config/**"],
+                        "coverageReporters": ["html", "text-summary"],
+                        "coverageThresholds": {
+                            "statements": 80,
+                            "branches": 80,
+                            "functions": 80,
+                            "lines": 80
+                        },
+                        "headless": true,
+                        "include": ["**/*.spec.ts"],
+                        "runnerConfig": "apps/web/vitest.config.mts",
+                        "tsConfig": "apps/web/tsconfig.spec.json"
+                    },
+                    "defaultConfiguration": "development",
+                    "configurations": {
+                        "development": {
+                            "reporters": ["dot", ["html", { "outputFile": "reports/index.html" }]],
+                            "ui": true,
+                            "watch": true
+                        },
+                        "ci": {
+                            "reporters": ["dot", "github-actions", ["html", { "outputFile": "reports/index.html" }]],
+                            "watch": false
+                        }
+                    }
                 }
             }
         }

@@ -32,6 +32,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@angular/common": "catalog:angular",
     "@angular/core": "~22.0.5",
     "@angular/platform-browser": "catalog:angular",
     "@angular/router": "catalog:angular"
@@ -46,6 +47,9 @@
     "@craftsmans-ledger/tsconfig": "workspace:*",
     "@moonrepo/cli": "catalog:tooling",
     "@types/node": "catalog:tooling",
+    "@vitest/browser-playwright": "~4.1.9",
+    "@vitest/coverage-v8": "~4.1.9",
+    "@vitest/ui": "~4.1.9",
     "eslint": "catalog:tooling",
     "husky": "catalog:tooling",
     "jiti": "catalog:tooling",
@@ -53,6 +57,7 @@
     "prettier": "catalog:tooling",
     "prettier-plugin-organize-imports": "catalog:tooling",
     "prettier-plugin-tailwindcss": "catalog:tooling",
-    "typescript": "catalog:tooling"
+    "typescript": "catalog:tooling",
+    "vitest": "~4.1.9"
   }
 }

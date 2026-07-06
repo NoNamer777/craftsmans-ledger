@@ -1,7 +1,7 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
     "extends": "@craftsmans-ledger/tsconfig/node.json",
-    "include": ["eslint.config.mts"],
+    "include": ["eslint.config.mts", "vitest.config.mts"],
     "compilerOptions": {
         "types": ["node"]
     }

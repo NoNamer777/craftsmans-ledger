@@ -1,0 +1,19 @@
+---
+status: accepted
+---
+
+# Vitest configuration split between `angular.json` and `vitest.config.ts`
+
+`@angular/build:unit-test`'s Vitest runner treats `angular.json`'s `test.options` as authoritative for browser selection, coverage reporters, test reporters, and watch mode, even when an external `vitest.config.ts` is also loaded via `runnerConfig`. Tracing `@angular/build`'s source (`runners/vitest/plugins.js`) confirms the builder deletes or fully replaces `test.reporters`, `test.coverage.reporter`, `test.watch`, and `test.include`/`test.projects` from the loaded file whenever the equivalent `angular.json` option is set — writing them in both places doesn't merge, it either warns and gets overridden, or silently vanishes. Worse, `test.browser.instances`/`name` would survive and get merged via Vite's `mergeConfig`, which concatenates arrays rather than replacing them (`vite/dist/node/chunks/config.js`'s `mergeConfigRecursively`) — setting browser selection in both places doesn't conflict; it silently runs every browser test twice.
+
+`apps/web/vitest.config.mts` is therefore scoped to only the handful of settings `angular.json`'s builder schema has no equivalent for: `test.browser.screenshotFailures` (disabling default failure screenshots) and `test.coverage.reportsDirectory` (no `angular.json` option exists for this at all; set to `'coverage'`, resolved against an explicit `test.root: import.meta.dirname` so it lands in `apps/web/coverage` regardless of the invoking process's own cwd). Browser selection (`browsers`), coverage reporters/excludes/thresholds, and test reporters (`reporters`, including the CI-only `github-actions` entry via a `test.configurations.ci` override, `development` as the default configuration) all live in `angular.json`. `runnerConfig` is set to the explicit string path `"apps/web/vitest.config.mts"` rather than `true` — the auto-discovery mode only searches for files literally named `vitest-base.config.*`, not the conventional `vitest.config.ts` name. The file uses the `.mts` extension, not `.ts`, matching the same reasoning as `eslint.config.mts` ([Phase 4](../plans/scaffold-apps-web.md)) — and needs the identical follow-on wiring: added to `apps/web/tsconfig.eslint.json`'s `include` (real type-checking via the `typecheck` task) and to `packages/eslint-config/base.mts`'s `disableTypeChecked` file list alongside `eslint.config.{ts,mts,cts}` (ESLint's own type-aware rules are skipped for both, by design).
+
+Two things only surfaced by actually running the builder, not by reading its source:
+
+- `@vitest/browser-playwright`, `@vitest/coverage-v8`, and `@vitest/ui` must be installed in the **root** `package.json`, not `apps/web/package.json` — the builder's dynamic `import()` of these packages resolves from the workspace root (see [ADR-0020](./0020-root-level-angular-workspace.md)'s added consequence). `playwright` itself stays in `apps/web/package.json`, since it's only ever invoked directly (`playwright install chromium`) from that project's own context.
+- The builder schema's `reporters` enum documents the dot reporter as `"dots"`; Vitest 4.1.9's actual `ReportersMap` key is `"dot"` (singular). The schema description was stale relative to the installed Vitest version — trust the runtime (`vitest/dist/chunks/index.*.js`'s `ReportersMap`), not the schema text.
+
+## Consequences
+
+- Anyone adding a new Vitest setting to `apps/web` must check whether `angular.json`'s unit-test builder schema already exposes it before reaching for `vitest.config.mts` — the file is a narrow exception for settings the schema can't express, not the primary configuration surface.
+- If a future Vitest or `@angular/build` upgrade changes this merge behavior, this split needs re-verifying against the new source rather than assumed to still hold — including the reporter-name and dependency-placement quirks above, which are version-specific bugs/behaviors, not documented contracts.
