@@ -16,6 +16,7 @@
   },
   "files": [
     "base.json",
+    "angular.json",
     "README.md"
   ]
 }
