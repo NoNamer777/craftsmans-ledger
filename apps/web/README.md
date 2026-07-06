@@ -17,9 +17,9 @@ pnpm moon run web:build   # production build to dist/web
 
 ## Notable choices
 
-- Self-contained Angular CLI workspace (its own `angular.json`), not a project inside a shared root workspace — see [ADR-0012](../../docs/adr/0012-self-contained-angular-workspace-per-app.md).
+- A project in the shared root `angular.json` workspace, not a self-contained Angular CLI workspace of its own — see [ADR-0020](../../docs/adr/0020-root-level-angular-workspace.md), superseding [ADR-0012](../../docs/adr/0012-self-contained-angular-workspace-per-app.md).
 - Zoneless change detection, and Vitest (not Karma/Jasmine) as the test runner — see [ADR-0013](../../docs/adr/0013-zoneless-vitest-testing-stack.md).
-- `@angular/*` dependencies and `typescript` are version-pinned via the workspace root's `catalog:angular` pnpm catalog, not directly in this package's `package.json`.
+- `@angular/core`, `@angular/platform-browser`, `@angular/router`, and the Angular CLI toolchain (`@angular/build`, `@angular/cli`, `@angular/compiler-cli`) are declared in the workspace root's `package.json` instead of here, so the root `angular.json` resolves a single version. The remaining `@angular/*` packages and `typescript` are still pinned directly in this package's `package.json`, via the workspace root's `catalog:angular` pnpm catalog.
 
 ## Status
 

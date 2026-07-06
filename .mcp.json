@@ -3,6 +3,10 @@
         "moon": {
             "command": "pnpm",
             "args": ["moon", "mcp"]
+        },
+        "angular-cli": {
+            "command": "pnpm",
+            "args": ["ng", "mcp"]
         }
     }
 }

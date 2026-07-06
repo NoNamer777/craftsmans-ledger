@@ -17,9 +17,9 @@ tasks:
         command: 'ng build'
         toolchains: ['node']
         inputs:
+            - '/angular.json'
             - 'src/**/*'
             - 'public/**/*'
-            - 'angular.json'
             - 'tsconfig*.json'
         outputs:
             - 'dist'

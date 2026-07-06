@@ -23,7 +23,7 @@ See [ADR-0003](docs/adr/0003-libs-vs-packages-split.md) for the full runtime/bui
 
 Currently populated apps:
 
-- [`web`](apps/web): the main Angular web client; a self-contained Angular CLI workspace with zoneless change detection and Vitest as its test runner, see [ADR-0012](docs/adr/0012-self-contained-angular-workspace-per-app.md) and [ADR-0013](docs/adr/0013-zoneless-vitest-testing-stack.md). Currently a shell only: no domain routes/components yet.
+- [`web`](apps/web): the main Angular web client; a project in the shared root `angular.json` workspace ([ADR-0020](docs/adr/0020-root-level-angular-workspace.md)) with zoneless change detection and Vitest as its test runner, see [ADR-0013](docs/adr/0013-zoneless-vitest-testing-stack.md). Currently a shell only: no domain routes/components yet.
 
 Currently populated packages:
 
@@ -37,7 +37,7 @@ This project uses [mise](https://mise.jdx.dev/) to manage the Node.js and pnpm v
 2. `mise install`: installs the pinned Node.js and pnpm versions
 3. `pnpm install`: installs workspace dependencies
 
-Task orchestration is handled by [moon](https://moonrepo.dev/) (`pnpm moon <command>`); see [ADR-0001](docs/adr/0001-moonrepo-mise-pnpm-for-monorepo-tooling.md) for why. Its `.mcp.json` also registers a moon MCP server for Claude Code, letting the assistant query the project/task graph directly (`get_project`, `get_tasks`, `get_changed_files`, etc.) without extra setup.
+Task orchestration is handled by [moon](https://moonrepo.dev/) (`pnpm moon <command>`); see [ADR-0001](docs/adr/0001-moonrepo-mise-pnpm-for-monorepo-tooling.md) for why. See [docs/agents/mcp-servers.md](docs/agents/mcp-servers.md) for the MCP servers `.mcp.json` registers for AI coding assistants.
 
 ### Formatting
 

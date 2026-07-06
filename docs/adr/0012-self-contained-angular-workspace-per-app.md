@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: superseded by ADR-0020
 ---
 
 # Self-contained Angular CLI workspace per app, not a shared root `angular.json`
