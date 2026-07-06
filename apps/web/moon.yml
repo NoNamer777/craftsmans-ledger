@@ -24,12 +24,33 @@ tasks:
         outputs:
             - 'dist'
 
+    test:
+        command: 'ng run web:test'
+        toolchains: ['node']
+        deps: ['install-browsers']
+        options:
+            runInCI: false
+
+    test-ci:
+        command: 'ng run web:test:ci'
+        toolchains: ['node']
+        deps: ['install-browsers']
+        inputs:
+            - '/angular.json'
+            - 'src/**/*'
+            - 'tsconfig*.json'
+            - 'vitest.config.mts'
+        outputs:
+            - 'coverage'
+            - 'reports'
+
     lint-ts:
         command: 'eslint .'
         toolchains: ['node']
         inputs:
             - 'src/**/*'
             - 'eslint.config.mts'
+            - 'vitest.config.mts'
             - 'tsconfig*.json'
 
     lint-css:
@@ -47,4 +68,5 @@ tasks:
         inputs:
             - 'src/**/*'
             - 'eslint.config.mts'
+            - 'vitest.config.mts'
             - 'tsconfig*.json'

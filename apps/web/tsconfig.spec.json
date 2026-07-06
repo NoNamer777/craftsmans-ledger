@@ -3,6 +3,7 @@
 {
     "extends": "./tsconfig.json",
     "include": ["src/**/*.d.ts", "src/**/*.spec.ts"],
+    "files": ["vitest.config.mts"],
     "compilerOptions": {
         "outDir": "./out-tsc/spec",
         "types": ["vitest/globals"]
