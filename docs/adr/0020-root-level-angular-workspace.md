@@ -1,0 +1,14 @@
+---
+status: accepted
+---
+
+# Root-level `angular.json` workspace, superseding per-app self-containment
+
+[ADR-0012](./0012-self-contained-angular-workspace-per-app.md) gave every Angular app its own `angular.json` specifically to keep moon as the sole multi-project build graph. In practice this also means Angular-CLI-native tooling only ever sees one app at a time: the Angular CLI MCP server ([angular.dev/ai/mcp](https://angular.dev/ai/mcp)) is fixed to whichever workspace directory it's started in for most of its tools (`list_projects`, `run_target`, `devserver.*`), so a second self-contained app would need its own, separately registered MCP server; and `ng generate` can only scaffold into the one workspace it's run from. We're reversing that call: `angular.json` moves to the repo root and lists every Angular app/lib as a project, so one Angular CLI MCP server registration and one `ng generate` invocation point work across all of them, present and future. The `@angular/*` packages and `typescript` needed to resolve the root `angular.json` (`@angular/core`, `@angular/platform-browser`, `@angular/router`, `@angular/build`, `@angular/cli`, `@angular/compiler-cli`) move to the root `package.json`, resolved via `catalog:angular` ([ADR-0011](./0011-per-framework-typescript-catalogs.md)) except `@angular/core`, pinned directly instead: the Angular CLI MCP server reads that dependency's version string straight out of `package.json` to detect the framework version, and can't parse a `catalog:` reference (see [docs/agents/mcp-servers.md](../agents/mcp-servers.md)).
+
+## Consequences
+
+- Supersedes [ADR-0012](./0012-self-contained-angular-workspace-per-app.md); accepts the exact trade-off that ADR warned about — Angular CLI's own project registry now runs as a second, framework-owned multi-project graph alongside moon's per-app task graph.
+- Moon remains the task orchestrator: `build`/`start`/`test` etc. are still defined per app in each app's `moon.yml` and still shell out to `ng`; only project *discovery* (`angular.json`) and cross-cutting Angular-CLI tooling (`ng generate`, the MCP server) move to the workspace root.
+- `.mcp.json` registers the Angular CLI MCP server once, running from the workspace root, instead of one entry per app.
+- `@angular/core` is the one exception to [ADR-0011](./0011-per-framework-typescript-catalogs.md)'s catalog pattern, to keep the MCP server's version detection working; a future contributor bumping Angular versions must update it in two places (`pnpm-workspace.yaml`'s `catalog:angular` and `package.json`'s pinned entry) instead of one.

@@ -2,8 +2,10 @@
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "version": 1,
     "cli": {
-        "packageManager": "pnpm"
+        "packageManager": "pnpm",
+        "analytics": false
     },
+    "newProjectRoot": "libs",
     "schematics": {
         "@schematics/angular:component": {
             "changeDetection": "OnPush",
@@ -13,24 +15,27 @@
     "projects": {
         "web": {
             "projectType": "application",
-            "root": "",
-            "sourceRoot": "src",
-            "prefix": "app",
+            "root": "apps/web",
+            "sourceRoot": "apps/web/src",
+            "prefix": "web",
             "architect": {
                 "build": {
                     "builder": "@angular/build:application",
                     "options": {
                         "assets": [
                             {
-                                "glob": "**/*",
-                                "input": "public"
+                                "input": "apps/web/public",
+                                "glob": "**/*"
                             }
                         ],
-                        "browser": "src/main.ts",
+                        "browser": "apps/web/src/main.ts",
                         "inlineStyleLanguage": "scss",
+                        "outputPath": {
+                            "base": "apps/web/dist"
+                        },
                         "sourceMap": true,
-                        "styles": ["src/styles.scss"],
-                        "tsConfig": "tsconfig.app.json"
+                        "styles": ["apps/web/src/styles.scss"],
+                        "tsConfig": "apps/web/tsconfig.app.json"
                     },
                     "defaultConfiguration": "production",
                     "configurations": {
