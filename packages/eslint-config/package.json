@@ -1,0 +1,39 @@
+{
+  "name": "@craftsmans-ledger/eslint-config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared ESLint flat configs for Craftsman's Ledger apps.",
+  "author": "NoNamer777",
+  "license": "MIT",
+  "homepage": "https://github.com/nonamer777/craftsmans-ledger/tree/main/packages/eslint-config#readme",
+  "bugs": {
+    "url": "https://github.com/nonamer777/craftsmans-ledger/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nonamer777/craftsmans-ledger.git",
+    "directory": "packages/eslint-config"
+  },
+  "exports": {
+    "./base": "./base.mts",
+    "./angular": "./angular.mts"
+  },
+  "files": [
+    "base.mts",
+    "angular.mts",
+    "README.md"
+  ],
+  "dependencies": {
+    "@eslint/js": "catalog:tooling",
+    "angular-eslint": "catalog:angular",
+    "eslint-config-prettier": "catalog:tooling",
+    "typescript-eslint": "catalog:tooling"
+  },
+  "devDependencies": {
+    "@craftsmans-ledger/tsconfig": "workspace:*",
+    "@types/node": "catalog:tooling",
+    "eslint": "catalog:tooling",
+    "jiti": "catalog:tooling"
+  }
+}

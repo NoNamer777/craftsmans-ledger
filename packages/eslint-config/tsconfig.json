@@ -1,0 +1,8 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "extends": "@craftsmans-ledger/tsconfig/node.json",
+    "include": ["*.mts"],
+    "compilerOptions": {
+        "types": ["node"]
+    }
+}
