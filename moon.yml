@@ -1,26 +1,26 @@
 # yaml-language-server: $schema=./.moon/cache/schemas/project.json
 
-layer: "automation"
-stack: "unknown"
+layer: 'automation'
+stack: 'unknown'
 
 project:
     title: "Craftsman's Ledger"
-    description: "Workspace root — houses repo-wide maintenance and process tasks, not application code."
+    description: 'Workspace root — houses repo-wide maintenance and process tasks, not application code.'
 
 tasks:
     format:
-        command: "prettier --write ."
-        toolchains: ["node"]
+        command: 'prettier --write .'
+        toolchains: ['node']
         inputs:
-            - "**/*"
-            - "!**/node_modules/**"
+            - '**/*'
+            - '!**/node_modules/**'
         options:
             cache: false
             runInCI: false
 
     format-check:
-        command: "prettier --check ."
-        toolchains: ["node"]
+        command: 'prettier --check .'
+        toolchains: ['node']
         inputs:
-            - "**/*"
-            - "!**/node_modules/**"
+            - '**/*'
+            - '!**/node_modules/**'

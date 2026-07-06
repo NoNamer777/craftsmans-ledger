@@ -1,10 +1,10 @@
 export default {
-    extends: ["@commitlint/config-conventional"],
+    extends: ['@commitlint/config-conventional'],
     rules: {
-        "subject-case": [
+        'subject-case': [
             2,
-            "never",
-            ["start-case", "pascal-case", "upper-case"],
+            'never',
+            ['start-case', 'pascal-case', 'upper-case'],
         ],
     },
 };

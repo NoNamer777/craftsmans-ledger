@@ -5,9 +5,10 @@
 plugins:
     - prettier-plugin-organize-imports
 
-quoteProps: "consistent"
+singleQuote: true
+quoteProps: 'consistent'
 
 overrides:
-    - files: "*.html"
+    - files: '*.html'
       options:
-          parser: "angular"
+          parser: 'angular'

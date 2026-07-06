@@ -5,26 +5,26 @@ packages:
 
 catalogs:
     angular:
-        "@angular/build": "~22.0.5"
-        "@angular/cli": "~22.0.5"
-        "@angular/common": "~22.0.5"
-        "@angular/compiler": "~22.0.5"
-        "@angular/compiler-cli": "~22.0.5"
-        "@angular/core": "~22.0.5"
-        "@angular/forms": "~22.0.5"
-        "@angular/platform-browser": "~22.0.5"
-        "@angular/router": "~22.0.5"
-        "typescript": "~6.0.3"
+        '@angular/build': '~22.0.5'
+        '@angular/cli': '~22.0.5'
+        '@angular/common': '~22.0.5'
+        '@angular/compiler': '~22.0.5'
+        '@angular/compiler-cli': '~22.0.5'
+        '@angular/core': '~22.0.5'
+        '@angular/forms': '~22.0.5'
+        '@angular/platform-browser': '~22.0.5'
+        '@angular/router': '~22.0.5'
+        'typescript': '~6.0.3'
     tooling:
-        "@commitlint/cli": "~21.2.0"
-        "@commitlint/config-conventional": "~21.2.0"
-        "@moonrepo/cli": "~2.3.5"
-        "husky": "~9.1.7"
-        "lint-staged": "~17.0.8"
-        "prettier": "~3.9.4"
-        "prettier-plugin-organize-imports": "~4.3.0"
+        '@commitlint/cli': '~21.2.0'
+        '@commitlint/config-conventional': '~21.2.0'
+        '@moonrepo/cli': '~2.3.5'
+        'husky': '~9.1.7'
+        'lint-staged': '~17.0.8'
+        'prettier': '~3.9.4'
+        'prettier-plugin-organize-imports': '~4.3.0'
 
-savePrefix: "~"
+savePrefix: '~'
 
 minimumReleaseAge: 4320
 trustPolicy: no-downgrade
@@ -33,7 +33,7 @@ trustPolicyExclude:
     - semver
 engineStrict: true
 allowBuilds:
-    "@parcel/watcher": true
+    '@parcel/watcher': true
     esbuild: true
     lmdb: true
     msgpackr-extract: true

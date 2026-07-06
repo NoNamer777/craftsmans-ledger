@@ -10,6 +10,8 @@
 !*.mjs
 !*.cjs
 !*.ts
+!*.html
+!*.scss
 
 # Re-exclude specific files/folders despite matching above
 /pnpm-lock.yaml
