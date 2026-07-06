@@ -1,5 +1,9 @@
 # Web
 
+![Angular](https://img.shields.io/badge/angular-22.0.5-DD0031?logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-6.0.3-3178C6?logo=typescript&logoColor=white)
+![Vitest](https://img.shields.io/badge/vitest-4.0.8-6E9F18?logo=vitest&logoColor=white)
+
 Main Angular web client for Craftsman's Ledger — track unlocked recipes, find vendors, compare recipe profitability, and browse the tech tree.
 
 ## Commands
