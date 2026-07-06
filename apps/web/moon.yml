@@ -23,3 +23,11 @@ tasks:
             - 'tsconfig*.json'
         outputs:
             - 'dist'
+
+    lint-ts:
+        command: 'eslint .'
+        toolchains: ['node']
+        inputs:
+            - 'src/**/*'
+            - 'eslint.config.mts'
+            - 'tsconfig*.json'
