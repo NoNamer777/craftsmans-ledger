@@ -28,4 +28,4 @@ pnpm moon run web:typecheck   # tsc --noEmit across the app, spec, and eslint ts
 
 ## Status
 
-Shell only — no domain routes or components yet. Styling (Tailwind + SCSS), shared lint configs, and the full Vitest setup land in follow-up phases; see [docs/plans/scaffold-apps-web.md](../../docs/plans/scaffold-apps-web.md).
+Shell only — no domain routes or components yet. Styling (Tailwind + SCSS), shared lint configs, and the full Vitest setup have all landed.
