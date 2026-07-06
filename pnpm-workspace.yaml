@@ -10,7 +10,6 @@ catalogs:
         '@angular/common': '~22.0.5'
         '@angular/compiler': '~22.0.5'
         '@angular/compiler-cli': '~22.0.5'
-        '@angular/core': '~22.0.5'
         '@angular/forms': '~22.0.5'
         '@angular/platform-browser': '~22.0.5'
         '@angular/router': '~22.0.5'
