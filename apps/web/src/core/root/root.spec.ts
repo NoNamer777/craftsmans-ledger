@@ -18,8 +18,6 @@ describe('Root', () => {
         const fixture = TestBed.createComponent(Root);
         await fixture.whenStable();
         const compiled = fixture.nativeElement as HTMLElement;
-        expect(compiled.querySelector('h1')?.textContent).toContain(
-            'Hello, web',
-        );
+        expect(compiled.querySelector('h1')?.textContent).toContain('Hello, web');
     });
 });

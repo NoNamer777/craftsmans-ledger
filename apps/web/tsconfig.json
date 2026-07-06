@@ -4,7 +4,8 @@
     "extends": "@craftsmans-ledger/tsconfig/angular.json",
     "references": [
         { "path": "./tsconfig.app.json" },
-        { "path": "./tsconfig.spec.json" }
+        { "path": "./tsconfig.spec.json" },
+        { "path": "./tsconfig.eslint.json" }
     ],
     "files": [],
     "compileOnSave": false,

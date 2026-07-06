@@ -23,3 +23,19 @@ tasks:
             - 'tsconfig*.json'
         outputs:
             - 'dist'
+
+    lint-ts:
+        command: 'eslint .'
+        toolchains: ['node']
+        inputs:
+            - 'src/**/*'
+            - 'eslint.config.mts'
+            - 'tsconfig*.json'
+
+    typecheck:
+        script: 'tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.spec.json && tsc --noEmit -p tsconfig.eslint.json'
+        toolchains: ['node']
+        inputs:
+            - 'src/**/*'
+            - 'eslint.config.mts'
+            - 'tsconfig*.json'

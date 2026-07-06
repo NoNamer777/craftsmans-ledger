@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=../../.moon/cache/schemas/project.json
+
+layer: 'configuration'
+stack: 'unknown'
+
+project:
+    title: 'ESLint Config'
+    description: 'Shared ESLint flat configs consumed by name from other packages/apps.'
+
+tasks:
+    lint-ts:
+        command: 'eslint .'
+        toolchains: ['node']
+        inputs:
+            - '*.mts'
+            - 'eslint.config.mts'
+            - 'tsconfig.json'
+
+    typecheck:
+        command: 'tsc --noEmit -p tsconfig.json'
+        toolchains: ['node']
+        inputs:
+            - '*.mts'
+            - 'tsconfig.json'

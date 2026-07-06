@@ -10,8 +10,12 @@
     "tslib": "~2.8.1"
   },
   "devDependencies": {
+    "@craftsmans-ledger/eslint-config": "workspace:*",
     "@craftsmans-ledger/tsconfig": "workspace:*",
     "@tailwindcss/postcss": "~4.3.2",
+    "@types/node": "catalog:tooling",
+    "eslint": "catalog:tooling",
+    "jiti": "catalog:tooling",
     "jsdom": "^28.0.0",
     "postcss": "~8.5.16",
     "tailwindcss": "~4.3.2",

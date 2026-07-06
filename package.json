@@ -42,11 +42,17 @@
     "@angular/compiler-cli": "catalog:angular",
     "@commitlint/cli": "catalog:tooling",
     "@commitlint/config-conventional": "catalog:tooling",
+    "@craftsmans-ledger/eslint-config": "workspace:*",
+    "@craftsmans-ledger/tsconfig": "workspace:*",
     "@moonrepo/cli": "catalog:tooling",
+    "@types/node": "catalog:tooling",
+    "eslint": "catalog:tooling",
     "husky": "catalog:tooling",
+    "jiti": "catalog:tooling",
     "lint-staged": "catalog:tooling",
     "prettier": "catalog:tooling",
     "prettier-plugin-organize-imports": "catalog:tooling",
-    "prettier-plugin-tailwindcss": "catalog:tooling"
+    "prettier-plugin-tailwindcss": "catalog:tooling",
+    "typescript": "catalog:tooling"
   }
 }
