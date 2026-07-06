@@ -57,6 +57,7 @@
     "prettier": "catalog:tooling",
     "prettier-plugin-organize-imports": "catalog:tooling",
     "prettier-plugin-tailwindcss": "catalog:tooling",
+    "stylelint": "catalog:tooling",
     "typescript": "catalog:tooling",
     "vitest": "~4.1.9"
   }

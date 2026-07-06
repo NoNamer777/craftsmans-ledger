@@ -368,6 +368,9 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: catalog:tooling
         version: 0.8.0(prettier-plugin-organize-imports@4.3.0(prettier@3.9.4)(typescript@6.0.3))(prettier@3.9.4)
+      stylelint:
+        specifier: catalog:tooling
+        version: 17.14.0(typescript@6.0.3)
       typescript:
         specifier: catalog:tooling
         version: 6.0.3
