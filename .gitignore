@@ -5,7 +5,7 @@ node_modules/
 dist/
 out-tsc/
 tmp/
-.angular/cache/
+**/.angular/cache/
 
 # Moonrepo
 .moon/cache/

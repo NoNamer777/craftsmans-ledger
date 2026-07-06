@@ -2,15 +2,15 @@
 
 projects:
     globs:
-        - "apps/*"
-        - "libs/*"
-        - "packages/*"
+        - 'apps/*'
+        - 'libs/*'
+        - 'packages/*'
     sources:
-        root: "."
+        root: '.'
 
 vcs:
-    defaultBranch: "main"
-    provider: "github"
+    defaultBranch: 'main'
+    provider: 'github'
 
 remote:
-    host: "grpc://bazel-remote.wolf-triggerfish.ts.net:9092"
+    host: 'grpc://bazel-remote.wolf-triggerfish.ts.net:9092'

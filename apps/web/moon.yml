@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=../../.moon/cache/schemas/project.json
+
+layer: 'application'
+stack: 'frontend'
+
+project:
+    title: 'Web'
+    description: "Main Angular web client — the primary Craftsman's Ledger UI."
+
+tasks:
+    start:
+        command: 'ng serve'
+        toolchains: ['node']
+        preset: 'server'
+
+    build:
+        command: 'ng build'
+        toolchains: ['node']
+        inputs:
+            - 'src/**/*'
+            - 'public/**/*'
+            - 'angular.json'
+            - 'tsconfig*.json'
+        outputs:
+            - 'dist'

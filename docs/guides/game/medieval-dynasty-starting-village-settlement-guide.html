@@ -1,510 +1,1379 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
-  <meta name="description" content="A practical Medieval Dynasty guide to starting a village, recruiting the first villagers, and choosing early workplaces.">
-  <title>Medieval Dynasty — Starting a Village</title>
-  <style>
-    :root {
-      --ink: #2c2418;
-      --muted: #6f6250;
-      --paper: #f7f0df;
-      --panel: #fffaf0;
-      --line: #cbbd9d;
-      --accent: #704c28;
-      --accent-soft: #ead8b8;
-      --green: #355d40;
-      --amber: #8a5a13;
-      --red: #8a342e;
-      --blue: #35596c;
-      --shadow: 0 14px 38px rgb(61 43 22 / 12%);
-    }
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light dark" />
+        <meta
+            name="description"
+            content="A practical Medieval Dynasty guide to starting a village, recruiting the first villagers, and choosing early workplaces."
+        />
+        <title>Medieval Dynasty — Starting a Village</title>
+        <style>
+            :root {
+                --ink: #2c2418;
+                --muted: #6f6250;
+                --paper: #f7f0df;
+                --panel: #fffaf0;
+                --line: #cbbd9d;
+                --accent: #704c28;
+                --accent-soft: #ead8b8;
+                --green: #355d40;
+                --amber: #8a5a13;
+                --red: #8a342e;
+                --blue: #35596c;
+                --shadow: 0 14px 38px rgb(61 43 22 / 12%);
+            }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 15% 0%, rgb(255 255 255 / 65%), transparent 35rem),
-        var(--paper);
-      font: 16px/1.6 Georgia, "Times New Roman", serif;
-    }
-    a { color: var(--accent); text-underline-offset: .16em; }
-    a:hover { color: var(--red); }
-    main, header, footer { width: min(1120px, calc(100% - 2rem)); margin-inline: auto; }
+            * {
+                box-sizing: border-box;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                margin: 0;
+                color: var(--ink);
+                background:
+                    radial-gradient(
+                        circle at 15% 0%,
+                        rgb(255 255 255 / 65%),
+                        transparent 35rem
+                    ),
+                    var(--paper);
+                font:
+                    16px/1.6 Georgia,
+                    'Times New Roman',
+                    serif;
+            }
+            a {
+                color: var(--accent);
+                text-underline-offset: 0.16em;
+            }
+            a:hover {
+                color: var(--red);
+            }
+            main,
+            header,
+            footer {
+                width: min(1120px, calc(100% - 2rem));
+                margin-inline: auto;
+            }
 
-    .hero {
-      margin-top: 1rem;
-      padding: clamp(2rem, 6vw, 4.5rem);
-      color: #fff9eb;
-      background: linear-gradient(135deg, #302418, #704c28 62%, #8b673d);
-      border: 1px solid #24180f;
-      border-radius: 1.2rem;
-      box-shadow: var(--shadow);
-    }
-    .eyebrow { margin: 0 0 .35rem; font: 700 .76rem/1.2 system-ui, sans-serif; letter-spacing: .13em; text-transform: uppercase; opacity: .8; }
-    h1, h2, h3 { line-height: 1.15; text-wrap: balance; }
-    h1 { max-width: 13ch; margin: 0; font-size: clamp(2.35rem, 7vw, 5.2rem); font-weight: 650; letter-spacing: -.035em; }
-    .dek { max-width: 65ch; margin: 1rem 0 0; font-size: clamp(1.04rem, 2vw, 1.25rem); color: #f2e2c4; }
-    .meta { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.4rem; font: 700 .78rem/1.2 system-ui, sans-serif; }
-    .meta span { padding: .45rem .7rem; border: 1px solid rgb(255 255 255 / 28%); border-radius: 999px; background: rgb(255 255 255 / 8%); }
+            .hero {
+                margin-top: 1rem;
+                padding: clamp(2rem, 6vw, 4.5rem);
+                color: #fff9eb;
+                background: linear-gradient(
+                    135deg,
+                    #302418,
+                    #704c28 62%,
+                    #8b673d
+                );
+                border: 1px solid #24180f;
+                border-radius: 1.2rem;
+                box-shadow: var(--shadow);
+            }
+            .eyebrow {
+                margin: 0 0 0.35rem;
+                font:
+                    700 0.76rem/1.2 system-ui,
+                    sans-serif;
+                letter-spacing: 0.13em;
+                text-transform: uppercase;
+                opacity: 0.8;
+            }
+            h1,
+            h2,
+            h3 {
+                line-height: 1.15;
+                text-wrap: balance;
+            }
+            h1 {
+                max-width: 13ch;
+                margin: 0;
+                font-size: clamp(2.35rem, 7vw, 5.2rem);
+                font-weight: 650;
+                letter-spacing: -0.035em;
+            }
+            .dek {
+                max-width: 65ch;
+                margin: 1rem 0 0;
+                font-size: clamp(1.04rem, 2vw, 1.25rem);
+                color: #f2e2c4;
+            }
+            .meta {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.55rem;
+                margin-top: 1.4rem;
+                font:
+                    700 0.78rem/1.2 system-ui,
+                    sans-serif;
+            }
+            .meta span {
+                padding: 0.45rem 0.7rem;
+                border: 1px solid rgb(255 255 255 / 28%);
+                border-radius: 999px;
+                background: rgb(255 255 255 / 8%);
+            }
 
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 2;
-      display: flex;
-      gap: .45rem;
-      overflow-x: auto;
-      margin: 1rem 0;
-      padding: .7rem;
-      background: rgb(247 240 223 / 92%);
-      border: 1px solid var(--line);
-      border-radius: .8rem;
-      backdrop-filter: blur(12px);
-      scrollbar-width: thin;
-    }
-    nav a { flex: none; padding: .45rem .7rem; color: var(--ink); border-radius: .45rem; font: 700 .8rem/1.2 system-ui, sans-serif; text-decoration: none; }
-    nav a:hover { background: var(--accent-soft); }
+            nav {
+                position: sticky;
+                top: 0;
+                z-index: 2;
+                display: flex;
+                gap: 0.45rem;
+                overflow-x: auto;
+                margin: 1rem 0;
+                padding: 0.7rem;
+                background: rgb(247 240 223 / 92%);
+                border: 1px solid var(--line);
+                border-radius: 0.8rem;
+                backdrop-filter: blur(12px);
+                scrollbar-width: thin;
+            }
+            nav a {
+                flex: none;
+                padding: 0.45rem 0.7rem;
+                color: var(--ink);
+                border-radius: 0.45rem;
+                font:
+                    700 0.8rem/1.2 system-ui,
+                    sans-serif;
+                text-decoration: none;
+            }
+            nav a:hover {
+                background: var(--accent-soft);
+            }
 
-    section { margin: 2.6rem 0; scroll-margin-top: 5rem; }
-    section > h2 { margin-bottom: .4rem; font-size: clamp(1.7rem, 4vw, 2.5rem); }
-    .intro { max-width: 78ch; margin-top: 0; color: var(--muted); }
-    .callout { margin: 1.25rem 0; padding: 1rem 1.1rem; border-left: .32rem solid var(--amber); background: #fff4d8; border-radius: .3rem .75rem .75rem .3rem; }
-    .callout strong { color: #62400d; }
-    .callout.good { border-left-color: var(--green); background: #e7f0e3; }
-    .callout.good strong { color: var(--green); }
-    .callout.danger { border-left-color: var(--red); background: #f8e2dc; }
-    .callout.danger strong { color: var(--red); }
+            section {
+                margin: 2.6rem 0;
+                scroll-margin-top: 5rem;
+            }
+            section > h2 {
+                margin-bottom: 0.4rem;
+                font-size: clamp(1.7rem, 4vw, 2.5rem);
+            }
+            .intro {
+                max-width: 78ch;
+                margin-top: 0;
+                color: var(--muted);
+            }
+            .callout {
+                margin: 1.25rem 0;
+                padding: 1rem 1.1rem;
+                border-left: 0.32rem solid var(--amber);
+                background: #fff4d8;
+                border-radius: 0.3rem 0.75rem 0.75rem 0.3rem;
+            }
+            .callout strong {
+                color: #62400d;
+            }
+            .callout.good {
+                border-left-color: var(--green);
+                background: #e7f0e3;
+            }
+            .callout.good strong {
+                color: var(--green);
+            }
+            .callout.danger {
+                border-left-color: var(--red);
+                background: #f8e2dc;
+            }
+            .callout.danger strong {
+                color: var(--red);
+            }
 
-    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .card { padding: 1.1rem; background: var(--panel); border: 1px solid var(--line); border-radius: .85rem; box-shadow: 0 5px 16px rgb(61 43 22 / 6%); break-inside: avoid; }
-    .card h3 { margin: 0 0 .4rem; font-size: 1.08rem; }
-    .card p, .card ul { margin-block: .35rem; color: var(--muted); }
-    .card ul { padding-left: 1.2rem; }
-    .tag { display: inline-block; margin-bottom: .45rem; padding: .28rem .5rem; color: white; background: var(--green); border-radius: .3rem; font: 800 .68rem/1 system-ui, sans-serif; letter-spacing: .07em; text-transform: uppercase; }
-    .tag.next { background: var(--amber); }
-    .tag.defer { background: var(--muted); }
-    .tag.stop { background: var(--red); }
-    .tag.info { background: var(--blue); }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1rem;
+            }
+            .grid.three {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+            .card {
+                padding: 1.1rem;
+                background: var(--panel);
+                border: 1px solid var(--line);
+                border-radius: 0.85rem;
+                box-shadow: 0 5px 16px rgb(61 43 22 / 6%);
+                break-inside: avoid;
+            }
+            .card h3 {
+                margin: 0 0 0.4rem;
+                font-size: 1.08rem;
+            }
+            .card p,
+            .card ul {
+                margin-block: 0.35rem;
+                color: var(--muted);
+            }
+            .card ul {
+                padding-left: 1.2rem;
+            }
+            .tag {
+                display: inline-block;
+                margin-bottom: 0.45rem;
+                padding: 0.28rem 0.5rem;
+                color: white;
+                background: var(--green);
+                border-radius: 0.3rem;
+                font:
+                    800 0.68rem/1 system-ui,
+                    sans-serif;
+                letter-spacing: 0.07em;
+                text-transform: uppercase;
+            }
+            .tag.next {
+                background: var(--amber);
+            }
+            .tag.defer {
+                background: var(--muted);
+            }
+            .tag.stop {
+                background: var(--red);
+            }
+            .tag.info {
+                background: var(--blue);
+            }
 
-    .route { position: relative; margin: 1.5rem 0 0 1rem; padding-left: 2rem; border-left: 2px solid var(--line); }
-    .step { position: relative; margin: 0 0 1rem; padding: 1.1rem 1.15rem; background: var(--panel); border: 1px solid var(--line); border-radius: .85rem; break-inside: avoid; }
-    .step::before { content: attr(data-step); position: absolute; left: -3.08rem; top: 1rem; display: grid; width: 2rem; height: 2rem; place-items: center; color: white; background: var(--accent); border: 3px solid var(--paper); border-radius: 50%; font: 800 .75rem/1 system-ui, sans-serif; }
-    .step h3 { margin: 0; font-size: 1.18rem; }
-    .when { margin: .25rem 0 .65rem; color: var(--green); font: 800 .76rem/1.3 system-ui, sans-serif; letter-spacing: .035em; text-transform: uppercase; }
-    .step p, .step ul { margin-block: .45rem; }
-    .step ul { padding-left: 1.2rem; }
+            .route {
+                position: relative;
+                margin: 1.5rem 0 0 1rem;
+                padding-left: 2rem;
+                border-left: 2px solid var(--line);
+            }
+            .step {
+                position: relative;
+                margin: 0 0 1rem;
+                padding: 1.1rem 1.15rem;
+                background: var(--panel);
+                border: 1px solid var(--line);
+                border-radius: 0.85rem;
+                break-inside: avoid;
+            }
+            .step::before {
+                content: attr(data-step);
+                position: absolute;
+                left: -3.08rem;
+                top: 1rem;
+                display: grid;
+                width: 2rem;
+                height: 2rem;
+                place-items: center;
+                color: white;
+                background: var(--accent);
+                border: 3px solid var(--paper);
+                border-radius: 50%;
+                font:
+                    800 0.75rem/1 system-ui,
+                    sans-serif;
+            }
+            .step h3 {
+                margin: 0;
+                font-size: 1.18rem;
+            }
+            .when {
+                margin: 0.25rem 0 0.65rem;
+                color: var(--green);
+                font:
+                    800 0.76rem/1.3 system-ui,
+                    sans-serif;
+                letter-spacing: 0.035em;
+                text-transform: uppercase;
+            }
+            .step p,
+            .step ul {
+                margin-block: 0.45rem;
+            }
+            .step ul {
+                padding-left: 1.2rem;
+            }
 
-    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: .8rem; background: var(--panel); }
-    table { width: 100%; border-collapse: collapse; min-width: 780px; }
-    th, td { padding: .78rem .82rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
-    th { color: #fff9eb; background: var(--accent); font: 800 .74rem/1.25 system-ui, sans-serif; letter-spacing: .055em; text-transform: uppercase; }
-    tr:last-child td { border-bottom: 0; }
-    tbody tr:nth-child(even) { background: rgb(234 216 184 / 22%); }
-    td:first-child { font-weight: 700; }
-    .priority { color: var(--green); font-weight: 700; white-space: nowrap; }
-    .warning { color: var(--red); font-weight: 700; }
+            .table-wrap {
+                overflow-x: auto;
+                border: 1px solid var(--line);
+                border-radius: 0.8rem;
+                background: var(--panel);
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                min-width: 780px;
+            }
+            th,
+            td {
+                padding: 0.78rem 0.82rem;
+                text-align: left;
+                vertical-align: top;
+                border-bottom: 1px solid var(--line);
+            }
+            th {
+                color: #fff9eb;
+                background: var(--accent);
+                font:
+                    800 0.74rem/1.25 system-ui,
+                    sans-serif;
+                letter-spacing: 0.055em;
+                text-transform: uppercase;
+            }
+            tr:last-child td {
+                border-bottom: 0;
+            }
+            tbody tr:nth-child(even) {
+                background: rgb(234 216 184 / 22%);
+            }
+            td:first-child {
+                font-weight: 700;
+            }
+            .priority {
+                color: var(--green);
+                font-weight: 700;
+                white-space: nowrap;
+            }
+            .warning {
+                color: var(--red);
+                font-weight: 700;
+            }
 
-    .formula { display: grid; grid-template-columns: repeat(5, auto); gap: .5rem; align-items: center; justify-content: start; margin: 1rem 0; padding: 1rem 1.1rem; background: var(--accent-soft); border: 1px solid var(--line); border-radius: .8rem; font-family: system-ui, sans-serif; font-weight: 750; }
-    .formula span:nth-child(even) { color: var(--accent); font-size: 1.25rem; }
-    .checklist { columns: 2; column-gap: 2rem; padding-left: 1.2rem; }
-    .checklist li { break-inside: avoid; margin-bottom: .38rem; }
-    details { margin: .8rem 0; padding: .9rem 1rem; background: var(--panel); border: 1px solid var(--line); border-radius: .7rem; }
-    summary { cursor: pointer; font-weight: 700; }
-    details p:last-child { margin-bottom: 0; }
-    code { padding: .08rem .28rem; color: var(--ink); background: var(--accent-soft); border-radius: .25rem; font-size: .92em; }
-    footer { margin-top: 3rem; padding: 1.5rem 0 3rem; color: var(--muted); border-top: 1px solid var(--line); font-size: .9rem; }
+            .formula {
+                display: grid;
+                grid-template-columns: repeat(5, auto);
+                gap: 0.5rem;
+                align-items: center;
+                justify-content: start;
+                margin: 1rem 0;
+                padding: 1rem 1.1rem;
+                background: var(--accent-soft);
+                border: 1px solid var(--line);
+                border-radius: 0.8rem;
+                font-family: system-ui, sans-serif;
+                font-weight: 750;
+            }
+            .formula span:nth-child(even) {
+                color: var(--accent);
+                font-size: 1.25rem;
+            }
+            .checklist {
+                columns: 2;
+                column-gap: 2rem;
+                padding-left: 1.2rem;
+            }
+            .checklist li {
+                break-inside: avoid;
+                margin-bottom: 0.38rem;
+            }
+            details {
+                margin: 0.8rem 0;
+                padding: 0.9rem 1rem;
+                background: var(--panel);
+                border: 1px solid var(--line);
+                border-radius: 0.7rem;
+            }
+            summary {
+                cursor: pointer;
+                font-weight: 700;
+            }
+            details p:last-child {
+                margin-bottom: 0;
+            }
+            code {
+                padding: 0.08rem 0.28rem;
+                color: var(--ink);
+                background: var(--accent-soft);
+                border-radius: 0.25rem;
+                font-size: 0.92em;
+            }
+            footer {
+                margin-top: 3rem;
+                padding: 1.5rem 0 3rem;
+                color: var(--muted);
+                border-top: 1px solid var(--line);
+                font-size: 0.9rem;
+            }
 
-    @media (max-width: 840px) {
-      .grid.three { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 720px) {
-      main, header, footer { width: min(100% - 1rem, 1120px); }
-      .hero { border-radius: .8rem; }
-      .grid { grid-template-columns: 1fr; }
-      .route { margin-left: .55rem; padding-left: 1.35rem; }
-      .step::before { left: -2.45rem; }
-      .formula { grid-template-columns: 1fr; justify-items: start; }
-      .formula span:nth-child(even) { transform: rotate(90deg); }
-      .checklist { columns: 1; }
-    }
+            @media (max-width: 840px) {
+                .grid.three {
+                    grid-template-columns: 1fr;
+                }
+            }
+            @media (max-width: 720px) {
+                main,
+                header,
+                footer {
+                    width: min(100% - 1rem, 1120px);
+                }
+                .hero {
+                    border-radius: 0.8rem;
+                }
+                .grid {
+                    grid-template-columns: 1fr;
+                }
+                .route {
+                    margin-left: 0.55rem;
+                    padding-left: 1.35rem;
+                }
+                .step::before {
+                    left: -2.45rem;
+                }
+                .formula {
+                    grid-template-columns: 1fr;
+                    justify-items: start;
+                }
+                .formula span:nth-child(even) {
+                    transform: rotate(90deg);
+                }
+                .checklist {
+                    columns: 1;
+                }
+            }
 
-    @media (prefers-color-scheme: dark) {
-      :root { --ink: #eee3cf; --muted: #c6b89f; --paper: #191611; --panel: #242018; --line: #574a37; --accent: #bd8b56; --accent-soft: #493824; }
-      body { background: #191611; }
-      nav { background: rgb(25 22 17 / 92%); }
-      nav a { color: var(--ink); }
-      .callout { background: #3a2b13; }
-      .callout strong { color: #f1c270; }
-      .callout.good { background: #1d3021; }
-      .callout.good strong { color: #9dcea7; }
-      .callout.danger { background: #40211e; }
-      .callout.danger strong, .warning { color: #f09a8f; }
-      .tag.defer { background: #756955; }
-      th { color: #1c130a; }
-    }
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --ink: #eee3cf;
+                    --muted: #c6b89f;
+                    --paper: #191611;
+                    --panel: #242018;
+                    --line: #574a37;
+                    --accent: #bd8b56;
+                    --accent-soft: #493824;
+                }
+                body {
+                    background: #191611;
+                }
+                nav {
+                    background: rgb(25 22 17 / 92%);
+                }
+                nav a {
+                    color: var(--ink);
+                }
+                .callout {
+                    background: #3a2b13;
+                }
+                .callout strong {
+                    color: #f1c270;
+                }
+                .callout.good {
+                    background: #1d3021;
+                }
+                .callout.good strong {
+                    color: #9dcea7;
+                }
+                .callout.danger {
+                    background: #40211e;
+                }
+                .callout.danger strong,
+                .warning {
+                    color: #f09a8f;
+                }
+                .tag.defer {
+                    background: #756955;
+                }
+                th {
+                    color: #1c130a;
+                }
+            }
 
-    @media print {
-      :root { --paper: white; --panel: white; --ink: black; --muted: #444; --line: #aaa; }
-      @page { margin: 14mm; }
-      body { background: white; font-size: 10.5pt; }
-      header, main, footer { width: 100%; }
-      .hero { margin: 0; padding: 1rem 1.2rem; color: black; background: white; box-shadow: none; border: 2px solid black; }
-      .dek { color: #333; }
-      .meta span { border-color: #777; }
-      nav { display: none; }
-      section { margin: 1.5rem 0; }
-      .card, .step, details, .table-wrap { box-shadow: none; }
-      .route { border-color: #777; }
-      .step::before { color: white; background: black; border-color: white; }
-      .callout, .callout.good, .callout.danger { color: black; background: #eee; border-color: black; }
-      th { color: white; background: #333; }
-      a { color: black; text-decoration: none; }
-      a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8pt; font-weight: 400; overflow-wrap: anywhere; }
-    }
-  </style>
-</head>
-<body>
-  <header class="hero">
-    <p class="eyebrow">Medieval Dynasty · Early settlement</p>
-    <h1>Build a village that carries itself</h1>
-    <p class="dek">A practical route from lonely house to stable workforce: what to build before recruiting, which jobs deserve your first villagers, how to prevent production stalls, and when to expand.</p>
-    <div class="meta">
-      <span>Updated 22 June 2026</span>
-      <span>Valley &amp; Oxbow fundamentals</span>
-      <span>Solo or co-op</span>
-      <span>Vanilla production logic</span>
-    </div>
-  </header>
+            @media print {
+                :root {
+                    --paper: white;
+                    --panel: white;
+                    --ink: black;
+                    --muted: #444;
+                    --line: #aaa;
+                }
+                @page {
+                    margin: 14mm;
+                }
+                body {
+                    background: white;
+                    font-size: 10.5pt;
+                }
+                header,
+                main,
+                footer {
+                    width: 100%;
+                }
+                .hero {
+                    margin: 0;
+                    padding: 1rem 1.2rem;
+                    color: black;
+                    background: white;
+                    box-shadow: none;
+                    border: 2px solid black;
+                }
+                .dek {
+                    color: #333;
+                }
+                .meta span {
+                    border-color: #777;
+                }
+                nav {
+                    display: none;
+                }
+                section {
+                    margin: 1.5rem 0;
+                }
+                .card,
+                .step,
+                details,
+                .table-wrap {
+                    box-shadow: none;
+                }
+                .route {
+                    border-color: #777;
+                }
+                .step::before {
+                    color: white;
+                    background: black;
+                    border-color: white;
+                }
+                .callout,
+                .callout.good,
+                .callout.danger {
+                    color: black;
+                    background: #eee;
+                    border-color: black;
+                }
+                th {
+                    color: white;
+                    background: #333;
+                }
+                a {
+                    color: black;
+                    text-decoration: none;
+                }
+                a[href^='http']::after {
+                    content: ' (' attr(href) ')';
+                    font-size: 8pt;
+                    font-weight: 400;
+                    overflow-wrap: anywhere;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header class="hero">
+            <p class="eyebrow">Medieval Dynasty · Early settlement</p>
+            <h1>Build a village that carries itself</h1>
+            <p class="dek">
+                A practical route from lonely house to stable workforce: what to
+                build before recruiting, which jobs deserve your first
+                villagers, how to prevent production stalls, and when to expand.
+            </p>
+            <div class="meta">
+                <span>Updated 22 June 2026</span>
+                <span>Valley &amp; Oxbow fundamentals</span>
+                <span>Solo or co-op</span>
+                <span>Vanilla production logic</span>
+            </div>
+        </header>
 
-  <main>
-    <nav aria-label="Guide sections">
-      <a href="#answer">Short answer</a>
-      <a href="#before">Before recruiting</a>
-      <a href="#first-four">First four villagers</a>
-      <a href="#workplaces">Workplace priorities</a>
-      <a href="#management">Production setup</a>
-      <a href="#housing">Housing &amp; families</a>
-      <a href="#growth">When to grow</a>
-      <a href="#problems">Troubleshooting</a>
-      <a href="#sources">Sources</a>
-    </nav>
+        <main>
+            <nav aria-label="Guide sections">
+                <a href="#answer">Short answer</a>
+                <a href="#before">Before recruiting</a>
+                <a href="#first-four">First four villagers</a>
+                <a href="#workplaces">Workplace priorities</a>
+                <a href="#management">Production setup</a>
+                <a href="#housing">Housing &amp; families</a>
+                <a href="#growth">When to grow</a>
+                <a href="#problems">Troubleshooting</a>
+                <a href="#sources">Sources</a>
+            </nav>
 
-    <section id="answer">
-      <h2>The short answer</h2>
-      <p class="intro">Do not recruit merely because someone has good stats. Recruit into a prepared home and a job that replaces a repetitive chore. Your first worker should usually make wood, your second should secure food, and your third should solve whichever bottleneck your chosen playstyle creates.</p>
+            <section id="answer">
+                <h2>The short answer</h2>
+                <p class="intro">
+                    Do not recruit merely because someone has good stats.
+                    Recruit into a prepared home and a job that replaces a
+                    repetitive chore. Your first worker should usually make
+                    wood, your second should secure food, and your third should
+                    solve whichever bottleneck your chosen playstyle creates.
+                </p>
 
-      <div class="formula" aria-label="Recommended early settlement order">
-        <span>Storage + spare house</span><span>→</span><span>Woodshed worker</span><span>→</span><span>Hunting Lodge worker</span>
-      </div>
+                <div
+                    class="formula"
+                    aria-label="Recommended early settlement order"
+                >
+                    <span>Storage + spare house</span><span>→</span
+                    ><span>Woodshed worker</span><span>→</span
+                    ><span>Hunting Lodge worker</span>
+                </div>
 
-      <div class="grid three">
-        <article class="card">
-          <span class="tag">Villager 1</span>
-          <h3>Lumberjack</h3>
-          <p>Recruit someone with <strong>Extraction 3</strong>. Logs feed construction, tools, firewood, and later planks, so this worker removes several bottlenecks at once.</p>
-        </article>
-        <article class="card">
-          <span class="tag">Villager 2</span>
-          <h3>Hunter</h3>
-          <p>Recruit someone with <strong>Hunting 3</strong>. Meat stabilizes food while leather supports bags, waterskins, and sale goods. Keep knives supplied.</p>
-        </article>
-        <article class="card">
-          <span class="tag next">Villager 3</span>
-          <h3>Choose the bottleneck</h3>
-          <p>Use <strong>Farming 3</strong> for a real crop plan, or another <strong>Extraction 3</strong> for stone and limestone. A Water Carrier is comfort, not usually the best third job.</p>
-        </article>
-      </div>
+                <div class="grid three">
+                    <article class="card">
+                        <span class="tag">Villager 1</span>
+                        <h3>Lumberjack</h3>
+                        <p>
+                            Recruit someone with <strong>Extraction 3</strong>.
+                            Logs feed construction, tools, firewood, and later
+                            planks, so this worker removes several bottlenecks
+                            at once.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <span class="tag">Villager 2</span>
+                        <h3>Hunter</h3>
+                        <p>
+                            Recruit someone with <strong>Hunting 3</strong>.
+                            Meat stabilizes food while leather supports bags,
+                            waterskins, and sale goods. Keep knives supplied.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <span class="tag next">Villager 3</span>
+                        <h3>Choose the bottleneck</h3>
+                        <p>
+                            Use <strong>Farming 3</strong> for a real crop plan,
+                            or another <strong>Extraction 3</strong> for stone
+                            and limestone. A Water Carrier is comfort, not
+                            usually the best third job.
+                        </p>
+                    </article>
+                </div>
 
-      <div class="callout good"><strong>Use skill 3 as the recruitment filter.</strong> Recruitable adults begin with skills from 1–3. A level-3 worker produces more immediately, gains mood from a well-matched profession, and trains that skill further. Inspector Mode shows the numbers before you invite them.</div>
-    </section>
+                <div class="callout good">
+                    <strong>Use skill 3 as the recruitment filter.</strong>
+                    Recruitable adults begin with skills from 1–3. A level-3
+                    worker produces more immediately, gains mood from a
+                    well-matched profession, and trains that skill further.
+                    Inspector Mode shows the numbers before you invite them.
+                </div>
+            </section>
 
-    <section id="before">
-      <h2>Prepare the settlement before the invitation</h2>
-      <p class="intro">A recruit needs housing, food, water, and heating material. A job also needs its workplace, a production order, inputs, and tools. Build the small system first; then add the person.</p>
+            <section id="before">
+                <h2>Prepare the settlement before the invitation</h2>
+                <p class="intro">
+                    A recruit needs housing, food, water, and heating material.
+                    A job also needs its workplace, a production order, inputs,
+                    and tools. Build the small system first; then add the
+                    person.
+                </p>
 
-      <div class="route">
-        <article class="step" data-step="1">
-          <h3>Choose a site for your time, not for worker animations</h3>
-          <p class="when">Before permanent construction</p>
-          <p>Favor flat building room, nearby water and reeds, convenient roads, enough open ground for fields, and reasonable access to villages or mines. Lumberjacks and hunters produce from their assigned settings regardless of the animation you see. <strong>Farmers are the important exception:</strong> put the Farm Shed close to the fields it serves.</p>
-        </article>
+                <div class="route">
+                    <article class="step" data-step="1">
+                        <h3>
+                            Choose a site for your time, not for worker
+                            animations
+                        </h3>
+                        <p class="when">Before permanent construction</p>
+                        <p>
+                            Favor flat building room, nearby water and reeds,
+                            convenient roads, enough open ground for fields, and
+                            reasonable access to villages or mines. Lumberjacks
+                            and hunters produce from their assigned settings
+                            regardless of the animation you see.
+                            <strong
+                                >Farmers are the important exception:</strong
+                            >
+                            put the Farm Shed close to the fields it serves.
+                        </p>
+                    </article>
 
-        <article class="step" data-step="2">
-          <h3>Build the logistics spine</h3>
-          <p class="when">Before the first recruit</p>
-          <ul>
-            <li><strong>Your house</strong> and at least <strong>one completed spare house</strong>.</li>
-            <li><strong>Resource Storage</strong> for axes, knives, logs, firewood, and other non-food supplies.</li>
-            <li><strong>Food Storage</strong> for food and filled water containers.</li>
-            <li><strong>Woodshed</strong> and <strong>Hunting Lodge</strong> as the first two useful workplaces.</li>
-            <li><strong>Well</strong> for filling buckets yourself; it does not need a worker yet.</li>
-          </ul>
-          <p>The two storage buildings employ nobody. Their value is that workplaces can draw inputs and tools from shared storage and deliver their output there.</p>
-        </article>
+                    <article class="step" data-step="2">
+                        <h3>Build the logistics spine</h3>
+                        <p class="when">Before the first recruit</p>
+                        <ul>
+                            <li>
+                                <strong>Your house</strong> and at least
+                                <strong>one completed spare house</strong>.
+                            </li>
+                            <li>
+                                <strong>Resource Storage</strong> for axes,
+                                knives, logs, firewood, and other non-food
+                                supplies.
+                            </li>
+                            <li>
+                                <strong>Food Storage</strong> for food and
+                                filled water containers.
+                            </li>
+                            <li>
+                                <strong>Woodshed</strong> and
+                                <strong>Hunting Lodge</strong> as the first two
+                                useful workplaces.
+                            </li>
+                            <li>
+                                <strong>Well</strong> for filling buckets
+                                yourself; it does not need a worker yet.
+                            </li>
+                        </ul>
+                        <p>
+                            The two storage buildings employ nobody. Their value
+                            is that workplaces can draw inputs and tools from
+                            shared storage and deliver their output there.
+                        </p>
+                    </article>
 
-        <article class="step" data-step="3">
-          <h3>Stock a buffer</h3>
-          <p class="when">One season of breathing room</p>
-          <p>Place edible food and filled buckets or waterskins in Food Storage. Put firewood, several axes, several knives, and spare crafting materials in Resource Storage. Check the Management screen’s daily demand rather than relying on a fixed item count: season length, population, insulation, and settings change the answer.</p>
-        </article>
+                    <article class="step" data-step="3">
+                        <h3>Stock a buffer</h3>
+                        <p class="when">One season of breathing room</p>
+                        <p>
+                            Place edible food and filled buckets or waterskins
+                            in Food Storage. Put firewood, several axes, several
+                            knives, and spare crafting materials in Resource
+                            Storage. Check the Management screen’s daily demand
+                            rather than relying on a fixed item count: season
+                            length, population, insulation, and settings change
+                            the answer.
+                        </p>
+                    </article>
 
-        <article class="step" data-step="4">
-          <h3>Recruit for a named vacancy</h3>
-          <p class="when">Only after home + job + supplies exist</p>
-          <p>Inspect travellers, pick the skill that matches the vacancy, invite one, then immediately assign both a house and workplace. Open the workplace’s production tab and set its work percentages. A worker with no assignment produces nothing.</p>
-        </article>
-      </div>
+                    <article class="step" data-step="4">
+                        <h3>Recruit for a named vacancy</h3>
+                        <p class="when">
+                            Only after home + job + supplies exist
+                        </p>
+                        <p>
+                            Inspect travellers, pick the skill that matches the
+                            vacancy, invite one, then immediately assign both a
+                            house and workplace. Open the workplace’s production
+                            tab and set its work percentages. A worker with no
+                            assignment produces nothing.
+                        </p>
+                    </article>
+                </div>
 
-      <div class="callout"><strong>Cheap launch, better later:</strong> a basic house is enough to begin. As materials allow, replace wattle with stone, improve the roof, insulate, and decorate. Better housing reduces wood demand and improves mood; it need not delay the first recruit.</div>
-    </section>
+                <div class="callout">
+                    <strong>Cheap launch, better later:</strong> a basic house
+                    is enough to begin. As materials allow, replace wattle with
+                    stone, improve the roof, insulate, and decorate. Better
+                    housing reduces wood demand and improves mood; it need not
+                    delay the first recruit.
+                </div>
+            </section>
 
-    <section id="first-four">
-      <h2>Your first four villagers</h2>
-      <p class="intro">This order is deliberately conservative. It automates recurring needs before it automates goods that the player can batch-craft in seconds.</p>
+            <section id="first-four">
+                <h2>Your first four villagers</h2>
+                <p class="intro">
+                    This order is deliberately conservative. It automates
+                    recurring needs before it automates goods that the player
+                    can batch-craft in seconds.
+                </p>
 
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Recruit</th><th>Best skill</th><th>Workplace</th><th>Starter assignment</th><th>Why now</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>First</td><td>Extraction 3</td><td>Woodshed</td>
-              <td>Start around 60–70% logs, 20–30% firewood, and 0–10% planks. Adjust from actual stock movement.</td>
-              <td>Wood touches construction, tools, heating, and future production. Logs are the settlement’s broadest early input.</td>
-            </tr>
-            <tr>
-              <td>Second</td><td>Hunting 3</td><td>Hunting Lodge</td>
-              <td>Prioritize meat; add leather as food becomes comfortable. Dry or cook meat yourself at first.</td>
-              <td>Creates renewable food and useful leather. One job answers two early needs.</td>
-            </tr>
-            <tr>
-              <td>Third A</td><td>Farming 3</td><td>Farm Shed</td>
-              <td>Use when you already have prepared fields, seasonal seed, fertilizer, bags, hoes, and harvest tools.</td>
-              <td>Best for a crop-led settlement. Farmers physically tend fields, so layout and seasonal readiness matter.</td>
-            </tr>
-            <tr>
-              <td>Third B</td><td>Extraction 3</td><td>Excavation Shed</td>
-              <td>Emphasize stone first; add limestone when house insulation becomes the next project. Supply pickaxes and shovels as required.</td>
-              <td>Best if you are still building heavily or do not yet have a mature crop loop.</td>
-            </tr>
-            <tr>
-              <td>Fourth</td><td>Your next gap</td><td>Farm Shed, Excavation Shed, or Well</td>
-              <td>Fill whichever of the alternatives above remains painful. Staff the Well only when filling containers yourself has become frequent busywork.</td>
-              <td>By now, daily needs should be stable enough that convenience can start winning over raw throughput.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Recruit</th>
+                                <th>Best skill</th>
+                                <th>Workplace</th>
+                                <th>Starter assignment</th>
+                                <th>Why now</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>First</td>
+                                <td>Extraction 3</td>
+                                <td>Woodshed</td>
+                                <td>
+                                    Start around 60–70% logs, 20–30% firewood,
+                                    and 0–10% planks. Adjust from actual stock
+                                    movement.
+                                </td>
+                                <td>
+                                    Wood touches construction, tools, heating,
+                                    and future production. Logs are the
+                                    settlement’s broadest early input.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Second</td>
+                                <td>Hunting 3</td>
+                                <td>Hunting Lodge</td>
+                                <td>
+                                    Prioritize meat; add leather as food becomes
+                                    comfortable. Dry or cook meat yourself at
+                                    first.
+                                </td>
+                                <td>
+                                    Creates renewable food and useful leather.
+                                    One job answers two early needs.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Third A</td>
+                                <td>Farming 3</td>
+                                <td>Farm Shed</td>
+                                <td>
+                                    Use when you already have prepared fields,
+                                    seasonal seed, fertilizer, bags, hoes, and
+                                    harvest tools.
+                                </td>
+                                <td>
+                                    Best for a crop-led settlement. Farmers
+                                    physically tend fields, so layout and
+                                    seasonal readiness matter.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Third B</td>
+                                <td>Extraction 3</td>
+                                <td>Excavation Shed</td>
+                                <td>
+                                    Emphasize stone first; add limestone when
+                                    house insulation becomes the next project.
+                                    Supply pickaxes and shovels as required.
+                                </td>
+                                <td>
+                                    Best if you are still building heavily or do
+                                    not yet have a mature crop loop.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Fourth</td>
+                                <td>Your next gap</td>
+                                <td>Farm Shed, Excavation Shed, or Well</td>
+                                <td>
+                                    Fill whichever of the alternatives above
+                                    remains painful. Staff the Well only when
+                                    filling containers yourself has become
+                                    frequent busywork.
+                                </td>
+                                <td>
+                                    By now, daily needs should be stable enough
+                                    that convenience can start winning over raw
+                                    throughput.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-      <div class="callout danger"><strong>Do not copy the percentages blindly.</strong> Production is multiplied by worker skill and depends on available inputs and tools. Treat the suggested split as a starting position, then compare the Management screen’s daily production with demand and watch whether stock rises or falls.</div>
-    </section>
+                <div class="callout danger">
+                    <strong>Do not copy the percentages blindly.</strong>
+                    Production is multiplied by worker skill and depends on
+                    available inputs and tools. Treat the suggested split as a
+                    starting position, then compare the Management screen’s
+                    daily production with demand and watch whether stock rises
+                    or falls.
+                </div>
+            </section>
 
-    <section id="workplaces">
-      <h2>Workplace priority: automate pain, not possibility</h2>
-      <p class="intro">A building being unlocked does not make it worth staffing. The useful question is: “What recurring job will this villager permanently remove from my route?”</p>
+            <section id="workplaces">
+                <h2>Workplace priority: automate pain, not possibility</h2>
+                <p class="intro">
+                    A building being unlocked does not make it worth staffing.
+                    The useful question is: “What recurring job will this
+                    villager permanently remove from my route?”
+                </p>
 
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Priority</th><th>Building</th><th>Worker skill</th><th>Staff it when…</th><th>Watch for</th></tr>
-          </thead>
-          <tbody>
-            <tr><td class="priority">1 · First</td><td>Woodshed</td><td>Extraction</td><td>You are still building or cutting firewood by hand.</td><td>Axes; too much plank/firewood processing can consume the logs you wanted for construction.</td></tr>
-            <tr><td class="priority">2 · First</td><td>Hunting Lodge</td><td>Hunting</td><td>You want renewable food without daily hunting.</td><td>Knives; leather and fur allocations reduce meat output.</td></tr>
-            <tr><td class="priority">3 · Conditional</td><td>Farm Shed</td><td>Farming</td><td>Fields, seeds, fertilizer, and seasonal crop choices are ready.</td><td>Keep it near fields. Provide bags, hoes, sickles/scythes, seed, and fertilizer before the work window.</td></tr>
-            <tr><td class="priority">3 · Conditional</td><td>Excavation Shed</td><td>Extraction</td><td>Stone gathering is slowing construction or limestone insulation is next.</td><td>Pickaxes for stone/limestone and shovels for clay.</td></tr>
-            <tr><td>4 · Convenience</td><td>Well</td><td>Extraction</td><td>Population makes manual bucket filling annoying.</td><td>Empty buckets or waterskins. A Water Carrier with no containers cannot produce water.</td></tr>
-            <tr><td>5 · Supply chain</td><td>Barn</td><td>Farming</td><td>Harvest volume justifies automating threshing, fertilizer, animal feed, flour, or daub.</td><td>The Barn processes materials; fieldwork belongs to the Farm Shed.</td></tr>
-            <tr><td>6 · Later</td><td>Kitchen</td><td>Production</td><td>Raw food is abundant and cooking it yourself is now a real time sink.</td><td>Do not create a cook before hunters or fields produce a dependable surplus.</td></tr>
-            <tr><td>6 · Later</td><td>Workshop / Smithy / Sewing Hut</td><td>Production</td><td>You consume or sell enough repeat goods to keep a worker busy.</td><td>Early players craft small batches faster than a low-skill worker; staff these for a proven demand, not merely because they exist.</td></tr>
-          </tbody>
-        </table>
-      </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Priority</th>
+                                <th>Building</th>
+                                <th>Worker skill</th>
+                                <th>Staff it when…</th>
+                                <th>Watch for</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="priority">1 · First</td>
+                                <td>Woodshed</td>
+                                <td>Extraction</td>
+                                <td>
+                                    You are still building or cutting firewood
+                                    by hand.
+                                </td>
+                                <td>
+                                    Axes; too much plank/firewood processing can
+                                    consume the logs you wanted for
+                                    construction.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="priority">2 · First</td>
+                                <td>Hunting Lodge</td>
+                                <td>Hunting</td>
+                                <td>
+                                    You want renewable food without daily
+                                    hunting.
+                                </td>
+                                <td>
+                                    Knives; leather and fur allocations reduce
+                                    meat output.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="priority">3 · Conditional</td>
+                                <td>Farm Shed</td>
+                                <td>Farming</td>
+                                <td>
+                                    Fields, seeds, fertilizer, and seasonal crop
+                                    choices are ready.
+                                </td>
+                                <td>
+                                    Keep it near fields. Provide bags, hoes,
+                                    sickles/scythes, seed, and fertilizer before
+                                    the work window.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="priority">3 · Conditional</td>
+                                <td>Excavation Shed</td>
+                                <td>Extraction</td>
+                                <td>
+                                    Stone gathering is slowing construction or
+                                    limestone insulation is next.
+                                </td>
+                                <td>
+                                    Pickaxes for stone/limestone and shovels for
+                                    clay.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4 · Convenience</td>
+                                <td>Well</td>
+                                <td>Extraction</td>
+                                <td>
+                                    Population makes manual bucket filling
+                                    annoying.
+                                </td>
+                                <td>
+                                    Empty buckets or waterskins. A Water Carrier
+                                    with no containers cannot produce water.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5 · Supply chain</td>
+                                <td>Barn</td>
+                                <td>Farming</td>
+                                <td>
+                                    Harvest volume justifies automating
+                                    threshing, fertilizer, animal feed, flour,
+                                    or daub.
+                                </td>
+                                <td>
+                                    The Barn processes materials; fieldwork
+                                    belongs to the Farm Shed.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6 · Later</td>
+                                <td>Kitchen</td>
+                                <td>Production</td>
+                                <td>
+                                    Raw food is abundant and cooking it yourself
+                                    is now a real time sink.
+                                </td>
+                                <td>
+                                    Do not create a cook before hunters or
+                                    fields produce a dependable surplus.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6 · Later</td>
+                                <td>Workshop / Smithy / Sewing Hut</td>
+                                <td>Production</td>
+                                <td>
+                                    You consume or sell enough repeat goods to
+                                    keep a worker busy.
+                                </td>
+                                <td>
+                                    Early players craft small batches faster
+                                    than a low-skill worker; staff these for a
+                                    proven demand, not merely because they
+                                    exist.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-      <div class="grid" style="margin-top: 1rem;">
-        <article class="card">
-          <span class="tag info">No worker needed</span>
-          <h3>Resource Storage</h3>
-          <p>Shared home for raw materials, tools, firewood, and most crafted goods. It feeds workplace inputs and receives non-food output.</p>
-        </article>
-        <article class="card">
-          <span class="tag info">No worker needed</span>
-          <h3>Food Storage</h3>
-          <p>Shared home for food and water items. It slows spoilage and allows housed villagers to meet food and drink needs centrally.</p>
-        </article>
-      </div>
-    </section>
+                <div class="grid" style="margin-top: 1rem">
+                    <article class="card">
+                        <span class="tag info">No worker needed</span>
+                        <h3>Resource Storage</h3>
+                        <p>
+                            Shared home for raw materials, tools, firewood, and
+                            most crafted goods. It feeds workplace inputs and
+                            receives non-food output.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <span class="tag info">No worker needed</span>
+                        <h3>Food Storage</h3>
+                        <p>
+                            Shared home for food and water items. It slows
+                            spoilage and allows housed villagers to meet food
+                            and drink needs centrally.
+                        </p>
+                    </article>
+                </div>
+            </section>
 
-    <section id="management">
-      <h2>Make every assignment complete</h2>
-      <p class="intro">“Employed” is not the same as “producing.” Use this five-link check whenever a workplace shows a red icon or its output stays at zero.</p>
+            <section id="management">
+                <h2>Make every assignment complete</h2>
+                <p class="intro">
+                    “Employed” is not the same as “producing.” Use this
+                    five-link check whenever a workplace shows a red icon or its
+                    output stays at zero.
+                </p>
 
-      <div class="formula" aria-label="Production chain">
-        <span>Worker</span><span>+</span><span>Work order</span><span>+</span><span>Tools &amp; inputs</span>
-      </div>
+                <div class="formula" aria-label="Production chain">
+                    <span>Worker</span><span>+</span><span>Work order</span
+                    ><span>+</span><span>Tools &amp; inputs</span>
+                </div>
 
-      <div class="grid">
-        <article class="card">
-          <span class="tag">1</span>
-          <h3>Match the skill</h3>
-          <p>Extraction covers Lumberjacks, Miners, and Water Carriers. Hunting covers Hunters. Farming covers Farmers and Barn Workers. Production covers Cooks, Craftsmen, Seamsters, and Blacksmiths.</p>
-        </article>
-        <article class="card">
-          <span class="tag">2</span>
-          <h3>Assign the actual profession</h3>
-          <p>Give the villager a home and workplace in Management. Recheck assignments after replacing, demolishing, or upgrading buildings.</p>
-        </article>
-        <article class="card">
-          <span class="tag">3</span>
-          <h3>Set production intensity</h3>
-          <p>Open the building’s details and distribute work percentages among products. “No assignments” means the building has no work order.</p>
-        </article>
-        <article class="card">
-          <span class="tag">4</span>
-          <h3>Supply tools and inputs</h3>
-          <p>Put them in Resource Storage or the workplace chest. Examples: axes for logs, knives for meat, buckets for water, and field tools plus seed and fertilizer for crops.</p>
-        </article>
-        <article class="card">
-          <span class="tag">5</span>
-          <h3>Control what villagers consume</h3>
-          <p>In People’s Demand Control, decide which foods, drinks, and wood items residents may use. Once firewood is reliable, disabling logs and planks as heating fuel protects construction stock.</p>
-        </article>
-        <article class="card">
-          <span class="tag next">Each season</span>
-          <h3>Rebalance from evidence</h3>
-          <p>Compare daily demand and production, then inspect inventory. If the number is technically positive but the stock keeps falling, an input chain or consumption permission is probably hiding the real constraint.</p>
-        </article>
-      </div>
-    </section>
+                <div class="grid">
+                    <article class="card">
+                        <span class="tag">1</span>
+                        <h3>Match the skill</h3>
+                        <p>
+                            Extraction covers Lumberjacks, Miners, and Water
+                            Carriers. Hunting covers Hunters. Farming covers
+                            Farmers and Barn Workers. Production covers Cooks,
+                            Craftsmen, Seamsters, and Blacksmiths.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <span class="tag">2</span>
+                        <h3>Assign the actual profession</h3>
+                        <p>
+                            Give the villager a home and workplace in
+                            Management. Recheck assignments after replacing,
+                            demolishing, or upgrading buildings.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <span class="tag">3</span>
+                        <h3>Set production intensity</h3>
+                        <p>
+                            Open the building’s details and distribute work
+                            percentages among products. “No assignments” means
+                            the building has no work order.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <span class="tag">4</span>
+                        <h3>Supply tools and inputs</h3>
+                        <p>
+                            Put them in Resource Storage or the workplace chest.
+                            Examples: axes for logs, knives for meat, buckets
+                            for water, and field tools plus seed and fertilizer
+                            for crops.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <span class="tag">5</span>
+                        <h3>Control what villagers consume</h3>
+                        <p>
+                            In People’s Demand Control, decide which foods,
+                            drinks, and wood items residents may use. Once
+                            firewood is reliable, disabling logs and planks as
+                            heating fuel protects construction stock.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <span class="tag next">Each season</span>
+                        <h3>Rebalance from evidence</h3>
+                        <p>
+                            Compare daily demand and production, then inspect
+                            inventory. If the number is technically positive but
+                            the stock keeps falling, an input chain or
+                            consumption permission is probably hiding the real
+                            constraint.
+                        </p>
+                    </article>
+                </div>
+            </section>
 
-    <section id="housing">
-      <h2>Housing is also workforce planning</h2>
-      <p class="intro">Each house can hold one adult man and one adult woman, plus their children. The pair need not already be married. This makes every housing choice a potential family and labor decision.</p>
+            <section id="housing">
+                <h2>Housing is also workforce planning</h2>
+                <p class="intro">
+                    Each house can hold one adult man and one adult woman, plus
+                    their children. The pair need not already be married. This
+                    makes every housing choice a potential family and labor
+                    decision.
+                </p>
 
-      <div class="grid">
-        <article class="card">
-          <span class="tag">If you want growth</span>
-          <h3>Pair compatible ages</h3>
-          <p>An adult man and woman sharing a house may marry and have children. This grows the dynasty naturally and improves family mood, but the timing has a labor cost.</p>
-        </article>
-        <article class="card">
-          <span class="tag next">If labor is tight</span>
-          <h3>Delay cohabitation</h3>
-          <p>Use separate houses until another worker can cover the important job. Pregnancy lasts three seasons; after birth, the mother is unavailable for other work for two full years.</p>
-        </article>
-        <article class="card">
-          <span class="tag">Improve gradually</span>
-          <h3>Upgrade the envelope</h3>
-          <p>Stone walls, better roofs, insulation, and decoration improve comfort or mood. Better insulation also reduces the settlement’s wood demand.</p>
-        </article>
-        <article class="card">
-          <span class="tag stop">Avoid</span>
-          <h3>Recruiting into homelessness</h3>
-          <p>Unhoused villagers cannot properly access shared needs; their mood falls and can eventually reach the point where they leave. Complete the house first.</p>
-        </article>
-      </div>
+                <div class="grid">
+                    <article class="card">
+                        <span class="tag">If you want growth</span>
+                        <h3>Pair compatible ages</h3>
+                        <p>
+                            An adult man and woman sharing a house may marry and
+                            have children. This grows the dynasty naturally and
+                            improves family mood, but the timing has a labor
+                            cost.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <span class="tag next">If labor is tight</span>
+                        <h3>Delay cohabitation</h3>
+                        <p>
+                            Use separate houses until another worker can cover
+                            the important job. Pregnancy lasts three seasons;
+                            after birth, the mother is unavailable for other
+                            work for two full years.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <span class="tag">Improve gradually</span>
+                        <h3>Upgrade the envelope</h3>
+                        <p>
+                            Stone walls, better roofs, insulation, and
+                            decoration improve comfort or mood. Better
+                            insulation also reduces the settlement’s wood
+                            demand.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <span class="tag stop">Avoid</span>
+                        <h3>Recruiting into homelessness</h3>
+                        <p>
+                            Unhoused villagers cannot properly access shared
+                            needs; their mood falls and can eventually reach the
+                            point where they leave. Complete the house first.
+                        </p>
+                    </article>
+                </div>
 
-      <div class="callout"><strong>Practical rule:</strong> never let one pregnancy remove the only person covering food or firewood. Before pairing your only Hunter or Lumberjack, train or recruit a backup, or keep enough stock to bridge the absence.</div>
-    </section>
+                <div class="callout">
+                    <strong>Practical rule:</strong> never let one pregnancy
+                    remove the only person covering food or firewood. Before
+                    pairing your only Hunter or Lumberjack, train or recruit a
+                    backup, or keep enough stock to bridge the absence.
+                </div>
+            </section>
 
-    <section id="growth">
-      <h2>Expand only when the current layer is boring</h2>
-      <p class="intro">A healthy settlement feels uneventful: needs stay green, tools last until the next check, and raw stocks rise. That calm is your permission to add another resident or production chain.</p>
+            <section id="growth">
+                <h2>Expand only when the current layer is boring</h2>
+                <p class="intro">
+                    A healthy settlement feels uneventful: needs stay green,
+                    tools last until the next check, and raw stocks rise. That
+                    calm is your permission to add another resident or
+                    production chain.
+                </p>
 
-      <h3>Recruitment gate</h3>
-      <ul class="checklist">
-        <li>A completed, assignable bed exists.</li>
-        <li>The recruit has a specific job.</li>
-        <li>The workplace is built and has a work order.</li>
-        <li>At least one season of food is buffered.</li>
-        <li>At least one season of water is buffered.</li>
-        <li>Firewood production exceeds current demand.</li>
-        <li>Required tools have spares in Resource Storage.</li>
-        <li>Storage has room for the new output.</li>
-        <li>The recruit’s best skill matches the vacancy.</li>
-        <li>A pregnancy would not break an essential chain.</li>
-      </ul>
+                <h3>Recruitment gate</h3>
+                <ul class="checklist">
+                    <li>A completed, assignable bed exists.</li>
+                    <li>The recruit has a specific job.</li>
+                    <li>The workplace is built and has a work order.</li>
+                    <li>At least one season of food is buffered.</li>
+                    <li>At least one season of water is buffered.</li>
+                    <li>Firewood production exceeds current demand.</li>
+                    <li>Required tools have spares in Resource Storage.</li>
+                    <li>Storage has room for the new output.</li>
+                    <li>The recruit’s best skill matches the vacancy.</li>
+                    <li>A pregnancy would not break an essential chain.</li>
+                </ul>
 
-      <div class="grid">
-        <article class="card">
-          <span class="tag">Stable at 2 workers</span>
-          <h3>Wood + food</h3>
-          <p>You still provide water and batch-craft tools, but the two most repetitive survival loops are automated.</p>
-        </article>
-        <article class="card">
-          <span class="tag">Stable at 4–6 workers</span>
-          <h3>Add material flow</h3>
-          <p>Automate crops or excavation, then water or barn processing. Keep tool-making manual until its repetition justifies a Production worker.</p>
-        </article>
-        <article class="card">
-          <span class="tag next">Next layer</span>
-          <h3>Close one supply chain</h3>
-          <p>Choose a goal—bread, clothing, metal tools, animals, or trade—and add only the buildings and workers that support that loop.</p>
-        </article>
-        <article class="card">
-          <span class="tag defer">Not a goal</span>
-          <h3>Filling every workplace</h3>
-          <p>Empty buildings cost less attention than under-supplied jobs. It is perfectly sensible to use a Workshop or Kitchen yourself long before hiring for it.</p>
-        </article>
-      </div>
-    </section>
+                <div class="grid">
+                    <article class="card">
+                        <span class="tag">Stable at 2 workers</span>
+                        <h3>Wood + food</h3>
+                        <p>
+                            You still provide water and batch-craft tools, but
+                            the two most repetitive survival loops are
+                            automated.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <span class="tag">Stable at 4–6 workers</span>
+                        <h3>Add material flow</h3>
+                        <p>
+                            Automate crops or excavation, then water or barn
+                            processing. Keep tool-making manual until its
+                            repetition justifies a Production worker.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <span class="tag next">Next layer</span>
+                        <h3>Close one supply chain</h3>
+                        <p>
+                            Choose a goal—bread, clothing, metal tools, animals,
+                            or trade—and add only the buildings and workers that
+                            support that loop.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <span class="tag defer">Not a goal</span>
+                        <h3>Filling every workplace</h3>
+                        <p>
+                            Empty buildings cost less attention than
+                            under-supplied jobs. It is perfectly sensible to use
+                            a Workshop or Kitchen yourself long before hiring
+                            for it.
+                        </p>
+                    </article>
+                </div>
+            </section>
 
-    <section id="problems">
-      <h2>Fast troubleshooting</h2>
-      <p class="intro">Most early settlement failures are a missing link, not a mysterious simulation.</p>
+            <section id="problems">
+                <h2>Fast troubleshooting</h2>
+                <p class="intro">
+                    Most early settlement failures are a missing link, not a
+                    mysterious simulation.
+                </p>
 
-      <details open>
-        <summary>The worker is assigned but produces nothing</summary>
-        <p>Open the workplace details. Check for a production percentage, then check the red status icon: no assignment, no resource, or no tool. Put the required items in Resource Storage or the workplace chest.</p>
-      </details>
-      <details>
-        <summary>Logs disappear even though the Woodshed is running</summary>
-        <p>Villagers can burn wood-derived items when permitted, and your Lumberjack may also consume logs to make firewood or planks. Increase raw-log allocation, keep a firewood buffer, and use People’s Demand Control to protect logs and planks from heating use.</p>
-      </details>
-      <details>
-        <summary>The village has meat but residents still show no food</summary>
-        <p>Put edible food in Food Storage or individual house chests and confirm it is allowed in demand control. Raw or intermediate items are not automatically equivalent to a permitted edible meal.</p>
-      </details>
-      <details>
-        <summary>The Water Carrier has buckets but water still stalls</summary>
-        <p>The containers must be empty and available to the workplace through shared Resource Storage or its chest; filled water belongs in Food Storage for consumption. Also confirm that water production has a non-zero assignment.</p>
-      </details>
-      <details>
-        <summary>Farmers waste most of the season walking</summary>
-        <p>Build the Farm Shed beside the fields, not beside the village center. Farmers prioritize nearby fields and fieldwork is spatially simulated. Confirm the crop plan, season, tools, fertilizer, and seed before the season begins.</p>
-      </details>
-      <details>
-        <summary>Mood is low even though needs are stocked</summary>
-        <p>Confirm the villager is housed and employed in a job matching a strong skill. Then improve house materials, insulation, and decoration. Family status also affects mood. A job mismatch is survivable, but it is weaker both emotionally and economically.</p>
-      </details>
-    </section>
+                <details open>
+                    <summary>
+                        The worker is assigned but produces nothing
+                    </summary>
+                    <p>
+                        Open the workplace details. Check for a production
+                        percentage, then check the red status icon: no
+                        assignment, no resource, or no tool. Put the required
+                        items in Resource Storage or the workplace chest.
+                    </p>
+                </details>
+                <details>
+                    <summary>
+                        Logs disappear even though the Woodshed is running
+                    </summary>
+                    <p>
+                        Villagers can burn wood-derived items when permitted,
+                        and your Lumberjack may also consume logs to make
+                        firewood or planks. Increase raw-log allocation, keep a
+                        firewood buffer, and use People’s Demand Control to
+                        protect logs and planks from heating use.
+                    </p>
+                </details>
+                <details>
+                    <summary>
+                        The village has meat but residents still show no food
+                    </summary>
+                    <p>
+                        Put edible food in Food Storage or individual house
+                        chests and confirm it is allowed in demand control. Raw
+                        or intermediate items are not automatically equivalent
+                        to a permitted edible meal.
+                    </p>
+                </details>
+                <details>
+                    <summary>
+                        The Water Carrier has buckets but water still stalls
+                    </summary>
+                    <p>
+                        The containers must be empty and available to the
+                        workplace through shared Resource Storage or its chest;
+                        filled water belongs in Food Storage for consumption.
+                        Also confirm that water production has a non-zero
+                        assignment.
+                    </p>
+                </details>
+                <details>
+                    <summary>Farmers waste most of the season walking</summary>
+                    <p>
+                        Build the Farm Shed beside the fields, not beside the
+                        village center. Farmers prioritize nearby fields and
+                        fieldwork is spatially simulated. Confirm the crop plan,
+                        season, tools, fertilizer, and seed before the season
+                        begins.
+                    </p>
+                </details>
+                <details>
+                    <summary>Mood is low even though needs are stocked</summary>
+                    <p>
+                        Confirm the villager is housed and employed in a job
+                        matching a strong skill. Then improve house materials,
+                        insulation, and decoration. Family status also affects
+                        mood. A job mismatch is survivable, but it is weaker
+                        both emotionally and economically.
+                    </p>
+                </details>
+            </section>
 
-    <section id="sources">
-      <h2>Sources and version note</h2>
-      <p class="intro">Durable worker needs, skill mappings, production dependencies, housing rules, storage behavior, and family timing were cross-checked against the community-maintained Medieval Dynasty Wiki on 22 June 2026. Some wiki pages retain older version labels while describing mechanics that remain current. Use the live Management screen for exact output, daily demand, unlocks, and any patch-specific changes.</p>
-      <ul>
-        <li><a href="https://medieval-dynasty.fandom.com/wiki/Workers">Workers: needs, professions, skills, pregnancy, and motherhood</a></li>
-        <li><a href="https://medieval-dynasty.fandom.com/wiki/Management">Management: assignments, status icons, fields, and demand control</a></li>
-        <li><a href="https://medieval-dynasty.fandom.com/wiki/Woodshed">Woodshed</a> and <a href="https://medieval-dynasty.fandom.com/wiki/Lumberjack">Lumberjack production and tool requirements</a></li>
-        <li><a href="https://medieval-dynasty.fandom.com/wiki/Hunting_Lodge_I">Hunting Lodge I</a> and <a href="https://medieval-dynasty.fandom.com/wiki/Hunter">Hunter production and tool requirements</a></li>
-        <li><a href="https://medieval-dynasty.fandom.com/wiki/Resource_Storage_I">Resource Storage I</a> and <a href="https://medieval-dynasty.fandom.com/wiki/Food_Storage_I">Food Storage I</a></li>
-        <li><a href="https://medieval-dynasty.fandom.com/wiki/Well">Well and Water Carrier requirements</a></li>
-        <li><a href="https://medieval-dynasty.fandom.com/wiki/Farm_Shed">Farm Shed placement and Farmer behavior</a></li>
-        <li><a href="https://medieval-dynasty.fandom.com/wiki/Excavation_Shed">Excavation Shed production and tools</a></li>
-        <li><a href="https://medieval-dynasty.fandom.com/wiki/Mood">Mood, housing, job skill, and family effects</a></li>
-      </ul>
-    </section>
-  </main>
+            <section id="sources">
+                <h2>Sources and version note</h2>
+                <p class="intro">
+                    Durable worker needs, skill mappings, production
+                    dependencies, housing rules, storage behavior, and family
+                    timing were cross-checked against the community-maintained
+                    Medieval Dynasty Wiki on 22 June 2026. Some wiki pages
+                    retain older version labels while describing mechanics that
+                    remain current. Use the live Management screen for exact
+                    output, daily demand, unlocks, and any patch-specific
+                    changes.
+                </p>
+                <ul>
+                    <li>
+                        <a
+                            href="https://medieval-dynasty.fandom.com/wiki/Workers"
+                            >Workers: needs, professions, skills, pregnancy, and
+                            motherhood</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://medieval-dynasty.fandom.com/wiki/Management"
+                            >Management: assignments, status icons, fields, and
+                            demand control</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://medieval-dynasty.fandom.com/wiki/Woodshed"
+                            >Woodshed</a
+                        >
+                        and
+                        <a
+                            href="https://medieval-dynasty.fandom.com/wiki/Lumberjack"
+                            >Lumberjack production and tool requirements</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://medieval-dynasty.fandom.com/wiki/Hunting_Lodge_I"
+                            >Hunting Lodge I</a
+                        >
+                        and
+                        <a
+                            href="https://medieval-dynasty.fandom.com/wiki/Hunter"
+                            >Hunter production and tool requirements</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://medieval-dynasty.fandom.com/wiki/Resource_Storage_I"
+                            >Resource Storage I</a
+                        >
+                        and
+                        <a
+                            href="https://medieval-dynasty.fandom.com/wiki/Food_Storage_I"
+                            >Food Storage I</a
+                        >
+                    </li>
+                    <li>
+                        <a href="https://medieval-dynasty.fandom.com/wiki/Well"
+                            >Well and Water Carrier requirements</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://medieval-dynasty.fandom.com/wiki/Farm_Shed"
+                            >Farm Shed placement and Farmer behavior</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://medieval-dynasty.fandom.com/wiki/Excavation_Shed"
+                            >Excavation Shed production and tools</a
+                        >
+                    </li>
+                    <li>
+                        <a href="https://medieval-dynasty.fandom.com/wiki/Mood"
+                            >Mood, housing, job skill, and family effects</a
+                        >
+                    </li>
+                </ul>
+            </section>
+        </main>
 
-  <footer>
-    <p><strong>Settlement philosophy:</strong> recruit into a system, automate recurring pain, keep one season of slack, and expand only when the existing village has become pleasantly uneventful.</p>
-  </footer>
-</body>
+        <footer>
+            <p>
+                <strong>Settlement philosophy:</strong> recruit into a system,
+                automate recurring pain, keep one season of slack, and expand
+                only when the existing village has become pleasantly uneventful.
+            </p>
+        </footer>
+    </body>
 </html>

@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=../../.moon/cache/schemas/project.json
 
-layer: "configuration"
-stack: "unknown"
+layer: 'configuration'
+stack: 'unknown'
 
 project:
-    title: "TypeScript Config"
-    description: "Shared, environment-agnostic TypeScript compiler options consumed by name from other packages/apps."
+    title: 'TypeScript Config'
+    description: 'Shared, environment-agnostic TypeScript compiler options consumed by name from other packages/apps.'

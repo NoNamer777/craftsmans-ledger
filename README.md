@@ -15,15 +15,19 @@ Early development: repository scaffolding in progress.
 
 ## Project Structure
 
-- `apps/` — deployable applications (currently empty; created lazily once the first app lands)
-- `libs/` — shared *application* code consumed at runtime by `apps/*` (currently empty)
-- `packages/` — shared *build/tooling* config, consumed by name (e.g. `@craftsmans-ledger/tsconfig`), not by relative path
+- `apps/`: deployable applications
+- `libs/`: shared *application* code consumed at runtime by `apps/*` (currently empty)
+- `packages/`: shared *build/tooling* config, consumed by name (e.g. `@craftsmans-ledger/tsconfig`), not by relative path
 
 See [ADR-0003](docs/adr/0003-libs-vs-packages-split.md) for the full runtime/build-time rationale.
 
+Currently populated apps:
+
+- [`web`](apps/web): the main Angular web client; a self-contained Angular CLI workspace with zoneless change detection and Vitest as its test runner, see [ADR-0012](docs/adr/0012-self-contained-angular-workspace-per-app.md) and [ADR-0013](docs/adr/0013-zoneless-vitest-testing-stack.md). Currently a shell only: no domain routes/components yet.
+
 Currently populated packages:
 
-- [`@craftsmans-ledger/tsconfig`](packages/tsconfig) — shared, environment-agnostic TypeScript compiler options; see [ADR-0011](docs/adr/0011-per-framework-typescript-catalogs.md) for why framework-specific overlays aren't included yet.
+- [`@craftsmans-ledger/tsconfig`](packages/tsconfig): shared, environment-agnostic TypeScript compiler options; see [ADR-0011](docs/adr/0011-per-framework-typescript-catalogs.md) for why framework-specific overlays aren't included yet.
 
 ## Getting Started
 
@@ -42,6 +46,17 @@ Task orchestration is handled by [moon](https://moonrepo.dev/) (`pnpm moon <comm
 - `pnpm moon run root:format`: format the workspace
 - `pnpm moon run root:format-check`: check formatting without writing (this is what CI runs)
 
+To format on save instead of relying on the commands above:
+
+- **VS Code**: install the [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) extension, then add to `.vscode/settings.json`:
+    ```json
+    {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    }
+    ```
+- **WebStorm**: open Settings → Languages & Frameworks → JavaScript → Prettier, set the Prettier package to `<repo root>/node_modules/prettier`, and enable "On save" (and "On 'Reformat Code' action" if desired).
+
 ### Git Hooks
 
 [Husky](https://typicode.github.io/husky/) manages git hooks, installed automatically by the `prepare` script on `pnpm install`; see [ADR-0004](docs/adr/0004-husky-lint-staged-for-git-hooks.md) for why husky/lint-staged were chosen over moon's native `vcs.hooks`.
@@ -51,11 +66,11 @@ Task orchestration is handled by [moon](https://moonrepo.dev/) (`pnpm moon <comm
 
 ### Commit Messages
 
-Commits follow [Conventional Commits](https://www.conventionalcommits.org/), enforced by [commitlint](https://commitlint.js.org/) against `commitlint.config.mjs` at the repo root — locally via the `commit-msg` hook above, and in CI only on pull requests; see [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for why CI invokes it directly via the CLI rather than a marketplace action, and why it doesn't also run on push to `main`.
+Commits follow [Conventional Commits](https://www.conventionalcommits.org/), enforced by [commitlint](https://commitlint.js.org/) against `commitlint.config.mjs` at the repo root; locally via the `commit-msg` hook above, and in CI only on pull requests; see [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for why CI invokes it directly via the CLI rather than a marketplace action, and why it doesn't also run on push to `main`.
 
 ## Continuous Integration
 
-A `ci` job (Prettier formatting today, joined by code linting/build/typecheck/tests as those tasks come to exist) runs via GitHub Actions on pull requests targeting `main` (required to pass before merging) and again on every push to `main`, confirming `main` itself stays green and deployable/releasable at any point in time. Commit messages are linted separately, only on pull requests — see [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md). See [ADR-0007](docs/adr/0007-ci-toolchain-via-setup-node-pnpm-action-setup.md), [ADR-0008](docs/adr/0008-ci-workflows-split-by-trigger.md), [ADR-0009](docs/adr/0009-branch-protection-requires-ci-check.md), and [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for the toolchain-provisioning, workflow-split, branch-protection, and commit-linting rationale.
+A `ci` job (Prettier formatting today, joined by code linting/build/typecheck/tests as those tasks come to exist) runs via GitHub Actions on pull requests targeting `main` (required to pass before merging) and again on every push to `main`, confirming `main` itself stays green and deployable/releasable at any point in time. Commit messages are linted separately, only on pull requests; see [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md). See [ADR-0007](docs/adr/0007-ci-toolchain-via-setup-node-pnpm-action-setup.md), [ADR-0008](docs/adr/0008-ci-workflows-split-by-trigger.md), [ADR-0009](docs/adr/0009-branch-protection-requires-ci-check.md), and [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for the toolchain-provisioning, workflow-split, branch-protection, and commit-linting rationale.
 
 ## License
 
