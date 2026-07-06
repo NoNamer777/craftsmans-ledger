@@ -14,4 +14,4 @@ Extend the overlay matching your framework from an app's own `tsconfig.json` (ea
 }
 ```
 
-Currently available overlays: `angular.json`. A `nest.json` overlay will land once a NestJS app exists.
+Currently available overlays: `angular.json`, `node.json` (for plain Node ESM packages, e.g. shared tooling packages authoring their own TypeScript). A `nest.json` overlay will land once a NestJS app exists.
