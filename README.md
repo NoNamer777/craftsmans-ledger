@@ -23,7 +23,7 @@ See [ADR-0003](docs/adr/0003-libs-vs-packages-split.md) for the full runtime/bui
 
 Currently populated apps:
 
-- [`web`](apps/web): the main Angular web client; a self-contained Angular CLI workspace with zoneless change detection and Vitest as its test runner, see [ADR-0012](docs/adr/0012-self-contained-angular-workspace-per-app.md) and [ADR-0013](docs/adr/0013-zoneless-vitest-testing-stack.md). Currently a shell only: no domain routes/components yet.
+- [`web`](apps/web): the main Angular web client; a project in the shared root `angular.json` workspace ([ADR-0020](docs/adr/0020-root-level-angular-workspace.md)) with zoneless change detection and Vitest as its test runner, see [ADR-0013](docs/adr/0013-zoneless-vitest-testing-stack.md). Currently a shell only: no domain routes/components yet.
 
 Currently populated packages:
 
