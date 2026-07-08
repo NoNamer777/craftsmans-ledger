@@ -1,0 +1,3 @@
+# Local dev hostname: `localhost.www.craftsmans-ledger.dev`
+
+For HTTPS local dev (`ng serve` + mkcert + a hosts file entry), `web` is served at `localhost.www.craftsmans-ledger.dev` rather than a reserved local TLD (`.test`/`.local`) or a hostname mirroring the real production domain (`www.craftsmans-ledger.nl.eu.org`, which is unrelated). This follows an established personal `localhost.<domain>` naming convention reused across other stacks. The hostname never needs to resolve publicly or be registered — a hosts-file entry always wins locally, and mkcert's locally trusted CA issues the certificate — so it carries no dependency on `craftsmans-ledger.dev` actually existing on the internet.

@@ -41,3 +41,21 @@ tasks:
         inputs:
             - '*.mts'
             - 'tsconfig.json'
+
+    setup-https:
+        command: 'mkcert'
+        args:
+            - '-cert-file'
+            - '.certs/cert.pem'
+            - '-key-file'
+            - '.certs/key.pem'
+            - 'localhost.www.craftsmans-ledger.dev'
+            - 'localhost.api.craftsmans-ledger.dev'
+            - 'localhost.admin.craftsmans-ledger.dev'
+            - 'localhost'
+            - '127.0.0.1'
+        outputs:
+            - '.certs/cert.pem'
+            - '.certs/key.pem'
+        options:
+            runInCI: false

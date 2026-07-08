@@ -15,6 +15,10 @@ tmp/
 .env
 .env.*.local
 
+# Local HTTPS certs (see docs/guides/dev/https-local-dev.md)
+.certs/*
+!.certs/.gitkeep
+
 # Editor
 .vscode/*
 !.vscode/extensions.json

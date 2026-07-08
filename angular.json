@@ -65,7 +65,13 @@
                 "serve": {
                     "builder": "@angular/build:dev-server",
                     "options": {
-                        "buildTarget": "web:build:development"
+                        "buildTarget": "web:build:development",
+                        "host": "127.0.0.1",
+                        "port": 8080,
+                        "ssl": true,
+                        "sslCert": "../../.certs/cert.pem",
+                        "sslKey": "../../.certs/key.pem",
+                        "allowedHosts": ["localhost.www.craftsmans-ledger.dev"]
                     }
                 },
                 "test": {
