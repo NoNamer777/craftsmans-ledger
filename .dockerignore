@@ -8,9 +8,21 @@ node_modules/
 
 # Build/test output — regenerated inside the image, or irrelevant to it.
 dist/
+out-tsc/
+tmp/
 coverage/
 reports/
 .angular/
+*.log
 
 .idea/
 .vscode/
+
+# Never let host-local secrets into the build context/layer cache.
+.env
+.env.*.local
+
+# Not needed by moon's project-scoped scaffold of any app.
+.github/
+.claude/
+docs/
