@@ -1,0 +1,16 @@
+# moon docker scaffold rebuilds dependencies inside the image; host-platform
+# node_modules and moon's local cache would be both wrong and non-portable.
+node_modules/
+.moon/cache/
+.moon/docker/
+
+.git/
+
+# Build/test output — regenerated inside the image, or irrelevant to it.
+dist/
+coverage/
+reports/
+.angular/
+
+.idea/
+.vscode/
