@@ -22,6 +22,8 @@ pnpm moon run web:typecheck   # tsc --noEmit across the app, spec, and eslint ts
 
 `web:start` serves over HTTPS only (see [ADR-0030](../../docs/adr/0030-web-dev-server-https-only.md)); first-time setup needs a one-time, per-machine step — see [docs/guides/dev/https-local-dev.md](../../docs/guides/dev/https-local-dev.md).
 
+`web:start` also exposes the dev server to your tailnet, so it's reachable from a phone or another laptop (see [ADR-0031](../../docs/adr/0031-tailscale-serve-for-cross-device-local-dev.md)); see [docs/guides/dev/tailnet-local-dev.md](../../docs/guides/dev/tailnet-local-dev.md), including how to tear it back down with `pnpm moon run root:teardown-tailnet`.
+
 ## Docker
 
 `web` is a static build served by nginx once containerized; there's no moon task for this (see [ADR-0027](../../docs/adr/0027-web-dockerfile-scope-excludes-ci-publishing.md)), so build and run it directly from the repo root:

@@ -59,3 +59,23 @@ tasks:
             - '.certs/key.pem'
         options:
             runInCI: false
+
+    setup-tailnet:
+        command: 'tailscale'
+        args:
+            - 'serve'
+            - '--bg'
+            - '--https=8080'
+            - 'https+insecure://127.0.0.1:8080'
+        options:
+            runInCI: false
+
+    teardown-tailnet:
+        command: 'tailscale'
+        args:
+            - 'serve'
+            - '--https=8080'
+            - 'https+insecure://127.0.0.1:8080'
+            - 'off'
+        options:
+            runInCI: false
