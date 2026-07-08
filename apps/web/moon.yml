@@ -12,6 +12,7 @@ tasks:
         command: 'ng serve'
         toolchains: ['node']
         preset: 'server'
+        deps: ['root:setup-https', 'root:setup-tailnet']
 
     build:
         command: 'ng build'

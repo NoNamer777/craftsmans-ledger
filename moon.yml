@@ -41,3 +41,43 @@ tasks:
         inputs:
             - '*.mts'
             - 'tsconfig.json'
+
+    setup-https:
+        command: 'mkcert'
+        args:
+            - '-cert-file'
+            - '.certs/cert.pem'
+            - '-key-file'
+            - '.certs/key.pem'
+            - 'localhost.www.craftsmans-ledger.dev'
+            - 'localhost.api.craftsmans-ledger.dev'
+            - 'localhost.admin.craftsmans-ledger.dev'
+            - 'localhost'
+            - '127.0.0.1'
+        outputs:
+            - '.certs/cert.pem'
+            - '.certs/key.pem'
+        options:
+            runInCI: false
+
+    setup-tailnet:
+        command: 'tailscale'
+        args:
+            - 'serve'
+            - '--bg'
+            - '--https=8080'
+            - 'https+insecure://127.0.0.1:8080'
+        options:
+            cache: false
+            runInCI: false
+
+    teardown-tailnet:
+        command: 'tailscale'
+        args:
+            - 'serve'
+            - '--https=8080'
+            - 'https+insecure://127.0.0.1:8080'
+            - 'off'
+        options:
+            cache: false
+            runInCI: false

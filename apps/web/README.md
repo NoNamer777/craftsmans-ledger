@@ -11,7 +11,7 @@ Main Angular web client for Craftsman's Ledger — track unlocked recipes, find 
 Run these via moon from the repo root, not `ng` directly — moon owns task orchestration/caching for the whole workspace (see [ADR-0001](../../docs/adr/0001-moonrepo-mise-pnpm-for-monorepo-tooling.md)):
 
 ```bash
-pnpm moon run web:start       # dev server at http://localhost:4200
+pnpm moon run web:start       # dev server at https://localhost.www.craftsmans-ledger.dev:8080
 pnpm moon run web:build       # production build to dist/web
 pnpm moon run web:test        # Vitest in watch mode
 pnpm moon run web:test-ci     # Vitest once, with coverage and an HTML report
@@ -19,6 +19,10 @@ pnpm moon run web:lint-ts     # ESLint
 pnpm moon run web:lint-css    # Stylelint
 pnpm moon run web:typecheck   # tsc --noEmit across the app, spec, and eslint tsconfigs
 ```
+
+`web:start` serves over HTTPS only (see [ADR-0030](../../docs/adr/0030-web-dev-server-https-only.md)); first-time setup needs a one-time, per-machine step — see [docs/guides/dev/https-local-dev.md](../../docs/guides/dev/https-local-dev.md).
+
+`web:start` also exposes the dev server to your tailnet, so it's reachable from a phone or another laptop (see [ADR-0031](../../docs/adr/0031-tailscale-serve-for-cross-device-local-dev.md)); see [docs/guides/dev/tailnet-local-dev.md](../../docs/guides/dev/tailnet-local-dev.md), including how to tear it back down with `pnpm moon run root:teardown-tailnet`.
 
 ## Docker
 

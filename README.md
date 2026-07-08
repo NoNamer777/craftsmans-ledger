@@ -38,6 +38,7 @@ This project uses [mise](https://mise.jdx.dev/) to manage the Node.js and pnpm v
 1. Install [mise](https://mise.jdx.dev/getting-started.html)
 2. `mise install`: installs the pinned Node.js and pnpm versions
 3. `pnpm install`: installs workspace dependencies
+4. Apps are served over HTTPS in local dev, which needs a one-time machine setup — see [docs/guides/dev/https-local-dev.md](docs/guides/dev/https-local-dev.md)
 
 Task orchestration is handled by [moon](https://moonrepo.dev/) (`pnpm moon <command>`); see [ADR-0001](docs/adr/0001-moonrepo-mise-pnpm-for-monorepo-tooling.md) for why. See [docs/agents/mcp-servers.md](docs/agents/mcp-servers.md) for the MCP servers `.mcp.json` registers for AI coding assistants.
 
