@@ -1,0 +1,16 @@
+---
+status: accepted
+---
+
+# moon's docker scaffold/setup pattern for `web`'s image build, skipping `prune`
+
+`.docker/web/Dockerfile` (#92) builds its `BUILD` stage using moon's native Docker integration (`moon docker scaffold web` → `moon docker setup` → `moon run web:build`, per [moonrepo's Docker guide](https://moonrepo.dev/docs/guides/docker)) rather than a hand-rolled `pnpm install --frozen-lockfile` + `pnpm --filter web build`. `scaffold` extracts only the manifests/lockfiles needed for `web`'s dependency graph before the full source is copied in, giving Docker layer caching that survives changes to unrelated packages — consistent with this repo's existing preference for a tool's native mechanism over a generic workaround (see [ADR-0007](./0007-ci-toolchain-via-setup-node-pnpm-action-setup.md)). The `BASE`/`SKELETON`/`BUILD` stages pin `node:24.18.0-alpine`, matching the exact Node version mise/`package.json` already treat as authoritative ([ADR-0002](./0002-mise-as-sole-toolchain-version-authority.md)), and install `@moonrepo/cli@2.3.5` to match the workspace's own `catalog:tooling` pin.
+
+The guide's documented pattern ends with `moon docker prune` (strips `node_modules` down to production-only, project-scoped deps) before the runtime stage copies files out of `BUILD`. This Dockerfile skips it: the runtime stage ([ADR-0026](./0026-rootless-nginx-runtime-for-web.md)) only ever `COPY --from=build`s the static `apps/web/dist/browser` output, never `node_modules`, so pruning has no effect on the shipped image and would only add build time.
+
+## Consequences
+
+- If a future app in this monorepo ships a Node runtime (not a static build served by nginx), its Dockerfile should reinstate `moon docker prune` before the runtime stage, since in that case the pruned `node_modules` *would* ship.
+- `moon docker scaffold web` is project-scoped and doesn't know about the root-level `angular.json` that [ADR-0020](./0020-root-level-angular-workspace.md) moved out of `apps/web` — `ng build` fails with "not available outside a workspace" without it. The `BUILD` stage copies `angular.json` from the `SKELETON` stage's full source checkout as an explicit extra step, alongside the scaffolded `sources`. A future app added to the root `angular.json` workspace needs the same extra `COPY` in its own Dockerfile.
+- `node:24.18.0-alpine` ships neither `git` nor a `pnpm` binary; the `BASE` stage installs `git` via `apk` (moon shells out to it even during `docker setup`) and activates `pnpm@11.9.0` via `corepack enable && corepack prepare pnpm@11.9.0 --activate`, matching `package.json`'s `devEngines.packageManager` pin — `moon docker setup` itself runs `pnpm install` directly rather than provisioning `pnpm` on its own.
+- `@moonrepo/cli` is installed via `pnpm add -g`, not `npm install -g` (the pattern moonrepo's own Docker guide uses) — `npm` would be inconsistent with this repo treating `pnpm` as the sole package manager ([ADR-0001](./0001-moonrepo-mise-pnpm-for-monorepo-tooling.md)). Unlike `npm`, `pnpm`'s global installs need an explicit global bin directory on `PATH` (`pnpm add -g` fails with "global bin directory ... is not in PATH" otherwise) — the `BASE` stage sets `PNPM_HOME=/pnpm` and prepends `$PNPM_HOME:$PNPM_HOME/bin` to `PATH` before installing moon.

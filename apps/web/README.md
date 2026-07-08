@@ -20,6 +20,17 @@ pnpm moon run web:lint-css    # Stylelint
 pnpm moon run web:typecheck   # tsc --noEmit across the app, spec, and eslint tsconfigs
 ```
 
+## Docker
+
+`web` is a static build served by nginx once containerized; there's no moon task for this (see [ADR-0027](../../docs/adr/0027-web-dockerfile-scope-excludes-ci-publishing.md)), so build and run it directly from the repo root:
+
+```bash
+docker build -f .docker/web/Dockerfile -t craftsmans-ledger-web .
+docker run --rm -p 8080:8080 craftsmans-ledger-web   # http://localhost:8080
+```
+
+See [ADR-0025](../../docs/adr/0025-moon-docker-scaffold-pattern-for-web-image.md) and [ADR-0026](../../docs/adr/0026-rootless-nginx-runtime-for-web.md) for the image's build pattern and rootless runtime.
+
 ## Notable choices
 
 - A project in the shared root `angular.json` workspace, not a self-contained Angular CLI workspace of its own — see [ADR-0020](../../docs/adr/0020-root-level-angular-workspace.md), superseding [ADR-0012](../../docs/adr/0012-self-contained-angular-workspace-per-app.md).
