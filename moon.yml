@@ -68,6 +68,7 @@ tasks:
             - '--https=8080'
             - 'https+insecure://127.0.0.1:8080'
         options:
+            cache: false
             runInCI: false
 
     teardown-tailnet:
@@ -78,4 +79,5 @@ tasks:
             - 'https+insecure://127.0.0.1:8080'
             - 'off'
         options:
+            cache: false
             runInCI: false
