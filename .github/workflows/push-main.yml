@@ -12,6 +12,9 @@ concurrency:
 permissions:
     contents: read
 
+env:
+    IMAGE_PACKAGE: craftsmans-ledger/web
+
 jobs:
     ci:
         name: CI
@@ -61,7 +64,7 @@ jobs:
             - name: Promote pr-${{ steps.pr.outputs.number }} to next
               uses: ./.github/actions/promote
               with:
-                  package: craftsmans-ledger/web
+                  package: ${{ env.IMAGE_PACKAGE }}
                   source-tag: pr-${{ steps.pr.outputs.number }}
                   target-tag: next
 
@@ -70,5 +73,5 @@ jobs:
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
                   owner: ${{ github.repository_owner }}
-                  package: craftsmans-ledger/web
+                  package: ${{ env.IMAGE_PACKAGE }}
                   tags: pr-${{ steps.pr.outputs.number }}

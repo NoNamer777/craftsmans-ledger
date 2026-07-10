@@ -13,6 +13,9 @@ concurrency:
 permissions:
     packages: write
 
+env:
+    IMAGE_PACKAGE: craftsmans-ledger/web
+
 jobs:
     remove-image-tag:
         name: Remove PR image tag
@@ -25,5 +28,5 @@ jobs:
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
                   owner: ${{ github.repository_owner }}
-                  package: craftsmans-ledger/web
+                  package: ${{ env.IMAGE_PACKAGE }}
                   tags: pr-${{ github.event.pull_request.number }}
