@@ -104,4 +104,4 @@ jobs:
               run: docker compose -f apps/web/.docker/compose.yaml up -d
 
             - name: Smoke-test E2E environment
-              run: curl --fail -k --retry 5 --retry-delay 1 --retry-connrefused https://localhost:8443/
+              run: curl --fail -k --retry 5 --retry-delay 1 --retry-all-errors https://localhost:8443/
