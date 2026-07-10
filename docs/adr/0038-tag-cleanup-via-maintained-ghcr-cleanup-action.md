@@ -21,5 +21,5 @@ The closed-without-merge case could have been folded into `pull-request.yml` by 
 
 ## Consequences
 
-- `delete-tags` (exposed as `tags` on the composite action) matches glob-style, not literally-anything-containing — a bare `pr-<N>` with no wildcard characters is already an exact match, so neither call site needs to anchor or escape anything to avoid accidentally matching a different PR's tag that happens to share a numeric prefix (e.g. `pr-9` vs `pr-95`).
+- `delete-tags` (exposed as `tags` on the composite action) matches glob-style, not literally-anything-containing — a bare `pr-<N>` with no wildcard characters is already an exact match, so neither call site needs to anchor nor escape anything to avoid accidentally matching a different PR's tag that happens to share a numeric prefix (e.g. `pr-9` vs `pr-95`).
 - If GitHub's package-deletion permission model changes (the `about-permissions-for-github-packages` behavior this relies on), tag cleanup could start failing with a permissions error rather than a "package not found" one — worth checking first if either cleanup job starts failing.

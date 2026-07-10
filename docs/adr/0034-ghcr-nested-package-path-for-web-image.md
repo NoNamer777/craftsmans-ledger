@@ -6,7 +6,7 @@ status: accepted
 
 [ADR-0027](./0027-web-dockerfile-scope-excludes-ci-publishing.md) left the container registry undecided. #95 settles it: GitHub Container Registry (`ghcr.io`), authenticated via the workflow's own `GITHUB_TOKEN` rather than a separately provisioned PAT. This repo is public, so GHCR hosting is free, and — because the publishing workflow lives in this same repository — `GITHUB_TOKEN` is granted admin rights on the package by default, which turns out to matter later for tag deletion too (see [ADR-0038](./0038-tag-cleanup-via-maintained-ghcr-cleanup-action.md)).
 
-The image is published to `ghcr.io/nonamer777/craftsmans-ledger/web` — nested under a `craftsmans-ledger` package group — rather than a flat `craftsmans-ledger-web`. This repo will eventually contain a second Angular client and a NestJS API ([ADR-0001](./0001-moonrepo-mise-pnpm-for-monorepo-tooling.md)); the nested form makes every future app's image a sibling sub-path of one package group instead of a separately-named flat package.
+The image is published to `ghcr.io/nonamer777/craftsmans-ledger/web` — nested under a `craftsmans-ledger` package group — rather than a flat `craftsmans-ledger-web`. This repo will eventually contain a second Angular client and a NestJS API ([ADR-0001](./0001-moonrepo-mise-pnpm-for-monorepo-tooling.md)); the nested form makes every future app's image a sibling sub-path of one package group instead of a separately named flat package.
 
 ## Consequences
 
