@@ -42,6 +42,7 @@ jobs:
         timeout-minutes: 10
         permissions:
             packages: write
+            pull-requests: read
         steps:
             - name: Resolve merged PR number
               id: pr
