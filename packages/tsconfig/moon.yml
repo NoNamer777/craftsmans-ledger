@@ -1,5 +1,4 @@
-# yaml-language-server: $schema=../../.moon/cache/schemas/project.json
-
+$schema: '../../.moon/cache/schemas/project.json'
 layer: 'configuration'
 stack: 'unknown'
 

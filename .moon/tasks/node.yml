@@ -1,5 +1,4 @@
-# yaml-language-server: $schema=../cache/schemas/tasks.json
-
+$schema: '../cache/schemas/tasks.json'
 implicitInputs:
     - 'package.json'
     - '/pnpm-lock.yaml'

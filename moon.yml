@@ -1,5 +1,4 @@
-# yaml-language-server: $schema=./.moon/cache/schemas/project.json
-
+$schema: './.moon/cache/schemas/project.json'
 layer: 'automation'
 stack: 'unknown'
 
@@ -13,7 +12,7 @@ tasks:
         toolchains: ['node']
         inputs:
             - '**/*'
-            - '!**/node_modules/**'
+            - '!**/node_modules/'
         options:
             cache: false
             runInCI: false
