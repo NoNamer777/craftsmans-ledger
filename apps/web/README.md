@@ -29,7 +29,7 @@ pnpm moon run web:typecheck   # tsc --noEmit across the app, spec, and eslint ts
 `web` is a static build served by nginx once containerized; there's no moon task for this (see [ADR-0027](../../docs/adr/0027-web-dockerfile-scope-excludes-ci-publishing.md)), so build and run it directly from the repo root:
 
 ```bash
-docker build -f .docker/web/Dockerfile -t craftsmans-ledger-web .
+docker build -f apps/web/.docker/Dockerfile -t craftsmans-ledger-web .
 docker run --rm -p 8080:8080 craftsmans-ledger-web   # http://localhost:8080
 ```
 

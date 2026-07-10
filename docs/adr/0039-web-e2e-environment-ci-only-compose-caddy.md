@@ -2,9 +2,9 @@
 status: accepted
 ---
 
-# `web`'s E2E environment: a CI-only Compose + Caddy stack, smoke-tested without the E2E suite
+# `web`'s E2E environment: a CI-only Compose and Caddy stack, smoke-tested without the E2E suite
 
-`#95` asks for a Compose stack fronted by Caddy to run E2E tests against `web`'s image — the *E2E environment*, distinct from the *E2E suite* (the Playwright specs themselves, `#94`, still deferred; see [CONTEXT.md](../../CONTEXT.md) for the canonical terms). The environment is pure infrastructure: `web`'s image plus a Caddy reverse proxy for HTTPS termination, with no test runner involved. It lives at `.docker/web/`, alongside the existing `Dockerfile`/`default.conf` — unlike `docker-bake.hcl` ([ADR-0041](./0041-shared-docker-bake-file-across-projects.md)), this is genuinely `web`-specific test tooling, not shared build infrastructure, so [ADR-0028](./0028-top-level-docker-folder-per-app.md)'s per-app placement applies unmodified.
+`#95` asks for a Compose stack fronted by Caddy to run E2E tests against `web`'s image — the *E2E environment*, distinct from the *E2E suite* (the Playwright specs themselves, `#94`, still deferred; see [CONTEXT.md](../../CONTEXT.md) for the canonical terms). The environment is pure infrastructure: `web`'s image plus a Caddy reverse proxy for HTTPS termination, with no test runner involved. It lives at `apps/web/.docker/`, alongside the existing `Dockerfile`/`default.conf` and (since [ADR-0043](./0043-per-app-docker-bake-file.md)) `docker-bake.hcl` — nothing under `apps/web/.docker/` is shared with other apps, per [ADR-0042](./0042-per-app-docker-folder-inside-app-directory.md).
 
 The environment is CI-only for now — it isn't wired up for local use. `web`'s local dev HTTPS story (mkcert + hosts-file, [ADR-0029](./0029-local-dev-hostname-convention.md)/[ADR-0030](./0030-web-dev-server-https-only.md)) is unrelated and untouched; Caddy here exists only because CI has no equivalent trusted-local-CA setup. Local reproducibility of the E2E environment is deferred until the E2E suite actually lands and there's a concrete need to run it outside CI.
 

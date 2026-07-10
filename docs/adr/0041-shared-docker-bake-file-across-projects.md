@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: superseded by ADR-0043
 ---
 
 # `docker-bake.hcl` moves to top-level `.docker/`, shared across containerized projects
@@ -10,7 +10,7 @@ This is a deliberate, single-file exception to [ADR-0028](./0028-top-level-docke
 
 Verified empirically (`docker buildx bake -f .docker/docker-bake.hcl --call=check web`, run from the repo root, with a negative-control run from `.docker/` itself that failed as expected) that Buildx Bake resolves a target's `context`/`dockerfile` fields relative to the *invoking process's working directory*, not the bake file's own location. Since CI always invokes `docker buildx bake` from the repo root, moving the file required no changes to the `web` target's `context = "."` / `dockerfile = ".docker/web/Dockerfile"` values — only the file's own location, its target name, and the `-f`/`targets:` references in `pull-request.yml`.
 
-No shared "common" target (for the `platforms`/`attest`/cache fields every project's target would otherwise repeat, see [ADR-0035](./0035-docker-bake-multi-platform-provenance-and-labels-for-web.md)) was introduced yet. With a single target in the file, there's nothing real to deduplicate — adding one now would be speculative. Revisit once a second project's target actually exists and the duplication is real.
+No shared "common" target (for the `platforms`/`attest`/cache fields every project's target would otherwise repeat, see [ADR-0035](./0035-docker-bake-multi-platform-provenance-and-labels-for-web.md)) was introduced yet. With a single target in the file, there's nothing real to deduplicate — adding one now would be speculative. Revisit once a second project's target actually exists, and the duplication is real.
 
 ## Consequences
 

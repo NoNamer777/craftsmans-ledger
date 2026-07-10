@@ -75,9 +75,9 @@ jobs:
               with:
                   source: .
                   files: |
-                      ./.docker/docker-bake.hcl
+                      ./apps/web/.docker/docker-bake.hcl
                       cwd://${{ steps.meta.outputs.bake-file }}
-                  targets: web
+                  targets: build
                   push: true
 
     e2e-web:
@@ -89,6 +89,8 @@ jobs:
         permissions:
             contents: read
             packages: read
+        env:
+            WEB_IMAGE_TAG: pr-${{ github.event.pull_request.number }}
         steps:
             - name: Checkout repository
               uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
@@ -99,15 +101,11 @@ jobs:
                   token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Start E2E environment
-              env:
-                  WEB_IMAGE_TAG: pr-${{ github.event.pull_request.number }}
-              run: docker compose -f .docker/web/compose.yaml up -d
+              run: docker compose -f apps/web/.docker/compose.yaml up -d
 
             - name: Smoke-test E2E environment
               run: curl --fail -k --retry 5 --retry-delay 1 --retry-connrefused https://localhost:8443/
 
             - name: Stop E2E environment
               if: always()
-              env:
-                  WEB_IMAGE_TAG: pr-${{ github.event.pull_request.number }}
-              run: docker compose -f .docker/web/compose.yaml down
+              run: docker compose -f apps/web/.docker/compose.yaml down

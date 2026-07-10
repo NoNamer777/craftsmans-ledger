@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 #
-# Build context is the repo root, not .docker/web:
-#   docker build -f .docker/web/Dockerfile -t craftsmans-ledger-web .
+# Build context is the repo root, not apps/web/.docker:
+#   docker build -f apps/web/.docker/Dockerfile -t craftsmans-ledger-web .
 #
 # See docs/adr/0025-moon-docker-scaffold-pattern-for-web-image.md and
 # docs/adr/0026-rootless-nginx-runtime-for-web.md for the rationale behind
@@ -48,7 +48,7 @@ RUN moon run web:build
 #### RUNTIME
 FROM nginx:1.29-alpine@sha256:5616878291a2eed594aee8db4dade5878cf7edcb475e59193904b198d9b830de AS runtime
 
-COPY .docker/web/default.conf /etc/nginx/conf.d/default.conf
+COPY apps/web/.docker/default.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=build /app/apps/web/dist/browser /usr/share/nginx/html
 

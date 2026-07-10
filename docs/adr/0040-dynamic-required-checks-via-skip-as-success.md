@@ -14,6 +14,6 @@ This pattern is meant to generalize: a future containerized project (e.g. `api`)
 
 ## Consequences
 
-- Branch protection is a GitHub repository setting, not a file in this repo — this ruleset change has to be applied out-of-band (UI or `gh api`), same caveat [ADR-0009](./0009-branch-protection-requires-ci-check.md) already flags for the original `ci` requirement.
+- Branch protection is a GitHub repository setting, not a file in this repo — this ruleset change has to be applied out-of-band (UI or `gh api`), same issue [ADR-0009](./0009-branch-protection-requires-ci-check.md) already flags for the original `ci` requirement.
 - Renaming `docker-web` or `e2e-web` later requires a matching branch-protection update, or PRs become unmergeable — same failure mode ADR-0009 already warns about for `ci`.
 - Rejected alternative: a single fan-in "gate" job (`needs: [ci, docker-web, e2e-web]`, `if: always()`, inspecting `needs.*.result`) as the one required check — the commonly recommended pattern for conditional required checks generally. Not needed here, since GitHub's skip-as-success behavior already gives the same guarantee without an extra job to maintain. Revisit if that behavior ever changes, or if a future project's gating logic gets complex enough that per-job required checks stop being tractable.
