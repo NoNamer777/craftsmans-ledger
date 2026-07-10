@@ -16,6 +16,7 @@ Early development: repository scaffolding in progress.
 ## Project Structure
 
 - `apps/`: deployable applications
+- `e2e/`: E2E test suites, each targeting one app (e.g. `e2e/web` targets `apps/web`) — not tied to a single testing tool, each suite picks whatever fits its target — see [ADR-0045](docs/adr/0045-e2e-top-level-category-for-e2e-suites.md) for why this is a category of its own rather than living under `apps/`
 - `libs/`: shared *application* code consumed at runtime by `apps/*` (currently empty)
 - `packages/`: shared *build/tooling* config, consumed by name (e.g. `@craftsmans-ledger/tsconfig`), not by relative path
 
@@ -24,6 +25,10 @@ See [ADR-0003](docs/adr/0003-libs-vs-packages-split.md) for the full runtime/bui
 Currently populated apps:
 
 - [`web`](apps/web): the main Angular web client; a project in the shared root `angular.json` workspace ([ADR-0020](docs/adr/0020-root-level-angular-workspace.md)) with zoneless change detection and Vitest as its test runner, see [ADR-0013](docs/adr/0013-zoneless-vitest-testing-stack.md). Currently a shell only: no domain routes/components yet.
+
+Currently populated E2E suites:
+
+- [`e2e-web`](e2e/web): Playwright suite exercising `web` — a boot-smoke spec today, more to follow as `web` grows features. Runs against `web`'s dev server locally, and against the CI-only Compose+Caddy E2E environment in CI; see [ADR-0046](docs/adr/0046-e2e-suite-reuses-existing-servers.md).
 
 Currently populated packages:
 
