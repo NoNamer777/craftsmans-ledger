@@ -4,7 +4,7 @@ import prettier from 'eslint-config-prettier';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig(
-    globalIgnores(['dist/**', 'coverage/**', 'reports/**']),
+    globalIgnores(['dist/**', 'coverage/**', 'reports/**', 'playwright-report/**', 'test-results/**']),
     {
         files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
         extends: [js.configs.recommended, tseslint.configs.recommendedTypeChecked, tseslint.configs.stylisticTypeChecked, prettier],

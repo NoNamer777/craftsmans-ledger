@@ -41,7 +41,11 @@ Every PR touching `web` builds and pushes a multi-platform image to `ghcr.io/<ow
 
 ### E2E environment
 
-`apps/web/.docker/compose.yaml` pairs the just-built `pr-<N>` image with a Caddy reverse proxy for HTTPS termination. It's CI-only — smoke-tested on every PR that touches `web`, but not wired up for local use. See [ADR-0039](../../docs/adr/0039-web-e2e-environment-ci-only-compose-caddy.md).
+`apps/web/.docker/compose.yaml` pairs the just-built `pr-<N>` image with a Caddy reverse proxy for HTTPS termination. It's CI-only, not wired up for local use, and gated by Compose healthchecks (`docker compose up --wait`) rather than a smoke-test step. See [ADR-0039](../../docs/adr/0039-web-e2e-environment-ci-only-compose-caddy.md).
+
+### E2E suite
+
+[`e2e/web`](../../e2e/web) is the Playwright suite that actually exercises `web` — see its own README for commands. In CI it runs against the E2E environment above (`https://localhost:8443`); locally it runs against `web:start`'s dev server instead, reusing an already-running instance if there is one. See [ADR-0046](../../docs/adr/0046-e2e-suite-reuses-existing-servers.md).
 
 ## Notable choices
 
@@ -51,4 +55,4 @@ Every PR touching `web` builds and pushes a multi-platform image to `ghcr.io/<ow
 
 ## Status
 
-Shell only — no domain routes or components yet. Styling (Tailwind + SCSS), shared lint configs, and the full Vitest setup have all landed.
+Shell only — no domain routes or components yet. Styling (Tailwind + SCSS), shared lint configs, the full Vitest setup, and a boot-smoke [E2E suite](../../e2e/web) have all landed.

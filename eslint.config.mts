@@ -4,7 +4,7 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 export default defineConfig(
-    globalIgnores(['apps/**', 'libs/**', 'packages/**']),
+    globalIgnores(['apps/**', 'e2e/**', 'libs/**', 'packages/**']),
     {
         files: ['*.js', '*.mjs', '*.cjs', '*.ts', '*.mts'],
         extends: [base],

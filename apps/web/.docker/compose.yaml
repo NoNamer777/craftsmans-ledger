@@ -1,7 +1,11 @@
 # The E2E environment (docs/adr/0039-web-e2e-environment-ci-only-compose-caddy.md):
 # `web`'s image behind a Caddy reverse proxy for HTTPS termination. CI-only —
 # not wired up for local dev use. Invoked from the repo root as:
-#   WEB_IMAGE_TAG=pr-<N> docker compose -f apps/web/.docker/compose.yaml up -d
+#   WEB_IMAGE_TAG=pr-<N> docker compose -f apps/web/.docker/compose.yaml up -d --wait
+#
+# --wait blocks until both services' healthchecks pass, which is what gates the
+# E2E suite (docs/adr/0046-e2e-suite-reuses-existing-servers.md) — no smoke-test
+# step or Playwright-side fallback checks readiness separately.
 #
 # the CI job provides WEB_IMAGE_TAG and WEB_DOCKER_IMAGE.
 
@@ -10,12 +14,23 @@ services:
         image: ${WEB_DOCKER_IMAGE}:${WEB_IMAGE_TAG}
         expose:
             - '8080'
+        healthcheck:
+            test: ['CMD', 'wget', '--spider', '-q', 'http://127.0.0.1:8080/']
+            interval: 2s
+            timeout: 2s
+            retries: 10
 
     caddy:
         image: caddy:2-alpine
         depends_on:
-            - web
+            web:
+                condition: service_healthy
         ports:
             - '8443:443'
         volumes:
             - ./Caddyfile:/etc/caddy/Caddyfile:ro
+        healthcheck:
+            test: ['CMD', 'wget', '--spider', '-q', '--no-check-certificate', 'https://localhost/']
+            interval: 2s
+            timeout: 2s
+            retries: 10

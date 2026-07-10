@@ -6,7 +6,7 @@ status: accepted
 
 `#95` asks for a Compose stack fronted by Caddy to run E2E tests against `web`'s image — the *E2E environment*, distinct from the *E2E suite* (the Playwright specs themselves, `#94`, still deferred; see [CONTEXT.md](../../CONTEXT.md) for the canonical terms). The environment is pure infrastructure: `web`'s image plus a Caddy reverse proxy for HTTPS termination, with no test runner involved. It lives at `apps/web/.docker/`, alongside the existing `Dockerfile`/`default.conf` and (since [ADR-0043](./0043-per-app-docker-bake-file.md)) `docker-bake.hcl` — nothing under `apps/web/.docker/` is shared with other apps, per [ADR-0042](./0042-per-app-docker-folder-inside-app-directory.md).
 
-The environment is CI-only for now — it isn't wired up for local use. `web`'s local dev HTTPS story (mkcert + hosts-file, [ADR-0029](./0029-local-dev-hostname-convention.md)/[ADR-0030](./0030-web-dev-server-https-only.md)) is unrelated and untouched; Caddy here exists only because CI has no equivalent trusted-local-CA setup. Local reproducibility of the E2E environment is deferred until the E2E suite actually lands and there's a concrete need to run it outside CI.
+The environment is CI-only for now — it isn't wired up for local use. `web`'s local dev HTTPS story (mkcert + hosts-file, [ADR-0029](./0029-local-dev-hostname-convention.md)/[ADR-0030](./0030-web-dev-server-https-only.md)) is unrelated and untouched; Caddy here exists only because CI has no equivalent trusted-local-CA setup. Local reproducibility of the E2E environment is deferred until the E2E suite actually lands, and there's a concrete need to run it outside CI.
 
 Caddy terminates TLS via its own automatic internal HTTPS (`tls internal`) rather than reusing mkcert or hand-rolling an `openssl` cert — zero extra tooling, and mkcert's local-machine trust model buys nothing for a CI-only, ephemeral environment. The smoke-test step that verifies the environment boots uses `curl -k`: its job is to confirm Caddy actually terminates TLS and proxies to `web` correctly, not to validate a publicly trusted cert chain.
 
@@ -18,6 +18,6 @@ There's no explicit `docker compose down` teardown step: `runs-on: ubuntu-24.04`
 
 ## Consequences
 
-- The smoke-test only proves the environment boots and Caddy proxies correctly — it is not a substitute for `#94`'s actual Playwright suite. "Run E2E tests against this image," as `#95` originally asked, isn't fully satisfied until that suite exists.
+- The smoke-test only proved the environment boots and Caddy proxies correctly, as a stand-in until `#94`'s actual Playwright suite existed. [ADR-0046](./0046-e2e-suite-reuses-existing-servers.md) replaces it outright: the `e2e-web` project's `e2e-ci` task now runs in its place, gated by Compose health checks (`docker compose up --wait`) rather than a `curl` retry loop.
 - See [ADR-0040](./0040-dynamic-required-checks-via-skip-as-success.md) for how `docker-web`/`e2e-web` interact with `main`'s required status checks.
-- Whoever picks up `#94` will need to decide how the E2E suite actually reaches the environment (a fresh Compose service running Playwright inside the same network, or something else) — nothing here decides that.
+- How the E2E suite reaches the environment is decided in [ADR-0046](./0046-e2e-suite-reuses-existing-servers.md): the suite runs directly on the CI runner against `https://localhost:8443`, not as a Compose service of its own.
