@@ -35,6 +35,14 @@ docker run --rm -p 8080:8080 craftsmans-ledger-web   # http://localhost:8080
 
 See [ADR-0025](../../docs/adr/0025-moon-docker-scaffold-pattern-for-web-image.md) and [ADR-0026](../../docs/adr/0026-rootless-nginx-runtime-for-web.md) for the image's build pattern and rootless runtime.
 
+### CI image lifecycle
+
+Every PR touching `web` builds and pushes a multi-platform image to `ghcr.io/<owner>/craftsmans-ledger/web` via `apps/web/.docker/docker-bake.hcl` (`docker buildx bake -f apps/web/.docker/docker-bake.hcl build`), tagged `pr-<N>`. Merging retags it to `next`; closing the PR without merging removes the `pr-<N>` tag instead. This only runs when moon's affected-detection says `web` was actually touched. See [ADR-0033](../../docs/adr/0033-web-docker-image-lifecycle-scoped-to-create-promote-remove.md) for the overall scope, [ADR-0035](../../docs/adr/0035-docker-bake-multi-platform-provenance-and-labels-for-web.md)/[ADR-0043](../../docs/adr/0043-per-app-docker-bake-file.md) for the Bake build itself, and [ADR-0036](../../docs/adr/0036-moon-affected-gates-docker-jobs.md) for the affected-detection gating.
+
+### E2E environment
+
+`apps/web/.docker/compose.yaml` pairs the just-built `pr-<N>` image with a Caddy reverse proxy for HTTPS termination. It's CI-only — smoke-tested on every PR that touches `web`, but not wired up for local use. See [ADR-0039](../../docs/adr/0039-web-e2e-environment-ci-only-compose-caddy.md).
+
 ## Notable choices
 
 - A project in the shared root `angular.json` workspace, not a self-contained Angular CLI workspace of its own — see [ADR-0020](../../docs/adr/0020-root-level-angular-workspace.md), superseding [ADR-0012](../../docs/adr/0012-self-contained-angular-workspace-per-app.md).
