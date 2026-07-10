@@ -5,10 +5,11 @@
 #
 # See docs/adr/0025-moon-docker-scaffold-pattern-for-web-image.md and
 # docs/adr/0026-rootless-nginx-runtime-for-web.md for the rationale behind
-# this stage layout.
+# this stage layout, and docs/adr/0035-docker-bake-multi-platform-provenance-and-labels-for-web.md
+# for why the BASE stage is pinned to --platform=$BUILDPLATFORM.
 
 #### BASE
-FROM node:24.18.0-alpine@sha256:a0b9bf06e4e6193cf7a0f58816cc935ff8c2a908f81e6f1a95432d679c54fbfd AS base
+FROM --platform=$BUILDPLATFORM node:24.18.0-alpine@sha256:a0b9bf06e4e6193cf7a0f58816cc935ff8c2a908f81e6f1a95432d679c54fbfd AS base
 
 WORKDIR /app
 
