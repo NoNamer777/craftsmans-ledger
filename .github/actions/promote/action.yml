@@ -17,7 +17,9 @@ runs:
     steps:
         - name: Promote ${{ inputs['source-tag'] }} to ${{ inputs['target-tag'] }}
           shell: bash
+          env:
+              OWNER: ${{ github.repository_owner }}
           run: |
               docker buildx imagetools create \
-                --tag ghcr.io/${{ github.repository_owner }}/${{ inputs.package }}:${{ inputs['target-tag'] }} \
-                ghcr.io/${{ github.repository_owner }}/${{ inputs.package }}:${{ inputs['source-tag'] }}
+                --tag ghcr.io/${OWNER,,}/${{ inputs.package }}:${{ inputs['target-tag'] }} \
+                ghcr.io/${OWNER,,}/${{ inputs.package }}:${{ inputs['source-tag'] }}

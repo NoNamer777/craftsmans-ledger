@@ -24,6 +24,6 @@ target "build" {
   dockerfile = "apps/web/.docker/Dockerfile"
   platforms  = ["linux/amd64", "linux/arm64"]
   attest     = ["type=provenance,mode=max", "type=sbom"]
-  cache-from = ["type=registry,ref=ghcr.io/${GITHUB_REPOSITORY_OWNER}/${WEB_IMAGE_REPOSITORY}:buildcache"]
-  cache-to   = ["type=registry,ref=ghcr.io/${GITHUB_REPOSITORY_OWNER}/${WEB_IMAGE_REPOSITORY}:buildcache,mode=max"]
+  cache-from = ["type=registry,ref=ghcr.io/${lower(GITHUB_REPOSITORY_OWNER)}/${WEB_IMAGE_REPOSITORY}:buildcache"]
+  cache-to   = ["type=registry,ref=ghcr.io/${lower(GITHUB_REPOSITORY_OWNER)}/${WEB_IMAGE_REPOSITORY}:buildcache,mode=max"]
 }
