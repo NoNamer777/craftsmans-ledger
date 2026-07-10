@@ -15,3 +15,4 @@ The ruleset also restricts **allowed merge methods to "Merge" only** (no squash,
 - Renaming the `ci` job requires a corresponding update to `main`'s branch protection settings, not just the workflow file, or PRs become unmergeable (the required check never reports as passing).
 - `push-main.yml` (see [ADR-0008](./0008-ci-workflows-split-by-trigger.md)) re-verifies `main` after merge independently of this constraint, since a merge landing here has already passed `ci` on its PR.
 - A future contributor proposing "just squash-merge for a cleaner history" should not assume the current setting is an oversight — it's deliberate to preserve commit SHA identity.
+- `docker-web` and `e2e-web` were later added as further required checks, gated dynamically rather than unconditionally — see [ADR-0040](./0040-dynamic-required-checks-via-skip-as-success.md).
