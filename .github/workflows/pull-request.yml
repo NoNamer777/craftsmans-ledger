@@ -13,7 +13,7 @@ permissions:
     contents: read
 
 env:
-    IMAGE_PACKAGE: craftsmans-ledger/web
+    WEB_DOCKER_IMAGE: ghcr.io/nonamer777/craftsmans-ledger/web
 
 jobs:
     ci:
@@ -66,7 +66,7 @@ jobs:
               id: meta
               uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
               with:
-                  images: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_PACKAGE }}
+                  images: ${{ env.WEB_DOCKER_IMAGE }}
                   tags: |
                       type=ref,event=pr
 
@@ -99,10 +99,6 @@ jobs:
               uses: ./.github/actions/docker
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
-
-            - name: Lowercase repository owner
-              shell: bash
-              run: echo "GITHUB_REPOSITORY_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> "$GITHUB_ENV"
 
             - name: Start E2E environment
               run: docker compose -f apps/web/.docker/compose.yaml up -d

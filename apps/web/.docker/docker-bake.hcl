@@ -8,12 +8,8 @@
 // for the rationale behind this target's own settings (Bake usage, platform
 // list, provenance/SBOM, and registry caching).
 
-variable "GITHUB_REPOSITORY_OWNER" {
-  default = "nonamer777"
-}
-
-variable "WEB_IMAGE_REPOSITORY" {
-  default = "craftsmans-ledger/web"
+variable "WEB_DOCKER_IMAGE" {
+  default = "ghcr.io/nonamer777/craftsmans-ledger/web"
 }
 
 target "docker-metadata-action" {}
@@ -24,6 +20,6 @@ target "build" {
   dockerfile = "apps/web/.docker/Dockerfile"
   platforms  = ["linux/amd64", "linux/arm64"]
   attest     = ["type=provenance,mode=max", "type=sbom"]
-  cache-from = ["type=registry,ref=ghcr.io/${lower(GITHUB_REPOSITORY_OWNER)}/${WEB_IMAGE_REPOSITORY}:buildcache"]
-  cache-to   = ["type=registry,ref=ghcr.io/${lower(GITHUB_REPOSITORY_OWNER)}/${WEB_IMAGE_REPOSITORY}:buildcache,mode=max"]
+  cache-from = ["type=registry,ref=${WEB_DOCKER_IMAGE}:buildcache"]
+  cache-to   = ["type=registry,ref=${WEB_DOCKER_IMAGE}:buildcache,mode=max"]
 }

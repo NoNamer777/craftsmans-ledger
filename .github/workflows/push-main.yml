@@ -13,7 +13,9 @@ permissions:
     contents: read
 
 env:
-    IMAGE_PACKAGE: craftsmans-ledger/web
+    WEB_DOCKER_IMAGE: ghcr.io/nonamer777/craftsmans-ledger/web
+    WEB_OWNER: nonamer777
+    WEB_PACKAGE: craftsmans-ledger/web
 
 jobs:
     ci:
@@ -64,7 +66,7 @@ jobs:
             - name: Promote pr-${{ steps.pr.outputs.number }} to next
               uses: ./.github/actions/promote
               with:
-                  package: ${{ env.IMAGE_PACKAGE }}
+                  package: ${{ env.WEB_DOCKER_IMAGE }}
                   source-tag: pr-${{ steps.pr.outputs.number }}
                   target-tag: next
 
@@ -72,6 +74,6 @@ jobs:
               uses: ./.github/actions/cleanup
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
-                  owner: ${{ github.repository_owner }}
-                  package: ${{ env.IMAGE_PACKAGE }}
+                  owner: ${{ env.WEB_OWNER }}
+                  package: ${{ env.WEB_PACKAGE }}
                   tags: pr-${{ steps.pr.outputs.number }}

@@ -3,15 +3,11 @@
 # not wired up for local dev use. Invoked from the repo root as:
 #   WEB_IMAGE_TAG=pr-<N> docker compose -f apps/web/.docker/compose.yaml up -d
 #
-# WEB_IMAGE_TAG and GITHUB_REPOSITORY_OWNER are provided by the CI job
-# (GITHUB_REPOSITORY_OWNER is a GitHub Actions built-in env var, but is not
-# guaranteed to be lowercase — the CI job lowercases it before this file
-# runs, since OCI registry refs must be lowercase and Compose has no
-# built-in function to do so inline here).
+# the CI job provides WEB_IMAGE_TAG and WEB_DOCKER_IMAGE.
 
 services:
     web:
-        image: ghcr.io/${GITHUB_REPOSITORY_OWNER}/craftsmans-ledger/web:${WEB_IMAGE_TAG}
+        image: ${WEB_DOCKER_IMAGE}:${WEB_IMAGE_TAG}
         expose:
             - '8080'
 
