@@ -1,0 +1,29 @@
+name: Pull Request Closed
+
+on:
+    pull_request:
+        types: [closed]
+        branches:
+            - main
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+    cancel-in-progress: true
+
+permissions:
+    packages: write
+
+jobs:
+    remove-image-tag:
+        name: Remove PR image tag
+        if: github.event.pull_request.merged == false
+        runs-on: ubuntu-24.04
+        timeout-minutes: 5
+        steps:
+            - name: Delete pr-${{ github.event.pull_request.number }} tag
+              uses: ./.github/actions/cleanup
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  owner: ${{ github.repository_owner }}
+                  package: craftsmans-ledger/web
+                  tags: pr-${{ github.event.pull_request.number }}

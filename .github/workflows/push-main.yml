@@ -5,6 +5,10 @@ on:
         branches:
             - main
 
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: false
+
 permissions:
     contents: read
 
@@ -13,9 +17,8 @@ jobs:
         name: CI
         runs-on: ubuntu-24.04
         timeout-minutes: 5
-        concurrency:
-            group: ${{ github.workflow }}-ci-${{ github.ref }}
-            cancel-in-progress: true
+        outputs:
+            web-affected: ${{ steps.affected.outputs.affected }}
         steps:
             - name: Checkout repository
               uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
@@ -24,3 +27,48 @@ jobs:
 
             - name: Run CI
               uses: ./.github/actions/ci
+
+            - name: Check whether web is affected
+              id: affected
+              uses: ./.github/actions/affected
+              with:
+                  project: web
+
+    docker-promote:
+        name: Promote Docker image
+        needs: ci
+        if: needs.ci.outputs.web-affected == 'true'
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        permissions:
+            contents: read
+            packages: write
+        steps:
+            - name: Resolve merged PR number
+              id: pr
+              shell: bash
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  number=$(gh api repos/${{ github.repository }}/commits/${{ github.sha }}/pulls --jq '.[0].number')
+                  echo "number=$number" >> "$GITHUB_OUTPUT"
+
+            - name: Docker setup
+              uses: ./.github/actions/docker
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Promote pr-${{ steps.pr.outputs.number }} to next
+              uses: ./.github/actions/promote
+              with:
+                  package: craftsmans-ledger/web
+                  source-tag: pr-${{ steps.pr.outputs.number }}
+                  target-tag: next
+
+            - name: Remove pr-${{ steps.pr.outputs.number }} tag
+              uses: ./.github/actions/cleanup
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  owner: ${{ github.repository_owner }}
+                  package: craftsmans-ledger/web
+                  tags: pr-${{ steps.pr.outputs.number }}
