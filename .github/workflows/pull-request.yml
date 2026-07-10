@@ -70,8 +70,9 @@ jobs:
             - name: Build and push
               uses: docker/bake-action@d3418bd7d0e9324001bca92fa8ba175ea7e6dc9b # v7.3.0
               with:
+                  source: .
                   files: |
-                      ./.docker/web/docker-bake.hcl
+                      ./.docker/docker-bake.hcl
                       cwd://${{ steps.meta.outputs.bake-file }}
-                  targets: build
+                  targets: web
                   push: true
