@@ -1,7 +1,7 @@
 # Craftsman's Ledger
 
 ![Node](https://img.shields.io/badge/node-24.18.0-339933?logo=node.js&logoColor=white)
-![pnpm](https://img.shields.io/badge/pnpm-11.9.0-F69220?logo=pnpm&logoColor=white)
+![pnpm](https://img.shields.io/badge/pnpm-11.10.0-F69220?logo=pnpm&logoColor=white)
 ![moon](https://img.shields.io/badge/moon-2.3.5-6F53F3?logo=moonrepo&logoColor=white)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 [![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-F7B93E?logo=prettier&logoColor=black)](https://prettier.io)
