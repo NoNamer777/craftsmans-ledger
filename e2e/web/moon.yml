@@ -1,0 +1,45 @@
+$schema: '../../.moon/cache/schemas/project.json'
+id: 'e2e-web'
+layer: 'automation'
+stack: 'frontend'
+
+project:
+    title: 'E2E Web'
+    description: 'Playwright E2E suite that exercises `web` by driving a browser against it.'
+
+tasks:
+    e2e:
+        command: 'playwright test --ui'
+        toolchains: ['node']
+        deps: ['install-browsers']
+        options:
+            runInCI: false
+
+    e2e-ci:
+        command: 'playwright test'
+        toolchains: ['node']
+        deps: ['install-browsers']
+        inputs:
+            - 'playwright.config.ts'
+            - 'tests/**/*'
+            - 'tsconfig.json'
+        outputs:
+            - 'playwright-report'
+            - 'test-results'
+
+    lint-ts:
+        command: 'eslint .'
+        toolchains: ['node']
+        inputs:
+            - '*.ts'
+            - 'tests/**/*'
+            - 'eslint.config.mts'
+            - 'tsconfig.json'
+
+    typecheck:
+        command: 'tsc --noEmit -p tsconfig.json'
+        toolchains: ['node']
+        inputs:
+            - '*.ts'
+            - 'tests/**/*'
+            - 'tsconfig.json'

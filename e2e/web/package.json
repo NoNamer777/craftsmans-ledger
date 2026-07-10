@@ -1,0 +1,27 @@
+{
+  "name": "e2e-web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Playwright E2E suite for `web`.",
+  "author": "NoNamer777",
+  "license": "MIT",
+  "homepage": "https://github.com/nonamer777/craftsmans-ledger/tree/main/e2e/web#readme",
+  "bugs": {
+    "url": "https://github.com/nonamer777/craftsmans-ledger/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nonamer777/craftsmans-ledger.git",
+    "directory": "e2e/web"
+  },
+  "devDependencies": {
+    "@craftsmans-ledger/eslint-config": "workspace:*",
+    "@craftsmans-ledger/tsconfig": "workspace:*",
+    "@playwright/test": "~1.61.1",
+    "@types/node": "catalog:tooling",
+    "eslint": "catalog:tooling",
+    "jiti": "catalog:tooling",
+    "typescript": "catalog:tooling"
+  }
+}

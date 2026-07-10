@@ -34,3 +34,6 @@ desktop.ini
 *.log
 coverage/
 reports/
+test-results/
+playwright-report/
+blob-report/
