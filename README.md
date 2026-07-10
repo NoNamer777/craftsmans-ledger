@@ -62,11 +62,17 @@ To format on save instead of relying on the commands above:
 
 - **WebStorm**: open Settings → Languages & Frameworks → JavaScript → Prettier, set the Prettier package to `<repo root>/node_modules/prettier`, and enable "On save" (and "On 'Reformat Code' action" if desired).
 
+### Markdown Linting
+
+[markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) lints and fixes all Markdown in the workspace, configured at the repo root only (`.markdownlint-cli2.yaml`); see [ADR-0032](docs/adr/0032-root-only-markdownlint-config.md). Markdown is deliberately excluded from Prettier's scope — see the amendment in [ADR-0006](docs/adr/0006-prettier-owns-formatting-boundary.md).
+
+- `pnpm moon run root:lint-md`: lint (and report) all Markdown files
+
 ### Git Hooks
 
 [Husky](https://typicode.github.io/husky/) manages git hooks, installed automatically by the `prepare` script on `pnpm install`; see [ADR-0004](docs/adr/0004-husky-lint-staged-for-git-hooks.md) for why husky/lint-staged were chosen over moon's native `vcs.hooks`.
 
-- `pre-commit` runs [lint-staged](https://github.com/lint-staged/lint-staged) (config in `lint-staged.config.mjs`), which formats staged files with Prettier and re-stages the result.
+- `pre-commit` runs [lint-staged](https://github.com/lint-staged/lint-staged) (config in `lint-staged.config.mjs`), which formats staged files with Prettier, lints and fixes staged Markdown with `markdownlint-cli2`, and re-stages the result.
 - `commit-msg` runs commitlint locally against the same rules CI enforces (see below).
 
 ### Commit Messages
@@ -75,7 +81,7 @@ Commits follow [Conventional Commits](https://www.conventionalcommits.org/), enf
 
 ## Continuous Integration
 
-A `ci` job (formatting, build, tests, linting, and type-checking — the full `pnpm moon ci :format-check :build :test-ci :lint-ts :lint-css :typecheck` target list) runs via GitHub Actions on pull requests targeting `main` (required to pass before merging) and again on every push to `main`, confirming `main` itself stays green and deployable/releasable at any point in time. Commit messages are linted separately, only on pull requests; see [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md). See [ADR-0007](docs/adr/0007-ci-toolchain-via-setup-node-pnpm-action-setup.md), [ADR-0008](docs/adr/0008-ci-workflows-split-by-trigger.md), [ADR-0009](docs/adr/0009-branch-protection-requires-ci-check.md), and [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for the toolchain-provisioning, workflow-split, branch-protection, and commit-linting rationale.
+A `ci` job (formatting, build, tests, linting, and type-checking — the full `pnpm moon ci :format-check :build :test-ci :lint-ts :lint-css :lint-md :typecheck` target list) runs via GitHub Actions on pull requests targeting `main` (required to pass before merging) and again on every push to `main`, confirming `main` itself stays green and deployable/releasable at any point in time. Commit messages are linted separately, only on pull requests; see [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md). See [ADR-0007](docs/adr/0007-ci-toolchain-via-setup-node-pnpm-action-setup.md), [ADR-0008](docs/adr/0008-ci-workflows-split-by-trigger.md), [ADR-0009](docs/adr/0009-branch-protection-requires-ci-check.md), and [ADR-0010](docs/adr/0010-commitlint-via-cli-in-ci.md) for the toolchain-provisioning, workflow-split, branch-protection, and commit-linting rationale.
 
 ## License
 
