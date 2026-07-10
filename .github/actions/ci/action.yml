@@ -9,4 +9,4 @@ runs:
 
         - name: Run CI checks
           shell: bash
-          run: pnpm moon ci :format-check :build :test-ci :lint-ts :lint-css :typecheck
+          run: pnpm moon ci :format-check :build :test-ci :lint-ts :lint-css :lint-md :typecheck

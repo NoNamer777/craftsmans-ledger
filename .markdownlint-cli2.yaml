@@ -1,0 +1,10 @@
+$schema: ./node_modules/markdownlint-cli2/schema/markdownlint-cli2-config-schema.json
+gitignore: true
+config:
+    # See docs/adr/0032-root-only-markdownlint-config.md and the amendment in
+    # docs/adr/0006-prettier-owns-formatting-boundary.md.
+    default: true
+
+    # Disabled: this repo writes long paragraphs as a single unwrapped
+    # line rather than hard-wrapping at a fixed column (see any ADR).
+    MD013: false

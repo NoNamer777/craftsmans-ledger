@@ -54,6 +54,7 @@
     "husky": "catalog:tooling",
     "jiti": "catalog:tooling",
     "lint-staged": "catalog:tooling",
+    "markdownlint-cli2": "catalog:tooling",
     "prettier": "catalog:tooling",
     "prettier-plugin-organize-imports": "catalog:tooling",
     "prettier-plugin-tailwindcss": "catalog:tooling",
