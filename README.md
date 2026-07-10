@@ -52,12 +52,14 @@ Task orchestration is handled by [moon](https://moonrepo.dev/) (`pnpm moon <comm
 To format on save instead of relying on the commands above:
 
 - **VS Code**: install the [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) extension, then add to `.vscode/settings.json`:
+
     ```json
     {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true
     }
     ```
+
 - **WebStorm**: open Settings → Languages & Frameworks → JavaScript → Prettier, set the Prettier package to `<repo root>/node_modules/prettier`, and enable "On save" (and "On 'Reformat Code' action" if desired).
 
 ### Git Hooks
