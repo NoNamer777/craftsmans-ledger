@@ -1,0 +1,27 @@
+name: Cleanup
+description: Remove tags from a GHCR package
+
+inputs:
+    token:
+        description: Token to authenticate with the ghcr.io registry and the GitHub API
+        required: true
+    owner:
+        description: Owner of the package (user or organization)
+        required: true
+    package:
+        description: The package name
+        required: true
+    tags:
+        description: Comma-separated tags to delete
+        required: true
+
+runs:
+    using: composite
+    steps:
+        - name: Remove ${{ inputs.tags }} from ${{ inputs.package }}
+          uses: dataaxiom/ghcr-cleanup-action@d52806a0dc70b430571a37da1fde39733ffd640f # v1.2.2
+          with:
+              token: ${{ inputs.token }}
+              owner: ${{ inputs.owner }}
+              package: ${{ inputs.package }}
+              delete-tags: ${{ inputs.tags }}
