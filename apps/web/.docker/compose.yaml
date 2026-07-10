@@ -1,0 +1,21 @@
+# The E2E environment (docs/adr/0039-web-e2e-environment-ci-only-compose-caddy.md):
+# `web`'s image behind a Caddy reverse proxy for HTTPS termination. CI-only —
+# not wired up for local dev use. Invoked from the repo root as:
+#   WEB_IMAGE_TAG=pr-<N> docker compose -f apps/web/.docker/compose.yaml up -d
+#
+# the CI job provides WEB_IMAGE_TAG and WEB_DOCKER_IMAGE.
+
+services:
+    web:
+        image: ${WEB_DOCKER_IMAGE}:${WEB_IMAGE_TAG}
+        expose:
+            - '8080'
+
+    caddy:
+        image: caddy:2-alpine
+        depends_on:
+            - web
+        ports:
+            - '8443:443'
+        volumes:
+            - ./Caddyfile:/etc/caddy/Caddyfile:ro

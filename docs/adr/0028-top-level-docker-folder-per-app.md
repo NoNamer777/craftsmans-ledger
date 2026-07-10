@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: superseded by ADR-0042
 ---
 
 # Docker files live under top-level `.docker/<app>/`, not co-located with the app

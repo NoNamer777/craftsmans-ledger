@@ -1,0 +1,22 @@
+name: Affected
+description: Determine whether a moon project is affected by the current changes
+
+inputs:
+    project:
+        description: The moon project ID to check
+        required: true
+
+outputs:
+    affected:
+        description: Whether the project is affected ("true"/"false")
+        value: ${{ steps.affected.outputs.affected }}
+
+runs:
+    using: composite
+    steps:
+        - name: Check whether ${{ inputs.project }} is affected
+          id: affected
+          shell: bash
+          run: |
+              count=$(pnpm moon query projects --affected --id ${{ inputs.project }} | jq '.projects | length')
+              echo "affected=$([ "$count" -gt 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"

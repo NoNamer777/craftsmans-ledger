@@ -1,0 +1,23 @@
+name: Promote
+description: Promote a GHCR image tag to another tag without rebuilding
+
+inputs:
+    package:
+        description: The package name
+        required: true
+    source-tag:
+        description: The image tag to promote
+        required: true
+    target-tag:
+        description: The tag to promote the image to
+        required: true
+
+runs:
+    using: composite
+    steps:
+        - name: Promote ${{ inputs['source-tag'] }} to ${{ inputs['target-tag'] }}
+          shell: bash
+          run: |
+              docker buildx imagetools create \
+                --tag ${{ inputs.package }}:${{ inputs['target-tag'] }} \
+                ${{ inputs.package }}:${{ inputs['source-tag'] }}
