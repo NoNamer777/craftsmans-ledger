@@ -1,5 +1,4 @@
-# yaml-language-server: $schema=./.moon/cache/schemas/project.json
-
+$schema: './.moon/cache/schemas/project.json'
 layer: 'automation'
 stack: 'unknown'
 
@@ -13,7 +12,7 @@ tasks:
         toolchains: ['node']
         inputs:
             - '**/*'
-            - '!**/node_modules/**'
+            - '!**/node_modules/'
         options:
             cache: false
             runInCI: false
@@ -34,6 +33,13 @@ tasks:
             - '*.cjs'
             - '*.ts'
             - 'eslint.config.mts'
+
+    lint-md:
+        command: 'markdownlint-cli2 "**/*.md"'
+        toolchains: ['node']
+        inputs:
+            - '**/*.md'
+            - '.markdownlint-cli2.yaml'
 
     typecheck:
         command: 'tsc --noEmit -p tsconfig.json'

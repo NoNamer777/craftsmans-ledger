@@ -1,3 +1,4 @@
+<!-- markdownlint-disable-next-line MD041 -->
 ## What
 
 <!-- 2-3 sentences: what changed. -->
