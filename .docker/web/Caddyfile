@@ -1,0 +1,7 @@
+# TLS via Caddy's own automatic internal HTTPS (no mkcert/openssl dependency
+# needed — this environment is CI-only, see
+# docs/adr/0039-web-e2e-environment-ci-only-compose-caddy.md).
+localhost, caddy {
+	tls internal
+	reverse_proxy web:8080
+}

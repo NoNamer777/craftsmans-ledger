@@ -1,0 +1,22 @@
+# The E2E environment (docs/adr/0039-web-e2e-environment-ci-only-compose-caddy.md):
+# `web`'s image behind a Caddy reverse proxy for HTTPS termination. CI-only —
+# not wired up for local dev use. Invoked from the repo root as:
+#   WEB_IMAGE_TAG=pr-<N> docker compose -f .docker/web/compose.yaml up -d
+#
+# WEB_IMAGE_TAG and GITHUB_REPOSITORY_OWNER are provided by the CI job
+# (GITHUB_REPOSITORY_OWNER is a GitHub Actions built-in env var).
+
+services:
+    web:
+        image: ghcr.io/${GITHUB_REPOSITORY_OWNER}/craftsmans-ledger/web:${WEB_IMAGE_TAG}
+        expose:
+            - '8080'
+
+    caddy:
+        image: caddy:2-alpine
+        depends_on:
+            - web
+        ports:
+            - '8443:443'
+        volumes:
+            - ./Caddyfile:/etc/caddy/Caddyfile:ro

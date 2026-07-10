@@ -38,8 +38,8 @@ jobs:
               shell: bash
               run: pnpm commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
 
-    docker:
-        name: Docker
+    docker-web:
+        name: docker-web
         needs: ci
         if: needs.ci.outputs.web-affected == 'true'
         runs-on: ubuntu-24.04
@@ -76,3 +76,35 @@ jobs:
                       cwd://${{ steps.meta.outputs.bake-file }}
                   targets: web
                   push: true
+
+    e2e-web:
+        name: e2e-web
+        needs: [ci, docker-web]
+        if: needs.ci.outputs.web-affected == 'true'
+        runs-on: ubuntu-24.04
+        timeout-minutes: 5
+        permissions:
+            contents: read
+            packages: read
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+            - name: Docker setup
+              uses: ./.github/actions/docker
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Start E2E environment
+              env:
+                  WEB_IMAGE_TAG: pr-${{ github.event.pull_request.number }}
+              run: docker compose -f .docker/web/compose.yaml up -d
+
+            - name: Smoke-test E2E environment
+              run: curl --fail -k --retry 5 --retry-delay 1 --retry-connrefused https://localhost:8443/
+
+            - name: Stop E2E environment
+              if: always()
+              env:
+                  WEB_IMAGE_TAG: pr-${{ github.event.pull_request.number }}
+              run: docker compose -f .docker/web/compose.yaml down
