@@ -109,7 +109,3 @@ jobs:
 
             - name: Smoke-test E2E environment
               run: curl --fail -k --retry 5 --retry-delay 1 --retry-connrefused https://localhost:8443/
-
-            - name: Stop E2E environment
-              if: always()
-              run: docker compose -f apps/web/.docker/compose.yaml down
