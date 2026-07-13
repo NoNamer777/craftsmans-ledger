@@ -6,6 +6,8 @@
 
 Main Angular web client for Craftsman's Ledger — track unlocked recipes, find vendors, compare recipe profitability, and browse the tech tree.
 
+See [CHANGELOG.md](./CHANGELOG.md) for a history of changes.
+
 ## Commands
 
 Run these via moon from the repo root, not `ng` directly — moon owns task orchestration/caching for the whole workspace (see [ADR-0001](../../docs/adr/0001-moonrepo-mise-pnpm-for-monorepo-tooling.md)):
