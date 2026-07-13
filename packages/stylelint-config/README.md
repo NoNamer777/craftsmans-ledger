@@ -4,6 +4,8 @@
 
 Shared Stylelint configs for Craftsman's Ledger apps.
 
+See [CHANGELOG.md](./CHANGELOG.md) for a history of changes.
+
 ## Usage
 
 `base.js` holds framework-agnostic rules: `stylelint-config-standard-scss` and `stylelint-config-clean-order` for property ordering ([ADR-0018](../../docs/adr/0018-stylelint-clean-order-over-recess-order.md)).
