@@ -4,6 +4,8 @@
 
 Shared, environment-agnostic TypeScript compiler options for Craftsman's Ledger apps.
 
+See [CHANGELOG.md](./CHANGELOG.md) for a history of changes.
+
 ## Usage
 
 `base.json` deliberately excludes `target`, `module`, `moduleResolution`, and `lib` — those are environment-specific and belong to a framework overlay. See [ADR-0011](../../docs/adr/0011-per-framework-typescript-catalogs.md) for the rationale.

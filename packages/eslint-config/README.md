@@ -5,6 +5,8 @@
 
 Shared ESLint flat configs for Craftsman's Ledger apps.
 
+See [CHANGELOG.md](./CHANGELOG.md) for a history of changes.
+
 ## Usage
 
 `base.mts` holds framework-agnostic rules: `@eslint/js`'s recommended set, `typescript-eslint`'s `recommendedTypeChecked` and `stylisticTypeChecked` tiers ([ADR-0017](../../docs/adr/0017-typescript-eslint-recommended-type-checked.md)), and `eslint-config-prettier`. It also holds conventions that apply regardless of framework: ignores for generated output (`dist/`, `coverage/`, `reports/`), a relaxed `**/*.spec.ts` override for test code, and `typescript-eslint`'s `disableTypeChecked` for plain `.js`/`.mjs`/`.cjs` files that aren't covered by a tsconfig.
