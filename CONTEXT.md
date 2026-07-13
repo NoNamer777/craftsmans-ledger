@@ -20,3 +20,12 @@ _Avoid_: E2E environment (that's the distinct, CI-only, ephemeral stack used per
 
 **Dev environment**:  
 A persistent Docker Compose stack tracking the `next` tag, redeployed via Watchtower only after the staging environment's E2E run succeeds. Also serves as a manual/human verification environment — not itself a target for automated E2E runs, so it isn't disturbed by test traffic while someone is checking it.
+
+### Changelogs
+
+**Changelog**:  
+A per-package `CHANGELOG.md` following Keep a Changelog, listing consumer-relevant changes to that package/app under a single, frozen `Unreleased` section — see [ADR 0048](docs/adr/0048-keep-a-changelog-per-package-unreleased-only.md). Only projects under `apps/`, `packages/`, and `libs/` have one; `e2e/` suites don't.  
+_Avoid_: Release notes
+
+**Consumer-relevant change**:  
+A change that affects what a consumer of a package or app — the end user for `web`, a dependent workspace package for the tooling configs — experiences or can do. The litmus test for whether something belongs in a `CHANGELOG.md`; internal refactors, tests, and tooling churn with no observable effect don't qualify, regardless of commit type.
