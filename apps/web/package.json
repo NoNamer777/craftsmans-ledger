@@ -12,15 +12,15 @@
     "@craftsmans-ledger/eslint-config": "workspace:*",
     "@craftsmans-ledger/stylelint-config": "workspace:*",
     "@craftsmans-ledger/tsconfig": "workspace:*",
-    "@tailwindcss/postcss": "~4.3.2",
+    "@tailwindcss/postcss": "~4.3.3",
     "@types/node": "catalog:tooling",
     "eslint": "catalog:tooling",
     "jiti": "catalog:tooling",
-    "playwright": "~1.61.1",
-    "postcss": "~8.5.16",
+    "playwright": "~1.62.1",
+    "postcss": "~8.5.26",
     "stylelint": "catalog:tooling",
-    "tailwindcss": "~4.3.2",
+    "tailwindcss": "~4.3.3",
     "typescript": "catalog:angular",
-    "vitest": "~4.1.9"
+    "vitest": "~4.1.10"
   }
 }
