@@ -5,22 +5,22 @@
   "dependencies": {
     "@angular/compiler": "catalog:angular",
     "@angular/forms": "catalog:angular",
-    "rxjs": "~7.8.2",
-    "tslib": "~2.8.1"
+    "rxjs": "catalog:frontend",
+    "tslib": "catalog:frontend"
   },
   "devDependencies": {
     "@craftsmans-ledger/eslint-config": "workspace:*",
     "@craftsmans-ledger/stylelint-config": "workspace:*",
     "@craftsmans-ledger/tsconfig": "workspace:*",
-    "@tailwindcss/postcss": "~4.3.3",
+    "@tailwindcss/postcss": "catalog:frontend",
     "@types/node": "catalog:tooling",
     "eslint": "catalog:tooling",
     "jiti": "catalog:tooling",
-    "playwright": "~1.62.1",
-    "postcss": "~8.5.26",
+    "playwright": "catalog:testing",
+    "postcss": "catalog:frontend",
     "stylelint": "catalog:tooling",
-    "tailwindcss": "~4.3.3",
+    "tailwindcss": "catalog:frontend",
     "typescript": "catalog:angular",
-    "vitest": "~4.1.10"
+    "vitest": "catalog:testing"
   }
 }

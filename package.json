@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@angular/common": "catalog:angular",
-    "@angular/core": "~22.1.1",
+    "@angular/core": "catalog:angular",
     "@angular/platform-browser": "catalog:angular",
     "@angular/router": "catalog:angular"
   },
@@ -47,9 +47,9 @@
     "@craftsmans-ledger/tsconfig": "workspace:*",
     "@moonrepo/cli": "catalog:tooling",
     "@types/node": "catalog:tooling",
-    "@vitest/browser-playwright": "~4.1.10",
-    "@vitest/coverage-v8": "~4.1.10",
-    "@vitest/ui": "~4.1.10",
+    "@vitest/browser-playwright": "catalog:testing",
+    "@vitest/coverage-v8": "catalog:testing",
+    "@vitest/ui": "catalog:testing",
     "eslint": "catalog:tooling",
     "husky": "catalog:tooling",
     "jiti": "catalog:tooling",
@@ -60,6 +60,6 @@
     "prettier-plugin-tailwindcss": "catalog:tooling",
     "stylelint": "catalog:tooling",
     "typescript": "catalog:tooling",
-    "vitest": "~4.1.10"
+    "vitest": "catalog:testing"
   }
 }

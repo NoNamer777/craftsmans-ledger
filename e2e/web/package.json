@@ -18,7 +18,7 @@
   "devDependencies": {
     "@craftsmans-ledger/eslint-config": "workspace:*",
     "@craftsmans-ledger/tsconfig": "workspace:*",
-    "@playwright/test": "~1.62.1",
+    "@playwright/test": "catalog:testing",
     "@types/node": "catalog:tooling",
     "eslint": "catalog:tooling",
     "jiti": "catalog:tooling",

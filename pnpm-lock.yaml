@@ -220,6 +220,9 @@ catalogs:
     '@angular/compiler-cli':
       specifier: ~22.1.1
       version: 22.1.1
+    '@angular/core':
+      specifier: ~22.1.1
+      version: 22.1.1
     '@angular/forms':
       specifier: ~22.1.1
       version: 22.1.1
@@ -235,6 +238,41 @@ catalogs:
     typescript:
       specifier: ~6.0.3
       version: 6.0.3
+  frontend:
+    '@tailwindcss/postcss':
+      specifier: ~4.3.3
+      version: 4.3.3
+    postcss:
+      specifier: ~8.5.26
+      version: 8.5.26
+    rxjs:
+      specifier: ~7.8.2
+      version: 7.8.2
+    tailwindcss:
+      specifier: ~4.3.3
+      version: 4.3.3
+    tslib:
+      specifier: ~2.8.1
+      version: 2.8.1
+  testing:
+    '@playwright/test':
+      specifier: ~1.62.1
+      version: 1.62.1
+    '@vitest/browser-playwright':
+      specifier: ~4.1.10
+      version: 4.1.10
+    '@vitest/coverage-v8':
+      specifier: ~4.1.10
+      version: 4.1.10
+    '@vitest/ui':
+      specifier: ~4.1.10
+      version: 4.1.10
+    playwright:
+      specifier: ~1.62.1
+      version: 1.62.1
+    vitest:
+      specifier: ~4.1.10
+      version: 4.1.10
   tooling:
     '@commitlint/cli':
       specifier: ~21.2.1
@@ -305,7 +343,7 @@ importers:
         specifier: catalog:angular
         version: 22.1.1(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.2))(rxjs@7.8.2)
       '@angular/core':
-        specifier: ~22.1.1
+        specifier: catalog:angular
         version: 22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.2)
       '@angular/platform-browser':
         specifier: catalog:angular
@@ -342,13 +380,13 @@ importers:
         specifier: catalog:tooling
         version: 24.13.3
       '@vitest/browser-playwright':
-        specifier: ~4.1.10
+        specifier: catalog:testing
         version: 4.1.10(playwright@1.62.1)(vite@8.1.5(@types/node@24.13.3)(esbuild@0.28.1)(jiti@2.7.0)(sass@1.101.0)(yaml@2.9.0))(vitest@4.1.10)
       '@vitest/coverage-v8':
-        specifier: ~4.1.10
+        specifier: catalog:testing
         version: 4.1.10(@vitest/browser@4.1.10)(vitest@4.1.10)
       '@vitest/ui':
-        specifier: ~4.1.10
+        specifier: catalog:testing
         version: 4.1.10(vitest@4.1.10)
       eslint:
         specifier: catalog:tooling
@@ -381,7 +419,7 @@ importers:
         specifier: catalog:tooling
         version: 6.0.3
       vitest:
-        specifier: ~4.1.10
+        specifier: catalog:testing
         version: 4.1.10(@types/node@24.13.3)(@vitest/browser-playwright@4.1.10)(@vitest/coverage-v8@4.1.10)(@vitest/ui@4.1.10)(jsdom@28.1.0(supports-color@10.2.2))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.28.1)(jiti@2.7.0)(sass@1.101.0)(yaml@2.9.0))
 
   apps/web:
@@ -393,10 +431,10 @@ importers:
         specifier: catalog:angular
         version: 22.1.1(@angular/common@22.1.1(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.2))(@angular/platform-browser@22.1.1(@angular/common@22.1.1(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.2)))(rxjs@7.8.2)
       rxjs:
-        specifier: ~7.8.2
+        specifier: catalog:frontend
         version: 7.8.2
       tslib:
-        specifier: ~2.8.1
+        specifier: catalog:frontend
         version: 2.8.1
     devDependencies:
       '@craftsmans-ledger/eslint-config':
@@ -409,7 +447,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tsconfig
       '@tailwindcss/postcss':
-        specifier: ~4.3.3
+        specifier: catalog:frontend
         version: 4.3.3
       '@types/node':
         specifier: catalog:tooling
@@ -421,22 +459,22 @@ importers:
         specifier: catalog:tooling
         version: 2.7.0
       playwright:
-        specifier: ~1.62.1
+        specifier: catalog:testing
         version: 1.62.1
       postcss:
-        specifier: ~8.5.26
+        specifier: catalog:frontend
         version: 8.5.26
       stylelint:
         specifier: catalog:tooling
         version: 17.14.1(supports-color@10.2.2)(typescript@6.0.3)
       tailwindcss:
-        specifier: ~4.3.3
+        specifier: catalog:frontend
         version: 4.3.3
       typescript:
         specifier: catalog:angular
         version: 6.0.3
       vitest:
-        specifier: ~4.1.10
+        specifier: catalog:testing
         version: 4.1.10(@types/node@24.13.3)(@vitest/browser-playwright@4.1.10)(@vitest/coverage-v8@4.1.10)(@vitest/ui@4.1.10)(jsdom@28.1.0(supports-color@10.2.2))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.28.1)(jiti@2.7.0)(sass@1.101.0)(yaml@2.9.0))
 
   e2e/web:
@@ -448,7 +486,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tsconfig
       '@playwright/test':
-        specifier: ~1.62.1
+        specifier: catalog:testing
         version: 1.62.1
       '@types/node':
         specifier: catalog:tooling
