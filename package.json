@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@angular/common": "catalog:angular",
-    "@angular/core": "~22.1.0",
+    "@angular/core": "~22.1.1",
     "@angular/platform-browser": "catalog:angular",
     "@angular/router": "catalog:angular"
   },
