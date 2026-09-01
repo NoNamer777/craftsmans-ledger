@@ -9,18 +9,18 @@
 # for why the BASE stage is pinned to --platform=$BUILDPLATFORM.
 
 #### BASE
-FROM --platform=$BUILDPLATFORM node:24.18.0-alpine@sha256:a0b9bf06e4e6193cf7a0f58816cc935ff8c2a908f81e6f1a95432d679c54fbfd AS base
+FROM --platform=$BUILDPLATFORM node:24.20.0-alpine3.24@sha256:e67514e5d0f6c46656005e1b693b2ec9d52e80b641307de684d4a015ba7a4eaf AS base
 
 WORKDIR /app
 
 RUN apk add --no-cache git
 
-RUN corepack enable && corepack prepare pnpm@11.9.0 --activate
+RUN npm i -g pnpm@11.24.0
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PNPM_HOME/bin:$PATH"
 
-RUN pnpm add -g @moonrepo/cli@2.3.5
+RUN pnpm add -g @moonrepo/cli@2.5.3
 
 
 #### SKELETON

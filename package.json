@@ -14,17 +14,17 @@
     "url": "git+https://github.com/nonamer777/craftsmans-ledger.git"
   },
   "engines": {
-    "node": "24.18.0"
+    "node": "24.20.0"
   },
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "24.18.0",
+      "version": "24.20.0",
       "onFail": "error"
     },
     "packageManager": {
       "name": "pnpm",
-      "version": "11.20.0",
+      "version": "11.24.0",
       "onFail": "error"
     }
   },
